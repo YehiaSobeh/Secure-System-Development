@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>lab1-report.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="secure-system-development---lab-1">Secure System Development - Lab 1</h1>
+<h2 id="task-1---gitlab-server">Task 1 - GitLab Server</h2>
+<h3 id="1-provisioning-infrastructure">1. Provisioning Infrastructure</h3>
+<p><strong>VMs/Containers Configuration:</strong><br>
+<img src="1_1.png" alt=""><br>
+<img src="1_2.png" alt=""><br>
+<img src="1_3.png" alt=""></p>
+<hr>
+<h3 id="2-configuring-security-groups">2. Configuring Security Groups</h3>
+<p><strong>Updated inbound rules:</strong></p>
+<ul>
+<li><strong>GitLab Server:</strong>
+<ul>
+<li>SSH on port 2222</li>
+<li>HTTP on port 80</li>
+<li>HTTPS on port 443</li>
+</ul>
+</li>
+<li><strong>GitLab Runner:</strong>
+<ul>
+<li>SSH on port 22</li>
+<li>HTTP on port 80</li>
+<li>HTTPS on port 443</li>
+</ul>
+</li>
+</ul>
+<p><img src="2_1.png" alt=""></p>
+<hr>
+<h3 id="3-installing-docker-on-gitlab-server">3. Installing Docker on GitLab Server</h3>
+<p><strong>SSH connection and installation commands:</strong></p>
+<pre class="hljs"><code><div>ssh -i <span class="hljs-string">"gitlab1.pem"</span> ubuntu@ec2-54-157-39-84.compute-1.amazonaws.com
+
+<span class="hljs-comment"># Add Docker's GPG key</span>
+sudo apt-get update
+sudo apt-get install ca-certificates curl
+sudo install -m 0755 -d /etc/apt/keyrings
+sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+sudo chmod a+r /etc/apt/keyrings/docker.asc
+
+<span class="hljs-comment"># Add Docker repository</span>
+<span class="hljs-built_in">echo</span> <span class="hljs-string">"deb [arch=<span class="hljs-variable">$(dpkg --print-architecture)</span> signed-by=/etc/apt/keyrings/docker.asc] \
+https://download.docker.com/linux/ubuntu <span class="hljs-variable">$(. /etc/os-release &amp;&amp; echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}")</span> stable"</span> \
+| sudo tee /etc/apt/sources.list.d/docker.list &gt; /dev/null
+sudo apt-get update
+
+<span class="hljs-comment"># Install Docker</span>
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sudo usermod -aG docker <span class="hljs-variable">$USER</span>
+newgrp docker
+
+<span class="hljs-comment"># Verify</span>
+docker -v
+docker compose version
+</div></code></pre>
+<h3 id="4-docker-compose-configuration">4. Docker Compose Configuration</h3>
+<p><strong>docker-compose.yml:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-attr">version:</span> <span class="hljs-string">'3.8'</span>
+<span class="hljs-attr">services:</span>
+  <span class="hljs-attr">gitlab:</span>
+    <span class="hljs-attr">image:</span> <span class="hljs-string">gitlab/gitlab-ce:latest</span>
+    <span class="hljs-attr">container_name:</span> <span class="hljs-string">yehia-gitlab</span>
+    <span class="hljs-attr">restart:</span> <span class="hljs-string">always</span>
+    <span class="hljs-attr">hostname:</span> <span class="hljs-string">'gitlab.test.local'</span>
+    <span class="hljs-attr">environment:</span>
+      <span class="hljs-attr">GITLAB_OMNIBUS_CONFIG:</span> <span class="hljs-string">|
+        external_url 'https://gitlab.test.local'
+        gitlab_rails['gitlab_shell_ssh_port'] = 2222
+        nginx['http2_enabled'] = true
+        nginx['redirect_http_to_https'] = true
+        nginx['ssl_certificate'] = "/etc/gitlab/ssl/gitlab.test.local.crt"
+        nginx['ssl_certificate_key'] = "/etc/gitlab/ssl/gitlab.test.local.key"
+        gitlab_rails['registry_enabled'] = false
+        mattermost['enable'] = false
+        gitlab_pages['enable'] = false
+        gitlab_kas['enable'] = false
+        letsencrypt['enable'] = false
+</span>    <span class="hljs-attr">ports:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">'80:80'</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">'443:443'</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">'2222:22'</span>
+    <span class="hljs-attr">volumes:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">'/srv/gitlab/config:/etc/gitlab'</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">'/srv/gitlab/logs:/var/log/gitlab'</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">'/srv/gitlab/data:/var/opt/gitlab'</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">'/etc/gitlab/ssl:/etc/gitlab/ssl'</span>
+    <span class="hljs-attr">shm_size:</span> <span class="hljs-string">'256m'</span>
+</div></code></pre>
+<h3 id="5-generating-self-signed-certificates-with-mkcert">5. Generating Self-Signed Certificates with mkcert</h3>
+<p><strong>Steps:</strong></p>
+<pre class="hljs"><code><div>mkcert -install
+mkcert gitlab.test.local
+mv gitlab.test.local.pem gitlab.test.local.crt
+mv gitlab.test.local-key.pem gitlab.test.local.key
+sudo mkdir -p /etc/gitlab/ssl
+sudo cp gitlab.test.local.crt gitlab.test.local.key /etc/gitlab/ssl/
+</div></code></pre>
+<h3 id="6-updating-etchosts">6. Updating /etc/hosts</h3>
+<p><strong>Modified entries:</strong></p>
+<pre class="hljs"><code><div>127.0.0.1   localhost
+127.0.1.1   yehia-Aspire-A315-58
+3.90.40.223 gitlab.test.local
+::1         ip6-localhost ip6-loopback
+fe00::0     ip6-localnet
+ff00::0     ip6-mcastprefix
+ff02::1     ip6-allnodes
+ff02::2     ip6-allrouters
+</div></code></pre>
+<h3 id="7-running-gitlab-server">7. Running GitLab Server</h3>
+<p><strong>Start container:</strong></p>
+<pre class="hljs"><code><div>docker compose up -d
+</div></code></pre>
+<p><strong>Retrieve root password:</strong></p>
+<pre class="hljs"><code><div>docker <span class="hljs-built_in">exec</span> -it yehia-gitlab cat /etc/gitlab/initial_root_password
+</div></code></pre>
+<h2 id="creating-repository"><img src="3_1.png" alt="">
+<img src="3_2.png" alt="">
+<img src="3_3.png" alt="">
+<strong>Creating Repository</strong>
+<img src="3_4.png" alt="">
+<img src="3_5.png" alt=""></h2>
+<h2 id="task-2---gitlab-runner">Task 2 - GitLab Runner</h2>
+<h3 id="1-installation--registration">1. Installation &amp; Registration</h3>
+<p><strong>Install GitLab Runner:</strong></p>
+<pre class="hljs"><code><div>curl -L https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.deb.sh | sudo bash
+sudo apt-get install gitlab-runner
+gitlab-runner --version
+sudo systemctl status gitlab-runner
+</div></code></pre>
+<p><strong>Register Runner:</strong></p>
+<pre class="hljs"><code><div>gitlab-runner register --url https://gitlab.test.local --token glrt-t3_4vJ_REAs8j2TH3vGnX3f
+<span class="hljs-comment"># Selected executor: shell</span>
+</div></code></pre>
+<p><strong>Start service:</strong></p>
+<pre class="hljs"><code><div>gitlab-runner run
+sudo systemctl start gitlab-runner
+sudo systemctl <span class="hljs-built_in">enable</span> gitlab-runner
+</div></code></pre>
+<h2 id=""><img src="4_1_1.png" alt="">
+<img src="4_2.png" alt=""></h2>
+<h2 id="task-3-integrating-sast-with-gitlab-ci">Task 3: Integrating SAST with GitLab CI</h2>
+<h3 id="1-cloning-dvja--repository-setup">1. Cloning DVJA &amp; Repository Setup</h3>
+<pre class="hljs"><code><div>git <span class="hljs-built_in">clone</span> https://github.com/appsecco/DVJA.git
+<span class="hljs-built_in">cd</span> DVJA
+rm -rf .git
+git init
+git add .
+git commit -m <span class="hljs-string">"Initial commit"</span>
+git remote add origin https://gitlab.test.local/root/yehia-repo.git
+git branch -M main
+git pull --rebase origin main
+git add *
+git rebase --<span class="hljs-built_in">continue</span>
+git push -u origin main
+</div></code></pre>
+<h3 id="2-gitlab-ciyml-configuration">2. .gitlab-ci.yml Configuration</h3>
+<p><strong>Pipeline file:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-attr">stages:</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-string">test</span>
+
+<span class="hljs-attr">semgrep-sast:</span>
+  <span class="hljs-attr">stage:</span> <span class="hljs-string">test</span>
+  <span class="hljs-attr">script:</span>
+    <span class="hljs-bullet">-</span> <span class="hljs-string">semgrep</span> <span class="hljs-string">--config=auto</span> <span class="hljs-string">--json</span> <span class="hljs-string">&gt;</span> <span class="hljs-string">semgrep-report.json</span>
+  <span class="hljs-attr">artifacts:</span>
+    <span class="hljs-attr">paths:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">semgrep-report.json</span>
+  <span class="hljs-attr">rules:</span>
+    <span class="hljs-bullet">-</span> <span class="hljs-attr">if:</span> <span class="hljs-string">$CI_COMMIT_REF_NAME</span> <span class="hljs-string">==</span> <span class="hljs-string">"main"</span>
+</div></code></pre>
+<p><img src="4_5.png" alt=""></p>
+<p><strong>Post-installation fix:</strong></p>
+<pre class="hljs"><code><div>sudo apt install semgrep
+<span class="hljs-built_in">echo</span> <span class="hljs-string">"Updated pipeline"</span> &gt;&gt; README.md
+git add README.md
+git commit -m <span class="hljs-string">"Triggering CI/CD pipeline"</span>
+git push origin main
+
+</div></code></pre>
+<p><img src="4_3.png" alt="">
+<img src="4_4.png" alt="">
+<img src="4_6.png" alt=""></p>
+<h3 id="3-sast-report-analysis">3. SAST Report Analysis</h3>
+<p><strong>After installing the artifacts and make it readable the following result i concluded</strong></p>
+<table>
+<thead>
+<tr>
+<th>Vulnerability</th>
+<th>File</th>
+<th>Line</th>
+<th>Severity</th>
+<th>Solution</th>
+<th>References</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Missing non-root user in Dockerfile</td>
+<td>Dockerfile</td>
+<td>17</td>
+<td>ERROR</td>
+<td>Add non-root user: RUN adduser --disabled-password appuser USER appuser</td>
+<td>OWASP A04</td>
+</tr>
+<tr>
+<td>Privilege escalation risk in Docker Compose</td>
+<td>docker-compose.yml</td>
+<td>3</td>
+<td>WARNING</td>
+<td>Add security_opt: no-new-privileges:true</td>
+<td>Docker Security Cheat Sheet</td>
+</tr>
+<tr>
+<td>Writable root filesystem in Docker Compose</td>
+<td>docker-compose.yml</td>
+<td>3</td>
+<td>WARNING</td>
+<td>Set read_only: true</td>
+<td>Docker Read-Only FS</td>
+</tr>
+<tr>
+<td>SQL Injection</td>
+<td>ProductService.java</td>
+<td>48</td>
+<td>ERROR</td>
+<td>Use PreparedStatement: stmt.setString(1, userInput);</td>
+<td>OWASP SQL Guide</td>
+</tr>
+<tr>
+<td>SQL Injection</td>
+<td>UserService.java</td>
+<td>75</td>
+<td>ERROR</td>
+<td>Use PreparedStatement: stmt.setString(1, userInput);</td>
+<td>Java Docs</td>
+</tr>
+<tr>
+<td>Semgrep Report Syntax Error</td>
+<td>semgrep-report.json</td>
+<td>1</td>
+<td>WARN</td>
+<td>Regenerate report or update Semgrep</td>
+<td>Semgrep Docs</td>
+</tr>
+</tbody>
+</table>
+
+</body>
+</html>

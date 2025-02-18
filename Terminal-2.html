@@ -1,0 +1,734 @@
+<pre><font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~/My station/secure development/lab1</b></font>$ ssh -i &quot;ansible.pem&quot; ubuntu@ec2-35-173-137-13.compute-1.amazonaws.com
+Welcome to Ubuntu 22.04.5 LTS (GNU/Linux 6.8.0-1021-aws x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/pro
+
+ System information as of Tue Feb 18 13:44:07 UTC 2025
+
+  System load:  0.02               Processes:             218
+  Usage of /:   26.4% of 28.89GB   Users logged in:       1
+  Memory usage: 55%                IPv4 address for eth0: 172.31.47.20
+  Swap usage:   0%
+
+ * Ubuntu Pro delivers the most comprehensive open source security and
+   compliance features.
+
+   https://ubuntu.com/aws/pro
+
+Expanded Security Maintenance for Applications is not enabled.
+
+36 updates can be applied immediately.
+28 of these updates are standard security updates.
+To see these additional updates run: apt list --upgradable
+
+Enable ESM Apps to receive additional future security updates.
+See https://ubuntu.com/esm or run: sudo pro status
+
+New release &apos;24.04.1 LTS&apos; available.
+Run &apos;do-release-upgrade&apos; to upgrade to it.
+
+
+Last login: Tue Feb 18 11:22:27 2025 from 45.67.35.120
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~</b></font>$ sudo gitlab-runner list
+Runtime platform                                    arch=amd64 os=linux pid=12501 revision=690ce25c version=17.8.3
+Listing configured runners                          ConfigFile=/etc/gitlab-runner/config.toml
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~</b></font>$ git clone https://github.com/anirbanbasu/DVJA.git
+Cloning into &apos;DVJA&apos;...
+Username for &apos;https://github.com&apos;: root
+Password for &apos;https://root@github.com&apos;: 
+remote: Support for password authentication was removed on August 13, 2021.
+remote: Please see https://docs.github.com/get-started/getting-started-with-git/about-remote-repositories#cloning-with-https-urls for information on currently recommended modes of authentication.
+fatal: Authentication failed for &apos;https://github.com/anirbanbasu/DVJA.git/&apos;
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~</b></font>$ git clone https://github.com/appsecco/DVJA.git
+Cloning into &apos;DVJA&apos;...
+remote: Enumerating objects: 256, done.
+remote: Total 256 (delta 0), reused 0 (delta 0), pack-reused 256 (from 1)
+Receiving objects: 100% (256/256), 1.17 MiB | 28.48 MiB/s, done.
+Resolving deltas: 100% (54/54), done.
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~</b></font>$ ls -l DVJA
+total 40
+-rw-rw-r-- 1 ubuntu ubuntu  341 Feb 18 13:55 Dockerfile
+-rw-rw-r-- 1 ubuntu ubuntu 1066 Feb 18 13:55 LICENSE
+-rw-rw-r-- 1 ubuntu ubuntu  892 Feb 18 13:55 README.md
+drwxrwxr-x 2 ubuntu ubuntu 4096 Feb 18 13:55 <font color="#12488B"><b>db</b></font>
+-rw-rw-r-- 1 ubuntu ubuntu  366 Feb 18 13:55 docker-compose.yml
+drwxrwxr-x 6 ubuntu ubuntu 4096 Feb 18 13:55 <font color="#12488B"><b>docs</b></font>
+-rw-rw-r-- 1 ubuntu ubuntu 6052 Feb 18 13:55 pom.xml
+drwxrwxr-x 2 ubuntu ubuntu 4096 Feb 18 13:55 <font color="#12488B"><b>scripts</b></font>
+drwxrwxr-x 3 ubuntu ubuntu 4096 Feb 18 13:55 <font color="#12488B"><b>src</b></font>
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~</b></font>$ cd DVJA
+rm -rf .git
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~/DVJA</b></font>$ ls -la
+total 60
+drwxrwxr-x 7 ubuntu ubuntu 4096 Feb 18 13:56 <font color="#12488B"><b>.</b></font>
+drwxr-x--- 8 ubuntu ubuntu 4096 Feb 18 13:55 <font color="#12488B"><b>..</b></font>
+-rw-rw-r-- 1 ubuntu ubuntu 1279 Feb 18 13:55 .dockerignore
+-rw-rw-r-- 1 ubuntu ubuntu 1279 Feb 18 13:55 .gitignore
+drwxrwxr-x 3 ubuntu ubuntu 4096 Feb 18 13:55 <font color="#12488B"><b>.idea</b></font>
+-rw-rw-r-- 1 ubuntu ubuntu  341 Feb 18 13:55 Dockerfile
+-rw-rw-r-- 1 ubuntu ubuntu 1066 Feb 18 13:55 LICENSE
+-rw-rw-r-- 1 ubuntu ubuntu  892 Feb 18 13:55 README.md
+drwxrwxr-x 2 ubuntu ubuntu 4096 Feb 18 13:55 <font color="#12488B"><b>db</b></font>
+-rw-rw-r-- 1 ubuntu ubuntu  366 Feb 18 13:55 docker-compose.yml
+drwxrwxr-x 6 ubuntu ubuntu 4096 Feb 18 13:55 <font color="#12488B"><b>docs</b></font>
+-rw-rw-r-- 1 ubuntu ubuntu 6052 Feb 18 13:55 pom.xml
+drwxrwxr-x 2 ubuntu ubuntu 4096 Feb 18 13:55 <font color="#12488B"><b>scripts</b></font>
+drwxrwxr-x 3 ubuntu ubuntu 4096 Feb 18 13:55 <font color="#12488B"><b>src</b></font>
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~/DVJA</b></font>$ rm -rf .git
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~/DVJA</b></font>$ ls -la
+total 60
+drwxrwxr-x 7 ubuntu ubuntu 4096 Feb 18 13:56 <font color="#12488B"><b>.</b></font>
+drwxr-x--- 8 ubuntu ubuntu 4096 Feb 18 13:55 <font color="#12488B"><b>..</b></font>
+-rw-rw-r-- 1 ubuntu ubuntu 1279 Feb 18 13:55 .dockerignore
+-rw-rw-r-- 1 ubuntu ubuntu 1279 Feb 18 13:55 .gitignore
+drwxrwxr-x 3 ubuntu ubuntu 4096 Feb 18 13:55 <font color="#12488B"><b>.idea</b></font>
+-rw-rw-r-- 1 ubuntu ubuntu  341 Feb 18 13:55 Dockerfile
+-rw-rw-r-- 1 ubuntu ubuntu 1066 Feb 18 13:55 LICENSE
+-rw-rw-r-- 1 ubuntu ubuntu  892 Feb 18 13:55 README.md
+drwxrwxr-x 2 ubuntu ubuntu 4096 Feb 18 13:55 <font color="#12488B"><b>db</b></font>
+-rw-rw-r-- 1 ubuntu ubuntu  366 Feb 18 13:55 docker-compose.yml
+drwxrwxr-x 6 ubuntu ubuntu 4096 Feb 18 13:55 <font color="#12488B"><b>docs</b></font>
+-rw-rw-r-- 1 ubuntu ubuntu 6052 Feb 18 13:55 pom.xml
+drwxrwxr-x 2 ubuntu ubuntu 4096 Feb 18 13:55 <font color="#12488B"><b>scripts</b></font>
+drwxrwxr-x 3 ubuntu ubuntu 4096 Feb 18 13:55 <font color="#12488B"><b>src</b></font>
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~/DVJA</b></font>$ git init
+git add .
+git commit -m &quot;Initial commit of DVJA&quot;
+<font color="#A2734C">hint: Using &apos;master&apos; as the name for the initial branch. This default branch name</font>
+<font color="#A2734C">hint: is subject to change. To configure the initial branch name to use in all</font>
+<font color="#A2734C">hint: of your new repositories, which will suppress this warning, call:</font>
+<font color="#A2734C">hint: </font>
+<font color="#A2734C">hint: </font>	<font color="#A2734C">git config --global init.defaultBranch &lt;name&gt;</font>
+<font color="#A2734C">hint: </font>
+<font color="#A2734C">hint: Names commonly chosen instead of &apos;master&apos; are &apos;main&apos;, &apos;trunk&apos; and</font>
+<font color="#A2734C">hint: &apos;development&apos;. The just-created branch can be renamed via this command:</font>
+<font color="#A2734C">hint: </font>
+<font color="#A2734C">hint: </font>	<font color="#A2734C">git branch -m &lt;name&gt;</font>
+Initialized empty Git repository in /home/ubuntu/DVJA/.git/
+[master (root-commit) 522f5d4] Initial commit of DVJA
+ Committer: Ubuntu &lt;ubuntu@ip-172-31-47-20.ec2.internal&gt;
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 174 files changed, 13001 insertions(+)
+ create mode 100644 .dockerignore
+ create mode 100644 .gitignore
+ create mode 100644 .idea/artifacts/dvja_war.xml
+ create mode 100644 .idea/artifacts/dvja_war_exploded.xml
+ create mode 100644 .idea/compiler.xml
+ create mode 100644 .idea/encodings.xml
+ create mode 100644 .idea/sqldialects.xml
+ create mode 100644 .idea/vcs.xml
+ create mode 100644 Dockerfile
+ create mode 100644 LICENSE
+ create mode 100644 README.md
+ create mode 100644 db/schema.sql
+ create mode 100644 docker-compose.yml
+ create mode 100644 docs/.gitignore
+ create mode 100644 docs/README.md
+ create mode 100644 docs/SUMMARY.md
+ create mode 100644 docs/assessment/a1-injection.md
+ create mode 100644 docs/assessment/a3-cross-site-scripting.md
+ create mode 100644 docs/assessment/a4-insecure-direct-object-reference.md
+ create mode 100644 docs/assets/cmdi.png
+ create mode 100644 docs/assets/intellij_hw.png
+ create mode 100644 docs/assets/mysql_wb.png
+ create mode 100644 docs/assets/sqli.png
+ create mode 100644 docs/assets/struts2_hw.png
+ create mode 100644 docs/development/application-bootstrap.md
+ create mode 100644 docs/development/crud-on-model.md
+ create mode 100644 docs/development/database-development.md
+ create mode 100644 docs/development/spring-framework-primer.md
+ create mode 100644 docs/development/struts2-framework-primer.md
+ create mode 100644 docs/solution/a1-injection.md
+ create mode 100644 docs/solution/a10-unvalidated-redirects-and-forwards.md
+ create mode 100644 docs/solution/a2-broken-authentication-and-session-management.md
+ create mode 100644 docs/solution/a3-cross-site-scripting.md
+ create mode 100644 docs/solution/a4-insecure-direct-object-reference.md
+ create mode 100644 docs/solution/a5-security-misconfiguration.md
+ create mode 100644 docs/solution/a6-sensitive-data-exposure.md
+ create mode 100644 docs/solution/a7-missing-function-level-access-control.md
+ create mode 100644 docs/solution/a8-cross-site-request-forgery.md
+ create mode 100644 docs/solution/a9-using-components-with-known-vulnerability.md
+ create mode 100644 pom.xml
+ create mode 100644 scripts/start.sh
+ create mode 100644 src/main/java/com/appsecco/dvja/Constant.java
+ create mode 100644 src/main/java/com/appsecco/dvja/controllers/ApiAction.java
+ create mode 100644 src/main/java/com/appsecco/dvja/controllers/BaseController.java
+ create mode 100644 src/main/java/com/appsecco/dvja/controllers/Home.java
+ create mode 100644 src/main/java/com/appsecco/dvja/controllers/Login.java
+ create mode 100644 src/main/java/com/appsecco/dvja/controllers/PingAction.java
+ create mode 100644 src/main/java/com/appsecco/dvja/controllers/ProductAction.java
+ create mode 100644 src/main/java/com/appsecco/dvja/controllers/RedirectAction.java
+ create mode 100644 src/main/java/com/appsecco/dvja/controllers/Register.java
+ create mode 100644 src/main/java/com/appsecco/dvja/controllers/ResetPassword.java
+ create mode 100644 src/main/java/com/appsecco/dvja/controllers/UserAction.java
+ create mode 100644 src/main/java/com/appsecco/dvja/interceptors/AuthenticationInterceptor.java
+ create mode 100644 src/main/java/com/appsecco/dvja/models/Product.java
+ create mode 100644 src/main/java/com/appsecco/dvja/models/User.java
+ create mode 100644 src/main/java/com/appsecco/dvja/services/ProductService.java
+ create mode 100644 src/main/java/com/appsecco/dvja/services/UserAuthenticationService.java
+ create mode 100644 src/main/java/com/appsecco/dvja/services/UserRegistrationService.java
+ create mode 100644 src/main/java/com/appsecco/dvja/services/UserService.java
+ create mode 100644 src/main/java/com/appsecco/example/ExampleSupport.java
+ create mode 100644 src/main/java/com/appsecco/example/HelloWorld.java
+ create mode 100644 src/main/java/com/appsecco/example/Login.java
+ create mode 100644 src/main/resources/META-INF/persistence.xml
+ create mode 100644 src/main/resources/com/appsecco/example/Login-validation.xml
+ create mode 100644 src/main/resources/com/appsecco/example/package.properties
+ create mode 100644 src/main/resources/com/appsecco/example/package_es.properties
+ create mode 100644 src/main/resources/example.xml
+ create mode 100644 src/main/resources/log4j2.xml
+ create mode 100644 src/main/resources/struts.xml
+ create mode 100644 src/main/webapp/WEB-INF/applicationContext.xml
+ create mode 100644 src/main/webapp/WEB-INF/config.properties
+ create mode 100644 src/main/webapp/WEB-INF/dvja/AssessmentHome.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/Home.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/Login.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/Ping.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/ProductEdit.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/ProductList.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/Registration.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/RegistrationSuccess.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/ResetPasswordInput.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/ResetPasswordStart.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/ResetPasswordSuccess.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/UserEdit.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/UserSearch.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/a10_redirect.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/a10_redirect/description.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/a10_redirect/reference.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/a10_redirect/scenario.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/a1_injection.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/a1_injection/description.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/a1_injection/reference.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/a1_injection/scenario.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/a2_broken_auth.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/a2_broken_auth/description.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/a2_broken_auth/reference.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/a2_broken_auth/scenario.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/a3_xss.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/a3_xss/description.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/a3_xss/reference.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/a3_xss/scenario.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/a4_idor.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/a4_idor/description.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/a4_idor/reference.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/a4_idor/scenario.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/a5_sec_misconf.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/a5_sec_misconf/description.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/a5_sec_misconf/reference.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/a5_sec_misconf/scenario.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/a6_sensitive_data.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/a6_sensitive_data/description.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/a6_sensitive_data/reference.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/a6_sensitive_data/scenario.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/a7_missing_access_control.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/a7_missing_access_control/description.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/a7_missing_access_control/reference.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/a7_missing_access_control/scenario.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/a8_csrf.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/a8_csrf/description.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/a8_csrf/reference.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/a8_csrf/scenario.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/a9_vuln_component.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/a9_vuln_component/description.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/a9_vuln_component/reference.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/a9_vuln_component/scenario.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/common/Footer.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/common/Head.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/common/Menu.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/common/Navigation.jsp
+ create mode 100644 src/main/webapp/WEB-INF/example/HelloWorld.jsp
+ create mode 100644 src/main/webapp/WEB-INF/example/Login.jsp
+ create mode 100644 src/main/webapp/WEB-INF/example/Menu.jsp
+ create mode 100644 src/main/webapp/WEB-INF/example/Missing.jsp
+ create mode 100644 src/main/webapp/WEB-INF/example/Register.jsp
+ create mode 100644 src/main/webapp/WEB-INF/example/Welcome.jsp
+ create mode 100644 src/main/webapp/WEB-INF/web.xml
+ create mode 100644 src/main/webapp/assets/fa/css/font-awesome.css
+ create mode 100644 src/main/webapp/assets/fa/css/font-awesome.min.css
+ create mode 100644 src/main/webapp/assets/fa/fonts/FontAwesome.otf
+ create mode 100644 src/main/webapp/assets/fa/fonts/fontawesome-webfont.eot
+ create mode 100644 src/main/webapp/assets/fa/fonts/fontawesome-webfont.svg
+ create mode 100644 src/main/webapp/assets/fa/fonts/fontawesome-webfont.ttf
+ create mode 100644 src/main/webapp/assets/fa/fonts/fontawesome-webfont.woff
+ create mode 100644 src/main/webapp/assets/fa/fonts/fontawesome-webfont.woff2
+ create mode 100644 src/main/webapp/assets/fa/less/animated.less
+ create mode 100644 src/main/webapp/assets/fa/less/bordered-pulled.less
+ create mode 100644 src/main/webapp/assets/fa/less/core.less
+ create mode 100644 src/main/webapp/assets/fa/less/fixed-width.less
+ create mode 100644 src/main/webapp/assets/fa/less/font-awesome.less
+ create mode 100644 src/main/webapp/assets/fa/less/icons.less
+ create mode 100644 src/main/webapp/assets/fa/less/larger.less
+ create mode 100644 src/main/webapp/assets/fa/less/list.less
+ create mode 100644 src/main/webapp/assets/fa/less/mixins.less
+ create mode 100644 src/main/webapp/assets/fa/less/path.less
+ create mode 100644 src/main/webapp/assets/fa/less/rotated-flipped.less
+ create mode 100644 src/main/webapp/assets/fa/less/screen-reader.less
+ create mode 100644 src/main/webapp/assets/fa/less/stacked.less
+ create mode 100644 src/main/webapp/assets/fa/less/variables.less
+ create mode 100644 src/main/webapp/assets/fa/scss/_animated.scss
+ create mode 100644 src/main/webapp/assets/fa/scss/_bordered-pulled.scss
+ create mode 100644 src/main/webapp/assets/fa/scss/_core.scss
+ create mode 100644 src/main/webapp/assets/fa/scss/_fixed-width.scss
+ create mode 100644 src/main/webapp/assets/fa/scss/_icons.scss
+ create mode 100644 src/main/webapp/assets/fa/scss/_larger.scss
+ create mode 100644 src/main/webapp/assets/fa/scss/_list.scss
+ create mode 100644 src/main/webapp/assets/fa/scss/_mixins.scss
+ create mode 100644 src/main/webapp/assets/fa/scss/_path.scss
+ create mode 100644 src/main/webapp/assets/fa/scss/_rotated-flipped.scss
+ create mode 100644 src/main/webapp/assets/fa/scss/_screen-reader.scss
+ create mode 100644 src/main/webapp/assets/fa/scss/_stacked.scss
+ create mode 100644 src/main/webapp/assets/fa/scss/_variables.scss
+ create mode 100644 src/main/webapp/assets/fa/scss/font-awesome.scss
+ create mode 100644 src/main/webapp/assets/jquery-3.2.1.min.js
+ create mode 100644 src/main/webapp/assets/showdown.min.js
+ create mode 100644 src/main/webapp/index.html
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~/DVJA</b></font>$ git remote add origin https://gitlab.test.local/root/yehia-repo.git
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~/DVJA</b></font>$ git branch -M main
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~/DVJA</b></font>$ git push -u origin main
+Username for &apos;https://gitlab.test.local&apos;: root
+Password for &apos;https://root@gitlab.test.local&apos;: 
+To https://gitlab.test.local/root/yehia-repo.git
+ <font color="#C01C28">! [rejected]       </font> main -&gt; main (fetch first)
+<font color="#C01C28">error: failed to push some refs to &apos;https://gitlab.test.local/root/yehia-repo.git&apos;</font>
+<font color="#A2734C">hint: Updates were rejected because the remote contains work that you do</font>
+<font color="#A2734C">hint: not have locally. This is usually caused by another repository pushing</font>
+<font color="#A2734C">hint: to the same ref. You may want to first integrate the remote changes</font>
+<font color="#A2734C">hint: (e.g., &apos;git pull ...&apos;) before pushing again.</font>
+<font color="#A2734C">hint: See the &apos;Note about fast-forwards&apos; in &apos;git push --help&apos; for details.</font>
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~/DVJA</b></font>$ git push -u origin main
+Username for &apos;https://gitlab.test.local&apos;: root
+Password for &apos;https://root@gitlab.test.local&apos;: 
+To https://gitlab.test.local/root/yehia-repo.git
+ <font color="#C01C28">! [rejected]       </font> main -&gt; main (fetch first)
+<font color="#C01C28">error: failed to push some refs to &apos;https://gitlab.test.local/root/yehia-repo.git&apos;</font>
+<font color="#A2734C">hint: Updates were rejected because the remote contains work that you do</font>
+<font color="#A2734C">hint: not have locally. This is usually caused by another repository pushing</font>
+<font color="#A2734C">hint: to the same ref. You may want to first integrate the remote changes</font>
+<font color="#A2734C">hint: (e.g., &apos;git pull ...&apos;) before pushing again.</font>
+<font color="#A2734C">hint: See the &apos;Note about fast-forwards&apos; in &apos;git push --help&apos; for details.</font>
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~/DVJA</b></font>$ git pull --rebase origin main
+remote: Enumerating objects: 3, done.
+remote: Counting objects: 100% (3/3), done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+Unpacking objects: 100% (3/3), 2.78 KiB | 2.78 MiB/s, done.
+From https://gitlab.test.local/root/yehia-repo
+ * branch            main       -&gt; FETCH_HEAD
+ * [new branch]      main       -&gt; origin/main
+Auto-merging README.md
+CONFLICT (add/add): Merge conflict in README.md
+error: could not apply 522f5d4... Initial commit of DVJA
+<font color="#A2734C">hint: Resolve all conflicts manually, mark them as resolved with</font>
+<font color="#A2734C">hint: &quot;git add/rm &lt;conflicted_files&gt;&quot;, then run &quot;git rebase --continue&quot;.</font>
+<font color="#A2734C">hint: You can instead skip this commit: run &quot;git rebase --skip&quot;.</font>
+<font color="#A2734C">hint: To abort and get back to the state before &quot;git rebase&quot;, run &quot;git rebase --abort&quot;.</font>
+Could not apply 522f5d4... Initial commit of DVJA
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~/DVJA</b></font>$ git push -u origin main
+Username for &apos;https://gitlab.test.local&apos;: root 
+Password for &apos;https://root@gitlab.test.local&apos;: 
+To https://gitlab.test.local/root/yehia-repo.git
+ <font color="#C01C28">! [rejected]       </font> main -&gt; main (non-fast-forward)
+<font color="#C01C28">error: failed to push some refs to &apos;https://gitlab.test.local/root/yehia-repo.git&apos;</font>
+<font color="#A2734C">hint: Updates were rejected because a pushed branch tip is behind its remote</font>
+<font color="#A2734C">hint: counterpart. Check out this branch and integrate the remote changes</font>
+<font color="#A2734C">hint: (e.g. &apos;git pull ...&apos;) before pushing again.</font>
+<font color="#A2734C">hint: See the &apos;Note about fast-forwards&apos; in &apos;git push --help&apos; for details.</font>
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~/DVJA</b></font>$ git pull --rebase origin main
+error: Pulling is not possible because you have unmerged files.
+<font color="#A2734C">hint: Fix them up in the work tree, and then use &apos;git add/rm &lt;file&gt;&apos;</font>
+<font color="#A2734C">hint: as appropriate to mark resolution and make a commit.</font>
+fatal: Exiting because of an unresolved conflict.
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~/DVJA</b></font>$ git add .
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~/DVJA</b></font>$ git rebase --continue
+[detached HEAD 5c7a487] Initial commit of DVJA
+ Committer: Ubuntu &lt;ubuntu@ip-172-31-47-20.ec2.internal&gt;
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 174 files changed, 13004 insertions(+)
+ create mode 100644 .dockerignore
+ create mode 100644 .gitignore
+ create mode 100644 .idea/artifacts/dvja_war.xml
+ create mode 100644 .idea/artifacts/dvja_war_exploded.xml
+ create mode 100644 .idea/compiler.xml
+ create mode 100644 .idea/encodings.xml
+ create mode 100644 .idea/sqldialects.xml
+ create mode 100644 .idea/vcs.xml
+ create mode 100644 Dockerfile
+ create mode 100644 LICENSE
+ create mode 100644 db/schema.sql
+ create mode 100644 docker-compose.yml
+ create mode 100644 docs/.gitignore
+ create mode 100644 docs/README.md
+ create mode 100644 docs/SUMMARY.md
+ create mode 100644 docs/assessment/a1-injection.md
+ create mode 100644 docs/assessment/a3-cross-site-scripting.md
+ create mode 100644 docs/assessment/a4-insecure-direct-object-reference.md
+ create mode 100644 docs/assets/cmdi.png
+ create mode 100644 docs/assets/intellij_hw.png
+ create mode 100644 docs/assets/mysql_wb.png
+ create mode 100644 docs/assets/sqli.png
+ create mode 100644 docs/assets/struts2_hw.png
+ create mode 100644 docs/development/application-bootstrap.md
+ create mode 100644 docs/development/crud-on-model.md
+ create mode 100644 docs/development/database-development.md
+ create mode 100644 docs/development/spring-framework-primer.md
+ create mode 100644 docs/development/struts2-framework-primer.md
+ create mode 100644 docs/solution/a1-injection.md
+ create mode 100644 docs/solution/a10-unvalidated-redirects-and-forwards.md
+ create mode 100644 docs/solution/a2-broken-authentication-and-session-management.md
+ create mode 100644 docs/solution/a3-cross-site-scripting.md
+ create mode 100644 docs/solution/a4-insecure-direct-object-reference.md
+ create mode 100644 docs/solution/a5-security-misconfiguration.md
+ create mode 100644 docs/solution/a6-sensitive-data-exposure.md
+ create mode 100644 docs/solution/a7-missing-function-level-access-control.md
+ create mode 100644 docs/solution/a8-cross-site-request-forgery.md
+ create mode 100644 docs/solution/a9-using-components-with-known-vulnerability.md
+ create mode 100644 pom.xml
+ create mode 100644 scripts/start.sh
+ create mode 100644 src/main/java/com/appsecco/dvja/Constant.java
+ create mode 100644 src/main/java/com/appsecco/dvja/controllers/ApiAction.java
+ create mode 100644 src/main/java/com/appsecco/dvja/controllers/BaseController.java
+ create mode 100644 src/main/java/com/appsecco/dvja/controllers/Home.java
+ create mode 100644 src/main/java/com/appsecco/dvja/controllers/Login.java
+ create mode 100644 src/main/java/com/appsecco/dvja/controllers/PingAction.java
+ create mode 100644 src/main/java/com/appsecco/dvja/controllers/ProductAction.java
+ create mode 100644 src/main/java/com/appsecco/dvja/controllers/RedirectAction.java
+ create mode 100644 src/main/java/com/appsecco/dvja/controllers/Register.java
+ create mode 100644 src/main/java/com/appsecco/dvja/controllers/ResetPassword.java
+ create mode 100644 src/main/java/com/appsecco/dvja/controllers/UserAction.java
+ create mode 100644 src/main/java/com/appsecco/dvja/interceptors/AuthenticationInterceptor.java
+ create mode 100644 src/main/java/com/appsecco/dvja/models/Product.java
+ create mode 100644 src/main/java/com/appsecco/dvja/models/User.java
+ create mode 100644 src/main/java/com/appsecco/dvja/services/ProductService.java
+ create mode 100644 src/main/java/com/appsecco/dvja/services/UserAuthenticationService.java
+ create mode 100644 src/main/java/com/appsecco/dvja/services/UserRegistrationService.java
+ create mode 100644 src/main/java/com/appsecco/dvja/services/UserService.java
+ create mode 100644 src/main/java/com/appsecco/example/ExampleSupport.java
+ create mode 100644 src/main/java/com/appsecco/example/HelloWorld.java
+ create mode 100644 src/main/java/com/appsecco/example/Login.java
+ create mode 100644 src/main/resources/META-INF/persistence.xml
+ create mode 100644 src/main/resources/com/appsecco/example/Login-validation.xml
+ create mode 100644 src/main/resources/com/appsecco/example/package.properties
+ create mode 100644 src/main/resources/com/appsecco/example/package_es.properties
+ create mode 100644 src/main/resources/example.xml
+ create mode 100644 src/main/resources/log4j2.xml
+ create mode 100644 src/main/resources/struts.xml
+ create mode 100644 src/main/webapp/WEB-INF/applicationContext.xml
+ create mode 100644 src/main/webapp/WEB-INF/config.properties
+ create mode 100644 src/main/webapp/WEB-INF/dvja/AssessmentHome.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/Home.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/Login.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/Ping.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/ProductEdit.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/ProductList.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/Registration.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/RegistrationSuccess.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/ResetPasswordInput.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/ResetPasswordStart.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/ResetPasswordSuccess.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/UserEdit.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/UserSearch.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/a10_redirect.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/a10_redirect/description.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/a10_redirect/reference.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/a10_redirect/scenario.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/a1_injection.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/a1_injection/description.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/a1_injection/reference.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/a1_injection/scenario.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/a2_broken_auth.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/a2_broken_auth/description.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/a2_broken_auth/reference.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/a2_broken_auth/scenario.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/a3_xss.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/a3_xss/description.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/a3_xss/reference.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/a3_xss/scenario.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/a4_idor.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/a4_idor/description.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/a4_idor/reference.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/a4_idor/scenario.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/a5_sec_misconf.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/a5_sec_misconf/description.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/a5_sec_misconf/reference.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/a5_sec_misconf/scenario.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/a6_sensitive_data.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/a6_sensitive_data/description.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/a6_sensitive_data/reference.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/a6_sensitive_data/scenario.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/a7_missing_access_control.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/a7_missing_access_control/description.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/a7_missing_access_control/reference.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/a7_missing_access_control/scenario.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/a8_csrf.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/a8_csrf/description.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/a8_csrf/reference.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/a8_csrf/scenario.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/a9_vuln_component.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/a9_vuln_component/description.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/a9_vuln_component/reference.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/a9_vuln_component/scenario.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/common/Footer.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/common/Head.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/common/Menu.jsp
+ create mode 100644 src/main/webapp/WEB-INF/dvja/common/Navigation.jsp
+ create mode 100644 src/main/webapp/WEB-INF/example/HelloWorld.jsp
+ create mode 100644 src/main/webapp/WEB-INF/example/Login.jsp
+ create mode 100644 src/main/webapp/WEB-INF/example/Menu.jsp
+ create mode 100644 src/main/webapp/WEB-INF/example/Missing.jsp
+ create mode 100644 src/main/webapp/WEB-INF/example/Register.jsp
+ create mode 100644 src/main/webapp/WEB-INF/example/Welcome.jsp
+ create mode 100644 src/main/webapp/WEB-INF/web.xml
+ create mode 100644 src/main/webapp/assets/fa/css/font-awesome.css
+ create mode 100644 src/main/webapp/assets/fa/css/font-awesome.min.css
+ create mode 100644 src/main/webapp/assets/fa/fonts/FontAwesome.otf
+ create mode 100644 src/main/webapp/assets/fa/fonts/fontawesome-webfont.eot
+ create mode 100644 src/main/webapp/assets/fa/fonts/fontawesome-webfont.svg
+ create mode 100644 src/main/webapp/assets/fa/fonts/fontawesome-webfont.ttf
+ create mode 100644 src/main/webapp/assets/fa/fonts/fontawesome-webfont.woff
+ create mode 100644 src/main/webapp/assets/fa/fonts/fontawesome-webfont.woff2
+ create mode 100644 src/main/webapp/assets/fa/less/animated.less
+ create mode 100644 src/main/webapp/assets/fa/less/bordered-pulled.less
+ create mode 100644 src/main/webapp/assets/fa/less/core.less
+ create mode 100644 src/main/webapp/assets/fa/less/fixed-width.less
+ create mode 100644 src/main/webapp/assets/fa/less/font-awesome.less
+ create mode 100644 src/main/webapp/assets/fa/less/icons.less
+ create mode 100644 src/main/webapp/assets/fa/less/larger.less
+ create mode 100644 src/main/webapp/assets/fa/less/list.less
+ create mode 100644 src/main/webapp/assets/fa/less/mixins.less
+ create mode 100644 src/main/webapp/assets/fa/less/path.less
+ create mode 100644 src/main/webapp/assets/fa/less/rotated-flipped.less
+ create mode 100644 src/main/webapp/assets/fa/less/screen-reader.less
+ create mode 100644 src/main/webapp/assets/fa/less/stacked.less
+ create mode 100644 src/main/webapp/assets/fa/less/variables.less
+ create mode 100644 src/main/webapp/assets/fa/scss/_animated.scss
+ create mode 100644 src/main/webapp/assets/fa/scss/_bordered-pulled.scss
+ create mode 100644 src/main/webapp/assets/fa/scss/_core.scss
+ create mode 100644 src/main/webapp/assets/fa/scss/_fixed-width.scss
+ create mode 100644 src/main/webapp/assets/fa/scss/_icons.scss
+ create mode 100644 src/main/webapp/assets/fa/scss/_larger.scss
+ create mode 100644 src/main/webapp/assets/fa/scss/_list.scss
+ create mode 100644 src/main/webapp/assets/fa/scss/_mixins.scss
+ create mode 100644 src/main/webapp/assets/fa/scss/_path.scss
+ create mode 100644 src/main/webapp/assets/fa/scss/_rotated-flipped.scss
+ create mode 100644 src/main/webapp/assets/fa/scss/_screen-reader.scss
+ create mode 100644 src/main/webapp/assets/fa/scss/_stacked.scss
+ create mode 100644 src/main/webapp/assets/fa/scss/_variables.scss
+ create mode 100644 src/main/webapp/assets/fa/scss/font-awesome.scss
+ create mode 100644 src/main/webapp/assets/jquery-3.2.1.min.js
+ create mode 100644 src/main/webapp/assets/showdown.min.js
+ create mode 100644 src/main/webapp/index.html
+Successfully rebased and updated refs/heads/main.
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~/DVJA</b></font>$ git push -u origin main
+Username for &apos;https://gitlab.test.local&apos;: root
+Password for &apos;https://root@gitlab.test.local&apos;: 
+Enumerating objects: 221, done.
+Counting objects: 100% (221/221), done.
+Delta compression using up to 2 threads
+Compressing objects: 100% (209/209), done.
+Writing objects: 100% (219/219), 1.16 MiB | 2.41 MiB/s, done.
+Total 219 (delta 27), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (27/27), completed with 1 local object.
+To https://gitlab.test.local/root/yehia-repo.git
+   68c13a1..5c7a487  main -&gt; main
+Branch &apos;main&apos; set up to track remote branch &apos;main&apos; from &apos;origin&apos;.
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~/DVJA</b></font>$ ls -la
+total 68
+drwxrwxr-x 8 ubuntu ubuntu 4096 Feb 18 14:01 <font color="#12488B"><b>.</b></font>
+drwxr-x--- 9 ubuntu ubuntu 4096 Feb 18 14:03 <font color="#12488B"><b>..</b></font>
+-rw-rw-r-- 1 ubuntu ubuntu 1279 Feb 18 14:01 .dockerignore
+drwxrwxr-x 8 ubuntu ubuntu 4096 Feb 18 14:03 <font color="#12488B"><b>.git</b></font>
+-rw-rw-r-- 1 ubuntu ubuntu 1279 Feb 18 14:01 .gitignore
+drwxrwxr-x 3 ubuntu ubuntu 4096 Feb 18 14:01 <font color="#12488B"><b>.idea</b></font>
+-rw-rw-r-- 1 ubuntu ubuntu  341 Feb 18 14:01 Dockerfile
+-rw-rw-r-- 1 ubuntu ubuntu 1066 Feb 18 14:01 LICENSE
+-rw-rw-r-- 1 ubuntu ubuntu 7132 Feb 18 14:01 README.md
+drwxrwxr-x 2 ubuntu ubuntu 4096 Feb 18 14:01 <font color="#12488B"><b>db</b></font>
+-rw-rw-r-- 1 ubuntu ubuntu  366 Feb 18 14:01 docker-compose.yml
+drwxrwxr-x 6 ubuntu ubuntu 4096 Feb 18 14:01 <font color="#12488B"><b>docs</b></font>
+-rw-rw-r-- 1 ubuntu ubuntu 6052 Feb 18 14:01 pom.xml
+drwxrwxr-x 2 ubuntu ubuntu 4096 Feb 18 14:01 <font color="#12488B"><b>scripts</b></font>
+drwxrwxr-x 3 ubuntu ubuntu 4096 Feb 18 14:01 <font color="#12488B"><b>src</b></font>
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~/DVJA</b></font>$ nano .gitlab-ci.yml
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~/DVJA</b></font>$ cat .gitlab-ci.yml
+stages:
+  - test
+
+semgrep-sast:
+  stage: test
+  script:
+    - semgrep --config=auto --json &gt; semgrep-report.json
+  artifacts:
+    paths:
+      - semgrep-report.json
+  rules:
+    - if: $CI_COMMIT_REF_NAME == &quot;main&quot;
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~/DVJA</b></font>$ git add .gitlab-ci.yml
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~/DVJA</b></font>$ git commit -m &quot;Added GitLab CI pipeline for Semgrep SAST&quot;
+[main 6429169] Added GitLab CI pipeline for Semgrep SAST
+ Committer: Ubuntu &lt;ubuntu@ip-172-31-47-20.ec2.internal&gt;
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 12 insertions(+)
+ create mode 100644 .gitlab-ci.yml
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~/DVJA</b></font>$ git push origin main
+Username for &apos;https://gitlab.test.local&apos;: root
+Password for &apos;https://root@gitlab.test.local&apos;: 
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 2 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 444 bytes | 444.00 KiB/s, done.
+Total 3 (delta 1), reused 0 (delta 0), pack-reused 0
+To https://gitlab.test.local/root/yehia-repo.git
+   5c7a487..6429169  main -&gt; main
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~/DVJA</b></font>$ Connection to ec2-35-173-137-13.compute-1.amazonaws.com closed by remote host.
+Connection to ec2-35-173-137-13.compute-1.amazonaws.com closed.
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~/My station/secure development/lab1</b></font>$ ssh -i &quot;ansible.pem&quot; ubuntu@ec2-35-173-137-13.compute-1.amazonaws.com
+kex_exchange_identification: Connection closed by remote host
+Connection closed by 35.173.137.13 port 22
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~/My station/secure development/lab1</b></font>$ ssh -i &quot;ansible.pem&quot; ubuntu@ec2-35-173-137-13.compute-1.amazonaws.com
+kex_exchange_identification: Connection closed by remote host
+Connection closed by 35.173.137.13 port 22
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~/My station/secure development/lab1</b></font>$ ssh -i &quot;ansible.pem&quot; ubuntu@ec2-35-173-137-13.compute-1.amazonaws.com
+^C
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~/My station/secure development/lab1</b></font>$ ssh -i &quot;ansible.pem&quot; ubuntu@ec2-3-90-40-223.compute-1.amazonaws.com
+Welcome to Ubuntu 22.04.5 LTS (GNU/Linux 6.8.0-1021-aws x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/pro
+
+ System information as of Tue Feb 18 15:07:30 UTC 2025
+
+  System load:  0.21               Processes:             221
+  Usage of /:   76.3% of 28.89GB   Users logged in:       1
+  Memory usage: 52%                IPv4 address for eth0: 172.31.47.20
+  Swap usage:   0%
+
+ * Ubuntu Pro delivers the most comprehensive open source security and
+   compliance features.
+
+   https://ubuntu.com/aws/pro
+
+Expanded Security Maintenance for Applications is not enabled.
+
+30 updates can be applied immediately.
+22 of these updates are standard security updates.
+To see these additional updates run: apt list --upgradable
+
+Enable ESM Apps to receive additional future security updates.
+See https://ubuntu.com/esm or run: sudo pro status
+
+New release &apos;24.04.1 LTS&apos; available.
+Run &apos;do-release-upgrade&apos; to upgrade to it.
+
+
+*** System restart required ***
+Last login: Tue Feb 18 14:52:04 2025 from 45.67.35.120
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~</b></font>$ echo &quot;Updated pipeline&quot; &gt;&gt; README.md
+git add README.md
+git commit -m &quot;Triggering CI/CD pipeline&quot;
+git push origin main
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~</b></font>$ ls
+<font color="#12488B"><b>DVJA</b></font>  README.md  <font color="#12488B"><b>builds</b></font>  <font color="#12488B"><b>gitlab_server</b></font>  <font color="#12488B"><b>snap</b></font>
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~</b></font>$ cd DVJA/
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~/DVJA</b></font>$ echo &quot;Updated pipeline&quot; &gt;&gt; README.md
+git add README.md
+git commit -m &quot;Triggering CI/CD pipeline&quot;
+git push origin main
+[main 10c7971] Triggering CI/CD pipeline
+ Committer: Ubuntu &lt;ubuntu@ip-172-31-47-20.ec2.internal&gt;
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+)
+Username for &apos;https://gitlab.test.local&apos;: root
+Password for &apos;https://root@gitlab.test.local&apos;: 
+remote: HTTP Basic: Access denied. If a password was provided for Git authentication, the password was incorrect or you&apos;re required to use a token instead of a password. If a token was provided, it was either incorrect, expired, or improperly scoped. See https://gitlab.test.local/help/topics/git/troubleshooting_git.md#error-on-git-fetch-http-basic-access-denied
+fatal: Authentication failed for &apos;https://gitlab.test.local/root/yehia-repo.git/&apos;
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~/DVJA</b></font>$ git push origin main
+Username for &apos;https://gitlab.test.local&apos;: root
+Password for &apos;https://root@gitlab.test.local&apos;: 
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 2 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 325 bytes | 325.00 KiB/s, done.
+Total 3 (delta 2), reused 0 (delta 0), pack-reused 0
+To https://gitlab.test.local/root/yehia-repo.git
+   6429169..10c7971  main -&gt; main
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~/DVJA</b></font>$ docker ps
+CONTAINER ID   IMAGE                     COMMAND             CREATED       STATUS                    PORTS                                                                                                               NAMES
+e430b6925f69   gitlab/gitlab-ce:latest   &quot;/assets/wrapper&quot;   4 hours ago   Up 46 minutes (healthy)   0.0.0.0:80-&gt;80/tcp, :::80-&gt;80/tcp, 0.0.0.0:443-&gt;443/tcp, :::443-&gt;443/tcp, 0.0.0.0:2222-&gt;22/tcp, [::]:2222-&gt;22/tcp   yehia-gitlab
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~/DVJA</b></font>$ sudo nano /etc/hosts
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~/DVJA</b></font>$ cat nano /etc/hosts
+cat: nano: No such file or directory
+127.0.0.1 localhost
+3.90.40.223 gitlab.test.local
+# The following lines are desirable for IPv6 capable hosts
+::1 ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+ff02::3 ip6-allhosts
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~/DVJA</b></font>$ cat  /etc/hosts
+127.0.0.1 localhost
+3.90.40.223 gitlab.test.local
+# The following lines are desirable for IPv6 capable hosts
+::1 ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+ff02::3 ip6-allhosts
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~/DVJA</b></font>$ Connection to ec2-3-90-40-223.compute-1.amazonaws.com closed by remote host.
+Connection to ec2-3-90-40-223.compute-1.amazonaws.com closed.
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~/My station/secure development/lab1</b></font>$ </pre>

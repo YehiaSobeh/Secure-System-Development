@@ -53,7 +53,7 @@ version: '3.8'
 services:
   gitlab:
     image: gitlab/gitlab-ce:latest
-    container_name: 22BS283-gitlab
+    container_name: yehia-gitlab
     restart: always
     hostname: 'gitlab.test.local'
     environment:

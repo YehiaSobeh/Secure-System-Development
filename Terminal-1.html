@@ -1,0 +1,1364 @@
+<pre><font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~/My station/secure development/lab1</b></font>$ ssh -i &quot;ansible.pem&quot; ubuntu@ec2-35-173-137-13.compute-1.amazonaws.com
+The authenticity of host &apos;ec2-35-173-137-13.compute-1.amazonaws.com (35.173.137.13)&apos; can&apos;t be established.
+ED25519 key fingerprint is SHA256:fHgBlxZE84Q+6N3TThRYTNxe0Mybe3IBJnP17mab4bQ.
+This key is not known by any other names
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added &apos;ec2-35-173-137-13.compute-1.amazonaws.com&apos; (ED25519) to the list of known hosts.
+Welcome to Ubuntu 22.04.5 LTS (GNU/Linux 6.8.0-1021-aws x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/pro
+
+ System information as of Tue Feb 18 11:22:25 UTC 2025
+
+  System load:  0.08              Processes:             111
+  Usage of /:   5.7% of 28.89GB   Users logged in:       0
+  Memory usage: 2%                IPv4 address for eth0: 172.31.47.20
+  Swap usage:   0%
+
+Expanded Security Maintenance for Applications is not enabled.
+
+0 updates can be applied immediately.
+
+Enable ESM Apps to receive additional future security updates.
+See https://ubuntu.com/esm or run: sudo pro status
+
+
+The list of available updates is more than a week old.
+To check for new updates run: sudo apt update
+
+
+The programs included with the Ubuntu system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+applicable law.
+
+To run a command as administrator (user &quot;root&quot;), use &quot;sudo &lt;command&gt;&quot;.
+See &quot;man sudo_root&quot; for details.
+
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~</b></font>$ sudo apt-get update
+Hit:1 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy InRelease
+Get:2 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy-updates InRelease [128 kB]
+Get:3 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy-backports InRelease [127 kB]
+Get:4 http://security.ubuntu.com/ubuntu jammy-security InRelease [129 kB]
+Get:5 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy/universe amd64 Packages [14.1 MB]
+Get:6 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy/universe Translation-en [5652 kB]
+Get:7 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy/universe amd64 c-n-f Metadata [286 kB]
+Get:8 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy/multiverse amd64 Packages [217 kB]
+Get:9 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy/multiverse Translation-en [112 kB]
+Get:10 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy/multiverse amd64 c-n-f Metadata [8372 B]
+Get:11 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy-updates/main amd64 Packages [2316 kB]
+Get:12 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy-updates/main Translation-en [387 kB]
+Get:13 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy-updates/restricted amd64 Packages [2944 kB]
+Get:14 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy-updates/restricted Translation-en [515 kB]
+Get:15 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy-updates/universe amd64 Packages [1187 kB]
+Get:16 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy-updates/universe Translation-en [291 kB]
+Get:17 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy-updates/universe amd64 c-n-f Metadata [26.4 kB]
+Get:18 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy-updates/multiverse amd64 Packages [44.5 kB]
+Get:19 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy-updates/multiverse Translation-en [11.5 kB]
+Get:20 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy-updates/multiverse amd64 c-n-f Metadata [440 B]
+Get:21 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy-backports/main amd64 Packages [67.7 kB]
+Get:22 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy-backports/main Translation-en [11.1 kB]
+Get:23 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy-backports/main amd64 c-n-f Metadata [388 B]
+Get:24 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy-backports/restricted amd64 c-n-f Metadata [116 B]
+Get:25 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy-backports/universe amd64 Packages [30.0 kB]
+Get:26 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy-backports/universe Translation-en [16.6 kB]
+Get:27 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy-backports/universe amd64 c-n-f Metadata [672 B]
+Get:28 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy-backports/multiverse amd64 c-n-f Metadata [116 B]
+Get:29 http://security.ubuntu.com/ubuntu jammy-security/main amd64 Packages [2079 kB]
+Get:30 http://security.ubuntu.com/ubuntu jammy-security/main Translation-en [325 kB]
+Get:31 http://security.ubuntu.com/ubuntu jammy-security/restricted amd64 Packages [2839 kB]
+Get:32 http://security.ubuntu.com/ubuntu jammy-security/restricted Translation-en [497 kB]
+Get:33 http://security.ubuntu.com/ubuntu jammy-security/universe amd64 Packages [961 kB]
+Get:34 http://security.ubuntu.com/ubuntu jammy-security/universe Translation-en [205 kB]
+Get:35 http://security.ubuntu.com/ubuntu jammy-security/universe amd64 c-n-f Metadata [19.5 kB]
+Get:36 http://security.ubuntu.com/ubuntu jammy-security/multiverse amd64 Packages [37.6 kB]
+Get:37 http://security.ubuntu.com/ubuntu jammy-security/multiverse Translation-en [8260 B]
+Get:38 http://security.ubuntu.com/ubuntu jammy-security/multiverse amd64 c-n-f Metadata [224 B]
+Fetched 35.6 MB in 5s (6842 kB/s) 
+Reading package lists... Done
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~</b></font>$ sudo apt-get install ca-certificates curl
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+ca-certificates is already the newest version (20240203~22.04.1).
+ca-certificates set to manually installed.
+curl is already the newest version (7.81.0-1ubuntu1.20).
+curl set to manually installed.
+0 upgraded, 0 newly installed, 0 to remove and 36 not upgraded.
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~</b></font>$ sudo install -m 0755 -d /etc/apt/keyrings
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~</b></font>$ sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~</b></font>$ sudo chmod a+r /etc/apt/keyrings/docker.asc
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~</b></font>$ echo \
+  &quot;deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+  $(. /etc/os-release &amp;&amp; echo &quot;${UBUNTU_CODENAME:-$VERSION_CODENAME}&quot;) stable&quot; | \
+  sudo tee /etc/apt/sources.list.d/docker.list &gt; /dev/null
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~</b></font>$ sudo apt-get update
+Hit:1 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy InRelease
+Hit:2 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy-updates InRelease           
+Hit:3 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy-backports InRelease         
+Get:4 https://download.docker.com/linux/ubuntu jammy InRelease [48.8 kB]                                
+Hit:5 http://security.ubuntu.com/ubuntu jammy-security InRelease                                        
+Get:6 https://download.docker.com/linux/ubuntu jammy/stable amd64 Packages [44.1 kB]
+Fetched 92.9 kB in 1s (163 kB/s)   
+Reading package lists... Done
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~</b></font>$ sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+The following additional packages will be installed:
+  docker-ce-rootless-extras libltdl7 libslirp0 pigz slirp4netns
+Suggested packages:
+  aufs-tools cgroupfs-mount | cgroup-lite
+The following NEW packages will be installed:
+  containerd.io docker-buildx-plugin docker-ce docker-ce-cli docker-ce-rootless-extras docker-compose-plugin libltdl7 libslirp0 pigz
+  slirp4netns
+0 upgraded, 10 newly installed, 0 to remove and 36 not upgraded.
+Need to get 127 MB of archives.
+After this operation, 458 MB of additional disk space will be used.
+Do you want to continue? [Y/n] y
+Get:1 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy/universe amd64 pigz amd64 2.6-1 [63.6 kB]
+Get:2 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy/main amd64 libltdl7 amd64 2.4.6-15build2 [39.6 kB]
+Get:3 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy/main amd64 libslirp0 amd64 4.6.1-1build1 [61.5 kB]
+Get:4 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy/universe amd64 slirp4netns amd64 1.0.1-2 [28.2 kB]
+Get:5 https://download.docker.com/linux/ubuntu jammy/stable amd64 containerd.io amd64 1.7.25-1 [29.6 MB]
+Get:6 https://download.docker.com/linux/ubuntu jammy/stable amd64 docker-buildx-plugin amd64 0.20.0-1~ubuntu.22.04~jammy [33.2 MB]
+Get:7 https://download.docker.com/linux/ubuntu jammy/stable amd64 docker-ce-cli amd64 5:27.5.1-1~ubuntu.22.04~jammy [15.2 MB]
+Get:8 https://download.docker.com/linux/ubuntu jammy/stable amd64 docker-ce amd64 5:27.5.1-1~ubuntu.22.04~jammy [26.1 MB]
+Get:9 https://download.docker.com/linux/ubuntu jammy/stable amd64 docker-ce-rootless-extras amd64 5:27.5.1-1~ubuntu.22.04~jammy [9603 kB]
+Get:10 https://download.docker.com/linux/ubuntu jammy/stable amd64 docker-compose-plugin amd64 2.32.4-1~ubuntu.22.04~jammy [12.8 MB]
+Fetched 127 MB in 1s (87.0 MB/s)                 
+Selecting previously unselected package pigz.
+(Reading database ... 65853 files and directories currently installed.)
+Preparing to unpack .../0-pigz_2.6-1_amd64.deb ...
+Unpacking pigz (2.6-1) ...
+Selecting previously unselected package containerd.io.
+Preparing to unpack .../1-containerd.io_1.7.25-1_amd64.deb ...
+Unpacking containerd.io (1.7.25-1) ...
+Selecting previously unselected package docker-buildx-plugin.
+Preparing to unpack .../2-docker-buildx-plugin_0.20.0-1~ubuntu.22.04~jammy_amd64.deb ...
+Unpacking docker-buildx-plugin (0.20.0-1~ubuntu.22.04~jammy) ...
+Selecting previously unselected package docker-ce-cli.
+Preparing to unpack .../3-docker-ce-cli_5%3a27.5.1-1~ubuntu.22.04~jammy_amd64.deb ...
+Unpacking docker-ce-cli (5:27.5.1-1~ubuntu.22.04~jammy) ...
+Selecting previously unselected package docker-ce.
+Preparing to unpack .../4-docker-ce_5%3a27.5.1-1~ubuntu.22.04~jammy_amd64.deb ...
+Unpacking docker-ce (5:27.5.1-1~ubuntu.22.04~jammy) ...
+Selecting previously unselected package docker-ce-rootless-extras.
+Preparing to unpack .../5-docker-ce-rootless-extras_5%3a27.5.1-1~ubuntu.22.04~jammy_amd64.deb ...
+Unpacking docker-ce-rootless-extras (5:27.5.1-1~ubuntu.22.04~jammy) ...
+Selecting previously unselected package docker-compose-plugin.
+Preparing to unpack .../6-docker-compose-plugin_2.32.4-1~ubuntu.22.04~jammy_amd64.deb ...
+Unpacking docker-compose-plugin (2.32.4-1~ubuntu.22.04~jammy) ...
+Selecting previously unselected package libltdl7:amd64.
+Preparing to unpack .../7-libltdl7_2.4.6-15build2_amd64.deb ...
+Unpacking libltdl7:amd64 (2.4.6-15build2) ...
+Selecting previously unselected package libslirp0:amd64.
+Preparing to unpack .../8-libslirp0_4.6.1-1build1_amd64.deb ...
+Unpacking libslirp0:amd64 (4.6.1-1build1) ...
+Selecting previously unselected package slirp4netns.
+Preparing to unpack .../9-slirp4netns_1.0.1-2_amd64.deb ...
+Unpacking slirp4netns (1.0.1-2) ...
+Setting up docker-buildx-plugin (0.20.0-1~ubuntu.22.04~jammy) ...
+Setting up containerd.io (1.7.25-1) ...
+Created symlink /etc/systemd/system/multi-user.target.wants/containerd.service → /lib/systemd/system/containerd.service.
+Setting up docker-compose-plugin (2.32.4-1~ubuntu.22.04~jammy) ...
+Setting up libltdl7:amd64 (2.4.6-15build2) ...
+Setting up docker-ce-cli (5:27.5.1-1~ubuntu.22.04~jammy) ...
+Setting up libslirp0:amd64 (4.6.1-1build1) ...
+Setting up pigz (2.6-1) ...
+Setting up docker-ce-rootless-extras (5:27.5.1-1~ubuntu.22.04~jammy) ...
+Setting up slirp4netns (1.0.1-2) ...
+Setting up docker-ce (5:27.5.1-1~ubuntu.22.04~jammy) ...
+Created symlink /etc/systemd/system/multi-user.target.wants/docker.service → /lib/systemd/system/docker.service.
+Created symlink /etc/systemd/system/sockets.target.wants/docker.socket → /lib/systemd/system/docker.socket.
+Processing triggers for man-db (2.10.2-1) ...
+Processing triggers for libc-bin (2.35-0ubuntu3.8) ...
+Scanning processes...                                                                                                                        
+Scanning linux images...                                                                                                                     
+
+Running kernel seems to be up-to-date.
+
+No services need to be restarted.
+
+No containers need to be restarted.
+
+No user sessions are running outdated binaries.
+
+No VM guests are running outdated hypervisor (qemu) binaries on this host.
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~</b></font>$ sudo usermod -aG docker $USER
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~</b></font>$ newgrp docker
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~</b></font>$ docker -v
+Docker version 27.5.1, build 9f9e405
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~</b></font>$ docker compose version
+Docker Compose version v2.32.4
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~</b></font>$ mkdir gitlab_server
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~</b></font>$ cd gitlab_server
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~/gitlab_server</b></font>$ nano docker-compose.yml
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~/gitlab_server</b></font>$ cat docker-compose.yml
+version: &apos;3.8&apos;
+services:
+  gitlab:
+    image: gitlab/gitlab-ce:latest
+    container_name: yehia-gitlab
+    restart: always
+    hostname: &apos;gitlab.test.local&apos;
+    environment:
+      GITLAB_OMNIBUS_CONFIG: |
+        external_url &apos;https://gitlab.test.local&apos;
+        gitlab_rails[&apos;gitlab_shell_ssh_port&apos;] = 2222
+        nginx[&apos;http2_enabled&apos;] = true
+        nginx[&apos;redirect_http_to_https&apos;] = true
+        nginx[&apos;ssl_certificate&apos;] = &quot;/etc/gitlab/ssl/gitlab.test.local.crt&quot;
+        nginx[&apos;ssl_certificate_key&apos;] = &quot;/etc/gitlab/ssl/gitlab.test.local.key&quot;
+        gitlab_rails[&apos;registry_enabled&apos;] = false
+        mattermost[&apos;enable&apos;] = false
+        gitlab_pages[&apos;enable&apos;] = false
+        gitlab_kas[&apos;enable&apos;] = false
+        letsencrypt[&apos;enable&apos;] = false
+    ports:
+      - &apos;80:80&apos;
+      - &apos;443:443&apos;
+      - &apos;2222:22&apos;
+    volumes:
+      - &apos;/srv/gitlab/config:/etc/gitlab&apos;
+      - &apos;/srv/gitlab/logs:/var/log/gitlab&apos;
+      - &apos;/srv/gitlab/data:/var/opt/gitlab&apos;
+      - &apos;/etc/gitlab/ssl:/etc/gitlab/ssl&apos;
+    shm_size: &apos;256m&apos;
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~/gitlab_server</b></font>$ mkcert
+Command &apos;mkcert&apos; not found, but can be installed with:
+sudo apt install mkcert
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~/gitlab_server</b></font>$ mkcert -install
+Command &apos;mkcert&apos; not found, but can be installed with:
+sudo apt install mkcert
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~/gitlab_server</b></font>$ sudo apt install mkcert
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+The following NEW packages will be installed:
+  mkcert
+0 upgraded, 1 newly installed, 0 to remove and 36 not upgraded.
+Need to get 1314 kB of archives.
+After this operation, 3351 kB of additional disk space will be used.
+Get:1 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy-updates/universe amd64 mkcert amd64 1.4.3-1ubuntu0.3 [1314 kB]
+Fetched 1314 kB in 0s (32.3 MB/s)
+Selecting previously unselected package mkcert.
+(Reading database ... 66120 files and directories currently installed.)
+Preparing to unpack .../mkcert_1.4.3-1ubuntu0.3_amd64.deb ...
+Unpacking mkcert (1.4.3-1ubuntu0.3) ...
+Setting up mkcert (1.4.3-1ubuntu0.3) ...
+Processing triggers for man-db (2.10.2-1) ...
+Scanning processes...                                                                                                                        
+Scanning linux images...                                                                                                                     
+
+Running kernel seems to be up-to-date.
+
+No services need to be restarted.
+
+No containers need to be restarted.
+
+No user sessions are running outdated binaries.
+
+No VM guests are running outdated hypervisor (qemu) binaries on this host.
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~/gitlab_server</b></font>$ mkcert -install
+Created a new local CA 💥
+The local CA is now installed in the system trust store! ⚡️
+
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~/gitlab_server</b></font>$ sudo mk
+sudo: mk: command not found
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~/gitlab_server</b></font>$ sudo apt-get update
+sudo apt-get install libnss3-tools
+Hit:1 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy InRelease
+Hit:2 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy-updates InRelease                            
+Hit:3 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy-backports InRelease                          
+Hit:4 https://download.docker.com/linux/ubuntu jammy InRelease                                          
+Hit:5 http://security.ubuntu.com/ubuntu jammy-security InRelease                                        
+Reading package lists... Done                          
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+The following NEW packages will be installed:
+  libnss3-tools
+0 upgraded, 1 newly installed, 0 to remove and 36 not upgraded.
+Need to get 570 kB of archives.
+After this operation, 2208 kB of additional disk space will be used.
+Get:1 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy-updates/universe amd64 libnss3-tools amd64 2:3.98-0ubuntu0.22.04.2 [570 kB]
+Fetched 570 kB in 0s (16.0 MB/s)     
+Selecting previously unselected package libnss3-tools.
+(Reading database ... 66125 files and directories currently installed.)
+Preparing to unpack .../libnss3-tools_2%3a3.98-0ubuntu0.22.04.2_amd64.deb ...
+Unpacking libnss3-tools (2:3.98-0ubuntu0.22.04.2) ...
+Setting up libnss3-tools (2:3.98-0ubuntu0.22.04.2) ...
+Processing triggers for man-db (2.10.2-1) ...
+Scanning processes...                                                                                                                        
+Scanning linux images...                                                                                                                     
+
+Running kernel seems to be up-to-date.
+
+No services need to be restarted.
+
+No containers need to be restarted.
+
+No user sessions are running outdated binaries.
+
+No VM guests are running outdated hypervisor (qemu) binaries on this host.
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~/gitlab_server</b></font>$ curl -JLO &quot;https://dl.filippo.io/mkcert/latest?for=linux/amd64&quot;
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:--  0:00:45 --:--:--     0^C
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~/gitlab_server</b></font>$ mkcert -install
+The local CA is already installed in the system trust store! 👍
+
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~/gitlab_server</b></font>$ sudo mk
+sudo: mk: command not found
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~/gitlab_server</b></font>$ mkcert
+Usage of mkcert:
+
+	$ mkcert -install
+	Install the local CA in the system trust store.
+
+	$ mkcert example.org
+	Generate &quot;example.org.pem&quot; and &quot;example.org-key.pem&quot;.
+
+	$ mkcert example.com myapp.dev localhost 127.0.0.1 ::1
+	Generate &quot;example.com+4.pem&quot; and &quot;example.com+4-key.pem&quot;.
+
+	$ mkcert &quot;*.example.it&quot;
+	Generate &quot;_wildcard.example.it.pem&quot; and &quot;_wildcard.example.it-key.pem&quot;.
+
+	$ mkcert -uninstall
+	Uninstall the local CA (but do not delete it).
+
+For more options, run &quot;mkcert -help&quot;.
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~/gitlab_server</b></font>$ chmod +x mkcert
+chmod: cannot access &apos;mkcert&apos;: No such file or directory
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~/gitlab_server</b></font>$ mkcert gitlab.test.local
+
+Created a new certificate valid for the following names 📜
+ - &quot;gitlab.test.local&quot;
+
+The certificate is at &quot;./gitlab.test.local.pem&quot; and the key at &quot;./gitlab.test.local-key.pem&quot; ✅
+
+It will expire on 18 May 2027 🗓
+
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~/gitlab_server</b></font>$ mv gitlab.test.local.pem gitlab.test.local.crt
+mv gitlab.test.local-key.pem gitlab.test.local.key
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~/gitlab_server</b></font>$ sudo mkdir -p /etc/gitlab/ssl
+sudo cp gitlab.test.local.crt gitlab.test.local.key /etc/gitlab/ssl/
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~/gitlab_server</b></font>$ sudo /etc/hosts
+sudo: /etc/hosts: command not found
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~/gitlab_server</b></font>$ sudo nano  /etc/hosts
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~/gitlab_server</b></font>$ sudo cat  /etc/hosts
+127.0.0.1 localhost
+35.173.137.13 gitlab.test.local
+# The following lines are desirable for IPv6 capable hosts
+::1 ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+ff02::3 ip6-allhosts
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~/gitlab_server</b></font>$ docker-compos
+Command &apos;docker-compos&apos; not found, did you mean:
+  command &apos;docker-compose&apos; from deb docker-compose (1.29.2-1)
+Try: sudo apt install &lt;deb name&gt;
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~/gitlab_server</b></font>$ docker-compose up -d
+Command &apos;docker-compose&apos; not found, but can be installed with:
+sudo apt install docker-compose
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~/gitlab_server</b></font>$ docker-compose
+Command &apos;docker-compose&apos; not found, but can be installed with:
+sudo apt install docker-compose
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~/gitlab_server</b></font>$ docker compose version
+Docker Compose version v2.32.4
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~/gitlab_server</b></font>$ docker-compose up -d
+Command &apos;docker-compose&apos; not found, but can be installed with:
+sudo apt install docker-compose
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~/gitlab_server</b></font>$ docker compose up -d
+<font color="#A2734C">WARN</font>[0000] /home/ubuntu/gitlab_server/docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion 
+<font color="#12488B">[+] Running 10/10</font>
+ <font color="#26A269">✔</font> gitlab Pulled                                                                                                                       <font color="#12488B">92.0s </font>
+   <font color="#26A269">✔</font> 9cb31e2e37ea Pull complete                                                                                                         <font color="#12488B">2.6s </font>
+   <font color="#26A269">✔</font> eb69150a7819 Pull complete                                                                                                         <font color="#12488B">2.7s </font>
+   <font color="#26A269">✔</font> befaf65bfcbe Pull complete                                                                                                         <font color="#12488B">4.7s </font>
+   <font color="#26A269">✔</font> 93017a39a77b Pull complete                                                                                                         <font color="#12488B">4.8s </font>
+   <font color="#26A269">✔</font> 5fc84e2a9a81 Pull complete                                                                                                         <font color="#12488B">4.8s </font>
+   <font color="#26A269">✔</font> b5d428a95c32 Pull complete                                                                                                         <font color="#12488B">4.8s </font>
+   <font color="#26A269">✔</font> 5306bc1d2162 Pull complete                                                                                                         <font color="#12488B">4.9s </font>
+   <font color="#26A269">✔</font> 56a220db9a03 Pull complete                                                                                                         <font color="#12488B">4.9s </font>
+   <font color="#26A269">✔</font> a8515d9babcb Pull complete                                                                                                        <font color="#12488B">91.8s </font>
+<font color="#12488B">[+] Running 2/2</font>
+ <font color="#26A269">✔</font> Network gitlab_server_default  <font color="#26A269">Created</font>                                                                                               <font color="#12488B">0.1s </font>
+ <font color="#26A269">✔</font> Container yehia-gitlab         <font color="#26A269">Started</font>                                                                                               <font color="#12488B">4.3s </font>
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~/gitlab_server</b></font>$ docker ps
+CONTAINER ID   IMAGE                     COMMAND             CREATED              STATUS                                 PORTS                                                                                                               NAMES
+e430b6925f69   gitlab/gitlab-ce:latest   &quot;/assets/wrapper&quot;   About a minute ago   Up About a minute (health: starting)   0.0.0.0:80-&gt;80/tcp, :::80-&gt;80/tcp, 0.0.0.0:443-&gt;443/tcp, :::443-&gt;443/tcp, 0.0.0.0:2222-&gt;22/tcp, [::]:2222-&gt;22/tcp   yehia-gitlab
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~/gitlab_server</b></font>$ sudo cat  /etc/hosts
+127.0.0.1 localhost
+35.173.137.13 gitlab.test.local
+# The following lines are desirable for IPv6 capable hosts
+::1 ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+ff02::3 ip6-allhosts
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~/gitlab_server</b></font>$ docker logs yehia-gitlab 2&gt;&amp;1 | grep &apos;Password:&apos;
+<font color="#C01C28"><b>Password:</b></font> You didn&apos;t opt-in to print initial root password to STDOUT.
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~/gitlab_server</b></font>$ sudo docker logs yehia-gitlab 2&gt;&amp;1 | grep &apos;Password:&apos;
+<font color="#C01C28"><b>Password:</b></font> You didn&apos;t opt-in to print initial root password to STDOUT.
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~/gitlab_server</b></font>$ docker exec -it yehia-gitlab cat /etc/gitlab/initial_root_password
+# WARNING: This value is valid only in the following conditions
+#          1. If provided manually (either via `GITLAB_ROOT_PASSWORD` environment variable or via `gitlab_rails[&apos;initial_root_password&apos;]` setting in `gitlab.rb`, it was provided before database was seeded for the first time (usually, the first reconfigure run).
+#          2. Password hasn&apos;t been changed manually, either via UI or via command line.
+#
+#          If the password shown here doesn&apos;t work, you must reset the admin password following https://docs.gitlab.com/ee/security/reset_user_password.html#reset-your-root-password.
+
+Password: bJbDJP0GlQAkwEcbHacSSR8VmQJMC0dfvl6dqbHJMZA=
+
+# NOTE: This file will be automatically deleted in the first reconfigure run after 24 hours.
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~/gitlab_server</b></font>$ gitlab-runner
+gitlab-runner: command not found
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~/gitlab_server</b></font>$ cd
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~</b></font>$ curl -L https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.deb.sh | sudo bash
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  6885  100  6885    0     0  48436      0 --:--:-- --:--:-- --:--:-- 48485
+Detected operating system as Ubuntu/jammy.
+Checking for curl...
+Detected curl...
+Checking for gpg...
+Detected gpg...
+Running apt-get update... done.
+Installing apt-transport-https... done.
+Installing /etc/apt/sources.list.d/runner_gitlab-runner.list...done.
+Importing packagecloud gpg key... done.
+Running apt-get update... done.
+
+The repository is setup! You can now install packages.
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~</b></font>$ sudo apt-get install gitlab-runner
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+The following additional packages will be installed:
+  gitlab-runner-helper-images
+Suggested packages:
+  docker-engine
+The following NEW packages will be installed:
+  gitlab-runner gitlab-runner-helper-images
+0 upgraded, 2 newly installed, 0 to remove and 36 not upgraded.
+Need to get 536 MB of archives.
+After this operation, 616 MB of additional disk space will be used.
+Do you want to continue? [Y/n] y
+Get:1 https://packages.gitlab.com/runner/gitlab-runner/ubuntu jammy/main amd64 gitlab-runner-helper-images all 17.8.3-1 [510 MB]
+Get:2 https://packages.gitlab.com/runner/gitlab-runner/ubuntu jammy/main amd64 gitlab-runner amd64 17.8.3-1 [26.0 MB]                       
+Fetched 536 MB in 10s (52.4 MB/s)                                                                                                           
+Selecting previously unselected package gitlab-runner-helper-images.
+(Reading database ... 66174 files and directories currently installed.)
+Preparing to unpack .../gitlab-runner-helper-images_17.8.3-1_all.deb ...
+Unpacking gitlab-runner-helper-images (17.8.3-1) ...
+Selecting previously unselected package gitlab-runner.
+Preparing to unpack .../gitlab-runner_17.8.3-1_amd64.deb ...
+Unpacking gitlab-runner (17.8.3-1) ...
+Setting up gitlab-runner-helper-images (17.8.3-1) ...
+Setting up gitlab-runner (17.8.3-1) ...
+GitLab Runner: creating gitlab-runner...
+Home directory skeleton not used
+Runtime platform                                    arch=amd64 os=linux pid=10169 revision=690ce25c version=17.8.3
+gitlab-runner: the service is not installed
+Runtime platform                                    arch=amd64 os=linux pid=10177 revision=690ce25c version=17.8.3
+gitlab-ci-multi-runner: the service is not installed
+Runtime platform                                    arch=amd64 os=linux pid=10199 revision=690ce25c version=17.8.3
+Runtime platform                                    arch=amd64 os=linux pid=10263 revision=690ce25c version=17.8.3
+
+Check and remove all unused containers (both dangling and unreferenced)
+-----------------------------------------------------------------------
+Total reclaimed space: 0B
+Scanning processes...                                                                                                                        
+Scanning linux images...                                                                                                                     
+
+Running kernel seems to be up-to-date.
+
+No services need to be restarted.
+
+No containers need to be restarted.
+
+No user sessions are running outdated binaries.
+
+No VM guests are running outdated hypervisor (qemu) binaries on this host.
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~</b></font>$ gitlab-runner --version
+Version:      17.8.3
+Git revision: 690ce25c
+Git branch:   17-8-stable
+GO version:   go1.23.2 X:cacheprog
+Built:        unknown
+OS/Arch:      linux/amd64
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~</b></font>$ sudo systemctl status gitlab-runner
+<font color="#26A269"><b>●</b></font> gitlab-runner.service - GitLab Runner
+     Loaded: loaded (/etc/systemd/system/gitlab-runner.service; enabled; vendor preset: enabled)
+     Active: <font color="#26A269"><b>active (running)</b></font> since Tue 2025-02-18 12:58:29 UTC; 57s ago
+   Main PID: 10286 (gitlab-runner)
+      Tasks: 7 (limit: 9507)
+     Memory: 21.4M
+        CPU: 117ms
+     CGroup: /system.slice/gitlab-runner.service
+             └─10286 /usr/bin/gitlab-runner run --config /etc/gitlab-runner/config.toml --working-directory /home/gitlab-runner --service gi<span style="background-color:#FFFFFF"><font color="#300A24">&gt;</font></span>
+
+Feb 18 12:58:29 ip-172-31-47-20 systemd[1]: Started GitLab Runner.
+Feb 18 12:58:29 ip-172-31-47-20 gitlab-runner[10286]: Runtime platform                                    arch=amd64 os=linux pid=10286 revi<span style="background-color:#FFFFFF"><font color="#300A24">&gt;</font></span>
+Feb 18 12:58:29 ip-172-31-47-20 gitlab-runner[10286]: Starting multi-runner from /etc/gitlab-runner/config.toml...  builds=0 max_builds=0
+Feb 18 12:58:29 ip-172-31-47-20 gitlab-runner[10286]: Running in system-mode.                           
+Feb 18 12:58:29 ip-172-31-47-20 gitlab-runner[10286]:                                                   
+Feb 18 12:58:29 ip-172-31-47-20 gitlab-runner[10286]: Created missing unique system ID                    system_id=s_8ce94e2916dd
+Feb 18 12:58:29 ip-172-31-47-20 gitlab-runner[10286]: Configuration loaded                                builds=0 max_builds=1
+Feb 18 12:58:29 ip-172-31-47-20 gitlab-runner[10286]: listen_address not defined, metrics &amp; debug endpoints disabled  builds=0 max_builds=1
+Feb 18 12:58:29 ip-172-31-47-20 gitlab-runner[10286]: [session_server].listen_address not defined, session endpoints disabled  builds=0 max_<span style="background-color:#FFFFFF"><font color="#300A24">&gt;</font></span>
+Feb 18 12:58:29 ip-172-31-47-20 gitlab-runner[10286]: Initializing executor providers                     builds=0 max_builds=1
+
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~</b></font>$ gitlab-runner register  --url https://gitlab.test.local  --token glrt-t3_4vJ_REAs8j2TH3vGnX3f
+Runtime platform                                    arch=amd64 os=linux pid=11592 revision=690ce25c version=17.8.3
+<font color="#A2734C">WARNING: Running in user-mode.                    </font> 
+<font color="#A2734C">WARNING: The user-mode requires you to manually start builds processing:</font> 
+<font color="#A2734C">WARNING: $ gitlab-runner run                      </font> 
+<font color="#A2734C">WARNING: Use sudo for system-mode:                </font> 
+<font color="#A2734C">WARNING: $ sudo gitlab-runner...                  </font> 
+                                                   
+Created missing unique system ID                    system_id=s_8ce94e2916dd
+Enter the GitLab instance URL (for example, https://gitlab.com/):
+[https://gitlab.test.local]: https://gitlab.test.local/
+Verifying runner... is valid                        runner=t3_4vJ_RE
+Enter a name for the runner. This is stored only in the local config.toml file:
+[ip-172-31-47-20]: glrt-t3_4vJ_REAs8j2TH3vGnX3f
+Enter an executor: custom, parallels, virtualbox, docker-windows, docker+machine, docker-autoscaler, shell, ssh, docker, kubernetes, instance:
+shell
+Runner registered successfully. Feel free to start it, but if it&apos;s running already the config should be automatically reloaded!
+ 
+Configuration (with the authentication token) was saved in &quot;/home/ubuntu/.gitlab-runner/config.toml&quot; 
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~</b></font>$ gitlab-runner run
+Runtime platform                                    arch=amd64 os=linux pid=11729 revision=690ce25c version=17.8.3
+Starting multi-runner from /home/ubuntu/.gitlab-runner/config.toml...  builds=0 max_builds=0
+<font color="#A2734C">WARNING: Running in user-mode.                    </font> 
+<font color="#A2734C">WARNING: Use sudo for system-mode:                </font> 
+<font color="#A2734C">WARNING: $ sudo gitlab-runner...                  </font> 
+                                                   
+Configuration loaded                                builds=0 max_builds=1
+listen_address not defined, metrics &amp; debug endpoints disabled  builds=0 max_builds=1
+[session_server].listen_address not defined, session endpoints disabled  builds=0 max_builds=1
+Initializing executor providers                     builds=0 max_builds=1
+^C<font color="#A2734C">WARNING: [runWait] received stop signal           </font>  <font color="#A2734C">builds</font>=0 <font color="#A2734C">max_builds</font>=1 <font color="#A2734C">stop-signal</font>=interrupt
+<font color="#A2734C">WARNING: Graceful shutdown not finished properly. To gracefully clean up running plugins please use SIGQUIT (ctrl-\) instead of SIGINT (ctrl-c)</font>  <font color="#A2734C">builds</font>=0 <font color="#A2734C">error</font>=received stop signal: interrupt <font color="#A2734C">max_builds</font>=1
+<font color="#A2734C">WARNING: Starting forceful shutdown               </font>  <font color="#A2734C">StopSignal</font>=interrupt <font color="#A2734C">builds</font>=0 <font color="#A2734C">max_builds</font>=1 <font color="#A2734C">shutdown-timeout</font>=30s
+All workers stopped.                                builds=0 max_builds=1
+Shutting down executor providers                    builds=0 max_builds=1 shutdown-timeout=30s
+All executor providers shut down.                   builds=0 max_builds=1
+Can exit now!                                       builds=0 max_builds=1
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~</b></font>$ gitlab-runner list
+Runtime platform                                    arch=amd64 os=linux pid=12672 revision=690ce25c version=17.8.3
+Listing configured runners                          ConfigFile=/home/ubuntu/.gitlab-runner/config.toml
+glrt-t3_4vJ_REAs8j2TH3vGnX3f                        Executor=shell Token=glrt-t3_4vJ_REAs8j2TH3vGnX3f URL=https://gitlab.test.local/
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~</b></font>$ cat ConfigFile=/home/ubuntu/.gitlab-runner/config.toml
+cat: &apos;ConfigFile=/home/ubuntu/.gitlab-runner/config.toml&apos;: No such file or directory
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~</b></font>$ gitlab-runner run
+Runtime platform                                    arch=amd64 os=linux pid=12715 revision=690ce25c version=17.8.3
+Starting multi-runner from /home/ubuntu/.gitlab-runner/config.toml...  builds=0 max_builds=0
+<font color="#A2734C">WARNING: Running in user-mode.                    </font> 
+<font color="#A2734C">WARNING: Use sudo for system-mode:                </font> 
+<font color="#A2734C">WARNING: $ sudo gitlab-runner...                  </font> 
+                                                   
+Configuration loaded                                builds=0 max_builds=1
+listen_address not defined, metrics &amp; debug endpoints disabled  builds=0 max_builds=1
+[session_server].listen_address not defined, session endpoints disabled  builds=0 max_builds=1
+Initializing executor providers                     builds=0 max_builds=1
+^C<font color="#A2734C">WARNING: [runWait] received stop signal           </font>  <font color="#A2734C">builds</font>=0 <font color="#A2734C">max_builds</font>=1 <font color="#A2734C">stop-signal</font>=interrupt
+<font color="#A2734C">WARNING: Graceful shutdown not finished properly. To gracefully clean up running plugins please use SIGQUIT (ctrl-\) instead of SIGINT (ctrl-c)</font>  <font color="#A2734C">builds</font>=0 <font color="#A2734C">error</font>=received stop signal: interrupt <font color="#A2734C">max_builds</font>=1
+<font color="#A2734C">WARNING: Starting forceful shutdown               </font>  <font color="#A2734C">StopSignal</font>=interrupt <font color="#A2734C">builds</font>=0 <font color="#A2734C">max_builds</font>=1 <font color="#A2734C">shutdown-timeout</font>=30s
+All workers stopped.                                builds=0 max_builds=1
+Shutting down executor providers                    builds=0 max_builds=1 shutdown-timeout=30s
+All executor providers shut down.                   builds=0 max_builds=1
+Can exit now!                                       builds=0 max_builds=1
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~</b></font>$ gitlab-runner run
+Runtime platform                                    arch=amd64 os=linux pid=12732 revision=690ce25c version=17.8.3
+Starting multi-runner from /home/ubuntu/.gitlab-runner/config.toml...  builds=0 max_builds=0
+<font color="#A2734C">WARNING: Running in user-mode.                    </font> 
+<font color="#A2734C">WARNING: Use sudo for system-mode:                </font> 
+<font color="#A2734C">WARNING: $ sudo gitlab-runner...                  </font> 
+                                                   
+Configuration loaded                                builds=0 max_builds=1
+listen_address not defined, metrics &amp; debug endpoints disabled  builds=0 max_builds=1
+[session_server].listen_address not defined, session endpoints disabled  builds=0 max_builds=1
+Initializing executor providers                     builds=0 max_builds=1
+Checking for jobs... received                       job=1 repo_url=https://gitlab.test.local/root/yehia-repo.git runner=t3_4vJ_RE
+Added job to processing list                        builds=1 job=1 max_builds=1 project=1 repo_url=https://gitlab.test.local/root/yehia-repo.git time_in_queue_seconds=1
+<font color="#A2734C">WARNING: Job failed: exit status 1</font>
+<font color="#A2734C">               </font>  <font color="#A2734C">duration_s</font>=0.649619366 <font color="#A2734C">job</font>=1 <font color="#A2734C">project</font>=1 <font color="#A2734C">runner</font>=t3_4vJ_RE
+Appending trace to coordinator...ok                 code=202 job=1 job-log=0-2047 job-status=running runner=t3_4vJ_RE sent-log=0-2046 status=202 Accepted update-interval=1m0s
+Updating job...                                     bytesize=2047 checksum=crc32:693ded76 job=1 runner=t3_4vJ_RE
+<font color="#A2734C">WARNING: Submitting job to coordinator... job failed</font>  <font color="#A2734C">bytesize</font>=2047 <font color="#A2734C">checksum</font>=crc32:693ded76 <font color="#A2734C">code</font>=200 <font color="#A2734C">job</font>=1 <font color="#A2734C">job-status</font>=failed <font color="#A2734C">runner</font>=t3_4vJ_RE <font color="#A2734C">status</font>=200 OK <font color="#A2734C">update-interval</font>=0s
+Removed job from processing list                    builds=0 job=1 max_builds=1 project=1 repo_url=https://gitlab.test.local/root/yehia-repo.git time_in_queue_seconds=1
+Checking for jobs... received                       job=2 repo_url=https://gitlab.test.local/root/yehia-repo.git runner=t3_4vJ_RE
+Added job to processing list                        builds=1 job=2 max_builds=1 project=1 repo_url=https://gitlab.test.local/root/yehia-repo.git time_in_queue_seconds=4
+<font color="#A2734C">WARNING: Job failed: exit status 1</font>
+<font color="#A2734C">               </font>  <font color="#A2734C">duration_s</font>=0.395792747 <font color="#A2734C">job</font>=2 <font color="#A2734C">project</font>=1 <font color="#A2734C">runner</font>=t3_4vJ_RE
+Appending trace to coordinator...ok                 code=202 job=2 job-log=0-1577 job-status=running runner=t3_4vJ_RE sent-log=0-1576 status=202 Accepted update-interval=1m0s
+Updating job...                                     bytesize=1577 checksum=crc32:1ce7d60c job=2 runner=t3_4vJ_RE
+<font color="#A2734C">WARNING: Submitting job to coordinator... job failed</font>  <font color="#A2734C">bytesize</font>=1577 <font color="#A2734C">checksum</font>=crc32:1ce7d60c <font color="#A2734C">code</font>=200 <font color="#A2734C">job</font>=2 <font color="#A2734C">job-status</font>=failed <font color="#A2734C">runner</font>=t3_4vJ_RE <font color="#A2734C">status</font>=200 OK <font color="#A2734C">update-interval</font>=0s
+Removed job from processing list                    builds=0 job=2 max_builds=1 project=1 repo_url=https://gitlab.test.local/root/yehia-repo.git time_in_queue_seconds=4
+Checking for jobs... received                       job=3 repo_url=https://gitlab.test.local/root/yehia-repo.git runner=t3_4vJ_RE
+Added job to processing list                        builds=1 job=3 max_builds=1 project=1 repo_url=https://gitlab.test.local/root/yehia-repo.git time_in_queue_seconds=7
+Appending trace to coordinator...ok                 code=202 job=3 job-log=0-1419 job-status=running runner=t3_4vJ_RE sent-log=0-1418 status=202 Accepted update-interval=1m0s
+Appending trace to coordinator...ok                 code=202 job=3 job-log=0-1538 job-status=running runner=t3_4vJ_RE sent-log=1419-1537 status=202 Accepted update-interval=1m0s
+Updating job...                                     bytesize=1538 checksum=crc32:2023c1df job=3 runner=t3_4vJ_RE
+Submitting job to coordinator...ok                  bytesize=1538 checksum=crc32:2023c1df code=200 job=3 job-status=running runner=t3_4vJ_RE update-interval=0s
+Updating job...                                     bytesize=1538 checksum=crc32:2023c1df job=3 runner=t3_4vJ_RE
+Submitting job to coordinator...ok                  bytesize=1538 checksum=crc32:2023c1df code=200 job=3 job-status=running runner=t3_4vJ_RE update-interval=0s
+Updating job...                                     bytesize=1538 checksum=crc32:2023c1df job=3 runner=t3_4vJ_RE
+Submitting job to coordinator...ok                  bytesize=1538 checksum=crc32:2023c1df code=200 job=3 job-status=running runner=t3_4vJ_RE update-interval=0s
+Updating job...                                     bytesize=1538 checksum=crc32:2023c1df job=3 runner=t3_4vJ_RE
+Submitting job to coordinator...ok                  bytesize=1538 checksum=crc32:2023c1df code=200 job=3 job-status=running runner=t3_4vJ_RE update-interval=0s
+Job succeeded                                       duration_s=332.42152553 job=3 project=1 runner=t3_4vJ_RE
+Appending trace to coordinator...ok                 code=202 job=3 job-log=0-2351 job-status=running runner=t3_4vJ_RE sent-log=1538-2350 status=202 Accepted update-interval=1m0s
+Updating job...                                     bytesize=2351 checksum=crc32:3eec6037 job=3 runner=t3_4vJ_RE
+Submitting job to coordinator...ok                  bytesize=2351 checksum=crc32:3eec6037 code=200 job=3 job-status=success runner=t3_4vJ_RE update-interval=0s
+Removed job from processing list                    builds=0 job=3 max_builds=1 project=1 repo_url=https://gitlab.test.local/root/yehia-repo.git time_in_queue_seconds=7
+Checking for jobs... received                       job=7 repo_url=https://gitlab.test.local/root/yehia-repo.git runner=t3_4vJ_RE
+Added job to processing list                        builds=1 job=7 max_builds=1 project=1 repo_url=https://gitlab.test.local/root/yehia-repo.git time_in_queue_seconds=93
+<font color="#A2734C">WARNING: Job failed: exit status 1</font>
+<font color="#A2734C">               </font>  <font color="#A2734C">duration_s</font>=0.482962418 <font color="#A2734C">job</font>=7 <font color="#A2734C">project</font>=1 <font color="#A2734C">runner</font>=t3_4vJ_RE
+Appending trace to coordinator...ok                 code=202 job=7 job-log=0-1530 job-status=running runner=t3_4vJ_RE sent-log=0-1529 status=202 Accepted update-interval=1m0s
+Updating job...                                     bytesize=1530 checksum=crc32:380d5d85 job=7 runner=t3_4vJ_RE
+<font color="#A2734C">WARNING: Submitting job to coordinator... job failed</font>  <font color="#A2734C">bytesize</font>=1530 <font color="#A2734C">checksum</font>=crc32:380d5d85 <font color="#A2734C">code</font>=200 <font color="#A2734C">job</font>=7 <font color="#A2734C">job-status</font>=failed <font color="#A2734C">runner</font>=t3_4vJ_RE <font color="#A2734C">status</font>=200 OK <font color="#A2734C">update-interval</font>=0s
+Removed job from processing list                    builds=0 job=7 max_builds=1 project=1 repo_url=https://gitlab.test.local/root/yehia-repo.git time_in_queue_seconds=93
+Connection to ec2-35-173-137-13.compute-1.amazonaws.com closed by remote host.
+Connection to ec2-35-173-137-13.compute-1.amazonaws.com closed.
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~/My station/secure development/lab1</b></font>$ ssh -i &quot;ansible.pem&quot; ubuntu@ec2-3-90-40-223.compute-1.amazonaws.com
+The authenticity of host &apos;ec2-3-90-40-223.compute-1.amazonaws.com (3.90.40.223)&apos; can&apos;t be established.
+ED25519 key fingerprint is SHA256:fHgBlxZE84Q+6N3TThRYTNxe0Mybe3IBJnP17mab4bQ.
+This host key is known by the following other names/addresses:
+    ~/.ssh/known_hosts:13: [hashed name]
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added &apos;ec2-3-90-40-223.compute-1.amazonaws.com&apos; (ED25519) to the list of known hosts.
+Welcome to Ubuntu 22.04.5 LTS (GNU/Linux 6.8.0-1021-aws x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/pro
+
+ System information as of Tue Feb 18 14:52:03 UTC 2025
+
+  System load:  1.44               Processes:             189
+  Usage of /:   74.6% of 28.89GB   Users logged in:       0
+  Memory usage: 12%                IPv4 address for eth0: 172.31.47.20
+  Swap usage:   0%
+
+ * Ubuntu Pro delivers the most comprehensive open source security and
+   compliance features.
+
+   https://ubuntu.com/aws/pro
+
+Expanded Security Maintenance for Applications is not enabled.
+
+36 updates can be applied immediately.
+28 of these updates are standard security updates.
+To see these additional updates run: apt list --upgradable
+
+Enable ESM Apps to receive additional future security updates.
+See https://ubuntu.com/esm or run: sudo pro status
+
+New release &apos;24.04.1 LTS&apos; available.
+Run &apos;do-release-upgrade&apos; to upgrade to it.
+
+
+Last login: Tue Feb 18 13:44:08 2025 from 45.67.35.120
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~</b></font>$ ^C
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~</b></font>$ sudo nano /etc/hosts
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~</b></font>$ sudo nano /etc/hosts
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~</b></font>$ sudo nano /etc/hosts
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~</b></font>$ sudo nano /etc/hosts
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~</b></font>$ gitlab-runner run
+Runtime platform                                    arch=amd64 os=linux pid=2348 revision=690ce25c version=17.8.3
+Starting multi-runner from /home/ubuntu/.gitlab-runner/config.toml...  builds=0 max_builds=0
+<font color="#A2734C">WARNING: Running in user-mode.                    </font> 
+<font color="#A2734C">WARNING: Use sudo for system-mode:                </font> 
+<font color="#A2734C">WARNING: $ sudo gitlab-runner...                  </font> 
+                                                   
+Configuration loaded                                builds=0 max_builds=1
+listen_address not defined, metrics &amp; debug endpoints disabled  builds=0 max_builds=1
+[session_server].listen_address not defined, session endpoints disabled  builds=0 max_builds=1
+Initializing executor providers                     builds=0 max_builds=1
+Checking for jobs... received                       job=8 repo_url=https://gitlab.test.local/root/yehia-repo.git runner=t3_4vJ_RE
+Added job to processing list                        builds=1 job=8 max_builds=1 project=1 repo_url=https://gitlab.test.local/root/yehia-repo.git time_in_queue_seconds=41
+<font color="#A2734C">WARNING: Job failed: exit status 1</font>
+<font color="#A2734C">               </font>  <font color="#A2734C">duration_s</font>=0.535732326 <font color="#A2734C">job</font>=8 <font color="#A2734C">project</font>=1 <font color="#A2734C">runner</font>=t3_4vJ_RE
+Appending trace to coordinator...ok                 code=202 job=8 job-log=0-1383 job-status=running runner=t3_4vJ_RE sent-log=0-1382 status=202 Accepted update-interval=1m0s
+Updating job...                                     bytesize=1383 checksum=crc32:fcd3cd1e job=8 runner=t3_4vJ_RE
+<font color="#A2734C">WARNING: Submitting job to coordinator... job failed</font>  <font color="#A2734C">bytesize</font>=1383 <font color="#A2734C">checksum</font>=crc32:fcd3cd1e <font color="#A2734C">code</font>=200 <font color="#A2734C">job</font>=8 <font color="#A2734C">job-status</font>=failed <font color="#A2734C">runner</font>=t3_4vJ_RE <font color="#A2734C">status</font>=200 OK <font color="#A2734C">update-interval</font>=0s
+Removed job from processing list                    builds=0 job=8 max_builds=1 project=1 repo_url=https://gitlab.test.local/root/yehia-repo.git time_in_queue_seconds=41
+^C<font color="#A2734C">WARNING: [runWait] received stop signal           </font>  <font color="#A2734C">builds</font>=0 <font color="#A2734C">max_builds</font>=1 <font color="#A2734C">stop-signal</font>=interrupt
+<font color="#A2734C">WARNING: Graceful shutdown not finished properly. To gracefully clean up running plugins please use SIGQUIT (ctrl-\) instead of SIGINT (ctrl-c)</font>  <font color="#A2734C">builds</font>=0 <font color="#A2734C">error</font>=received stop signal: interrupt <font color="#A2734C">max_builds</font>=1
+<font color="#A2734C">WARNING: Starting forceful shutdown               </font>  <font color="#A2734C">StopSignal</font>=interrupt <font color="#A2734C">builds</font>=0 <font color="#A2734C">max_builds</font>=1 <font color="#A2734C">shutdown-timeout</font>=30s
+All workers stopped.                                builds=0 max_builds=1
+Shutting down executor providers                    builds=0 max_builds=1 shutdown-timeout=30s
+All executor providers shut down.                   builds=0 max_builds=1
+Can exit now!                                       builds=0 max_builds=1
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~</b></font>$ sudo apt update &amp;&amp; sudo apt install python3 python3-pip -y
+Hit:1 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy InRelease
+Get:2 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy-updates InRelease [128 kB]                                                       
+Get:3 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy-backports InRelease [127 kB]                                                     
+Hit:4 https://download.docker.com/linux/ubuntu jammy InRelease                                                                              
+Hit:6 http://security.ubuntu.com/ubuntu jammy-security InRelease<font color="#A2734C">                                                                            </font>
+Hit:5 https://packages.gitlab.com/runner/gitlab-runner/ubuntu jammy InRelease
+Fetched 255 kB in 1s (378 kB/s)
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+36 packages can be upgraded. Run &apos;apt list --upgradable&apos; to see them.
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+python3 is already the newest version (3.10.6-1~22.04.1).
+python3 set to manually installed.
+The following additional packages will be installed:
+  build-essential bzip2 cpp cpp-11 dpkg-dev fakeroot fontconfig-config fonts-dejavu-core g++ g++-11 gcc gcc-11 gcc-11-base
+  javascript-common libalgorithm-diff-perl libalgorithm-diff-xs-perl libalgorithm-merge-perl libasan6 libatomic1 libc-dev-bin libc-devtools
+  libc6 libc6-dev libcc1-0 libcrypt-dev libdeflate0 libdpkg-perl libexpat1-dev libfakeroot libfile-fcntllock-perl libfontconfig1
+  libgcc-11-dev libgd3 libgomp1 libisl23 libitm1 libjbig0 libjpeg-turbo8 libjpeg8 libjs-jquery libjs-sphinxdoc libjs-underscore liblsan0
+  libmpc3 libnsl-dev libpython3-dev libpython3.10 libpython3.10-dev libpython3.10-minimal libpython3.10-stdlib libquadmath0
+  libstdc++-11-dev libtiff5 libtirpc-dev libtsan0 libubsan1 libwebp7 libxpm4 linux-libc-dev lto-disabled-list make manpages-dev python3-dev
+  python3-wheel python3.10 python3.10-dev python3.10-minimal rpcsvc-proto zlib1g-dev
+Suggested packages:
+  bzip2-doc cpp-doc gcc-11-locales debian-keyring g++-multilib g++-11-multilib gcc-11-doc gcc-multilib autoconf automake libtool flex bison
+  gdb gcc-doc gcc-11-multilib apache2 | lighttpd | httpd glibc-doc bzr libgd-tools libstdc++-11-doc make-doc python3.10-venv python3.10-doc
+  binfmt-support
+Recommended packages:
+  libnss-nis libnss-nisplus
+The following NEW packages will be installed:
+  build-essential bzip2 cpp cpp-11 dpkg-dev fakeroot fontconfig-config fonts-dejavu-core g++ g++-11 gcc gcc-11 gcc-11-base
+  javascript-common libalgorithm-diff-perl libalgorithm-diff-xs-perl libalgorithm-merge-perl libasan6 libatomic1 libc-dev-bin libc-devtools
+  libc6-dev libcc1-0 libcrypt-dev libdeflate0 libdpkg-perl libexpat1-dev libfakeroot libfile-fcntllock-perl libfontconfig1 libgcc-11-dev
+  libgd3 libgomp1 libisl23 libitm1 libjbig0 libjpeg-turbo8 libjpeg8 libjs-jquery libjs-sphinxdoc libjs-underscore liblsan0 libmpc3
+  libnsl-dev libpython3-dev libpython3.10-dev libquadmath0 libstdc++-11-dev libtiff5 libtirpc-dev libtsan0 libubsan1 libwebp7 libxpm4
+  linux-libc-dev lto-disabled-list make manpages-dev python3-dev python3-pip python3-wheel python3.10-dev rpcsvc-proto zlib1g-dev
+The following packages will be upgraded:
+  libc6 libpython3.10 libpython3.10-minimal libpython3.10-stdlib python3.10 python3.10-minimal
+6 upgraded, 64 newly installed, 0 to remove and 30 not upgraded.
+Need to get 81.9 MB of archives.
+After this operation, 239 MB of additional disk space will be used.
+Get:1 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy-updates/main amd64 libc6 amd64 2.35-0ubuntu3.9 [3235 kB]
+Get:2 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy-updates/main amd64 libpython3.10 amd64 3.10.12-1~22.04.8 [1949 kB]
+Get:3 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy-updates/main amd64 python3.10 amd64 3.10.12-1~22.04.8 [508 kB]
+Get:4 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy-updates/main amd64 libpython3.10-stdlib amd64 3.10.12-1~22.04.8 [1850 kB]
+Get:5 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy-updates/main amd64 python3.10-minimal amd64 3.10.12-1~22.04.8 [2268 kB]
+Get:6 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy-updates/main amd64 libpython3.10-minimal amd64 3.10.12-1~22.04.8 [815 kB]
+Get:7 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy-updates/main amd64 libc-dev-bin amd64 2.35-0ubuntu3.9 [20.3 kB]
+Get:8 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy-updates/main amd64 linux-libc-dev amd64 5.15.0-131.141 [1314 kB]
+Get:9 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy/main amd64 libcrypt-dev amd64 1:4.4.27-1 [112 kB]
+Get:10 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy/main amd64 rpcsvc-proto amd64 1.4.2-0ubuntu6 [68.5 kB]
+Get:11 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy-updates/main amd64 libtirpc-dev amd64 1.3.2-2ubuntu0.1 [192 kB]
+Get:12 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy/main amd64 libnsl-dev amd64 1.3.0-2build2 [71.3 kB]
+Get:13 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy-updates/main amd64 libc6-dev amd64 2.35-0ubuntu3.9 [2100 kB]
+Get:14 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy-updates/main amd64 gcc-11-base amd64 11.4.0-1ubuntu1~22.04 [20.2 kB]
+Get:15 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy/main amd64 libisl23 amd64 0.24-2build1 [727 kB]
+Get:16 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy/main amd64 libmpc3 amd64 1.2.1-2build1 [46.9 kB]
+Get:17 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy-updates/main amd64 cpp-11 amd64 11.4.0-1ubuntu1~22.04 [10.0 MB]
+Get:18 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy/main amd64 cpp amd64 4:11.2.0-1ubuntu1 [27.7 kB]
+Get:19 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy-updates/main amd64 libcc1-0 amd64 12.3.0-1ubuntu1~22.04 [48.3 kB]
+Get:20 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy-updates/main amd64 libgomp1 amd64 12.3.0-1ubuntu1~22.04 [126 kB]
+Get:21 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy-updates/main amd64 libitm1 amd64 12.3.0-1ubuntu1~22.04 [30.2 kB]
+Get:22 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy-updates/main amd64 libatomic1 amd64 12.3.0-1ubuntu1~22.04 [10.4 kB]
+Get:23 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy-updates/main amd64 libasan6 amd64 11.4.0-1ubuntu1~22.04 [2282 kB]
+Get:24 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy-updates/main amd64 liblsan0 amd64 12.3.0-1ubuntu1~22.04 [1069 kB]
+Get:25 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy-updates/main amd64 libtsan0 amd64 11.4.0-1ubuntu1~22.04 [2260 kB]
+Get:26 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy-updates/main amd64 libubsan1 amd64 12.3.0-1ubuntu1~22.04 [976 kB]
+Get:27 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy-updates/main amd64 libquadmath0 amd64 12.3.0-1ubuntu1~22.04 [154 kB]
+Get:28 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy-updates/main amd64 libgcc-11-dev amd64 11.4.0-1ubuntu1~22.04 [2517 kB]
+Get:29 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy-updates/main amd64 gcc-11 amd64 11.4.0-1ubuntu1~22.04 [20.1 MB]
+Get:30 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy/main amd64 gcc amd64 4:11.2.0-1ubuntu1 [5112 B]
+Get:31 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy-updates/main amd64 libstdc++-11-dev amd64 11.4.0-1ubuntu1~22.04 [2101 kB]
+Get:32 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy-updates/main amd64 g++-11 amd64 11.4.0-1ubuntu1~22.04 [11.4 MB]
+Get:33 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy/main amd64 g++ amd64 4:11.2.0-1ubuntu1 [1412 B]
+Get:34 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy/main amd64 make amd64 4.3-4.1build1 [180 kB]
+Get:35 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy-updates/main amd64 libdpkg-perl all 1.21.1ubuntu2.3 [237 kB]
+Get:36 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy/main amd64 bzip2 amd64 1.0.8-5build1 [34.8 kB]
+Get:37 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy/main amd64 lto-disabled-list all 24 [12.5 kB]
+Get:38 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy-updates/main amd64 dpkg-dev all 1.21.1ubuntu2.3 [922 kB]
+Get:39 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy/main amd64 build-essential amd64 12.9ubuntu3 [4744 B]
+Get:40 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy/main amd64 libfakeroot amd64 1.28-1ubuntu1 [31.5 kB]
+Get:41 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy/main amd64 fakeroot amd64 1.28-1ubuntu1 [60.4 kB]
+Get:42 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy/main amd64 fonts-dejavu-core all 2.37-2build1 [1041 kB]
+Get:43 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy/main amd64 fontconfig-config all 2.13.1-4.2ubuntu5 [29.1 kB]
+Get:44 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy/main amd64 javascript-common all 11+nmu1 [5936 B]
+Get:45 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy/main amd64 libalgorithm-diff-perl all 1.201-1 [41.8 kB]
+Get:46 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy/main amd64 libalgorithm-diff-xs-perl amd64 0.04-6build3 [11.9 kB]
+Get:47 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy/main amd64 libalgorithm-merge-perl all 0.08-3 [12.0 kB]
+Get:48 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy/main amd64 libfontconfig1 amd64 2.13.1-4.2ubuntu5 [131 kB]
+Get:49 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy/main amd64 libjpeg-turbo8 amd64 2.1.2-0ubuntu1 [134 kB]
+Get:50 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy/main amd64 libjpeg8 amd64 8c-2ubuntu10 [2264 B]
+Get:51 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy/main amd64 libdeflate0 amd64 1.10-2 [70.9 kB]
+Get:52 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy-updates/main amd64 libjbig0 amd64 2.1-3.1ubuntu0.22.04.1 [29.2 kB]
+Get:53 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy-updates/main amd64 libwebp7 amd64 1.2.2-2ubuntu0.22.04.2 [206 kB]
+Get:54 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy-updates/main amd64 libtiff5 amd64 4.3.0-6ubuntu0.10 [185 kB]
+Get:55 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy-updates/main amd64 libxpm4 amd64 1:3.5.12-1ubuntu0.22.04.2 [36.7 kB]
+Get:56 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy-updates/main amd64 libgd3 amd64 2.3.0-2ubuntu2.3 [129 kB]
+Get:57 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy-updates/main amd64 libc-devtools amd64 2.35-0ubuntu3.9 [29.0 kB]
+Get:58 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy-updates/main amd64 libexpat1-dev amd64 2.4.7-1ubuntu0.5 [147 kB]
+Get:59 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy/main amd64 libfile-fcntllock-perl amd64 0.22-3build7 [33.9 kB]
+Get:60 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy/main amd64 libjs-jquery all 3.6.0+dfsg+~3.5.13-1 [321 kB]
+Get:61 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy/main amd64 libjs-underscore all 1.13.2~dfsg-2 [118 kB]
+Get:62 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy/main amd64 libjs-sphinxdoc all 4.3.2-1 [139 kB]
+Get:63 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy-updates/main amd64 zlib1g-dev amd64 1:1.2.11.dfsg-2ubuntu9.2 [164 kB]
+Get:64 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy-updates/main amd64 libpython3.10-dev amd64 3.10.12-1~22.04.8 [4762 kB]
+Get:65 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy-updates/main amd64 libpython3-dev amd64 3.10.6-1~22.04.1 [7064 B]
+Get:66 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy/main amd64 manpages-dev all 5.10-1ubuntu1 [2309 kB]
+Get:67 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy-updates/main amd64 python3.10-dev amd64 3.10.12-1~22.04.8 [508 kB]
+Get:68 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy-updates/main amd64 python3-dev amd64 3.10.6-1~22.04.1 [26.0 kB]
+Get:69 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy-updates/universe amd64 python3-wheel all 0.37.1-2ubuntu0.22.04.1 [32.0 kB]
+Get:70 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy-updates/universe amd64 python3-pip all 22.0.2+dfsg-1ubuntu0.5 [1306 kB]
+Fetched 81.9 MB in 1s (67.7 MB/s)<font color="#A2734C">    </font>
+Extracting templates from packages: 100%
+Preconfiguring packages ...
+(Reading database ... 66198 files and directories currently installed.)
+Preparing to unpack .../libc6_2.35-0ubuntu3.9_amd64.deb ...
+Unpacking libc6:amd64 (2.35-0ubuntu3.9) over (2.35-0ubuntu3.8) ...
+Setting up libc6:amd64 (2.35-0ubuntu3.9) ...
+(Reading database ... 66198 files and directories currently installed.)
+Preparing to unpack .../00-libpython3.10_3.10.12-1~22.04.8_amd64.deb ...
+Unpacking libpython3.10:amd64 (3.10.12-1~22.04.8) over (3.10.12-1~22.04.7) ...
+Preparing to unpack .../01-python3.10_3.10.12-1~22.04.8_amd64.deb ...
+Unpacking python3.10 (3.10.12-1~22.04.8) over (3.10.12-1~22.04.7) ...
+Preparing to unpack .../02-libpython3.10-stdlib_3.10.12-1~22.04.8_amd64.deb ...
+Unpacking libpython3.10-stdlib:amd64 (3.10.12-1~22.04.8) over (3.10.12-1~22.04.7) ...
+Preparing to unpack .../03-python3.10-minimal_3.10.12-1~22.04.8_amd64.deb ...
+Unpacking python3.10-minimal (3.10.12-1~22.04.8) over (3.10.12-1~22.04.7) ...
+Preparing to unpack .../04-libpython3.10-minimal_3.10.12-1~22.04.8_amd64.deb ...
+Unpacking libpython3.10-minimal:amd64 (3.10.12-1~22.04.8) over (3.10.12-1~22.04.7) ...
+Selecting previously unselected package libc-dev-bin.
+Preparing to unpack .../05-libc-dev-bin_2.35-0ubuntu3.9_amd64.deb ...
+Unpacking libc-dev-bin (2.35-0ubuntu3.9) ...
+Selecting previously unselected package linux-libc-dev:amd64.
+Preparing to unpack .../06-linux-libc-dev_5.15.0-131.141_amd64.deb ...
+Unpacking linux-libc-dev:amd64 (5.15.0-131.141) ...
+Selecting previously unselected package libcrypt-dev:amd64.
+Preparing to unpack .../07-libcrypt-dev_1%3a4.4.27-1_amd64.deb ...
+Unpacking libcrypt-dev:amd64 (1:4.4.27-1) ...
+Selecting previously unselected package rpcsvc-proto.
+Preparing to unpack .../08-rpcsvc-proto_1.4.2-0ubuntu6_amd64.deb ...
+Unpacking rpcsvc-proto (1.4.2-0ubuntu6) ...
+Selecting previously unselected package libtirpc-dev:amd64.
+Preparing to unpack .../09-libtirpc-dev_1.3.2-2ubuntu0.1_amd64.deb ...
+Unpacking libtirpc-dev:amd64 (1.3.2-2ubuntu0.1) ...
+Selecting previously unselected package libnsl-dev:amd64.
+Preparing to unpack .../10-libnsl-dev_1.3.0-2build2_amd64.deb ...
+Unpacking libnsl-dev:amd64 (1.3.0-2build2) ...
+Selecting previously unselected package libc6-dev:amd64.
+Preparing to unpack .../11-libc6-dev_2.35-0ubuntu3.9_amd64.deb ...
+Unpacking libc6-dev:amd64 (2.35-0ubuntu3.9) ...
+Selecting previously unselected package gcc-11-base:amd64.
+Preparing to unpack .../12-gcc-11-base_11.4.0-1ubuntu1~22.04_amd64.deb ...
+Unpacking gcc-11-base:amd64 (11.4.0-1ubuntu1~22.04) ...
+Selecting previously unselected package libisl23:amd64.
+Preparing to unpack .../13-libisl23_0.24-2build1_amd64.deb ...
+Unpacking libisl23:amd64 (0.24-2build1) ...
+Selecting previously unselected package libmpc3:amd64.
+Preparing to unpack .../14-libmpc3_1.2.1-2build1_amd64.deb ...
+Unpacking libmpc3:amd64 (1.2.1-2build1) ...
+Selecting previously unselected package cpp-11.
+Preparing to unpack .../15-cpp-11_11.4.0-1ubuntu1~22.04_amd64.deb ...
+Unpacking cpp-11 (11.4.0-1ubuntu1~22.04) ...
+Selecting previously unselected package cpp.
+Preparing to unpack .../16-cpp_4%3a11.2.0-1ubuntu1_amd64.deb ...
+Unpacking cpp (4:11.2.0-1ubuntu1) ...
+Selecting previously unselected package libcc1-0:amd64.
+Preparing to unpack .../17-libcc1-0_12.3.0-1ubuntu1~22.04_amd64.deb ...
+Unpacking libcc1-0:amd64 (12.3.0-1ubuntu1~22.04) ...
+Selecting previously unselected package libgomp1:amd64.
+Preparing to unpack .../18-libgomp1_12.3.0-1ubuntu1~22.04_amd64.deb ...
+Unpacking libgomp1:amd64 (12.3.0-1ubuntu1~22.04) ...
+Selecting previously unselected package libitm1:amd64.
+Preparing to unpack .../19-libitm1_12.3.0-1ubuntu1~22.04_amd64.deb ...
+Unpacking libitm1:amd64 (12.3.0-1ubuntu1~22.04) ...
+Selecting previously unselected package libatomic1:amd64.
+Preparing to unpack .../20-libatomic1_12.3.0-1ubuntu1~22.04_amd64.deb ...
+Unpacking libatomic1:amd64 (12.3.0-1ubuntu1~22.04) ...
+Selecting previously unselected package libasan6:amd64.
+Preparing to unpack .../21-libasan6_11.4.0-1ubuntu1~22.04_amd64.deb ...
+Unpacking libasan6:amd64 (11.4.0-1ubuntu1~22.04) ...
+Selecting previously unselected package liblsan0:amd64.
+Preparing to unpack .../22-liblsan0_12.3.0-1ubuntu1~22.04_amd64.deb ...
+Unpacking liblsan0:amd64 (12.3.0-1ubuntu1~22.04) ...
+Selecting previously unselected package libtsan0:amd64.
+Preparing to unpack .../23-libtsan0_11.4.0-1ubuntu1~22.04_amd64.deb ...
+Unpacking libtsan0:amd64 (11.4.0-1ubuntu1~22.04) ...
+Selecting previously unselected package libubsan1:amd64.
+Preparing to unpack .../24-libubsan1_12.3.0-1ubuntu1~22.04_amd64.deb ...
+Unpacking libubsan1:amd64 (12.3.0-1ubuntu1~22.04) ...
+Selecting previously unselected package libquadmath0:amd64.
+Preparing to unpack .../25-libquadmath0_12.3.0-1ubuntu1~22.04_amd64.deb ...
+Unpacking libquadmath0:amd64 (12.3.0-1ubuntu1~22.04) ...
+Selecting previously unselected package libgcc-11-dev:amd64.
+Preparing to unpack .../26-libgcc-11-dev_11.4.0-1ubuntu1~22.04_amd64.deb ...
+Unpacking libgcc-11-dev:amd64 (11.4.0-1ubuntu1~22.04) ...
+Selecting previously unselected package gcc-11.
+Preparing to unpack .../27-gcc-11_11.4.0-1ubuntu1~22.04_amd64.deb ...
+Unpacking gcc-11 (11.4.0-1ubuntu1~22.04) ...
+Selecting previously unselected package gcc.
+Preparing to unpack .../28-gcc_4%3a11.2.0-1ubuntu1_amd64.deb ...
+Unpacking gcc (4:11.2.0-1ubuntu1) ...
+Selecting previously unselected package libstdc++-11-dev:amd64.
+Preparing to unpack .../29-libstdc++-11-dev_11.4.0-1ubuntu1~22.04_amd64.deb ...
+Unpacking libstdc++-11-dev:amd64 (11.4.0-1ubuntu1~22.04) ...
+Selecting previously unselected package g++-11.
+Preparing to unpack .../30-g++-11_11.4.0-1ubuntu1~22.04_amd64.deb ...
+Unpacking g++-11 (11.4.0-1ubuntu1~22.04) ...
+Selecting previously unselected package g++.
+Preparing to unpack .../31-g++_4%3a11.2.0-1ubuntu1_amd64.deb ...
+Unpacking g++ (4:11.2.0-1ubuntu1) ...
+Selecting previously unselected package make.
+Preparing to unpack .../32-make_4.3-4.1build1_amd64.deb ...
+Unpacking make (4.3-4.1build1) ...
+Selecting previously unselected package libdpkg-perl.
+Preparing to unpack .../33-libdpkg-perl_1.21.1ubuntu2.3_all.deb ...
+Unpacking libdpkg-perl (1.21.1ubuntu2.3) ...
+Selecting previously unselected package bzip2.
+Preparing to unpack .../34-bzip2_1.0.8-5build1_amd64.deb ...
+Unpacking bzip2 (1.0.8-5build1) ...
+Selecting previously unselected package lto-disabled-list.
+Preparing to unpack .../35-lto-disabled-list_24_all.deb ...
+Unpacking lto-disabled-list (24) ...
+Selecting previously unselected package dpkg-dev.
+Preparing to unpack .../36-dpkg-dev_1.21.1ubuntu2.3_all.deb ...
+Unpacking dpkg-dev (1.21.1ubuntu2.3) ...
+Selecting previously unselected package build-essential.
+Preparing to unpack .../37-build-essential_12.9ubuntu3_amd64.deb ...
+Unpacking build-essential (12.9ubuntu3) ...
+Selecting previously unselected package libfakeroot:amd64.
+Preparing to unpack .../38-libfakeroot_1.28-1ubuntu1_amd64.deb ...
+Unpacking libfakeroot:amd64 (1.28-1ubuntu1) ...
+Selecting previously unselected package fakeroot.
+Preparing to unpack .../39-fakeroot_1.28-1ubuntu1_amd64.deb ...
+Unpacking fakeroot (1.28-1ubuntu1) ...
+Selecting previously unselected package fonts-dejavu-core.
+Preparing to unpack .../40-fonts-dejavu-core_2.37-2build1_all.deb ...
+Unpacking fonts-dejavu-core (2.37-2build1) ...
+Selecting previously unselected package fontconfig-config.
+Preparing to unpack .../41-fontconfig-config_2.13.1-4.2ubuntu5_all.deb ...
+Unpacking fontconfig-config (2.13.1-4.2ubuntu5) ...
+Selecting previously unselected package javascript-common.
+Preparing to unpack .../42-javascript-common_11+nmu1_all.deb ...
+Unpacking javascript-common (11+nmu1) ...
+Selecting previously unselected package libalgorithm-diff-perl.
+Preparing to unpack .../43-libalgorithm-diff-perl_1.201-1_all.deb ...
+Unpacking libalgorithm-diff-perl (1.201-1) ...
+Selecting previously unselected package libalgorithm-diff-xs-perl.
+Preparing to unpack .../44-libalgorithm-diff-xs-perl_0.04-6build3_amd64.deb ...
+Unpacking libalgorithm-diff-xs-perl (0.04-6build3) ...
+Selecting previously unselected package libalgorithm-merge-perl.
+Preparing to unpack .../45-libalgorithm-merge-perl_0.08-3_all.deb ...
+Unpacking libalgorithm-merge-perl (0.08-3) ...
+Selecting previously unselected package libfontconfig1:amd64.
+Preparing to unpack .../46-libfontconfig1_2.13.1-4.2ubuntu5_amd64.deb ...
+Unpacking libfontconfig1:amd64 (2.13.1-4.2ubuntu5) ...
+Selecting previously unselected package libjpeg-turbo8:amd64.
+Preparing to unpack .../47-libjpeg-turbo8_2.1.2-0ubuntu1_amd64.deb ...
+Unpacking libjpeg-turbo8:amd64 (2.1.2-0ubuntu1) ...
+Selecting previously unselected package libjpeg8:amd64.
+Preparing to unpack .../48-libjpeg8_8c-2ubuntu10_amd64.deb ...
+Unpacking libjpeg8:amd64 (8c-2ubuntu10) ...
+Selecting previously unselected package libdeflate0:amd64.
+Preparing to unpack .../49-libdeflate0_1.10-2_amd64.deb ...
+Unpacking libdeflate0:amd64 (1.10-2) ...
+Selecting previously unselected package libjbig0:amd64.
+Preparing to unpack .../50-libjbig0_2.1-3.1ubuntu0.22.04.1_amd64.deb ...
+Unpacking libjbig0:amd64 (2.1-3.1ubuntu0.22.04.1) ...
+Selecting previously unselected package libwebp7:amd64.
+Preparing to unpack .../51-libwebp7_1.2.2-2ubuntu0.22.04.2_amd64.deb ...
+Unpacking libwebp7:amd64 (1.2.2-2ubuntu0.22.04.2) ...
+Selecting previously unselected package libtiff5:amd64.
+Preparing to unpack .../52-libtiff5_4.3.0-6ubuntu0.10_amd64.deb ...
+Unpacking libtiff5:amd64 (4.3.0-6ubuntu0.10) ...
+Selecting previously unselected package libxpm4:amd64.
+Preparing to unpack .../53-libxpm4_1%3a3.5.12-1ubuntu0.22.04.2_amd64.deb ...
+Unpacking libxpm4:amd64 (1:3.5.12-1ubuntu0.22.04.2) ...
+Selecting previously unselected package libgd3:amd64.
+Preparing to unpack .../54-libgd3_2.3.0-2ubuntu2.3_amd64.deb ...
+Unpacking libgd3:amd64 (2.3.0-2ubuntu2.3) ...
+Selecting previously unselected package libc-devtools.
+Preparing to unpack .../55-libc-devtools_2.35-0ubuntu3.9_amd64.deb ...
+Unpacking libc-devtools (2.35-0ubuntu3.9) ...
+Selecting previously unselected package libexpat1-dev:amd64.
+Preparing to unpack .../56-libexpat1-dev_2.4.7-1ubuntu0.5_amd64.deb ...
+Unpacking libexpat1-dev:amd64 (2.4.7-1ubuntu0.5) ...
+Selecting previously unselected package libfile-fcntllock-perl.
+Preparing to unpack .../57-libfile-fcntllock-perl_0.22-3build7_amd64.deb ...
+Unpacking libfile-fcntllock-perl (0.22-3build7) ...
+Selecting previously unselected package libjs-jquery.
+Preparing to unpack .../58-libjs-jquery_3.6.0+dfsg+~3.5.13-1_all.deb ...
+Unpacking libjs-jquery (3.6.0+dfsg+~3.5.13-1) ...
+Selecting previously unselected package libjs-underscore.
+Preparing to unpack .../59-libjs-underscore_1.13.2~dfsg-2_all.deb ...
+Unpacking libjs-underscore (1.13.2~dfsg-2) ...
+Selecting previously unselected package libjs-sphinxdoc.
+Preparing to unpack .../60-libjs-sphinxdoc_4.3.2-1_all.deb ...
+Unpacking libjs-sphinxdoc (4.3.2-1) ...
+Selecting previously unselected package zlib1g-dev:amd64.
+Preparing to unpack .../61-zlib1g-dev_1%3a1.2.11.dfsg-2ubuntu9.2_amd64.deb ...
+Unpacking zlib1g-dev:amd64 (1:1.2.11.dfsg-2ubuntu9.2) ...
+Selecting previously unselected package libpython3.10-dev:amd64.
+Preparing to unpack .../62-libpython3.10-dev_3.10.12-1~22.04.8_amd64.deb ...
+Unpacking libpython3.10-dev:amd64 (3.10.12-1~22.04.8) ...
+Selecting previously unselected package libpython3-dev:amd64.
+Preparing to unpack .../63-libpython3-dev_3.10.6-1~22.04.1_amd64.deb ...
+Unpacking libpython3-dev:amd64 (3.10.6-1~22.04.1) ...
+Selecting previously unselected package manpages-dev.
+Preparing to unpack .../64-manpages-dev_5.10-1ubuntu1_all.deb ...
+Unpacking manpages-dev (5.10-1ubuntu1) ...
+Selecting previously unselected package python3.10-dev.
+Preparing to unpack .../65-python3.10-dev_3.10.12-1~22.04.8_amd64.deb ...
+Unpacking python3.10-dev (3.10.12-1~22.04.8) ...
+Selecting previously unselected package python3-dev.
+Preparing to unpack .../66-python3-dev_3.10.6-1~22.04.1_amd64.deb ...
+Unpacking python3-dev (3.10.6-1~22.04.1) ...
+Selecting previously unselected package python3-wheel.
+Preparing to unpack .../67-python3-wheel_0.37.1-2ubuntu0.22.04.1_all.deb ...
+Unpacking python3-wheel (0.37.1-2ubuntu0.22.04.1) ...
+Selecting previously unselected package python3-pip.
+Preparing to unpack .../68-python3-pip_22.0.2+dfsg-1ubuntu0.5_all.deb ...
+Unpacking python3-pip (22.0.2+dfsg-1ubuntu0.5) ...
+Setting up javascript-common (11+nmu1) ...
+Setting up gcc-11-base:amd64 (11.4.0-1ubuntu1~22.04) ...
+Setting up manpages-dev (5.10-1ubuntu1) ...
+Setting up lto-disabled-list (24) ...
+Setting up libxpm4:amd64 (1:3.5.12-1ubuntu0.22.04.2) ...
+Setting up libfile-fcntllock-perl (0.22-3build7) ...
+Setting up libalgorithm-diff-perl (1.201-1) ...
+Setting up libdeflate0:amd64 (1.10-2) ...
+Setting up linux-libc-dev:amd64 (5.15.0-131.141) ...
+Setting up libgomp1:amd64 (12.3.0-1ubuntu1~22.04) ...
+Setting up bzip2 (1.0.8-5build1) ...
+Setting up python3-wheel (0.37.1-2ubuntu0.22.04.1) ...
+Setting up libjbig0:amd64 (2.1-3.1ubuntu0.22.04.1) ...
+Setting up libfakeroot:amd64 (1.28-1ubuntu1) ...
+Setting up libasan6:amd64 (11.4.0-1ubuntu1~22.04) ...
+Setting up fakeroot (1.28-1ubuntu1) ...
+update-alternatives: using /usr/bin/fakeroot-sysv to provide /usr/bin/fakeroot (fakeroot) in auto mode
+Setting up libtirpc-dev:amd64 (1.3.2-2ubuntu0.1) ...
+Setting up rpcsvc-proto (1.4.2-0ubuntu6) ...
+Setting up make (4.3-4.1build1) ...
+Setting up libquadmath0:amd64 (12.3.0-1ubuntu1~22.04) ...
+Setting up libmpc3:amd64 (1.2.1-2build1) ...
+Setting up libatomic1:amd64 (12.3.0-1ubuntu1~22.04) ...
+Setting up libpython3.10-minimal:amd64 (3.10.12-1~22.04.8) ...
+Setting up fonts-dejavu-core (2.37-2build1) ...
+Setting up python3-pip (22.0.2+dfsg-1ubuntu0.5) ...
+Setting up libjpeg-turbo8:amd64 (2.1.2-0ubuntu1) ...
+Setting up libdpkg-perl (1.21.1ubuntu2.3) ...
+Setting up libwebp7:amd64 (1.2.2-2ubuntu0.22.04.2) ...
+Setting up libubsan1:amd64 (12.3.0-1ubuntu1~22.04) ...
+Setting up libnsl-dev:amd64 (1.3.0-2build2) ...
+Setting up libcrypt-dev:amd64 (1:4.4.27-1) ...
+Setting up libjs-jquery (3.6.0+dfsg+~3.5.13-1) ...
+Setting up libisl23:amd64 (0.24-2build1) ...
+Setting up libc-dev-bin (2.35-0ubuntu3.9) ...
+Setting up libalgorithm-diff-xs-perl (0.04-6build3) ...
+Setting up libcc1-0:amd64 (12.3.0-1ubuntu1~22.04) ...
+Setting up liblsan0:amd64 (12.3.0-1ubuntu1~22.04) ...
+Setting up libitm1:amd64 (12.3.0-1ubuntu1~22.04) ...
+Setting up libjs-underscore (1.13.2~dfsg-2) ...
+Setting up libalgorithm-merge-perl (0.08-3) ...
+Setting up libtsan0:amd64 (11.4.0-1ubuntu1~22.04) ...
+Setting up libjpeg8:amd64 (8c-2ubuntu10) ...
+Setting up cpp-11 (11.4.0-1ubuntu1~22.04) ...
+Setting up fontconfig-config (2.13.1-4.2ubuntu5) ...
+Setting up python3.10-minimal (3.10.12-1~22.04.8) ...
+Setting up dpkg-dev (1.21.1ubuntu2.3) ...
+Setting up libpython3.10-stdlib:amd64 (3.10.12-1~22.04.8) ...
+Setting up libjs-sphinxdoc (4.3.2-1) ...
+Setting up libgcc-11-dev:amd64 (11.4.0-1ubuntu1~22.04) ...
+Setting up gcc-11 (11.4.0-1ubuntu1~22.04) ...
+Setting up cpp (4:11.2.0-1ubuntu1) ...
+Setting up libc6-dev:amd64 (2.35-0ubuntu3.9) ...
+Setting up libtiff5:amd64 (4.3.0-6ubuntu0.10) ...
+Setting up libfontconfig1:amd64 (2.13.1-4.2ubuntu5) ...
+Setting up libpython3.10:amd64 (3.10.12-1~22.04.8) ...
+Setting up python3.10 (3.10.12-1~22.04.8) ...
+Setting up gcc (4:11.2.0-1ubuntu1) ...
+Setting up libexpat1-dev:amd64 (2.4.7-1ubuntu0.5) ...
+Setting up libgd3:amd64 (2.3.0-2ubuntu2.3) ...
+Setting up libstdc++-11-dev:amd64 (11.4.0-1ubuntu1~22.04) ...
+Setting up zlib1g-dev:amd64 (1:1.2.11.dfsg-2ubuntu9.2) ...
+Setting up libc-devtools (2.35-0ubuntu3.9) ...
+Setting up g++-11 (11.4.0-1ubuntu1~22.04) ...
+Setting up libpython3.10-dev:amd64 (3.10.12-1~22.04.8) ...
+Setting up python3.10-dev (3.10.12-1~22.04.8) ...
+Setting up g++ (4:11.2.0-1ubuntu1) ...
+update-alternatives: using /usr/bin/g++ to provide /usr/bin/c++ (c++) in auto mode
+Setting up build-essential (12.9ubuntu3) ...
+Setting up libpython3-dev:amd64 (3.10.6-1~22.04.1) ...
+Setting up python3-dev (3.10.6-1~22.04.1) ...
+Processing triggers for man-db (2.10.2-1) ...
+Processing triggers for libc-bin (2.35-0ubuntu3.8) ...
+Scanning processes...                                                                                                                        
+Scanning candidates...                                                                                                                       
+Scanning linux images...                                                                                                                     
+
+Running kernel seems to be up-to-date.
+
+Restarting services...
+Service restarts being deferred:
+ systemctl restart acpid.service
+ systemctl restart chrony.service
+ systemctl restart containerd.service
+ systemctl restart cron.service
+ /etc/needrestart/restart.d/dbus.service
+ systemctl restart docker.service
+ systemctl restart getty@tty1.service
+ systemctl restart irqbalance.service
+ systemctl restart multipathd.service
+ systemctl restart networkd-dispatcher.service
+ systemctl restart packagekit.service
+ systemctl restart polkit.service
+ systemctl restart rsyslog.service
+ systemctl restart serial-getty@ttyS0.service
+ systemctl restart ssh.service
+ systemctl restart systemd-journald.service
+ systemctl restart systemd-logind.service
+ systemctl restart systemd-networkd.service
+ systemctl restart systemd-resolved.service
+ systemctl restart systemd-udevd.service
+ systemctl restart unattended-upgrades.service
+ systemctl restart user@1000.service
+
+No containers need to be restarted.
+
+No user sessions are running outdated binaries.
+
+No VM guests are running outdated hypervisor (qemu) binaries on this host.
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~</b></font>$ pip install semgrep
+Defaulting to user installation because normal site-packages is not writeable
+Collecting semgrep
+  Downloading semgrep-1.108.0-cp39.cp310.cp311.py39.py310.py311-none-musllinux_1_0_x86_64.manylinux2014_x86_64.whl (27.5 MB)
+     <font color="#87AF5F">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</font> <font color="#26A269">27.5/27.5 MB</font> <font color="#C01C28">45.6 MB/s</font> eta <font color="#2AA1B3">0:00:00</font>
+Collecting opentelemetry-instrumentation-requests~=0.46b0
+  Downloading opentelemetry_instrumentation_requests-0.51b0-py3-none-any.whl (12 kB)
+Collecting opentelemetry-exporter-otlp-proto-http~=1.25.0
+  Downloading opentelemetry_exporter_otlp_proto_http-1.25.0-py3-none-any.whl (16 kB)
+Requirement already satisfied: packaging&gt;=21.0 in /usr/lib/python3/dist-packages (from semgrep) (21.3)
+Collecting wcmatch~=8.3
+  Downloading wcmatch-8.5.2-py3-none-any.whl (39 kB)
+Collecting jsonschema~=4.6
+  Downloading jsonschema-4.23.0-py3-none-any.whl (88 kB)
+     <font color="#87AF5F">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</font> <font color="#26A269">88.5/88.5 KB</font> <font color="#C01C28">14.3 MB/s</font> eta <font color="#2AA1B3">0:00:00</font>
+Collecting opentelemetry-api~=1.25.0
+  Downloading opentelemetry_api-1.25.0-py3-none-any.whl (59 kB)
+     <font color="#87AF5F">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</font> <font color="#26A269">59.9/59.9 KB</font> <font color="#C01C28">6.6 MB/s</font> eta <font color="#2AA1B3">0:00:00</font>
+Collecting ruamel.yaml&gt;=0.18.5
+  Downloading ruamel.yaml-0.18.10-py3-none-any.whl (117 kB)
+     <font color="#87AF5F">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</font> <font color="#26A269">117.7/117.7 KB</font> <font color="#C01C28">18.3 MB/s</font> eta <font color="#2AA1B3">0:00:00</font>
+Requirement already satisfied: requests~=2.22 in /usr/lib/python3/dist-packages (from semgrep) (2.25.1)
+Collecting attrs&gt;=21.3
+  Downloading attrs-25.1.0-py3-none-any.whl (63 kB)
+     <font color="#87AF5F">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</font> <font color="#26A269">63.2/63.2 KB</font> <font color="#C01C28">10.7 MB/s</font> eta <font color="#2AA1B3">0:00:00</font>
+Collecting defusedxml~=0.7.1
+  Downloading defusedxml-0.7.1-py2.py3-none-any.whl (25 kB)
+Collecting urllib3~=2.0
+  Downloading urllib3-2.3.0-py3-none-any.whl (128 kB)
+     <font color="#87AF5F">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</font> <font color="#26A269">128.4/128.4 KB</font> <font color="#C01C28">20.6 MB/s</font> eta <font color="#2AA1B3">0:00:00</font>
+Collecting peewee~=3.14
+  Downloading peewee-3.17.9.tar.gz (3.0 MB)
+     <font color="#87AF5F">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</font> <font color="#26A269">3.0/3.0 MB</font> <font color="#C01C28">81.0 MB/s</font> eta <font color="#2AA1B3">0:00:00</font>
+  Installing build dependencies ... done
+  Getting requirements to build wheel ... done
+  Preparing metadata (pyproject.toml) ... done
+Collecting exceptiongroup~=1.2.0
+  Downloading exceptiongroup-1.2.2-py3-none-any.whl (16 kB)
+Collecting boltons~=21.0
+  Downloading boltons-21.0.0-py2.py3-none-any.whl (193 kB)
+     <font color="#87AF5F">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</font> <font color="#26A269">193.7/193.7 KB</font> <font color="#C01C28">23.3 MB/s</font> eta <font color="#2AA1B3">0:00:00</font>
+Collecting rich~=13.5.2
+  Downloading rich-13.5.3-py3-none-any.whl (239 kB)
+     <font color="#87AF5F">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</font> <font color="#26A269">239.8/239.8 KB</font> <font color="#C01C28">36.0 MB/s</font> eta <font color="#2AA1B3">0:00:00</font>
+Collecting typing-extensions~=4.2
+  Downloading typing_extensions-4.12.2-py3-none-any.whl (37 kB)
+Collecting click~=8.1
+  Downloading click-8.1.8-py3-none-any.whl (98 kB)
+     <font color="#87AF5F">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</font> <font color="#26A269">98.2/98.2 KB</font> <font color="#C01C28">15.6 MB/s</font> eta <font color="#2AA1B3">0:00:00</font>
+Collecting tomli~=2.0.1
+  Downloading tomli-2.0.2-py3-none-any.whl (13 kB)
+Collecting opentelemetry-sdk~=1.25.0
+  Downloading opentelemetry_sdk-1.25.0-py3-none-any.whl (107 kB)
+     <font color="#87AF5F">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</font> <font color="#26A269">107.0/107.0 KB</font> <font color="#C01C28">17.3 MB/s</font> eta <font color="#2AA1B3">0:00:00</font>
+Collecting click-option-group~=0.5
+  Downloading click_option_group-0.5.6-py3-none-any.whl (12 kB)
+Collecting glom~=22.1
+  Downloading glom-22.1.0-py2.py3-none-any.whl (100 kB)
+     <font color="#87AF5F">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</font> <font color="#26A269">100.7/100.7 KB</font> <font color="#C01C28">17.0 MB/s</font> eta <font color="#2AA1B3">0:00:00</font>
+Requirement already satisfied: colorama~=0.4.0 in /usr/lib/python3/dist-packages (from semgrep) (0.4.4)
+Collecting face&gt;=20.1.0
+  Downloading face-24.0.0-py3-none-any.whl (54 kB)
+     <font color="#87AF5F">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</font> <font color="#26A269">54.7/54.7 KB</font> <font color="#C01C28">8.8 MB/s</font> eta <font color="#2AA1B3">0:00:00</font>
+Collecting jsonschema-specifications&gt;=2023.03.6
+  Downloading jsonschema_specifications-2024.10.1-py3-none-any.whl (18 kB)
+Collecting rpds-py&gt;=0.7.1
+  Downloading rpds_py-0.22.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (381 kB)
+     <font color="#87AF5F">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</font> <font color="#26A269">382.0/382.0 KB</font> <font color="#C01C28">16.5 MB/s</font> eta <font color="#2AA1B3">0:00:00</font>
+Collecting referencing&gt;=0.28.4
+  Downloading referencing-0.36.2-py3-none-any.whl (26 kB)
+Collecting deprecated&gt;=1.2.6
+  Downloading Deprecated-1.2.18-py2.py3-none-any.whl (10.0 kB)
+Collecting importlib-metadata&lt;=7.1,&gt;=6.0
+  Downloading importlib_metadata-7.1.0-py3-none-any.whl (24 kB)
+Collecting opentelemetry-exporter-otlp-proto-common==1.25.0
+  Downloading opentelemetry_exporter_otlp_proto_common-1.25.0-py3-none-any.whl (17 kB)
+Collecting googleapis-common-protos~=1.52
+  Downloading googleapis_common_protos-1.67.0-py2.py3-none-any.whl (164 kB)
+     <font color="#87AF5F">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</font> <font color="#26A269">165.0/165.0 KB</font> <font color="#C01C28">24.3 MB/s</font> eta <font color="#2AA1B3">0:00:00</font>
+Collecting opentelemetry-proto==1.25.0
+  Downloading opentelemetry_proto-1.25.0-py3-none-any.whl (52 kB)
+     <font color="#87AF5F">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</font> <font color="#26A269">52.5/52.5 KB</font> <font color="#C01C28">8.7 MB/s</font> eta <font color="#2AA1B3">0:00:00</font>
+Collecting protobuf&lt;5.0,&gt;=3.19
+  Downloading protobuf-4.25.6-cp37-abi3-manylinux2014_x86_64.whl (294 kB)
+     <font color="#87AF5F">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</font> <font color="#26A269">294.6/294.6 KB</font> <font color="#C01C28">37.7 MB/s</font> eta <font color="#2AA1B3">0:00:00</font>
+Collecting opentelemetry-instrumentation==0.51b0
+  Downloading opentelemetry_instrumentation-0.51b0-py3-none-any.whl (30 kB)
+Collecting opentelemetry-util-http==0.51b0
+  Downloading opentelemetry_util_http-0.51b0-py3-none-any.whl (7.3 kB)
+Collecting opentelemetry-semantic-conventions==0.51b0
+  Downloading opentelemetry_semantic_conventions-0.51b0-py3-none-any.whl (177 kB)
+     <font color="#87AF5F">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</font> <font color="#26A269">177.4/177.4 KB</font> <font color="#C01C28">24.9 MB/s</font> eta <font color="#2AA1B3">0:00:00</font>
+Collecting wrapt&lt;2.0.0,&gt;=1.0.0
+  Downloading wrapt-1.17.2-cp310-cp310-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl (82 kB)
+     <font color="#87AF5F">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</font> <font color="#26A269">82.8/82.8 KB</font> <font color="#C01C28">15.0 MB/s</font> eta <font color="#2AA1B3">0:00:00</font>
+INFO: pip is looking at multiple versions of opentelemetry-instrumentation to determine which version is compatible with other requirements. This could take a while.
+INFO: pip is looking at multiple versions of opentelemetry-instrumentation-requests to determine which version is compatible with other requirements. This could take a while.
+Collecting opentelemetry-instrumentation-requests~=0.46b0
+  Downloading opentelemetry_instrumentation_requests-0.50b0-py3-none-any.whl (12 kB)
+Collecting opentelemetry-instrumentation==0.50b0
+  Downloading opentelemetry_instrumentation-0.50b0-py3-none-any.whl (30 kB)
+Collecting opentelemetry-util-http==0.50b0
+  Downloading opentelemetry_util_http-0.50b0-py3-none-any.whl (6.9 kB)
+Collecting opentelemetry-semantic-conventions==0.50b0
+  Downloading opentelemetry_semantic_conventions-0.50b0-py3-none-any.whl (166 kB)
+     <font color="#87AF5F">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</font> <font color="#26A269">166.6/166.6 KB</font> <font color="#C01C28">25.6 MB/s</font> eta <font color="#2AA1B3">0:00:00</font>
+Collecting opentelemetry-instrumentation-requests~=0.46b0
+  Downloading opentelemetry_instrumentation_requests-0.49b2-py3-none-any.whl (12 kB)
+Collecting opentelemetry-instrumentation==0.49b2
+  Downloading opentelemetry_instrumentation-0.49b2-py3-none-any.whl (30 kB)
+Collecting opentelemetry-semantic-conventions==0.49b2
+  Downloading opentelemetry_semantic_conventions-0.49b2-py3-none-any.whl (159 kB)
+     <font color="#87AF5F">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</font> <font color="#26A269">159.2/159.2 KB</font> <font color="#C01C28">23.4 MB/s</font> eta <font color="#2AA1B3">0:00:00</font>
+Collecting opentelemetry-util-http==0.49b2
+  Downloading opentelemetry_util_http-0.49b2-py3-none-any.whl (6.9 kB)
+Collecting opentelemetry-instrumentation-requests~=0.46b0
+  Downloading opentelemetry_instrumentation_requests-0.49b1-py3-none-any.whl (12 kB)
+Collecting opentelemetry-instrumentation==0.49b1
+  Downloading opentelemetry_instrumentation-0.49b1-py3-none-any.whl (30 kB)
+Collecting opentelemetry-semantic-conventions==0.49b1
+  Downloading opentelemetry_semantic_conventions-0.49b1-py3-none-any.whl (159 kB)
+     <font color="#87AF5F">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</font> <font color="#26A269">159.2/159.2 KB</font> <font color="#C01C28">24.9 MB/s</font> eta <font color="#2AA1B3">0:00:00</font>
+Collecting opentelemetry-util-http==0.49b1
+  Downloading opentelemetry_util_http-0.49b1-py3-none-any.whl (6.9 kB)
+Collecting opentelemetry-instrumentation-requests~=0.46b0
+  Downloading opentelemetry_instrumentation_requests-0.49b0-py3-none-any.whl (12 kB)
+Collecting opentelemetry-util-http==0.49b0
+  Downloading opentelemetry_util_http-0.49b0-py3-none-any.whl (6.9 kB)
+Collecting opentelemetry-semantic-conventions==0.49b0
+  Downloading opentelemetry_semantic_conventions-0.49b0-py3-none-any.whl (159 kB)
+     <font color="#87AF5F">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</font> <font color="#26A269">159.2/159.2 KB</font> <font color="#C01C28">25.7 MB/s</font> eta <font color="#2AA1B3">0:00:00</font>
+Collecting opentelemetry-instrumentation==0.49b0
+  Downloading opentelemetry_instrumentation-0.49b0-py3-none-any.whl (30 kB)
+Collecting opentelemetry-instrumentation-requests~=0.46b0
+  Downloading opentelemetry_instrumentation_requests-0.48b0-py3-none-any.whl (12 kB)
+Collecting opentelemetry-util-http==0.48b0
+  Downloading opentelemetry_util_http-0.48b0-py3-none-any.whl (6.9 kB)
+Collecting opentelemetry-instrumentation==0.48b0
+  Downloading opentelemetry_instrumentation-0.48b0-py3-none-any.whl (29 kB)
+Collecting opentelemetry-semantic-conventions==0.48b0
+  Downloading opentelemetry_semantic_conventions-0.48b0-py3-none-any.whl (149 kB)
+     <font color="#87AF5F">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</font> <font color="#26A269">149.7/149.7 KB</font> <font color="#C01C28">20.8 MB/s</font> eta <font color="#2AA1B3">0:00:00</font>
+Requirement already satisfied: setuptools&gt;=16.0 in /usr/lib/python3/dist-packages (from opentelemetry-instrumentation==0.48b0-&gt;opentelemetry-instrumentation-requests~=0.46b0-&gt;semgrep) (59.6.0)
+Collecting opentelemetry-instrumentation-requests~=0.46b0
+  Downloading opentelemetry_instrumentation_requests-0.47b0-py3-none-any.whl (12 kB)
+Collecting opentelemetry-util-http==0.47b0
+  Downloading opentelemetry_util_http-0.47b0-py3-none-any.whl (6.9 kB)
+Collecting opentelemetry-semantic-conventions==0.47b0
+  Downloading opentelemetry_semantic_conventions-0.47b0-py3-none-any.whl (138 kB)
+     <font color="#87AF5F">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</font> <font color="#26A269">138.0/138.0 KB</font> <font color="#C01C28">23.3 MB/s</font> eta <font color="#2AA1B3">0:00:00</font>
+Collecting opentelemetry-instrumentation==0.47b0
+  Downloading opentelemetry_instrumentation-0.47b0-py3-none-any.whl (29 kB)
+Collecting opentelemetry-instrumentation-requests~=0.46b0
+  Downloading opentelemetry_instrumentation_requests-0.46b0-py3-none-any.whl (12 kB)
+Collecting opentelemetry-util-http==0.46b0
+  Downloading opentelemetry_util_http-0.46b0-py3-none-any.whl (6.9 kB)
+Collecting opentelemetry-instrumentation==0.46b0
+  Downloading opentelemetry_instrumentation-0.46b0-py3-none-any.whl (29 kB)
+Collecting opentelemetry-semantic-conventions==0.46b0
+  Downloading opentelemetry_semantic_conventions-0.46b0-py3-none-any.whl (130 kB)
+     <font color="#87AF5F">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</font> <font color="#26A269">130.5/130.5 KB</font> <font color="#C01C28">20.9 MB/s</font> eta <font color="#2AA1B3">0:00:00</font>
+Collecting markdown-it-py&gt;=2.2.0
+  Downloading markdown_it_py-3.0.0-py3-none-any.whl (87 kB)
+     <font color="#87AF5F">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</font> <font color="#26A269">87.5/87.5 KB</font> <font color="#C01C28">14.8 MB/s</font> eta <font color="#2AA1B3">0:00:00</font>
+Collecting pygments&lt;3.0.0,&gt;=2.13.0
+  Downloading pygments-2.19.1-py3-none-any.whl (1.2 MB)
+     <font color="#87AF5F">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</font> <font color="#26A269">1.2/1.2 MB</font> <font color="#C01C28">76.9 MB/s</font> eta <font color="#2AA1B3">0:00:00</font>
+Collecting ruamel.yaml.clib&gt;=0.2.7
+  Downloading ruamel.yaml.clib-0.2.12-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (722 kB)
+     <font color="#87AF5F">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</font> <font color="#26A269">722.2/722.2 KB</font> <font color="#C01C28">64.2 MB/s</font> eta <font color="#2AA1B3">0:00:00</font>
+Collecting bracex&gt;=2.1.1
+  Downloading bracex-2.5.post1-py3-none-any.whl (11 kB)
+Requirement already satisfied: zipp&gt;=0.5 in /usr/lib/python3/dist-packages (from importlib-metadata&lt;=7.1,&gt;=6.0-&gt;opentelemetry-api~=1.25.0-&gt;semgrep) (1.0.0)
+Collecting mdurl~=0.1
+  Downloading mdurl-0.1.2-py3-none-any.whl (10.0 kB)
+Building wheels for collected packages: peewee
+  Building wheel for peewee (pyproject.toml) ... done
+  Created wheel for peewee: filename=peewee-3.17.9-py3-none-any.whl size=139000 sha256=0931201b2550604516fd4778c1bde231cccb84bf9bcf1704f1499c2fe06d5192
+  Stored in directory: /home/ubuntu/.cache/pip/wheels/fd/fd/5e/90b9ec95da4fd6c96237b580ce74f89d6bdea547ad151ab5f4
+Successfully built peewee
+Installing collected packages: peewee, boltons, wrapt, urllib3, typing-extensions, tomli, ruamel.yaml.clib, rpds-py, pygments, protobuf, opentelemetry-util-http, mdurl, importlib-metadata, face, exceptiongroup, defusedxml, click, bracex, attrs, wcmatch, ruamel.yaml, referencing, opentelemetry-proto, markdown-it-py, googleapis-common-protos, glom, deprecated, click-option-group, rich, opentelemetry-exporter-otlp-proto-common, opentelemetry-api, jsonschema-specifications, opentelemetry-semantic-conventions, opentelemetry-instrumentation, jsonschema, opentelemetry-sdk, opentelemetry-instrumentation-requests, opentelemetry-exporter-otlp-proto-http, semgrep
+<font color="#A2734C">  WARNING: The script pygmentize is installed in &apos;/home/ubuntu/.local/bin&apos; which is not on PATH.</font>
+<font color="#A2734C">  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.</font>
+<font color="#A2734C">  WARNING: The script markdown-it is installed in &apos;/home/ubuntu/.local/bin&apos; which is not on PATH.</font>
+<font color="#A2734C">  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.</font>
+<font color="#A2734C">  WARNING: The script glom is installed in &apos;/home/ubuntu/.local/bin&apos; which is not on PATH.</font>
+<font color="#A2734C">  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.</font>
+<font color="#A2734C">  WARNING: The scripts opentelemetry-bootstrap and opentelemetry-instrument are installed in &apos;/home/ubuntu/.local/bin&apos; which is not on PATH.</font>
+<font color="#A2734C">  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.</font>
+<font color="#A2734C">  WARNING: The script jsonschema is installed in &apos;/home/ubuntu/.local/bin&apos; which is not on PATH.</font>
+<font color="#A2734C">  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.</font>
+<font color="#A2734C">  WARNING: The scripts pysemgrep and semgrep are installed in &apos;/home/ubuntu/.local/bin&apos; which is not on PATH.</font>
+<font color="#A2734C">  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.</font>
+Successfully installed attrs-25.1.0 boltons-21.0.0 bracex-2.5.post1 click-8.1.8 click-option-group-0.5.6 defusedxml-0.7.1 deprecated-1.2.18 exceptiongroup-1.2.2 face-24.0.0 glom-22.1.0 googleapis-common-protos-1.67.0 importlib-metadata-7.1.0 jsonschema-4.23.0 jsonschema-specifications-2024.10.1 markdown-it-py-3.0.0 mdurl-0.1.2 opentelemetry-api-1.25.0 opentelemetry-exporter-otlp-proto-common-1.25.0 opentelemetry-exporter-otlp-proto-http-1.25.0 opentelemetry-instrumentation-0.46b0 opentelemetry-instrumentation-requests-0.46b0 opentelemetry-proto-1.25.0 opentelemetry-sdk-1.25.0 opentelemetry-semantic-conventions-0.46b0 opentelemetry-util-http-0.46b0 peewee-3.17.9 protobuf-4.25.6 pygments-2.19.1 referencing-0.36.2 rich-13.5.3 rpds-py-0.22.3 ruamel.yaml-0.18.10 ruamel.yaml.clib-0.2.12 semgrep-1.108.0 tomli-2.0.2 typing-extensions-4.12.2 urllib3-2.3.0 wcmatch-8.5.2 wrapt-1.17.2
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~</b></font>$ semgrep --version
+Command &apos;semgrep&apos; not found, but can be installed with:
+sudo snap install semgrep
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~</b></font>$ sudo snap install semgrep
+semgrep 1.56.0 from George-Andrei Iosif (iosifache) installed
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~</b></font>$ semgrep --version
+1.56.0
+
+⏫  A new version of Semgrep is available. See https://semgrep.dev/docs/upgrading
+
+⏫  Versions prior to 1.76.0 are no longer supported by Semgrep.dev, please upgrade.
+<font color="#26A269"><b>ubuntu@ip-172-31-47-20</b></font>:<font color="#12488B"><b>~</b></font>$ gitlab-runner run
+Runtime platform                                    arch=amd64 os=linux pid=4751 revision=690ce25c version=17.8.3
+Starting multi-runner from /home/ubuntu/.gitlab-runner/config.toml...  builds=0 max_builds=0
+<font color="#A2734C">WARNING: Running in user-mode.                    </font> 
+<font color="#A2734C">WARNING: Use sudo for system-mode:                </font> 
+<font color="#A2734C">WARNING: $ sudo gitlab-runner...                  </font> 
+                                                   
+Configuration loaded                                builds=0 max_builds=1
+listen_address not defined, metrics &amp; debug endpoints disabled  builds=0 max_builds=1
+[session_server].listen_address not defined, session endpoints disabled  builds=0 max_builds=1
+Initializing executor providers                     builds=0 max_builds=1
+Checking for jobs... received                       job=9 repo_url=https://gitlab.test.local/root/yehia-repo.git runner=t3_4vJ_RE
+Added job to processing list                        builds=1 job=9 max_builds=1 project=1 repo_url=https://gitlab.test.local/root/yehia-repo.git time_in_queue_seconds=1
+Appending trace to coordinator...ok                 code=202 job=9 job-log=0-1609 job-status=running runner=t3_4vJ_RE sent-log=0-1608 status=202 Accepted update-interval=1m0s
+Job succeeded                                       duration_s=15.015791237 job=9 project=1 runner=t3_4vJ_RE
+Appending trace to coordinator...ok                 code=202 job=9 job-log=0-4553 job-status=running runner=t3_4vJ_RE sent-log=1609-4552 status=202 Accepted update-interval=1m0s
+Updating job...                                     bytesize=4553 checksum=crc32:c535f80c job=9 runner=t3_4vJ_RE
+Submitting job to coordinator...ok                  bytesize=4553 checksum=crc32:c535f80c code=200 job=9 job-status=success runner=t3_4vJ_RE update-interval=0s
+Removed job from processing list                    builds=0 job=9 max_builds=1 project=1 repo_url=https://gitlab.test.local/root/yehia-repo.git time_in_queue_seconds=1
+Connection to ec2-3-90-40-223.compute-1.amazonaws.com closed by remote host.
+Connection to ec2-3-90-40-223.compute-1.amazonaws.com closed.
+</pre>
