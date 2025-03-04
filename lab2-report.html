@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>lab2-report.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="task-1---sast-tools">Task 1 - SAST Tools</h1>
+<h2 id="1-python-application-findings">1. Python Application Findings</h2>
+<h3 id="a-high-severity-flask-debug-mode-enabled-cwe-94">A. High Severity: Flask Debug Mode Enabled (CWE-94)</h3>
+<p><strong>Location:</strong> <code>./bad/vulpy.py:55:0</code></p>
+<p><strong>Code Snippet:</strong></p>
+<pre class="hljs"><code><div>app.run(debug=<span class="hljs-literal">True</span>, host=<span class="hljs-string">'127.0.1.1'</span>, port=<span class="hljs-number">5000</span>, extra_files=<span class="hljs-string">'csp.txt'</span>)
+</div></code></pre>
+<p><strong>Issue:</strong><br>
+Debug mode exposes the Werkzeug debugger, allowing attackers to execute arbitrary code if accessed. Critical for publicly accessible apps.</p>
+<p><strong>Mitigation:</strong><br>
+Disable debug mode in production:</p>
+<pre class="hljs"><code><div>app.run(debug=<span class="hljs-literal">False</span>, host=<span class="hljs-string">'127.0.1.1'</span>, port=<span class="hljs-number">5000</span>)
+</div></code></pre>
+<h2 id=""><img src="/screnshoots/1/1/1.1.png" alt=""></h2>
+<h3 id="b-medium-severity-sql-injection-cwe-89">B. Medium Severity: SQL Injection (CWE-89)</h3>
+<p><strong>Location:</strong> <code>./bad/libuser.py:12:21</code></p>
+<p><strong>Code Snippet:</strong></p>
+<pre class="hljs"><code><div>user = c.execute(<span class="hljs-string">"SELECT * FROM users WHERE username = '{}' and password = '{}'"</span>.format(username, password))
+</div></code></pre>
+<p><strong>Issue:</strong><br>
+Direct user input embedding enables SQL injection (e.g., <code>' OR 1=1 --</code>).</p>
+<p><strong>Mitigation:</strong><br>
+Use parameterized queries:</p>
+<pre class="hljs"><code><div>user = c.execute(<span class="hljs-string">"SELECT * FROM users WHERE username = ? AND password = ?"</span>, (username, password))
+</div></code></pre>
+<p><img src="/screnshoots/1/1/1.2.png" alt=""></p>
+<hr>
+<h3 id="c-low-severity-hardcoded-password-cwe-259">C. Low Severity: Hardcoded Password (CWE-259)</h3>
+<p><strong>Location:</strong> <code>./bad/vulpy.py:16:11</code></p>
+<p><strong>Code Snippet:</strong></p>
+<pre class="hljs"><code><div>app.config[<span class="hljs-string">'SECRET_KEY'</span>] = <span class="hljs-string">'aaaaaaa'</span>
+</div></code></pre>
+<p><strong>Issue:</strong><br>
+Hardcoded secrets risk exposure if code is leaked.</p>
+<p><strong>Mitigation:</strong><br>
+Use environment variables:</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">import</span> os
+app.config[<span class="hljs-string">'SECRET_KEY'</span>] = os.environ.get(<span class="hljs-string">'SECRET_KEY'</span>)
+</div></code></pre>
+<p><img src="/screnshoots/1/1/1.3.png" alt=""></p>
+<h3 id="python-app-summary">Python App Summary:</h3>
+<table>
+<thead>
+<tr>
+<th>Severity</th>
+<th>Issue</th>
+<th>CWE</th>
+<th>Mitigation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>High</td>
+<td>Debug Mode Enabled</td>
+<td>94</td>
+<td>Disable <code>debug=True</code></td>
+</tr>
+<tr>
+<td>Medium</td>
+<td>SQL Injection</td>
+<td>89</td>
+<td>Use parameterized queries</td>
+</tr>
+<tr>
+<td>Low</td>
+<td>Hardcoded Secret</td>
+<td>259</td>
+<td>Use environment variables</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="2-c-program-findings">2. C Program Findings</h2>
+<h3 id="a-level-1-vulnerability-buffer-over-read-via-strlen-cwe-126">A. Level 1 Vulnerability: Buffer Over-Read via <code>strlen</code> (CWE-126)</h3>
+<p><strong>Location:</strong> <code>./libAFL/damn_vulnerable_c_program_shmem/imgRead.c:35</code></p>
+<p><strong>Code Snippet:</strong></p>
+<pre class="hljs"><code><div>bufsize = <span class="hljs-built_in">strlen</span>(shmem_buf);
+</div></code></pre>
+<p><strong>Issue:</strong><br>
+Potential buffer over-read if <code>shmem_buf</code> lacks null termination.</p>
+<p><strong>Mitigation:</strong><br>
+Validate null termination or use <code>memchr</code> to check for <code>\0</code>.
+<img src="/screnshoots/1/2/1.1.png" alt=""></p>
+<hr>
+<h3 id="b-level-2-vulnerability-unsafe-memcpy-cwe-120">B. Level 2 Vulnerability: Unsafe <code>memcpy</code> (CWE-120)</h3>
+<p><strong>Location:</strong> <code>./dvcp.c:58</code></p>
+<p><strong>Code Snippet:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-built_in">memcpy</span>(buff1, img.data, <span class="hljs-keyword">sizeof</span>(img.data));
+</div></code></pre>
+<p><strong>Issue:</strong><br>
+Buffer overflow risk if <code>img.data</code> exceeds <code>buff1</code> size.</p>
+<p><strong>Mitigation:</strong><br>
+Add size checks or use <code>memcpy_s</code>:</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">if</span> (<span class="hljs-keyword">sizeof</span>(img.data) &lt;= <span class="hljs-keyword">sizeof</span>(buff1)) {
+    <span class="hljs-built_in">memcpy</span>(buff1, img.data, <span class="hljs-keyword">sizeof</span>(img.data));
+}
+</div></code></pre>
+<p><img src="/screnshoots/1/2/1.2.png" alt=""></p>
+<h3 id="there-is-no-level-3-vulnerability-found">There is no level 3 Vulnerability found</h3>
+<hr>
+<h3 id="c-false-positive-example">C. False-Positive Example</h3>
+<p><strong>Flagged Code:</strong></p>
+<pre class="hljs"><code><div>fp = fopen(filename, <span class="hljs-string">"r"</span>);
+</div></code></pre>
+<p><strong>Location:</strong> <code>./dvcp.c:33</code></p>
+<p><strong>Why False-Positive:</strong><br>
+Hardcoded paths (e.g., <code>fopen(&quot;/etc/static_config.conf&quot;, &quot;r&quot;)</code>) pose minimal risk.
+<img src="/screnshoots/1/2/1.3.png" alt=""></p>
+<h3 id="c-program-summary">C Program Summary:</h3>
+<table>
+<thead>
+<tr>
+<th>Level</th>
+<th>Vulnerability</th>
+<th>CWE</th>
+<th>Mitigation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Buffer Over-Read</td>
+<td>126</td>
+<td>Validate null termination</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Unsafe <code>memcpy</code></td>
+<td>120</td>
+<td>Check buffer sizes</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="3-javascript-application-findings">3. JavaScript Application Findings</h2>
+<h3 id="a-error-severity-xss-in-ejs-template-cwe-79">A. ERROR Severity: XSS in EJS Template (CWE-79)</h3>
+<p><strong>Location:</strong> <code>views/app/products.ejs</code></p>
+<p><strong>Code Snippet:</strong></p>
+<pre class="hljs"><code><div>&lt;%- output.products[i].description %&gt;
+</div></code></pre>
+<p><strong>Issue:</strong><br>
+Unsanitized user input enables script injection.</p>
+<p><strong>Mitigation:</strong><br>
+Use <code>&lt;%= ... %&gt;</code> for auto-escaping or sanitize with <code>DOMPurify</code>.
+<img src="/screnshoots/1/3/1.1.png" alt=""></p>
+<hr>
+<h3 id="b-warning-severity-cleartext-database-connection-cwe-319">B. WARNING Severity: Cleartext Database Connection (CWE-319)</h3>
+<p><strong>Location:</strong> <code>config/db.js</code></p>
+<p><strong>Code Snippet:</strong></p>
+<pre class="hljs"><code><div>dialect: <span class="hljs-string">'mysql'</span>
+</div></code></pre>
+<p><strong>Issue:</strong><br>
+Unencrypted database traffic risks MITM attacks.</p>
+<p><strong>Mitigation:</strong><br>
+Enable TLS:</p>
+<pre class="hljs"><code><div>dialectOptions: { <span class="hljs-attr">ssl</span>: { <span class="hljs-attr">require</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">rejectUnauthorized</span>: <span class="hljs-literal">false</span> }}
+</div></code></pre>
+<p><img src="/screnshoots/1/3/1.2.png" alt=""></p>
+<hr>
+<h3 id="c-info-severity-default-session-cookie-cwe-522">C. INFO Severity: Default Session Cookie (CWE-522)</h3>
+<p><strong>Location:</strong> <code>server.js</code></p>
+<p><strong>Code Snippet:</strong></p>
+<pre class="hljs"><code><div>app.use(session({ <span class="hljs-attr">secret</span>: <span class="hljs-string">'keyboard cat'</span>, <span class="hljs-attr">cookie</span>: { <span class="hljs-attr">secure</span>: <span class="hljs-literal">false</span> }}))
+</div></code></pre>
+<p><strong>Issue:</strong><br>
+Predictable cookie name and insecure settings.</p>
+<p><strong>Mitigation:</strong><br>
+Customize cookie name and enforce HTTPS:</p>
+<pre class="hljs"><code><div>name: <span class="hljs-string">'customSessionId'</span>, <span class="hljs-attr">cookie</span>: { <span class="hljs-attr">secure</span>: <span class="hljs-literal">true</span> }
+</div></code></pre>
+<p><img src="/screnshoots/1/3/1.3.png" alt=""></p>
+<h3 id="javascript-app-summary">JavaScript App Summary:</h3>
+<table>
+<thead>
+<tr>
+<th>Severity</th>
+<th>Vulnerability</th>
+<th>CWE</th>
+<th>Mitigation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ERROR</td>
+<td>XSS in EJS Template</td>
+<td>79</td>
+<td>Use <code>&lt;%= %&gt;</code> or sanitize HTML</td>
+</tr>
+<tr>
+<td>WARNING</td>
+<td>Cleartext Database Connection</td>
+<td>319</td>
+<td>Enable SSL/TLS</td>
+</tr>
+<tr>
+<td>INFO</td>
+<td>Default Session Cookie</td>
+<td>522</td>
+<td>Customize name, enable secure</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h1 id="2">2</h1>
+<h1 id="task-2---web-security-mini-labs">Task 2 - Web Security Mini Labs</h1>
+<p><strong>Student Alias:</strong> [YehiaSobeh]</p>
+<h2 id="1-cross-site-scripting-xss">1. Cross-Site Scripting (XSS)</h2>
+<h3 id="steps-exploited">Steps Exploited</h3>
+<ol>
+<li>Deployed the vulnerable XSS application using Docker:<pre class="hljs"><code><div>docker run -p 127.0.0.1:5000:5000 sh3b0/vuln:xss
+</div></code></pre>
+</li>
+<li>Injected the following script into a comment or search field:<pre class="hljs"><code><div><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="actionscript">alert(<span class="hljs-string">'YehiaSobehSTUDENT123'</span>)</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+</div></code></pre>
+</li>
+<li>Successfully triggered an alert displaying the student ID.</li>
+</ol>
+<p><strong>Screenshot:</strong>
+<img src="/screnshoots/2/1/1.png" alt="">
+<img src="/screnshoots/2/1/2.png" alt="">
+<img src="/screnshoots/2/1/3.png" alt="">
+<img src="/screnshoots/2/1/4.png" alt="">
+<img src="/screnshoots/2/1/5.png" alt=""></p>
+<h3 id="why-its-dangerous">Why It’s Dangerous</h3>
+<ul>
+<li>Attackers can execute malicious scripts in users' browsers.</li>
+<li>This can lead to session hijacking, phishing attacks, and cookie theft.</li>
+</ul>
+<h3 id="protection-measures">Protection Measures</h3>
+<ul>
+<li>Sanitize user input by escaping special characters such as <code>&lt;</code>, <code>&gt;</code>, and <code>&amp;</code>.</li>
+<li>Implement Content Security Policy (CSP) headers to restrict script execution.</li>
+</ul>
+<hr>
+<h2 id="2-path-traversal">2. Path Traversal</h2>
+<h3 id="steps-exploited">Steps Exploited</h3>
+<ol>
+<li>Ran the vulnerable Path Traversal application:<pre class="hljs"><code><div>docker run -p 127.0.0.1:5000:5000 sh3b0/vuln:path-traversal
+</div></code></pre>
+</li>
+<li>Accessed a sensitive file by visiting:<pre class="hljs"><code><div>http://localhost:5000
+</div></code></pre>
+</li>
+<li>modefy the path inside the html from <code>text/intro.txt</code> into <code>../../../etc/passwd</code></li>
+<li>Successfully retrieved the <code>/etc/passwd</code> file, proving the vulnerability.</li>
+</ol>
+<p><strong>Screenshot:</strong>
+<img src="/screnshoots/2/2/1.png" alt="">
+<img src="/screnshoots/2/2/2.png" alt="">
+<img src="/screnshoots/2/2/3.png" alt=""></p>
+<h3 id="why-its-dangerous">Why It’s Dangerous</h3>
+<ul>
+<li>Attackers can access sensitive files, including configuration files and credentials.</li>
+</ul>
+<h3 id="protection-measures">Protection Measures</h3>
+<ul>
+<li>Validate and sanitize user-supplied file paths.</li>
+<li>Implement a whitelist of allowed files.</li>
+</ul>
+<hr>
+<h2 id="3-sql-injection">3. SQL Injection</h2>
+<h3 id="steps-exploited">Steps Exploited</h3>
+<ol>
+<li>Launched the SQL Injection test application:<pre class="hljs"><code><div>docker run -p 127.0.0.1:5000:5000 sh3b0/vuln:sqli
+</div></code></pre>
+</li>
+<li>Injected a malicious SQL payload:<pre class="hljs"><code><div>UNION <span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> <span class="hljs-keyword">users</span>
+</div></code></pre>
+</li>
+<li>Extracted sensitive database information, including a fake admin account.</li>
+</ol>
+<p><strong>Screenshot:</strong>
+<img src="/screnshoots/2/3/1.png" alt="">
+<img src="/screnshoots/2/3/2.png" alt="">
+<img src="/screnshoots/2/3/3.png" alt="">
+<img src="/screnshoots/2/3/4.png" alt=""></p>
+<h3 id="why-its-dangerous">Why It’s Dangerous</h3>
+<ul>
+<li>Allows unauthorized database access, data leaks, and even data deletion.</li>
+</ul>
+<h3 id="protection-measures">Protection Measures</h3>
+<ul>
+<li>Always use parameterized queries or ORM libraries.</li>
+<li>Escape special characters in user inputs.</li>
+</ul>
+<hr>
+<h2 id="4-file-upload-vulnerability">4. File Upload Vulnerability</h2>
+<h3 id="steps-exploited">Steps Exploited</h3>
+<ol>
+<li>Started the vulnerable file upload application:<pre class="hljs"><code><div>docker run -p 127.0.0.1:5000:5000 sh3b0/vuln:file-upload
+</div></code></pre>
+</li>
+<li>Uploaded a html file having in the page (hello yehia):<pre class="hljs"><code><div>../templates/index.html
+</div></code></pre>
+</li>
+<li>Fetch the home page:<pre class="hljs"><code><div>http://localhost:5000
+</div></code></pre>
+</li>
+</ol>
+<p><strong>Screenshot:</strong>
+<img src="/screnshoots/2/4/1.png" alt="">
+<img src="/screnshoots/2/4/2.png" alt="">
+<img src="/screnshoots/2/4/3.png" alt="">
+<img src="/screnshoots/2/4/4.png" alt="">
+<img src="/screnshoots/2/4/5.png" alt="">
+<img src="/screnshoots/2/4/6.png" alt="">
+<img src="/screnshoots/2/4/7.png" alt=""></p>
+<h3 id="why-its-dangerous">Why It’s Dangerous</h3>
+<ul>
+<li>Enables remote code execution (RCE), allowing attackers full control over the server.</li>
+</ul>
+<h3 id="protection-measures">Protection Measures</h3>
+<ul>
+<li>Restrict file uploads to specific extensions (e.g., <code>.jpg</code>, <code>.png</code>).</li>
+<li>Store uploaded files outside the webroot to prevent direct execution.</li>
+</ul>
+<hr>
+<h2 id="5-command-injection">5. Command Injection</h2>
+<h3 id="steps-exploited">Steps Exploited</h3>
+<ol>
+<li>Launched the command injection test application:<pre class="hljs"><code><div>docker run -p 127.0.0.1:5000:5000 sh3b0/vuln:<span class="hljs-built_in">command</span>-injection
+</div></code></pre>
+</li>
+<li>Injected a malicious command into the ping utility:<pre class="hljs"><code><div>50 %; rm -rf static/img/bones.png
+</div></code></pre>
+<img src="/screnshoots/2/5/1.png" alt=""></li>
+<li>The output confirmed successful command execution.</li>
+</ol>
+<p><strong>Screenshot:</strong>
+<img src="/screnshoots/2/5/2.png" alt="">
+<img src="/screnshoots/2/5/3.png" alt="">
+<img src="/screnshoots/2/5/4.png" alt=""></p>
+<h3 id="why-its-dangerous">Why It’s Dangerous</h3>
+<ul>
+<li>Attackers can execute arbitrary system commands, potentially taking over the server.</li>
+</ul>
+<h3 id="protection-measures">Protection Measures</h3>
+<ul>
+<li>Avoid passing user input directly to system commands.</li>
+<li>Implement strict input validation and whitelisting.</li>
+</ul>
+<hr>
+<h2 id="general-best-practices-for-web-security">General Best Practices for Web Security</h2>
+<ul>
+<li><strong>Input Validation:</strong> Ensure all user input is properly sanitized and validated.</li>
+<li><strong>Principle of Least Privilege:</strong> Restrict file and database permissions to minimize damage from exploits.</li>
+<li><strong>Security Headers:</strong> Implement security-focused HTTP headers like CSP and <code>X-Content-Type-Options</code>.</li>
+<li><strong>Secure Coding Practices:</strong> Use parameterized queries, avoid functions like <code>eval()</code>, and never execute system commands with unsanitized input.</li>
+<li><strong>Regular Security Audits:</strong> Conduct penetration testing and code reviews periodically to detect and mitigate vulnerabilities before attackers can exploit them.</li>
+</ul>
+
+</body>
+</html>

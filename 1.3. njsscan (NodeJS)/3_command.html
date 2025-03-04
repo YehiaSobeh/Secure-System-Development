@@ -1,0 +1,569 @@
+<pre><font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~/My station/secure development/lab2/1.2/Damn_Vulnerable_C_Program</b></font>$ cd ../..
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~/My station/secure development/lab2</b></font>$ mkdir 1.3 &amp; cd 1.3
+[1] 68362
+bash: cd: 1.3: No such file or directory
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~/My station/secure development/lab2</b></font>$ ls
+<font color="#12488B"><b>1.2</b></font>  <font color="#12488B"><b>1.3</b></font>  <font color="#12488B"><b>bandit-env</b></font>  notes.md  <font color="#12488B"><b>vulpy</b></font>
+[1]+  Done                    mkdir 1.3
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~/My station/secure development/lab2</b></font>$ cd 1.3
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~/My station/secure development/lab2/1.3</b></font>$ pip3 install njsscan
+Defaulting to user installation because normal site-packages is not writeable
+Collecting njsscan
+  Downloading njsscan-0.4.3-py3-none-any.whl (68 kB)
+     <font color="#729C1F">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</font> <font color="#26A269">68.5/68.5 KB</font> <font color="#C01C28">845.1 kB/s</font> eta <font color="#2AA1B3">0:00:00</font>
+Collecting colorama&gt;=0.4.5
+  Downloading colorama-0.4.6-py2.py3-none-any.whl (25 kB)
+Collecting libsast&gt;=3.1.4
+  Downloading libsast-3.1.6-py3-none-any.whl (37 kB)
+Collecting sarif-om&gt;=1.0.4
+  Downloading sarif_om-1.0.4-py3-none-any.whl (30 kB)
+Collecting jschema-to-python&gt;=1.2.3
+  Downloading jschema_to_python-1.2.3-py3-none-any.whl (10 kB)
+Collecting semgrep==1.86.0
+  Downloading semgrep-1.86.0-cp38.cp39.cp310.cp311.py37.py38.py39.py310.py311-none-any.whl (27.7 MB)
+     <font color="#729C1F">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</font> <font color="#26A269">27.7/27.7 MB</font> <font color="#C01C28">7.9 MB/s</font> eta <font color="#2AA1B3">0:00:00</font>
+Collecting tabulate&gt;=0.8.10
+  Downloading tabulate-0.9.0-py3-none-any.whl (35 kB)
+Collecting defusedxml~=0.7.1
+  Downloading defusedxml-0.7.1-py2.py3-none-any.whl (25 kB)
+Collecting rich&gt;=12.6.0
+  Using cached rich-13.9.4-py3-none-any.whl (242 kB)
+Collecting glom~=22.1
+  Downloading glom-22.1.0-py2.py3-none-any.whl (100 kB)
+     <font color="#729C1F">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</font> <font color="#26A269">100.7/100.7 KB</font> <font color="#C01C28">13.7 MB/s</font> eta <font color="#2AA1B3">0:00:00</font>
+Collecting jsonschema~=4.6
+  Using cached jsonschema-4.23.0-py3-none-any.whl (88 kB)
+Collecting pydantic~=2.8.2
+  Downloading pydantic-2.8.2-py3-none-any.whl (423 kB)
+     <font color="#729C1F">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</font> <font color="#26A269">423.9/423.9 KB</font> <font color="#C01C28">2.6 MB/s</font> eta <font color="#2AA1B3">0:00:00</font>
+Collecting opentelemetry-sdk~=1.25.0
+  Downloading opentelemetry_sdk-1.25.0-py3-none-any.whl (107 kB)
+     <font color="#729C1F">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</font> <font color="#26A269">107.0/107.0 KB</font> <font color="#C01C28">8.3 MB/s</font> eta <font color="#2AA1B3">0:00:00</font>
+Collecting click-option-group~=0.5
+  Downloading click_option_group-0.5.6-py3-none-any.whl (12 kB)
+Requirement already satisfied: packaging&gt;=21.0 in /home/yehia/.local/lib/python3.10/site-packages (from semgrep==1.86.0-&gt;njsscan) (24.2)
+Collecting opentelemetry-api~=1.25.0
+  Downloading opentelemetry_api-1.25.0-py3-none-any.whl (59 kB)
+     <font color="#729C1F">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</font> <font color="#26A269">59.9/59.9 KB</font> <font color="#C01C28">8.2 MB/s</font> eta <font color="#2AA1B3">0:00:00</font>
+Requirement already satisfied: typing-extensions~=4.2 in /home/yehia/.local/lib/python3.10/site-packages (from semgrep==1.86.0-&gt;njsscan) (4.12.2)
+Collecting wcmatch~=8.3
+  Downloading wcmatch-8.5.2-py3-none-any.whl (39 kB)
+Collecting peewee~=3.14
+  Downloading peewee-3.17.9.tar.gz (3.0 MB)
+     <font color="#729C1F">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</font> <font color="#26A269">3.0/3.0 MB</font> <font color="#C01C28">7.7 MB/s</font> eta <font color="#2AA1B3">0:00:00</font>
+  Installing build dependencies ... done
+  Getting requirements to build wheel ... done
+  Preparing metadata (pyproject.toml) ... done
+Collecting opentelemetry-instrumentation-requests~=0.46b0
+  Downloading opentelemetry_instrumentation_requests-0.51b0-py3-none-any.whl (12 kB)
+Requirement already satisfied: requests~=2.22 in /usr/lib/python3/dist-packages (from semgrep==1.86.0-&gt;njsscan) (2.25.1)
+Collecting opentelemetry-exporter-otlp-proto-http~=1.25.0
+  Downloading opentelemetry_exporter_otlp_proto_http-1.25.0-py3-none-any.whl (16 kB)
+Collecting urllib3~=2.0
+  Using cached urllib3-2.3.0-py3-none-any.whl (128 kB)
+Collecting tomli~=2.0.1
+  Downloading tomli-2.0.2-py3-none-any.whl (13 kB)
+Requirement already satisfied: exceptiongroup~=1.2.0 in /home/yehia/.local/lib/python3.10/site-packages (from semgrep==1.86.0-&gt;njsscan) (1.2.2)
+Collecting attrs&gt;=21.3
+  Using cached attrs-25.1.0-py3-none-any.whl (63 kB)
+Collecting boltons~=21.0
+  Downloading boltons-21.0.0-py2.py3-none-any.whl (193 kB)
+     <font color="#729C1F">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</font> <font color="#26A269">193.7/193.7 KB</font> <font color="#C01C28">1.4 MB/s</font> eta <font color="#2AA1B3">0:00:00</font>
+Requirement already satisfied: click~=8.1 in /home/yehia/.local/lib/python3.10/site-packages (from semgrep==1.86.0-&gt;njsscan) (8.1.8)
+Collecting ruamel.yaml&lt;0.18,&gt;=0.16.0
+  Downloading ruamel.yaml-0.17.40-py3-none-any.whl (113 kB)
+     <font color="#729C1F">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</font> <font color="#26A269">113.7/113.7 KB</font> <font color="#C01C28">1.5 MB/s</font> eta <font color="#2AA1B3">0:00:00</font>
+Collecting jsonpickle
+  Downloading jsonpickle-4.0.2-py3-none-any.whl (46 kB)
+     <font color="#729C1F">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</font> <font color="#26A269">46.3/46.3 KB</font> <font color="#C01C28">11.1 MB/s</font> eta <font color="#2AA1B3">0:00:00</font>
+Collecting pbr
+  Using cached pbr-6.1.1-py2.py3-none-any.whl (108 kB)
+Collecting pyyaml&gt;=6.0
+  Using cached PyYAML-6.0.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (751 kB)
+Collecting billiard&lt;5.0.0,&gt;=4.2.1
+  Downloading billiard-4.2.1-py3-none-any.whl (86 kB)
+     <font color="#729C1F">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</font> <font color="#26A269">86.8/86.8 KB</font> <font color="#C01C28">1.2 MB/s</font> eta <font color="#2AA1B3">0:00:00</font>
+Collecting face&gt;=20.1.0
+  Downloading face-24.0.0-py3-none-any.whl (54 kB)
+     <font color="#729C1F">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</font> <font color="#26A269">54.7/54.7 KB</font> <font color="#C01C28">15.1 MB/s</font> eta <font color="#2AA1B3">0:00:00</font>
+Collecting referencing&gt;=0.28.4
+  Using cached referencing-0.36.2-py3-none-any.whl (26 kB)
+Collecting rpds-py&gt;=0.7.1
+  Downloading rpds_py-0.23.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (386 kB)
+     <font color="#729C1F">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</font> <font color="#26A269">386.1/386.1 KB</font> <font color="#C01C28">1.9 MB/s</font> eta <font color="#2AA1B3">0:00:00</font>
+Collecting jsonschema-specifications&gt;=2023.03.6
+  Using cached jsonschema_specifications-2024.10.1-py3-none-any.whl (18 kB)
+Collecting deprecated&gt;=1.2.6
+  Downloading Deprecated-1.2.18-py2.py3-none-any.whl (10.0 kB)
+Collecting importlib-metadata&lt;=7.1,&gt;=6.0
+  Downloading importlib_metadata-7.1.0-py3-none-any.whl (24 kB)
+Collecting opentelemetry-exporter-otlp-proto-common==1.25.0
+  Downloading opentelemetry_exporter_otlp_proto_common-1.25.0-py3-none-any.whl (17 kB)
+Collecting googleapis-common-protos~=1.52
+  Downloading googleapis_common_protos-1.69.0-py2.py3-none-any.whl (169 kB)
+     <font color="#729C1F">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</font> <font color="#26A269">169.7/169.7 KB</font> <font color="#C01C28">7.2 MB/s</font> eta <font color="#2AA1B3">0:00:00</font>
+Collecting opentelemetry-proto==1.25.0
+  Downloading opentelemetry_proto-1.25.0-py3-none-any.whl (52 kB)
+     <font color="#729C1F">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</font> <font color="#26A269">52.5/52.5 KB</font> <font color="#C01C28">12.3 MB/s</font> eta <font color="#2AA1B3">0:00:00</font>
+Collecting protobuf&lt;5.0,&gt;=3.19
+  Downloading protobuf-4.25.6-cp37-abi3-manylinux2014_x86_64.whl (294 kB)
+     <font color="#729C1F">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</font> <font color="#26A269">294.6/294.6 KB</font> <font color="#C01C28">3.8 MB/s</font> eta <font color="#2AA1B3">0:00:00</font>
+Collecting opentelemetry-semantic-conventions==0.51b0
+  Downloading opentelemetry_semantic_conventions-0.51b0-py3-none-any.whl (177 kB)
+     <font color="#729C1F">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</font> <font color="#26A269">177.4/177.4 KB</font> <font color="#C01C28">8.0 MB/s</font> eta <font color="#2AA1B3">0:00:00</font>
+Collecting opentelemetry-instrumentation==0.51b0
+  Downloading opentelemetry_instrumentation-0.51b0-py3-none-any.whl (30 kB)
+Collecting opentelemetry-util-http==0.51b0
+  Downloading opentelemetry_util_http-0.51b0-py3-none-any.whl (7.3 kB)
+Collecting wrapt&lt;2.0.0,&gt;=1.0.0
+  Downloading wrapt-1.17.2-cp310-cp310-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl (82 kB)
+     <font color="#729C1F">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</font> <font color="#26A269">82.8/82.8 KB</font> <font color="#C01C28">7.0 MB/s</font> eta <font color="#2AA1B3">0:00:00</font>
+INFO: pip is looking at multiple versions of opentelemetry-instrumentation to determine which version is compatible with other requirements. This could take a while.
+INFO: pip is looking at multiple versions of opentelemetry-instrumentation-requests to determine which version is compatible with other requirements. This could take a while.
+Collecting opentelemetry-instrumentation-requests~=0.46b0
+  Downloading opentelemetry_instrumentation_requests-0.50b0-py3-none-any.whl (12 kB)
+Collecting opentelemetry-instrumentation==0.50b0
+  Downloading opentelemetry_instrumentation-0.50b0-py3-none-any.whl (30 kB)
+Collecting opentelemetry-util-http==0.50b0
+  Downloading opentelemetry_util_http-0.50b0-py3-none-any.whl (6.9 kB)
+Collecting opentelemetry-semantic-conventions==0.50b0
+  Downloading opentelemetry_semantic_conventions-0.50b0-py3-none-any.whl (166 kB)
+     <font color="#729C1F">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</font> <font color="#26A269">166.6/166.6 KB</font> <font color="#C01C28">3.4 MB/s</font> eta <font color="#2AA1B3">0:00:00</font>
+Collecting opentelemetry-instrumentation-requests~=0.46b0
+  Downloading opentelemetry_instrumentation_requests-0.49b2-py3-none-any.whl (12 kB)
+Collecting opentelemetry-instrumentation==0.49b2
+  Downloading opentelemetry_instrumentation-0.49b2-py3-none-any.whl (30 kB)
+Collecting opentelemetry-semantic-conventions==0.49b2
+  Downloading opentelemetry_semantic_conventions-0.49b2-py3-none-any.whl (159 kB)
+     <font color="#729C1F">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</font> <font color="#26A269">159.2/159.2 KB</font> <font color="#C01C28">7.4 MB/s</font> eta <font color="#2AA1B3">0:00:00</font>
+Collecting opentelemetry-util-http==0.49b2
+  Downloading opentelemetry_util_http-0.49b2-py3-none-any.whl (6.9 kB)
+Collecting opentelemetry-instrumentation-requests~=0.46b0
+  Downloading opentelemetry_instrumentation_requests-0.49b1-py3-none-any.whl (12 kB)
+Collecting opentelemetry-semantic-conventions==0.49b1
+  Downloading opentelemetry_semantic_conventions-0.49b1-py3-none-any.whl (159 kB)
+     <font color="#729C1F">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</font> <font color="#26A269">159.2/159.2 KB</font> <font color="#C01C28">7.3 MB/s</font> eta <font color="#2AA1B3">0:00:00</font>
+Collecting opentelemetry-instrumentation==0.49b1
+  Downloading opentelemetry_instrumentation-0.49b1-py3-none-any.whl (30 kB)
+Collecting opentelemetry-util-http==0.49b1
+  Downloading opentelemetry_util_http-0.49b1-py3-none-any.whl (6.9 kB)
+Collecting opentelemetry-instrumentation-requests~=0.46b0
+  Downloading opentelemetry_instrumentation_requests-0.49b0-py3-none-any.whl (12 kB)
+Collecting opentelemetry-instrumentation==0.49b0
+  Downloading opentelemetry_instrumentation-0.49b0-py3-none-any.whl (30 kB)
+Collecting opentelemetry-util-http==0.49b0
+  Downloading opentelemetry_util_http-0.49b0-py3-none-any.whl (6.9 kB)
+Collecting opentelemetry-semantic-conventions==0.49b0
+  Downloading opentelemetry_semantic_conventions-0.49b0-py3-none-any.whl (159 kB)
+     <font color="#729C1F">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</font> <font color="#26A269">159.2/159.2 KB</font> <font color="#C01C28">8.4 MB/s</font> eta <font color="#2AA1B3">0:00:00</font>
+Collecting opentelemetry-instrumentation-requests~=0.46b0
+  Downloading opentelemetry_instrumentation_requests-0.48b0-py3-none-any.whl (12 kB)
+Collecting opentelemetry-semantic-conventions==0.48b0
+  Downloading opentelemetry_semantic_conventions-0.48b0-py3-none-any.whl (149 kB)
+     <font color="#729C1F">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</font> <font color="#26A269">149.7/149.7 KB</font> <font color="#C01C28">7.9 MB/s</font> eta <font color="#2AA1B3">0:00:00</font>
+Collecting opentelemetry-instrumentation==0.48b0
+  Downloading opentelemetry_instrumentation-0.48b0-py3-none-any.whl (29 kB)
+Collecting opentelemetry-util-http==0.48b0
+  Downloading opentelemetry_util_http-0.48b0-py3-none-any.whl (6.9 kB)
+Requirement already satisfied: setuptools&gt;=16.0 in /usr/lib/python3/dist-packages (from opentelemetry-instrumentation==0.48b0-&gt;opentelemetry-instrumentation-requests~=0.46b0-&gt;semgrep==1.86.0-&gt;njsscan) (59.6.0)
+Collecting opentelemetry-instrumentation-requests~=0.46b0
+  Downloading opentelemetry_instrumentation_requests-0.47b0-py3-none-any.whl (12 kB)
+Collecting opentelemetry-semantic-conventions==0.47b0
+  Downloading opentelemetry_semantic_conventions-0.47b0-py3-none-any.whl (138 kB)
+     <font color="#729C1F">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</font> <font color="#26A269">138.0/138.0 KB</font> <font color="#C01C28">10.0 MB/s</font> eta <font color="#2AA1B3">0:00:00</font>
+Collecting opentelemetry-util-http==0.47b0
+  Downloading opentelemetry_util_http-0.47b0-py3-none-any.whl (6.9 kB)
+Collecting opentelemetry-instrumentation==0.47b0
+  Downloading opentelemetry_instrumentation-0.47b0-py3-none-any.whl (29 kB)
+Collecting opentelemetry-instrumentation-requests~=0.46b0
+  Downloading opentelemetry_instrumentation_requests-0.46b0-py3-none-any.whl (12 kB)
+Collecting opentelemetry-instrumentation==0.46b0
+  Downloading opentelemetry_instrumentation-0.46b0-py3-none-any.whl (29 kB)
+Collecting opentelemetry-semantic-conventions==0.46b0
+  Downloading opentelemetry_semantic_conventions-0.46b0-py3-none-any.whl (130 kB)
+     <font color="#729C1F">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</font> <font color="#26A269">130.5/130.5 KB</font> <font color="#C01C28">8.0 MB/s</font> eta <font color="#2AA1B3">0:00:00</font>
+Collecting opentelemetry-util-http==0.46b0
+  Downloading opentelemetry_util_http-0.46b0-py3-none-any.whl (6.9 kB)
+Collecting annotated-types&gt;=0.4.0
+  Downloading annotated_types-0.7.0-py3-none-any.whl (13 kB)
+Collecting pydantic-core==2.20.1
+  Downloading pydantic_core-2.20.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.1 MB)
+     <font color="#729C1F">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</font> <font color="#26A269">2.1/2.1 MB</font> <font color="#C01C28">4.5 MB/s</font> eta <font color="#2AA1B3">0:00:00</font>
+Collecting markdown-it-py&gt;=2.2.0
+  Using cached markdown_it_py-3.0.0-py3-none-any.whl (87 kB)
+Requirement already satisfied: pygments&lt;3.0.0,&gt;=2.13.0 in /home/yehia/.local/lib/python3.10/site-packages (from rich&gt;=12.6.0-&gt;semgrep==1.86.0-&gt;njsscan) (2.19.1)
+Collecting ruamel.yaml.clib&gt;=0.2.7
+  Downloading ruamel.yaml.clib-0.2.12-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (722 kB)
+     <font color="#729C1F">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</font> <font color="#26A269">722.2/722.2 KB</font> <font color="#C01C28">6.3 MB/s</font> eta <font color="#2AA1B3">0:00:00</font>
+Collecting bracex&gt;=2.1.1
+  Downloading bracex-2.5.post1-py3-none-any.whl (11 kB)
+Requirement already satisfied: zipp&gt;=0.5 in /usr/lib/python3/dist-packages (from importlib-metadata&lt;=7.1,&gt;=6.0-&gt;opentelemetry-api~=1.25.0-&gt;semgrep==1.86.0-&gt;njsscan) (1.0.0)
+Collecting mdurl~=0.1
+  Using cached mdurl-0.1.2-py3-none-any.whl (10.0 kB)
+Building wheels for collected packages: peewee
+  Building wheel for peewee (pyproject.toml) ... done
+  Created wheel for peewee: filename=peewee-3.17.9-cp310-cp310-linux_x86_64.whl size=843052 sha256=f523420d76be85ed6d7f2eedfa45d03945fb42a1ec03fa1b1b6d1d4e97e41221
+  Stored in directory: /home/yehia/.cache/pip/wheels/fd/fd/5e/90b9ec95da4fd6c96237b580ce74f89d6bdea547ad151ab5f4
+Successfully built peewee
+Installing collected packages: peewee, boltons, wrapt, urllib3, tomli, tabulate, ruamel.yaml.clib, rpds-py, pyyaml, pydantic-core, protobuf, pbr, opentelemetry-util-http, mdurl, jsonpickle, importlib-metadata, face, defusedxml, colorama, click-option-group, bracex, billiard, attrs, annotated-types, wcmatch, sarif-om, ruamel.yaml, referencing, pydantic, opentelemetry-proto, markdown-it-py, libsast, jschema-to-python, googleapis-common-protos, glom, deprecated, rich, opentelemetry-exporter-otlp-proto-common, opentelemetry-api, jsonschema-specifications, opentelemetry-semantic-conventions, opentelemetry-instrumentation, jsonschema, opentelemetry-sdk, opentelemetry-instrumentation-requests, opentelemetry-exporter-otlp-proto-http, semgrep, njsscan
+  Attempting uninstall: tomli
+    Found existing installation: tomli 2.2.1
+    Uninstalling tomli-2.2.1:
+      Successfully uninstalled tomli-2.2.1
+Successfully installed annotated-types-0.7.0 attrs-25.1.0 billiard-4.2.1 boltons-21.0.0 bracex-2.5.post1 click-option-group-0.5.6 colorama-0.4.6 defusedxml-0.7.1 deprecated-1.2.18 face-24.0.0 glom-22.1.0 googleapis-common-protos-1.69.0 importlib-metadata-7.1.0 jschema-to-python-1.2.3 jsonpickle-4.0.2 jsonschema-4.23.0 jsonschema-specifications-2024.10.1 libsast-3.1.6 markdown-it-py-3.0.0 mdurl-0.1.2 njsscan-0.4.3 opentelemetry-api-1.25.0 opentelemetry-exporter-otlp-proto-common-1.25.0 opentelemetry-exporter-otlp-proto-http-1.25.0 opentelemetry-instrumentation-0.46b0 opentelemetry-instrumentation-requests-0.46b0 opentelemetry-proto-1.25.0 opentelemetry-sdk-1.25.0 opentelemetry-semantic-conventions-0.46b0 opentelemetry-util-http-0.46b0 pbr-6.1.1 peewee-3.17.9 protobuf-4.25.6 pydantic-2.8.2 pydantic-core-2.20.1 pyyaml-6.0.2 referencing-0.36.2 rich-13.9.4 rpds-py-0.23.1 ruamel.yaml-0.17.40 ruamel.yaml.clib-0.2.12 sarif-om-1.0.4 semgrep-1.86.0 tabulate-0.9.0 tomli-2.0.2 urllib3-2.3.0 wcmatch-8.5.2 wrapt-1.17.2
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~/My station/secure development/lab2/1.3</b></font>$ git clone git@github.com:appsecco/dvna.git
+Cloning into &apos;dvna&apos;...
+remote: Enumerating objects: 645, done.
+remote: Total 645 (delta 0), reused 0 (delta 0), pack-reused 645 (from 1)
+Receiving objects: 100% (645/645), 3.18 MiB | 3.52 MiB/s, done.
+Resolving deltas: 100% (281/281), done.
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~/My station/secure development/lab2/1.3</b></font>$ ls
+<font color="#12488B"><b>dvna</b></font>
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~/My station/secure development/lab2/1.3</b></font>$ cd dvna/
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~/My station/secure development/lab2/1.3/dvna</b></font>$ njsscan .
+/usr/lib/python3/dist-packages/requests/__init__.py:87: RequestsDependencyWarning: urllib3 (2.3.0) or chardet (4.0.0) doesn&apos;t match a supported version!
+  warnings.warn(&quot;urllib3 ({}) or chardet ({}) doesn&apos;t match a supported &quot;
+- Pattern Match ████████████████████████████████████████████████████████████ 148
+- Semantic Grep  12
+
+<font color="#12488B">njsscan: v0.4.3 | Ajin Abraham | opensecurity.in</font>
+<font color="#C01C28">╒═════════════╤═════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╕</font>
+<font color="#C01C28">│ RULE ID     │ ejs_ect_template                                                                                                                    │</font>
+<font color="#C01C28">├─────────────┼─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤</font>
+<font color="#C01C28">│ CWE         │ CWE-79: Improper Neutralization of Input During Web Page Generation (&apos;Cross-site Scripting&apos;)                                        │</font>
+<font color="#C01C28">├─────────────┼─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤</font>
+<font color="#C01C28">│ OWASP-WEB   │ A1: Injection                                                                                                                       │</font>
+<font color="#C01C28">├─────────────┼─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤</font>
+<font color="#C01C28">│ DESCRIPTION │ The EJS/ECT template has an unescaped variable. Untrusted user input passed to this variable results in Cross Site Scripting (XSS). │</font>
+<font color="#C01C28">├─────────────┼─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤</font>
+<font color="#C01C28">│ SEVERITY    │ ERROR                                                                                                                               │</font>
+<font color="#C01C28">├─────────────┼─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤</font>
+<font color="#C01C28">│ FILES       │ ╒════════════════╤═══════════════════════════════════════╕                                                                          │</font>
+<font color="#C01C28">│             │ │ File           │ views/app/products.ejs                │                                                                          │</font>
+<font color="#C01C28">│             │ ├────────────────┼───────────────────────────────────────┤                                                                          │</font>
+<font color="#C01C28">│             │ │ Match Position │ 1907 - 1937                           │                                                                          │</font>
+<font color="#C01C28">│             │ ├────────────────┼───────────────────────────────────────┤                                                                          │</font>
+<font color="#C01C28">│             │ │ Line Number(s) │ 51                                    │                                                                          │</font>
+<font color="#C01C28">│             │ ├────────────────┼───────────────────────────────────────┤                                                                          │</font>
+<font color="#C01C28">│             │ │ Match String   │ &lt;%- output.products[i].code %&gt;        │                                                                          │</font>
+<font color="#C01C28">│             │ ├────────────────┼───────────────────────────────────────┤                                                                          │</font>
+<font color="#C01C28">│             │ │ File           │ views/app/products.ejs                │                                                                          │</font>
+<font color="#C01C28">│             │ ├────────────────┼───────────────────────────────────────┤                                                                          │</font>
+<font color="#C01C28">│             │ │ Match Position │ 2019 - 2056                           │                                                                          │</font>
+<font color="#C01C28">│             │ ├────────────────┼───────────────────────────────────────┤                                                                          │</font>
+<font color="#C01C28">│             │ │ Line Number(s) │ 53                                    │                                                                          │</font>
+<font color="#C01C28">│             │ ├────────────────┼───────────────────────────────────────┤                                                                          │</font>
+<font color="#C01C28">│             │ │ Match String   │ &lt;%- output.products[i].description %&gt; │                                                                          │</font>
+<font color="#C01C28">│             │ ├────────────────┼───────────────────────────────────────┤                                                                          │</font>
+<font color="#C01C28">│             │ │ File           │ views/app/products.ejs                │                                                                          │</font>
+<font color="#C01C28">│             │ ├────────────────┼───────────────────────────────────────┤                                                                          │</font>
+<font color="#C01C28">│             │ │ Match Position │ 1797 - 1825                           │                                                                          │</font>
+<font color="#C01C28">│             │ ├────────────────┼───────────────────────────────────────┤                                                                          │</font>
+<font color="#C01C28">│             │ │ Line Number(s) │ 49                                    │                                                                          │</font>
+<font color="#C01C28">│             │ ├────────────────┼───────────────────────────────────────┤                                                                          │</font>
+<font color="#C01C28">│             │ │ Match String   │ &lt;%- output.products[i].id %&gt;          │                                                                          │</font>
+<font color="#C01C28">│             │ ├────────────────┼───────────────────────────────────────┤                                                                          │</font>
+<font color="#C01C28">│             │ │ File           │ views/app/products.ejs                │                                                                          │</font>
+<font color="#C01C28">│             │ ├────────────────┼───────────────────────────────────────┤                                                                          │</font>
+<font color="#C01C28">│             │ │ Match Position │ 1851 - 1881                           │                                                                          │</font>
+<font color="#C01C28">│             │ ├────────────────┼───────────────────────────────────────┤                                                                          │</font>
+<font color="#C01C28">│             │ │ Line Number(s) │ 50                                    │                                                                          │</font>
+<font color="#C01C28">│             │ ├────────────────┼───────────────────────────────────────┤                                                                          │</font>
+<font color="#C01C28">│             │ │ Match String   │ &lt;%- output.products[i].name %&gt;        │                                                                          │</font>
+<font color="#C01C28">│             │ ├────────────────┼───────────────────────────────────────┤                                                                          │</font>
+<font color="#C01C28">│             │ │ File           │ views/app/products.ejs                │                                                                          │</font>
+<font color="#C01C28">│             │ ├────────────────┼───────────────────────────────────────┤                                                                          │</font>
+<font color="#C01C28">│             │ │ Match Position │ 1963 - 1993                           │                                                                          │</font>
+<font color="#C01C28">│             │ ├────────────────┼───────────────────────────────────────┤                                                                          │</font>
+<font color="#C01C28">│             │ │ Line Number(s) │ 52                                    │                                                                          │</font>
+<font color="#C01C28">│             │ ├────────────────┼───────────────────────────────────────┤                                                                          │</font>
+<font color="#C01C28">│             │ │ Match String   │ &lt;%- output.products[i].tags %&gt;        │                                                                          │</font>
+<font color="#C01C28">│             │ ├────────────────┼───────────────────────────────────────┤                                                                          │</font>
+<font color="#C01C28">│             │ │ File           │ views/app/products.ejs                │                                                                          │</font>
+<font color="#C01C28">│             │ ├────────────────┼───────────────────────────────────────┤                                                                          │</font>
+<font color="#C01C28">│             │ │ Match Position │ 721 - 745                             │                                                                          │</font>
+<font color="#C01C28">│             │ ├────────────────┼───────────────────────────────────────┤                                                                          │</font>
+<font color="#C01C28">│             │ │ Line Number(s) │ 20                                    │                                                                          │</font>
+<font color="#C01C28">│             │ ├────────────────┼───────────────────────────────────────┤                                                                          │</font>
+<font color="#C01C28">│             │ │ Match String   │ &lt;%- output.searchTerm %&gt;              │                                                                          │</font>
+<font color="#C01C28">│             │ ╘════════════════╧═══════════════════════════════════════╛                                                                          │</font>
+<font color="#C01C28">╘═════════════╧═════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╛</font>
+<font color="#A2734C">╒═════════════╤═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╕</font>
+<font color="#A2734C">│ RULE ID     │ sequelize_tls                                                                                                                                             │</font>
+<font color="#A2734C">├─────────────┼───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤</font>
+<font color="#A2734C">│ CWE         │ CWE-319: Cleartext Transmission of Sensitive Information                                                                                                  │</font>
+<font color="#A2734C">├─────────────┼───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤</font>
+<font color="#A2734C">│ OWASP-WEB   │ A6: Security Misconfiguration                                                                                                                             │</font>
+<font color="#A2734C">├─────────────┼───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤</font>
+<font color="#A2734C">│ DESCRIPTION │ The Sequelize connection string indicates that database server does not use TLS. Non TLS connections are susceptible to man in the middle (MITM) attacks. │</font>
+<font color="#A2734C">├─────────────┼───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤</font>
+<font color="#A2734C">│ SEVERITY    │ WARNING                                                                                                                                                   │</font>
+<font color="#A2734C">├─────────────┼───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤</font>
+<font color="#A2734C">│ FILES       │ ╒════════════════╤═══════════════════════════════════════════════╕                                                                                        │</font>
+<font color="#A2734C">│             │ │ File           │ config/db.js                                  │                                                                                        │</font>
+<font color="#A2734C">│             │ ├────────────────┼───────────────────────────────────────────────┤                                                                                        │</font>
+<font color="#A2734C">│             │ │ Match Position │ 18 - 2                                        │                                                                                        │</font>
+<font color="#A2734C">│             │ ├────────────────┼───────────────────────────────────────────────┤                                                                                        │</font>
+<font color="#A2734C">│             │ │ Line Number(s) │ 1: 8                                          │                                                                                        │</font>
+<font color="#A2734C">│             │ ├────────────────┼───────────────────────────────────────────────┤                                                                                        │</font>
+<font color="#A2734C">│             │ │ Match String   │ module.exports = {                            │                                                                                        │</font>
+<font color="#A2734C">│             │ │                │   username: process.env.MYSQL_USER,           │                                                                                        │</font>
+<font color="#A2734C">│             │ │                │   password: process.env.MYSQL_PASSWORD,       │                                                                                        │</font>
+<font color="#A2734C">│             │ │                │   database: process.env.MYSQL_DATABASE,       │                                                                                        │</font>
+<font color="#A2734C">│             │ │                │   host: process.env.MYSQL_HOST || &apos;mysql-db&apos;, │                                                                                        │</font>
+<font color="#A2734C">│             │ │                │   port: process.env.MYSQL_PORT || 3306,       │                                                                                        │</font>
+<font color="#A2734C">│             │ │                │   dialect: &apos;mysql&apos;                            │                                                                                        │</font>
+<font color="#A2734C">│             │ │                │ }                                             │                                                                                        │</font>
+<font color="#A2734C">│             │ ╘════════════════╧═══════════════════════════════════════════════╛                                                                                        │</font>
+<font color="#A2734C">╘═════════════╧═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╛</font>
+<font color="#C01C28">╒═════════════╤═════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╕</font>
+<font color="#C01C28">│ RULE ID     │ express_open_redirect                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       │</font>
+<font color="#C01C28">├─────────────┼─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤</font>
+<font color="#C01C28">│ CWE         │ CWE-601: URL Redirection to Untrusted Site (&apos;Open Redirect&apos;)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                │</font>
+<font color="#C01C28">├─────────────┼─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤</font>
+<font color="#C01C28">│ OWASP-WEB   │ A1: Injection                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               │</font>
+<font color="#C01C28">├─────────────┼─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤</font>
+<font color="#C01C28">│ DESCRIPTION │ Untrusted user input in redirect() can result in Open Redirect vulnerability. An http parameter may contain a URL value and could cause the web application to redirect the request to the specified URL. By modifying the URL value to a malicious site, an attacker may successfully launch a phishing scam and steal user credentials. Because the server name in the modified link is identical to the original site, phishing attempts have a more trustworthy appearance. Whether this issue poses a vulnerability will be subject to the intended behavior of the application. For example, a search engine might intentionally provide redirects to arbitrary URLs. │</font>
+<font color="#C01C28">├─────────────┼─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤</font>
+<font color="#C01C28">│ SEVERITY    │ ERROR                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       │</font>
+<font color="#C01C28">├─────────────┼─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤</font>
+<font color="#C01C28">│ FILES       │ ╒════════════════╤═════════════════════════════╕                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            │</font>
+<font color="#C01C28">│             │ │ File           │ core/appHandler.js          │                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            │</font>
+<font color="#C01C28">│             │ ├────────────────┼─────────────────────────────┤                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            │</font>
+<font color="#C01C28">│             │ │ Match Position │ 3 - 30                      │                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            │</font>
+<font color="#C01C28">│             │ ├────────────────┼─────────────────────────────┤                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            │</font>
+<font color="#C01C28">│             │ │ Line Number(s) │ 188                         │                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            │</font>
+<font color="#C01C28">│             │ ├────────────────┼─────────────────────────────┤                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            │</font>
+<font color="#C01C28">│             │ │ Match String   │ res.redirect(req.query.url) │                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            │</font>
+<font color="#C01C28">│             │ ╘════════════════╧═════════════════════════════╛                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            │</font>
+<font color="#C01C28">╘═════════════╧═════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╛</font>
+<font color="#C01C28">╒═════════════╤══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╕</font>
+<font color="#C01C28">│ RULE ID     │ node_deserialize                                                                                                             │</font>
+<font color="#C01C28">├─────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤</font>
+<font color="#C01C28">│ CWE         │ CWE-502: Deserialization of Untrusted Data                                                                                   │</font>
+<font color="#C01C28">├─────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤</font>
+<font color="#C01C28">│ OWASP-WEB   │ A8: Insecure Deserialization                                                                                                 │</font>
+<font color="#C01C28">├─────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤</font>
+<font color="#C01C28">│ DESCRIPTION │ User controlled data in &apos;unserialize()&apos; or &apos;deserialize()&apos; function can result in Object Injection or Remote Code Injection. │</font>
+<font color="#C01C28">├─────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤</font>
+<font color="#C01C28">│ SEVERITY    │ ERROR                                                                                                                        │</font>
+<font color="#C01C28">├─────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤</font>
+<font color="#C01C28">│ FILES       │ ╒════════════════╤════════════════════════════════════════════════════════════════════════════════╕                          │</font>
+<font color="#C01C28">│             │ │ File           │ core/appHandler.js                                                             │                          │</font>
+<font color="#C01C28">│             │ ├────────────────┼────────────────────────────────────────────────────────────────────────────────┤                          │</font>
+<font color="#C01C28">│             │ │ Match Position │ 18 - 81                                                                        │                          │</font>
+<font color="#C01C28">│             │ ├────────────────┼────────────────────────────────────────────────────────────────────────────────┤                          │</font>
+<font color="#C01C28">│             │ │ Line Number(s) │ 218                                                                            │                          │</font>
+<font color="#C01C28">│             │ ├────────────────┼────────────────────────────────────────────────────────────────────────────────┤                          │</font>
+<font color="#C01C28">│             │ │ Match String   │ var products = serialize.unserialize(req.files.products.data.toString(&apos;utf8&apos;)) │                          │</font>
+<font color="#C01C28">│             │ ╘════════════════╧════════════════════════════════════════════════════════════════════════════════╛                          │</font>
+<font color="#C01C28">╘═════════════╧══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╛</font>
+<font color="#C01C28">╒═════════════╤═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╕</font>
+<font color="#C01C28">│ RULE ID     │ node_xxe                                                                                                                          │</font>
+<font color="#C01C28">├─────────────┼───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤</font>
+<font color="#C01C28">│ CWE         │ CWE-611: Improper Restriction of XML External Entity Reference                                                                    │</font>
+<font color="#C01C28">├─────────────┼───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤</font>
+<font color="#C01C28">│ OWASP-WEB   │ A4: XML External Entities (XXE)                                                                                                   │</font>
+<font color="#C01C28">├─────────────┼───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤</font>
+<font color="#C01C28">│ DESCRIPTION │ User controlled data in XML parsers can result in XML External or Internal Entity (XXE) Processing vulnerabilities                │</font>
+<font color="#C01C28">├─────────────┼───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤</font>
+<font color="#C01C28">│ SEVERITY    │ ERROR                                                                                                                             │</font>
+<font color="#C01C28">├─────────────┼───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤</font>
+<font color="#C01C28">│ FILES       │ ╒════════════════╤══════════════════════════════════════════════════════════════════════════════════════════════════════════════╕ │</font>
+<font color="#C01C28">│             │ │ File           │ core/appHandler.js                                                                                           │ │</font>
+<font color="#C01C28">│             │ ├────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────────────┤ │</font>
+<font color="#C01C28">│             │ │ Match Position │ 18 - 111                                                                                                     │ │</font>
+<font color="#C01C28">│             │ ├────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────────────┤ │</font>
+<font color="#C01C28">│             │ │ Line Number(s) │ 235                                                                                                          │ │</font>
+<font color="#C01C28">│             │ ├────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────────────┤ │</font>
+<font color="#C01C28">│             │ │ Match String   │ var products = libxmljs.parseXmlString(req.files.products.data.toString(&apos;utf8&apos;), {noent:true,noblanks:true}) │ │</font>
+<font color="#C01C28">│             │ ╘════════════════╧══════════════════════════════════════════════════════════════════════════════════════════════════════════════╛ │</font>
+<font color="#C01C28">╘═════════════╧═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╛</font>
+<font color="#A2734C">╒═════════════╤════════════════════════════════════════════════════════════════════════════════════════════════════════════════╕</font>
+<font color="#A2734C">│ RULE ID     │ express_lfr_warning                                                                                            │</font>
+<font color="#A2734C">├─────────────┼────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤</font>
+<font color="#A2734C">│ CWE         │ CWE-23: Relative Path Traversal                                                                                │</font>
+<font color="#A2734C">├─────────────┼────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤</font>
+<font color="#A2734C">│ OWASP-WEB   │ A5: Broken Access Control                                                                                      │</font>
+<font color="#A2734C">├─────────────┼────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤</font>
+<font color="#A2734C">│ DESCRIPTION │ Untrusted user input in express render() function can result in arbitrary file read if hbs templating is used. │</font>
+<font color="#A2734C">├─────────────┼────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤</font>
+<font color="#A2734C">│ SEVERITY    │ WARNING                                                                                                        │</font>
+<font color="#A2734C">├─────────────┼────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤</font>
+<font color="#A2734C">│ FILES       │ ╒════════════════╤══════════════════════════════════════════════════════════╕                                  │</font>
+<font color="#A2734C">│             │ │ File           │ routes/app.js                                            │                                  │</font>
+<font color="#A2734C">│             │ ├────────────────┼──────────────────────────────────────────────────────────┤                                  │</font>
+<font color="#A2734C">│             │ │ Match Position │ 9 - 65                                                   │                                  │</font>
+<font color="#A2734C">│             │ ├────────────────┼──────────────────────────────────────────────────────────┤                                  │</font>
+<font color="#A2734C">│             │ │ Line Number(s) │ 23                                                       │                                  │</font>
+<font color="#A2734C">│             │ ├────────────────┼──────────────────────────────────────────────────────────┤                                  │</font>
+<font color="#A2734C">│             │ │ Match String   │ res.render(&apos;app/bulkproducts&apos;,{legacy:req.query.legacy}) │                                  │</font>
+<font color="#A2734C">│             │ ├────────────────┼──────────────────────────────────────────────────────────┤                                  │</font>
+<font color="#A2734C">│             │ │ File           │ routes/app.js                                            │                                  │</font>
+<font color="#A2734C">│             │ ├────────────────┼──────────────────────────────────────────────────────────┤                                  │</font>
+<font color="#A2734C">│             │ │ Match Position │ 9 - 11                                                   │                                  │</font>
+<font color="#A2734C">│             │ ├────────────────┼──────────────────────────────────────────────────────────┤                                  │</font>
+<font color="#A2734C">│             │ │ Line Number(s) │ 37: 39                                                   │                                  │</font>
+<font color="#A2734C">│             │ ├────────────────┼──────────────────────────────────────────────────────────┤                                  │</font>
+<font color="#A2734C">│             │ │ Match String   │ res.render(&apos;app/admin&apos;, {                                │                                  │</font>
+<font color="#A2734C">│             │ │                │             admin: (req.user.role == &apos;admin&apos;)            │                                  │</font>
+<font color="#A2734C">│             │ │                │         })                                               │                                  │</font>
+<font color="#A2734C">│             │ ╘════════════════╧══════════════════════════════════════════════════════════╛                                  │</font>
+<font color="#A2734C">╘═════════════╧════════════════════════════════════════════════════════════════════════════════════════════════════════════════╛</font>
+<font color="#12488B">╒═════════════╤═════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╕</font>
+<font color="#12488B">│ RULE ID     │ cookie_session_default                                                                                                              │</font>
+<font color="#12488B">├─────────────┼─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤</font>
+<font color="#12488B">│ CWE         │ CWE-522: Insufficiently Protected Credentials                                                                                       │</font>
+<font color="#12488B">├─────────────┼─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤</font>
+<font color="#12488B">│ OWASP-WEB   │ A2: Broken Authentication                                                                                                           │</font>
+<font color="#12488B">├─────────────┼─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤</font>
+<font color="#12488B">│ DESCRIPTION │ Consider changing the default session cookie name. An attacker can use it to fingerprint the server and target attacks accordingly. │</font>
+<font color="#12488B">├─────────────┼─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤</font>
+<font color="#12488B">│ SEVERITY    │ INFO                                                                                                                                │</font>
+<font color="#12488B">├─────────────┼─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤</font>
+<font color="#12488B">│ FILES       │ ╒════════════════╤═════════════════════════════╕                                                                                    │</font>
+<font color="#12488B">│             │ │ File           │ server.js                   │                                                                                    │</font>
+<font color="#12488B">│             │ ├────────────────┼─────────────────────────────┤                                                                                    │</font>
+<font color="#12488B">│             │ │ Match Position │ 9 - 3                       │                                                                                    │</font>
+<font color="#12488B">│             │ ├────────────────┼─────────────────────────────┤                                                                                    │</font>
+<font color="#12488B">│             │ │ Line Number(s) │ 23: 28                      │                                                                                    │</font>
+<font color="#12488B">│             │ ├────────────────┼─────────────────────────────┤                                                                                    │</font>
+<font color="#12488B">│             │ │ Match String   │ app.use(session({           │                                                                                    │</font>
+<font color="#12488B">│             │ │                │   secret: &apos;keyboard cat&apos;,   │                                                                                    │</font>
+<font color="#12488B">│             │ │                │   resave: true,             │                                                                                    │</font>
+<font color="#12488B">│             │ │                │   saveUninitialized: true,  │                                                                                    │</font>
+<font color="#12488B">│             │ │                │   cookie: { secure: false } │                                                                                    │</font>
+<font color="#12488B">│             │ │                │ }))                         │                                                                                    │</font>
+<font color="#12488B">│             │ ╘════════════════╧═════════════════════════════╛                                                                                    │</font>
+<font color="#12488B">╘═════════════╧═════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╛</font>
+<font color="#12488B">╒═════════════╤══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╕</font>
+<font color="#12488B">│ RULE ID     │ cookie_session_no_domain                                                                                                                                                                                                                 │</font>
+<font color="#12488B">├─────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤</font>
+<font color="#12488B">│ CWE         │ CWE-522: Insufficiently Protected Credentials                                                                                                                                                                                            │</font>
+<font color="#12488B">├─────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤</font>
+<font color="#12488B">│ OWASP-WEB   │ A2: Broken Authentication                                                                                                                                                                                                                │</font>
+<font color="#12488B">├─────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤</font>
+<font color="#12488B">│ DESCRIPTION │ Default session middleware settings: `domain` not set. It indicates the domain of the cookie; use it to compare against the domain of the server in which the URL is being requested. If they match, then check the path attribute next. │</font>
+<font color="#12488B">├─────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤</font>
+<font color="#12488B">│ SEVERITY    │ INFO                                                                                                                                                                                                                                     │</font>
+<font color="#12488B">├─────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤</font>
+<font color="#12488B">│ FILES       │ ╒════════════════╤═════════════════════════════╕                                                                                                                                                                                         │</font>
+<font color="#12488B">│             │ │ File           │ server.js                   │                                                                                                                                                                                         │</font>
+<font color="#12488B">│             │ ├────────────────┼─────────────────────────────┤                                                                                                                                                                                         │</font>
+<font color="#12488B">│             │ │ Match Position │ 9 - 3                       │                                                                                                                                                                                         │</font>
+<font color="#12488B">│             │ ├────────────────┼─────────────────────────────┤                                                                                                                                                                                         │</font>
+<font color="#12488B">│             │ │ Line Number(s) │ 23: 28                      │                                                                                                                                                                                         │</font>
+<font color="#12488B">│             │ ├────────────────┼─────────────────────────────┤                                                                                                                                                                                         │</font>
+<font color="#12488B">│             │ │ Match String   │ app.use(session({           │                                                                                                                                                                                         │</font>
+<font color="#12488B">│             │ │                │   secret: &apos;keyboard cat&apos;,   │                                                                                                                                                                                         │</font>
+<font color="#12488B">│             │ │                │   resave: true,             │                                                                                                                                                                                         │</font>
+<font color="#12488B">│             │ │                │   saveUninitialized: true,  │                                                                                                                                                                                         │</font>
+<font color="#12488B">│             │ │                │   cookie: { secure: false } │                                                                                                                                                                                         │</font>
+<font color="#12488B">│             │ │                │ }))                         │                                                                                                                                                                                         │</font>
+<font color="#12488B">│             │ ╘════════════════╧═════════════════════════════╛                                                                                                                                                                                         │</font>
+<font color="#12488B">╘═════════════╧══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╛</font>
+<font color="#12488B">╒═════════════╤═══════════════════════════════════════════════════════════════════════════════════════════╕</font>
+<font color="#12488B">│ RULE ID     │ cookie_session_no_maxage                                                                  │</font>
+<font color="#12488B">├─────────────┼───────────────────────────────────────────────────────────────────────────────────────────┤</font>
+<font color="#12488B">│ CWE         │ CWE-613: Insufficient Session Expiration                                                  │</font>
+<font color="#12488B">├─────────────┼───────────────────────────────────────────────────────────────────────────────────────────┤</font>
+<font color="#12488B">│ OWASP-WEB   │ A2: Broken Authentication                                                                 │</font>
+<font color="#12488B">├─────────────┼───────────────────────────────────────────────────────────────────────────────────────────┤</font>
+<font color="#12488B">│ DESCRIPTION │ Session middleware settings: `maxAge` not set. Use it to set expiration date for cookies. │</font>
+<font color="#12488B">├─────────────┼───────────────────────────────────────────────────────────────────────────────────────────┤</font>
+<font color="#12488B">│ SEVERITY    │ INFO                                                                                      │</font>
+<font color="#12488B">├─────────────┼───────────────────────────────────────────────────────────────────────────────────────────┤</font>
+<font color="#12488B">│ FILES       │ ╒════════════════╤═════════════════════════════╕                                          │</font>
+<font color="#12488B">│             │ │ File           │ server.js                   │                                          │</font>
+<font color="#12488B">│             │ ├────────────────┼─────────────────────────────┤                                          │</font>
+<font color="#12488B">│             │ │ Match Position │ 9 - 3                       │                                          │</font>
+<font color="#12488B">│             │ ├────────────────┼─────────────────────────────┤                                          │</font>
+<font color="#12488B">│             │ │ Line Number(s) │ 23: 28                      │                                          │</font>
+<font color="#12488B">│             │ ├────────────────┼─────────────────────────────┤                                          │</font>
+<font color="#12488B">│             │ │ Match String   │ app.use(session({           │                                          │</font>
+<font color="#12488B">│             │ │                │   secret: &apos;keyboard cat&apos;,   │                                          │</font>
+<font color="#12488B">│             │ │                │   resave: true,             │                                          │</font>
+<font color="#12488B">│             │ │                │   saveUninitialized: true,  │                                          │</font>
+<font color="#12488B">│             │ │                │   cookie: { secure: false } │                                          │</font>
+<font color="#12488B">│             │ │                │ }))                         │                                          │</font>
+<font color="#12488B">│             │ ╘════════════════╧═════════════════════════════╛                                          │</font>
+<font color="#12488B">╘═════════════╧═══════════════════════════════════════════════════════════════════════════════════════════╛</font>
+<font color="#12488B">╒═════════════╤══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╕</font>
+<font color="#12488B">│ RULE ID     │ cookie_session_no_path                                                                                                                                                                               │</font>
+<font color="#12488B">├─────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤</font>
+<font color="#12488B">│ CWE         │ CWE-522: Insufficiently Protected Credentials                                                                                                                                                        │</font>
+<font color="#12488B">├─────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤</font>
+<font color="#12488B">│ OWASP-WEB   │ A2: Broken Authentication                                                                                                                                                                            │</font>
+<font color="#12488B">├─────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤</font>
+<font color="#12488B">│ DESCRIPTION │ Default session middleware settings: `path` not set. It indicates the path of the cookie; use it to compare against the request path. If this and domain match, then send the cookie in the request. │</font>
+<font color="#12488B">├─────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤</font>
+<font color="#12488B">│ SEVERITY    │ INFO                                                                                                                                                                                                 │</font>
+<font color="#12488B">├─────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤</font>
+<font color="#12488B">│ FILES       │ ╒════════════════╤═════════════════════════════╕                                                                                                                                                     │</font>
+<font color="#12488B">│             │ │ File           │ server.js                   │                                                                                                                                                     │</font>
+<font color="#12488B">│             │ ├────────────────┼─────────────────────────────┤                                                                                                                                                     │</font>
+<font color="#12488B">│             │ │ Match Position │ 9 - 3                       │                                                                                                                                                     │</font>
+<font color="#12488B">│             │ ├────────────────┼─────────────────────────────┤                                                                                                                                                     │</font>
+<font color="#12488B">│             │ │ Line Number(s) │ 23: 28                      │                                                                                                                                                     │</font>
+<font color="#12488B">│             │ ├────────────────┼─────────────────────────────┤                                                                                                                                                     │</font>
+<font color="#12488B">│             │ │ Match String   │ app.use(session({           │                                                                                                                                                     │</font>
+<font color="#12488B">│             │ │                │   secret: &apos;keyboard cat&apos;,   │                                                                                                                                                     │</font>
+<font color="#12488B">│             │ │                │   resave: true,             │                                                                                                                                                     │</font>
+<font color="#12488B">│             │ │                │   saveUninitialized: true,  │                                                                                                                                                     │</font>
+<font color="#12488B">│             │ │                │   cookie: { secure: false } │                                                                                                                                                     │</font>
+<font color="#12488B">│             │ │                │ }))                         │                                                                                                                                                     │</font>
+<font color="#12488B">│             │ ╘════════════════╧═════════════════════════════╛                                                                                                                                                     │</font>
+<font color="#12488B">╘═════════════╧══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╛</font>
+<font color="#A2734C">╒═════════════╤════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╕</font>
+<font color="#A2734C">│ RULE ID     │ cookie_session_no_samesite                                                                                                                                                         │</font>
+<font color="#A2734C">├─────────────┼────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤</font>
+<font color="#A2734C">│ CWE         │ cwe-1275                                                                                                                                                                           │</font>
+<font color="#A2734C">├─────────────┼────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤</font>
+<font color="#A2734C">│ OWASP-WEB   │ A2: Broken Authentication                                                                                                                                                          │</font>
+<font color="#A2734C">├─────────────┼────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤</font>
+<font color="#A2734C">│ DESCRIPTION │ Default session middleware settings: `sameSite` attribute is not configured to strict or lax. These configurations provides protection against Cross Site Request Forgery attacks. │</font>
+<font color="#A2734C">├─────────────┼────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤</font>
+<font color="#A2734C">│ SEVERITY    │ WARNING                                                                                                                                                                            │</font>
+<font color="#A2734C">├─────────────┼────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤</font>
+<font color="#A2734C">│ FILES       │ ╒════════════════╤═════════════════════════════╕                                                                                                                                   │</font>
+<font color="#A2734C">│             │ │ File           │ server.js                   │                                                                                                                                   │</font>
+<font color="#A2734C">│             │ ├────────────────┼─────────────────────────────┤                                                                                                                                   │</font>
+<font color="#A2734C">│             │ │ Match Position │ 9 - 3                       │                                                                                                                                   │</font>
+<font color="#A2734C">│             │ ├────────────────┼─────────────────────────────┤                                                                                                                                   │</font>
+<font color="#A2734C">│             │ │ Line Number(s) │ 23: 28                      │                                                                                                                                   │</font>
+<font color="#A2734C">│             │ ├────────────────┼─────────────────────────────┤                                                                                                                                   │</font>
+<font color="#A2734C">│             │ │ Match String   │ app.use(session({           │                                                                                                                                   │</font>
+<font color="#A2734C">│             │ │                │   secret: &apos;keyboard cat&apos;,   │                                                                                                                                   │</font>
+<font color="#A2734C">│             │ │                │   resave: true,             │                                                                                                                                   │</font>
+<font color="#A2734C">│             │ │                │   saveUninitialized: true,  │                                                                                                                                   │</font>
+<font color="#A2734C">│             │ │                │   cookie: { secure: false } │                                                                                                                                   │</font>
+<font color="#A2734C">│             │ │                │ }))                         │                                                                                                                                   │</font>
+<font color="#A2734C">│             │ ╘════════════════╧═════════════════════════════╛                                                                                                                                   │</font>
+<font color="#A2734C">╘═════════════╧════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╛</font>
+<font color="#A2734C">╒═════════════╤═════════════════════════════════════════════════════════════════════════════════════════════════════════════════╕</font>
+<font color="#A2734C">│ RULE ID     │ cookie_session_no_secure                                                                                        │</font>
+<font color="#A2734C">├─────────────┼─────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤</font>
+<font color="#A2734C">│ CWE         │ cwe-614                                                                                                         │</font>
+<font color="#A2734C">├─────────────┼─────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤</font>
+<font color="#A2734C">│ OWASP-WEB   │ A2: Broken Authentication                                                                                       │</font>
+<font color="#A2734C">├─────────────┼─────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤</font>
+<font color="#A2734C">│ DESCRIPTION │ Default session middleware settings: `secure` not set. It ensures the browser only sends the cookie over HTTPS. │</font>
+<font color="#A2734C">├─────────────┼─────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤</font>
+<font color="#A2734C">│ SEVERITY    │ WARNING                                                                                                         │</font>
+<font color="#A2734C">├─────────────┼─────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤</font>
+<font color="#A2734C">│ FILES       │ ╒════════════════╤═════════════════════════════╕                                                                │</font>
+<font color="#A2734C">│             │ │ File           │ server.js                   │                                                                │</font>
+<font color="#A2734C">│             │ ├────────────────┼─────────────────────────────┤                                                                │</font>
+<font color="#A2734C">│             │ │ Match Position │ 9 - 3                       │                                                                │</font>
+<font color="#A2734C">│             │ ├────────────────┼─────────────────────────────┤                                                                │</font>
+<font color="#A2734C">│             │ │ Line Number(s) │ 23: 28                      │                                                                │</font>
+<font color="#A2734C">│             │ ├────────────────┼─────────────────────────────┤                                                                │</font>
+<font color="#A2734C">│             │ │ Match String   │ app.use(session({           │                                                                │</font>
+<font color="#A2734C">│             │ │                │   secret: &apos;keyboard cat&apos;,   │                                                                │</font>
+<font color="#A2734C">│             │ │                │   resave: true,             │                                                                │</font>
+<font color="#A2734C">│             │ │                │   saveUninitialized: true,  │                                                                │</font>
+<font color="#A2734C">│             │ │                │   cookie: { secure: false } │                                                                │</font>
+<font color="#A2734C">│             │ │                │ }))                         │                                                                │</font>
+<font color="#A2734C">│             │ ╘════════════════╧═════════════════════════════╛                                                                │</font>
+<font color="#A2734C">╘═════════════╧═════════════════════════════════════════════════════════════════════════════════════════════════════════════════╛</font>
+</pre>

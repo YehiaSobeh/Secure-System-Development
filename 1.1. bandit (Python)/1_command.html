@@ -1,0 +1,553 @@
+<pre><font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~/My station/secure development/lab2</b></font>$ python3 -m venv bandit-env
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~/My station/secure development/lab2</b></font>$ source bandit-env/bin/activate
+(bandit-env) <font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~/My station/secure development/lab2</b></font>$ pip install bandit
+Collecting bandit
+  Downloading bandit-1.8.3-py3-none-any.whl (129 kB)
+     <font color="#729C1F">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</font> <font color="#26A269">129.1/129.1 KB</font> <font color="#C01C28">910.4 kB/s</font> eta <font color="#2AA1B3">0:00:00</font>
+Collecting rich
+  Downloading rich-13.9.4-py3-none-any.whl (242 kB)
+     <font color="#729C1F">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</font> <font color="#26A269">242.4/242.4 KB</font> <font color="#C01C28">1.7 MB/s</font> eta <font color="#2AA1B3">0:00:00</font>
+Collecting stevedore&gt;=1.20.0
+  Downloading stevedore-5.4.1-py3-none-any.whl (49 kB)
+     <font color="#729C1F">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</font> <font color="#26A269">49.5/49.5 KB</font> <font color="#C01C28">7.8 MB/s</font> eta <font color="#2AA1B3">0:00:00</font>
+Collecting PyYAML&gt;=5.3.1
+  Using cached PyYAML-6.0.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (751 kB)
+Collecting pbr&gt;=2.0.0
+  Downloading pbr-6.1.1-py2.py3-none-any.whl (108 kB)
+     <font color="#729C1F">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</font> <font color="#26A269">109.0/109.0 KB</font> <font color="#C01C28">1.4 MB/s</font> eta <font color="#2AA1B3">0:00:00</font>
+Collecting markdown-it-py&gt;=2.2.0
+  Downloading markdown_it_py-3.0.0-py3-none-any.whl (87 kB)
+     <font color="#729C1F">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</font> <font color="#26A269">87.5/87.5 KB</font> <font color="#C01C28">7.0 MB/s</font> eta <font color="#2AA1B3">0:00:00</font>
+Collecting typing-extensions&lt;5.0,&gt;=4.0.0
+  Using cached typing_extensions-4.12.2-py3-none-any.whl (37 kB)
+Collecting pygments&lt;3.0.0,&gt;=2.13.0
+  Using cached pygments-2.19.1-py3-none-any.whl (1.2 MB)
+Collecting mdurl~=0.1
+  Downloading mdurl-0.1.2-py3-none-any.whl (10.0 kB)
+Requirement already satisfied: setuptools in ./bandit-env/lib/python3.10/site-packages (from pbr&gt;=2.0.0-&gt;stevedore&gt;=1.20.0-&gt;bandit) (59.6.0)
+Installing collected packages: typing-extensions, PyYAML, pygments, pbr, mdurl, stevedore, markdown-it-py, rich, bandit
+Successfully installed PyYAML-6.0.2 bandit-1.8.3 markdown-it-py-3.0.0 mdurl-0.1.2 pbr-6.1.1 pygments-2.19.1 rich-13.9.4 stevedore-5.4.1 typing-extensions-4.12.2
+(bandit-env) <font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~/My station/secure development/lab2</b></font>$ git clone https://github.com/example/vulpy.git
+Cloning into &apos;vulpy&apos;...
+Username for &apos;https://github.com&apos;: ^C
+(bandit-env) <font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~/My station/secure development/lab2</b></font>$ git clone git@github.com:fportantier/vulpy.git
+Cloning into &apos;vulpy&apos;...
+remote: Enumerating objects: 437, done.
+remote: Total 437 (delta 0), reused 0 (delta 0), pack-reused 437 (from 1)
+Receiving objects: 100% (437/437), 2.90 MiB | 3.85 MiB/s, done.
+Resolving deltas: 100% (223/223), done.
+(bandit-env) <font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~/My station/secure development/lab2</b></font>$ ls
+<font color="#12488B"><b>bandit-env</b></font>  notes.md  <font color="#12488B"><b>vulpy</b></font>
+(bandit-env) <font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~/My station/secure development/lab2</b></font>$ cd vulpy/
+(bandit-env) <font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~/My station/secure development/lab2/vulpy</b></font>$ bandit -r .
+[main]	INFO	profile include tests: None
+[main]	INFO	profile exclude tests: None
+[main]	INFO	cli include tests: None
+[main]	INFO	cli exclude tests: None
+[main]	INFO	running on Python 3.10.12
+Working... <font color="#729C1F">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</font> <font color="#A347BA">100%</font> <font color="#A2734C">0:00:00</font>
+<font color="#C061CB">Run started:2025-03-04 02:27:44.579447</font>
+
+<font color="#C061CB">Test results:</font>
+<font color="#E9AD0C">&gt;&gt; Issue: [B113:request_without_timeout] Call to requests without timeout</font>
+<font color="#E9AD0C">   Severity: Medium   Confidence: Low</font>
+<font color="#E9AD0C">   CWE: CWE-400 (https://cwe.mitre.org/data/definitions/400.html)</font>
+<font color="#E9AD0C">   More Info: https://bandit.readthedocs.io/en/1.8.3/plugins/b113_request_without_timeout.html</font>
+<font color="#E9AD0C">   Location: ./bad/api_list.py:10:8</font>
+9	
+10	    r = requests.get(&apos;http://127.0.1.1:5000/api/post/{}&apos;.format(username))
+11	    if r.status_code != 200:
+
+--------------------------------------------------
+<font color="#E9AD0C">&gt;&gt; Issue: [B108:hardcoded_tmp_directory] Probable insecure usage of temp file/directory.</font>
+<font color="#E9AD0C">   Severity: Medium   Confidence: Medium</font>
+<font color="#E9AD0C">   CWE: CWE-377 (https://cwe.mitre.org/data/definitions/377.html)</font>
+<font color="#E9AD0C">   More Info: https://bandit.readthedocs.io/en/1.8.3/plugins/b108_hardcoded_tmp_directory.html</font>
+<font color="#E9AD0C">   Location: ./bad/api_post.py:6:20</font>
+5	
+6	api_key_file = Path(&apos;/tmp/supersecret.txt&apos;)
+7	
+
+--------------------------------------------------
+<font color="#E9AD0C">&gt;&gt; Issue: [B113:request_without_timeout] Call to requests without timeout</font>
+<font color="#E9AD0C">   Severity: Medium   Confidence: Low</font>
+<font color="#E9AD0C">   CWE: CWE-400 (https://cwe.mitre.org/data/definitions/400.html)</font>
+<font color="#E9AD0C">   More Info: https://bandit.readthedocs.io/en/1.8.3/plugins/b113_request_without_timeout.html</font>
+<font color="#E9AD0C">   Location: ./bad/api_post.py:16:12</font>
+15	
+16	        r = requests.post(&apos;http://127.0.1.1:5000/api/key&apos;, json={&apos;username&apos;:username, &apos;password&apos;:password})
+17	
+
+--------------------------------------------------
+<font color="#E9AD0C">&gt;&gt; Issue: [B113:request_without_timeout] Call to requests without timeout</font>
+<font color="#E9AD0C">   Severity: Medium   Confidence: Low</font>
+<font color="#E9AD0C">   CWE: CWE-400 (https://cwe.mitre.org/data/definitions/400.html)</font>
+<font color="#E9AD0C">   More Info: https://bandit.readthedocs.io/en/1.8.3/plugins/b113_request_without_timeout.html</font>
+<font color="#E9AD0C">   Location: ./bad/api_post.py:30:8</font>
+29	    api_key = api_key_file.open().read()
+30	    r = requests.post(&apos;http://127.0.1.1:5000/api/post&apos;, json={&apos;text&apos;:message}, headers={&apos;X-APIKEY&apos;: api_key})
+31	    print(r.text)
+
+--------------------------------------------------
+<font color="#2A7BDE">&gt;&gt; Issue: [B404:blacklist] Consider possible security implications associated with the subprocess module.</font>
+<font color="#2A7BDE">   Severity: Low   Confidence: High</font>
+<font color="#2A7BDE">   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)</font>
+<font color="#2A7BDE">   More Info: https://bandit.readthedocs.io/en/1.8.3/blacklists/blacklist_imports.html#b404-import-subprocess</font>
+<font color="#2A7BDE">   Location: ./bad/brute.py:3:0</font>
+2	
+3	import subprocess
+4	import sys
+
+--------------------------------------------------
+<font color="#2A7BDE">&gt;&gt; Issue: [B603:subprocess_without_shell_equals_true] subprocess call - check for execution of untrusted input.</font>
+<font color="#2A7BDE">   Severity: Low   Confidence: High</font>
+<font color="#2A7BDE">   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)</font>
+<font color="#2A7BDE">   More Info: https://bandit.readthedocs.io/en/1.8.3/plugins/b603_subprocess_without_shell_equals_true.html</font>
+<font color="#2A7BDE">   Location: ./bad/brute.py:21:13</font>
+20	for password in passwords:
+21	    result = subprocess.run([program, username, password], stdout=subprocess.DEVNULL)
+22	    if result.returncode == 0:
+
+--------------------------------------------------
+<font color="#E9AD0C">&gt;&gt; Issue: [B608:hardcoded_sql_expressions] Possible SQL injection vector through string-based query construction.</font>
+<font color="#E9AD0C">   Severity: Medium   Confidence: Medium</font>
+<font color="#E9AD0C">   CWE: CWE-89 (https://cwe.mitre.org/data/definitions/89.html)</font>
+<font color="#E9AD0C">   More Info: https://bandit.readthedocs.io/en/1.8.3/plugins/b608_hardcoded_sql_expressions.html</font>
+<font color="#E9AD0C">   Location: ./bad/db.py:19:18</font>
+18	    for u,p in users:
+19	        c.execute(&quot;INSERT INTO users (user, password, failures) VALUES (&apos;%s&apos;, &apos;%s&apos;, &apos;%d&apos;)&quot; %(u, p, 0))
+20	
+
+--------------------------------------------------
+<font color="#E9AD0C">&gt;&gt; Issue: [B608:hardcoded_sql_expressions] Possible SQL injection vector through string-based query construction.</font>
+<font color="#E9AD0C">   Severity: Medium   Confidence: Medium</font>
+<font color="#E9AD0C">   CWE: CWE-89 (https://cwe.mitre.org/data/definitions/89.html)</font>
+<font color="#E9AD0C">   More Info: https://bandit.readthedocs.io/en/1.8.3/plugins/b608_hardcoded_sql_expressions.html</font>
+<font color="#E9AD0C">   Location: ./bad/db_init.py:20:18</font>
+19	    for u,p in users:
+20	        c.execute(&quot;INSERT INTO users (username, password, failures, mfa_enabled, mfa_secret) VALUES (&apos;%s&apos;, &apos;%s&apos;, &apos;%d&apos;, &apos;%d&apos;, &apos;%s&apos;)&quot; %(u, p, 0, 0, &apos;&apos;))
+21	
+
+--------------------------------------------------
+<font color="#E9AD0C">&gt;&gt; Issue: [B108:hardcoded_tmp_directory] Probable insecure usage of temp file/directory.</font>
+<font color="#E9AD0C">   Severity: Medium   Confidence: Medium</font>
+<font color="#E9AD0C">   CWE: CWE-377 (https://cwe.mitre.org/data/definitions/377.html)</font>
+<font color="#E9AD0C">   More Info: https://bandit.readthedocs.io/en/1.8.3/plugins/b108_hardcoded_tmp_directory.html</font>
+<font color="#E9AD0C">   Location: ./bad/libapi.py:16:18</font>
+15	
+16	    for f in Path(&apos;/tmp/&apos;).glob(&apos;vulpy.apikey.&apos; + username + &apos;.*&apos;):
+17	        print(&apos;removing&apos;, f)
+
+--------------------------------------------------
+<font color="#E9AD0C">&gt;&gt; Issue: [B108:hardcoded_tmp_directory] Probable insecure usage of temp file/directory.</font>
+<font color="#E9AD0C">   Severity: Medium   Confidence: Medium</font>
+<font color="#E9AD0C">   CWE: CWE-377 (https://cwe.mitre.org/data/definitions/377.html)</font>
+<font color="#E9AD0C">   More Info: https://bandit.readthedocs.io/en/1.8.3/plugins/b108_hardcoded_tmp_directory.html</font>
+<font color="#E9AD0C">   Location: ./bad/libapi.py:20:14</font>
+19	
+20	    keyfile = &apos;/tmp/vulpy.apikey.{}.{}&apos;.format(username, key)
+21	
+
+--------------------------------------------------
+<font color="#E9AD0C">&gt;&gt; Issue: [B108:hardcoded_tmp_directory] Probable insecure usage of temp file/directory.</font>
+<font color="#E9AD0C">   Severity: Medium   Confidence: Medium</font>
+<font color="#E9AD0C">   CWE: CWE-377 (https://cwe.mitre.org/data/definitions/377.html)</font>
+<font color="#E9AD0C">   More Info: https://bandit.readthedocs.io/en/1.8.3/plugins/b108_hardcoded_tmp_directory.html</font>
+<font color="#E9AD0C">   Location: ./bad/libapi.py:33:18</font>
+32	
+33	    for f in Path(&apos;/tmp/&apos;).glob(&apos;vulpy.apikey.*.&apos; + key):
+34	        return f.name.split(&apos;.&apos;)[2]
+
+--------------------------------------------------
+<font color="#2A7BDE">&gt;&gt; Issue: [B110:try_except_pass] Try, Except, Pass detected.</font>
+<font color="#2A7BDE">   Severity: Low   Confidence: High</font>
+<font color="#2A7BDE">   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)</font>
+<font color="#2A7BDE">   More Info: https://bandit.readthedocs.io/en/1.8.3/plugins/b110_try_except_pass.html</font>
+<font color="#2A7BDE">   Location: ./bad/libsession.py:21:4</font>
+20	                session = json.loads(base64.b64decode(cookie))
+21	    except Exception:
+22	        pass
+23	
+
+--------------------------------------------------
+<font color="#E9AD0C">&gt;&gt; Issue: [B608:hardcoded_sql_expressions] Possible SQL injection vector through string-based query construction.</font>
+<font color="#E9AD0C">   Severity: Medium   Confidence: Medium</font>
+<font color="#E9AD0C">   CWE: CWE-89 (https://cwe.mitre.org/data/definitions/89.html)</font>
+<font color="#E9AD0C">   More Info: https://bandit.readthedocs.io/en/1.8.3/plugins/b608_hardcoded_sql_expressions.html</font>
+<font color="#E9AD0C">   Location: ./bad/libuser.py:12:21</font>
+11	
+12	    user = c.execute(&quot;SELECT * FROM users WHERE username = &apos;{}&apos; and password = &apos;{}&apos;&quot;.format(username, password)).fetchone()
+13	
+
+--------------------------------------------------
+<font color="#E9AD0C">&gt;&gt; Issue: [B608:hardcoded_sql_expressions] Possible SQL injection vector through string-based query construction.</font>
+<font color="#E9AD0C">   Severity: Medium   Confidence: Medium</font>
+<font color="#E9AD0C">   CWE: CWE-89 (https://cwe.mitre.org/data/definitions/89.html)</font>
+<font color="#E9AD0C">   More Info: https://bandit.readthedocs.io/en/1.8.3/plugins/b608_hardcoded_sql_expressions.html</font>
+<font color="#E9AD0C">   Location: ./bad/libuser.py:25:14</font>
+24	
+25	    c.execute(&quot;INSERT INTO users (username, password, failures, mfa_enabled, mfa_secret) VALUES (&apos;%s&apos;, &apos;%s&apos;, &apos;%d&apos;, &apos;%d&apos;, &apos;%s&apos;)&quot; %(username, password, 0, 0, &apos;&apos;))
+26	
+
+--------------------------------------------------
+<font color="#E9AD0C">&gt;&gt; Issue: [B608:hardcoded_sql_expressions] Possible SQL injection vector through string-based query construction.</font>
+<font color="#E9AD0C">   Severity: Medium   Confidence: Medium</font>
+<font color="#E9AD0C">   CWE: CWE-89 (https://cwe.mitre.org/data/definitions/89.html)</font>
+<font color="#E9AD0C">   More Info: https://bandit.readthedocs.io/en/1.8.3/plugins/b608_hardcoded_sql_expressions.html</font>
+<font color="#E9AD0C">   Location: ./bad/libuser.py:53:14</font>
+52	
+53	    c.execute(&quot;UPDATE users SET password = &apos;{}&apos; WHERE username = &apos;{}&apos;&quot;.format(password, username))
+54	    conn.commit()
+
+--------------------------------------------------
+<font color="#2A7BDE">&gt;&gt; Issue: [B105:hardcoded_password_string] Possible hardcoded password: &apos;aaaaaaa&apos;</font>
+<font color="#2A7BDE">   Severity: Low   Confidence: Medium</font>
+<font color="#2A7BDE">   CWE: CWE-259 (https://cwe.mitre.org/data/definitions/259.html)</font>
+<font color="#2A7BDE">   More Info: https://bandit.readthedocs.io/en/1.8.3/plugins/b105_hardcoded_password_string.html</font>
+<font color="#2A7BDE">   Location: ./bad/vulpy-ssl.py:13:11</font>
+12	app = Flask(&apos;vulpy&apos;)
+13	app.config[&apos;SECRET_KEY&apos;] = &apos;aaaaaaa&apos;
+14	
+
+--------------------------------------------------
+<font color="#F66151">&gt;&gt; Issue: [B201:flask_debug_true] A Flask app appears to be run with debug=True, which exposes the Werkzeug debugger and allows the execution of arbitrary code.</font>
+<font color="#F66151">   Severity: High   Confidence: Medium</font>
+<font color="#F66151">   CWE: CWE-94 (https://cwe.mitre.org/data/definitions/94.html)</font>
+<font color="#F66151">   More Info: https://bandit.readthedocs.io/en/1.8.3/plugins/b201_flask_debug_true.html</font>
+<font color="#F66151">   Location: ./bad/vulpy-ssl.py:29:0</font>
+28	
+29	app.run(debug=True, host=&apos;127.0.1.1&apos;, ssl_context=(&apos;/tmp/acme.cert&apos;, &apos;/tmp/acme.key&apos;))
+
+--------------------------------------------------
+<font color="#E9AD0C">&gt;&gt; Issue: [B108:hardcoded_tmp_directory] Probable insecure usage of temp file/directory.</font>
+<font color="#E9AD0C">   Severity: Medium   Confidence: Medium</font>
+<font color="#E9AD0C">   CWE: CWE-377 (https://cwe.mitre.org/data/definitions/377.html)</font>
+<font color="#E9AD0C">   More Info: https://bandit.readthedocs.io/en/1.8.3/plugins/b108_hardcoded_tmp_directory.html</font>
+<font color="#E9AD0C">   Location: ./bad/vulpy-ssl.py:29:51</font>
+28	
+29	app.run(debug=True, host=&apos;127.0.1.1&apos;, ssl_context=(&apos;/tmp/acme.cert&apos;, &apos;/tmp/acme.key&apos;))
+
+--------------------------------------------------
+<font color="#E9AD0C">&gt;&gt; Issue: [B108:hardcoded_tmp_directory] Probable insecure usage of temp file/directory.</font>
+<font color="#E9AD0C">   Severity: Medium   Confidence: Medium</font>
+<font color="#E9AD0C">   CWE: CWE-377 (https://cwe.mitre.org/data/definitions/377.html)</font>
+<font color="#E9AD0C">   More Info: https://bandit.readthedocs.io/en/1.8.3/plugins/b108_hardcoded_tmp_directory.html</font>
+<font color="#E9AD0C">   Location: ./bad/vulpy-ssl.py:29:69</font>
+28	
+29	app.run(debug=True, host=&apos;127.0.1.1&apos;, ssl_context=(&apos;/tmp/acme.cert&apos;, &apos;/tmp/acme.key&apos;))
+
+--------------------------------------------------
+<font color="#2A7BDE">&gt;&gt; Issue: [B105:hardcoded_password_string] Possible hardcoded password: &apos;aaaaaaa&apos;</font>
+<font color="#2A7BDE">   Severity: Low   Confidence: Medium</font>
+<font color="#2A7BDE">   CWE: CWE-259 (https://cwe.mitre.org/data/definitions/259.html)</font>
+<font color="#2A7BDE">   More Info: https://bandit.readthedocs.io/en/1.8.3/plugins/b105_hardcoded_password_string.html</font>
+<font color="#2A7BDE">   Location: ./bad/vulpy.py:16:11</font>
+15	app = Flask(&apos;vulpy&apos;)
+16	app.config[&apos;SECRET_KEY&apos;] = &apos;aaaaaaa&apos;
+17	
+
+--------------------------------------------------
+<font color="#F66151">&gt;&gt; Issue: [B201:flask_debug_true] A Flask app appears to be run with debug=True, which exposes the Werkzeug debugger and allows the execution of arbitrary code.</font>
+<font color="#F66151">   Severity: High   Confidence: Medium</font>
+<font color="#F66151">   CWE: CWE-94 (https://cwe.mitre.org/data/definitions/94.html)</font>
+<font color="#F66151">   More Info: https://bandit.readthedocs.io/en/1.8.3/plugins/b201_flask_debug_true.html</font>
+<font color="#F66151">   Location: ./bad/vulpy.py:55:0</font>
+54	
+55	app.run(debug=True, host=&apos;127.0.1.1&apos;, port=5000, extra_files=&apos;csp.txt&apos;)
+
+--------------------------------------------------
+<font color="#E9AD0C">&gt;&gt; Issue: [B108:hardcoded_tmp_directory] Probable insecure usage of temp file/directory.</font>
+<font color="#E9AD0C">   Severity: Medium   Confidence: Medium</font>
+<font color="#E9AD0C">   CWE: CWE-377 (https://cwe.mitre.org/data/definitions/377.html)</font>
+<font color="#E9AD0C">   More Info: https://bandit.readthedocs.io/en/1.8.3/plugins/b108_hardcoded_tmp_directory.html</font>
+<font color="#E9AD0C">   Location: ./good/cutpasswd.py:3:10</font>
+2	
+3	with open(&apos;/tmp/darkweb2017-top10000.txt&apos;) as f:
+4	    for password in f.readlines():
+
+--------------------------------------------------
+<font color="#E9AD0C">&gt;&gt; Issue: [B113:request_without_timeout] Call to requests without timeout</font>
+<font color="#E9AD0C">   Severity: Medium   Confidence: Low</font>
+<font color="#E9AD0C">   CWE: CWE-400 (https://cwe.mitre.org/data/definitions/400.html)</font>
+<font color="#E9AD0C">   More Info: https://bandit.readthedocs.io/en/1.8.3/plugins/b113_request_without_timeout.html</font>
+<font color="#E9AD0C">   Location: ./good/httpbrute.py:22:15</font>
+21	for password in passwords:
+22	    response = requests.post(URL, data = {&apos;username&apos;: username, &apos;password&apos;: password})
+23	    if &apos;HOME&apos; in response.text:
+
+--------------------------------------------------
+<font color="#2A7BDE">&gt;&gt; Issue: [B105:hardcoded_password_string] Possible hardcoded password: &apos;MYSUPERSECRETKEY&apos;</font>
+<font color="#2A7BDE">   Severity: Low   Confidence: Medium</font>
+<font color="#2A7BDE">   CWE: CWE-259 (https://cwe.mitre.org/data/definitions/259.html)</font>
+<font color="#2A7BDE">   More Info: https://bandit.readthedocs.io/en/1.8.3/plugins/b105_hardcoded_password_string.html</font>
+<font color="#2A7BDE">   Location: ./good/libapi.py:10:9</font>
+9	
+10	secret = &apos;MYSUPERSECRETKEY&apos;
+11	not_after = 60 # 1 minute
+
+--------------------------------------------------
+<font color="#2A7BDE">&gt;&gt; Issue: [B110:try_except_pass] Try, Except, Pass detected.</font>
+<font color="#2A7BDE">   Severity: Low   Confidence: High</font>
+<font color="#2A7BDE">   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)</font>
+<font color="#2A7BDE">   More Info: https://bandit.readthedocs.io/en/1.8.3/plugins/b110_try_except_pass.html</font>
+<font color="#2A7BDE">   Location: ./good/libsession.py:22:4</font>
+21	        country = geo.country.iso_code
+22	    except Exception:
+23	        pass
+24	
+
+--------------------------------------------------
+<font color="#E9AD0C">&gt;&gt; Issue: [B608:hardcoded_sql_expressions] Possible SQL injection vector through string-based query construction.</font>
+<font color="#E9AD0C">   Severity: Medium   Confidence: Medium</font>
+<font color="#E9AD0C">   CWE: CWE-89 (https://cwe.mitre.org/data/definitions/89.html)</font>
+<font color="#E9AD0C">   More Info: https://bandit.readthedocs.io/en/1.8.3/plugins/b608_hardcoded_sql_expressions.html</font>
+<font color="#E9AD0C">   Location: ./good/libuser.py:61:14</font>
+60	    c = conn.cursor()
+61	    c.execute(&quot;INSERT INTO users (username, password, salt, failures, mfa_enabled, mfa_secret) VALUES (&apos;%s&apos;, &apos;%s&apos;, &apos;%s&apos;, &apos;%d&apos;, &apos;%d&apos;, &apos;%s&apos;)&quot; %(username, &apos;&apos;, &apos;&apos;, 0, 0, &apos;&apos;))
+62	    conn.commit()
+
+--------------------------------------------------
+<font color="#2A7BDE">&gt;&gt; Issue: [B105:hardcoded_password_string] Possible hardcoded password: &apos;aaaaaaa&apos;</font>
+<font color="#2A7BDE">   Severity: Low   Confidence: Medium</font>
+<font color="#2A7BDE">   CWE: CWE-259 (https://cwe.mitre.org/data/definitions/259.html)</font>
+<font color="#2A7BDE">   More Info: https://bandit.readthedocs.io/en/1.8.3/plugins/b105_hardcoded_password_string.html</font>
+<font color="#2A7BDE">   Location: ./good/vulpy-ssl.py:13:11</font>
+12	app = Flask(&apos;vulpy&apos;)
+13	app.config[&apos;SECRET_KEY&apos;] = &apos;aaaaaaa&apos;
+14	
+
+--------------------------------------------------
+<font color="#F66151">&gt;&gt; Issue: [B201:flask_debug_true] A Flask app appears to be run with debug=True, which exposes the Werkzeug debugger and allows the execution of arbitrary code.</font>
+<font color="#F66151">   Severity: High   Confidence: Medium</font>
+<font color="#F66151">   CWE: CWE-94 (https://cwe.mitre.org/data/definitions/94.html)</font>
+<font color="#F66151">   More Info: https://bandit.readthedocs.io/en/1.8.3/plugins/b201_flask_debug_true.html</font>
+<font color="#F66151">   Location: ./good/vulpy-ssl.py:29:0</font>
+28	
+29	app.run(debug=True, host=&apos;127.0.1.1&apos;, ssl_context=(&apos;/tmp/acme.cert&apos;, &apos;/tmp/acme.key&apos;))
+
+--------------------------------------------------
+<font color="#E9AD0C">&gt;&gt; Issue: [B108:hardcoded_tmp_directory] Probable insecure usage of temp file/directory.</font>
+<font color="#E9AD0C">   Severity: Medium   Confidence: Medium</font>
+<font color="#E9AD0C">   CWE: CWE-377 (https://cwe.mitre.org/data/definitions/377.html)</font>
+<font color="#E9AD0C">   More Info: https://bandit.readthedocs.io/en/1.8.3/plugins/b108_hardcoded_tmp_directory.html</font>
+<font color="#E9AD0C">   Location: ./good/vulpy-ssl.py:29:51</font>
+28	
+29	app.run(debug=True, host=&apos;127.0.1.1&apos;, ssl_context=(&apos;/tmp/acme.cert&apos;, &apos;/tmp/acme.key&apos;))
+
+--------------------------------------------------
+<font color="#E9AD0C">&gt;&gt; Issue: [B108:hardcoded_tmp_directory] Probable insecure usage of temp file/directory.</font>
+<font color="#E9AD0C">   Severity: Medium   Confidence: Medium</font>
+<font color="#E9AD0C">   CWE: CWE-377 (https://cwe.mitre.org/data/definitions/377.html)</font>
+<font color="#E9AD0C">   More Info: https://bandit.readthedocs.io/en/1.8.3/plugins/b108_hardcoded_tmp_directory.html</font>
+<font color="#E9AD0C">   Location: ./good/vulpy-ssl.py:29:69</font>
+28	
+29	app.run(debug=True, host=&apos;127.0.1.1&apos;, ssl_context=(&apos;/tmp/acme.cert&apos;, &apos;/tmp/acme.key&apos;))
+
+--------------------------------------------------
+<font color="#2A7BDE">&gt;&gt; Issue: [B105:hardcoded_password_string] Possible hardcoded password: &apos;123aa8a93bdde342c871564a62282af857bda14b3359fde95d0c5e4b321610c1&apos;</font>
+<font color="#2A7BDE">   Severity: Low   Confidence: Medium</font>
+<font color="#2A7BDE">   CWE: CWE-259 (https://cwe.mitre.org/data/definitions/259.html)</font>
+<font color="#2A7BDE">   More Info: https://bandit.readthedocs.io/en/1.8.3/plugins/b105_hardcoded_password_string.html</font>
+<font color="#2A7BDE">   Location: ./good/vulpy.py:17:11</font>
+16	app = Flask(&apos;vulpy&apos;)
+17	app.config[&apos;SECRET_KEY&apos;] = &apos;123aa8a93bdde342c871564a62282af857bda14b3359fde95d0c5e4b321610c1&apos;
+18	
+
+--------------------------------------------------
+<font color="#F66151">&gt;&gt; Issue: [B201:flask_debug_true] A Flask app appears to be run with debug=True, which exposes the Werkzeug debugger and allows the execution of arbitrary code.</font>
+<font color="#F66151">   Severity: High   Confidence: Medium</font>
+<font color="#F66151">   CWE: CWE-94 (https://cwe.mitre.org/data/definitions/94.html)</font>
+<font color="#F66151">   More Info: https://bandit.readthedocs.io/en/1.8.3/plugins/b201_flask_debug_true.html</font>
+<font color="#F66151">   Location: ./good/vulpy.py:53:0</font>
+52	
+53	app.run(debug=True, host=&apos;127.0.1.1&apos;, port=5001, extra_files=&apos;csp.txt&apos;)
+54	
+
+--------------------------------------------------
+<font color="#E9AD0C">&gt;&gt; Issue: [B108:hardcoded_tmp_directory] Probable insecure usage of temp file/directory.</font>
+<font color="#E9AD0C">   Severity: Medium   Confidence: Medium</font>
+<font color="#E9AD0C">   CWE: CWE-377 (https://cwe.mitre.org/data/definitions/377.html)</font>
+<font color="#E9AD0C">   More Info: https://bandit.readthedocs.io/en/1.8.3/plugins/b108_hardcoded_tmp_directory.html</font>
+<font color="#E9AD0C">   Location: ./utils/ca-create.py:31:10</font>
+30	
+31	with open(&apos;/tmp/ca.key&apos;, &apos;wb&apos;) as out:
+32	    out.write(pem_private)
+
+--------------------------------------------------
+<font color="#E9AD0C">&gt;&gt; Issue: [B108:hardcoded_tmp_directory] Probable insecure usage of temp file/directory.</font>
+<font color="#E9AD0C">   Severity: Medium   Confidence: Medium</font>
+<font color="#E9AD0C">   CWE: CWE-377 (https://cwe.mitre.org/data/definitions/377.html)</font>
+<font color="#E9AD0C">   More Info: https://bandit.readthedocs.io/en/1.8.3/plugins/b108_hardcoded_tmp_directory.html</font>
+<font color="#E9AD0C">   Location: ./utils/ca-create.py:34:10</font>
+33	
+34	with open(&apos;/tmp/ca.pub&apos;, &apos;wb&apos;) as out:
+35	    out.write(pem_public)
+
+--------------------------------------------------
+<font color="#E9AD0C">&gt;&gt; Issue: [B108:hardcoded_tmp_directory] Probable insecure usage of temp file/directory.</font>
+<font color="#E9AD0C">   Severity: Medium   Confidence: Medium</font>
+<font color="#E9AD0C">   CWE: CWE-377 (https://cwe.mitre.org/data/definitions/377.html)</font>
+<font color="#E9AD0C">   More Info: https://bandit.readthedocs.io/en/1.8.3/plugins/b108_hardcoded_tmp_directory.html</font>
+<font color="#E9AD0C">   Location: ./utils/ca-create.py:58:10</font>
+57	# Write our certificate out to disk.
+58	with open(&apos;/tmp/ca.cert&apos;, &apos;wb&apos;) as out:
+59	    out.write(cert.public_bytes(serialization.Encoding.PEM))
+
+--------------------------------------------------
+<font color="#E9AD0C">&gt;&gt; Issue: [B108:hardcoded_tmp_directory] Probable insecure usage of temp file/directory.</font>
+<font color="#E9AD0C">   Severity: Medium   Confidence: Medium</font>
+<font color="#E9AD0C">   CWE: CWE-377 (https://cwe.mitre.org/data/definitions/377.html)</font>
+<font color="#E9AD0C">   More Info: https://bandit.readthedocs.io/en/1.8.3/plugins/b108_hardcoded_tmp_directory.html</font>
+<font color="#E9AD0C">   Location: ./utils/ca-csr-create.py:12:10</font>
+11	
+12	with open(&quot;/tmp/acme.key&quot;, &quot;rb&quot;) as key_file:
+13	    private_key = serialization.load_pem_private_key(
+
+--------------------------------------------------
+<font color="#E9AD0C">&gt;&gt; Issue: [B108:hardcoded_tmp_directory] Probable insecure usage of temp file/directory.</font>
+<font color="#E9AD0C">   Severity: Medium   Confidence: Medium</font>
+<font color="#E9AD0C">   CWE: CWE-377 (https://cwe.mitre.org/data/definitions/377.html)</font>
+<font color="#E9AD0C">   More Info: https://bandit.readthedocs.io/en/1.8.3/plugins/b108_hardcoded_tmp_directory.html</font>
+<font color="#E9AD0C">   Location: ./utils/ca-csr-create.py:35:10</font>
+34	# Write our CSR out to disk.
+35	with open(&quot;/tmp/acme.csr&quot;, &quot;wb&quot;) as out:
+36	    out.write(csr.public_bytes(serialization.Encoding.PEM))
+
+--------------------------------------------------
+<font color="#E9AD0C">&gt;&gt; Issue: [B108:hardcoded_tmp_directory] Probable insecure usage of temp file/directory.</font>
+<font color="#E9AD0C">   Severity: Medium   Confidence: Medium</font>
+<font color="#E9AD0C">   CWE: CWE-377 (https://cwe.mitre.org/data/definitions/377.html)</font>
+<font color="#E9AD0C">   More Info: https://bandit.readthedocs.io/en/1.8.3/plugins/b108_hardcoded_tmp_directory.html</font>
+<font color="#E9AD0C">   Location: ./utils/ca-csr-load.py:13:10</font>
+12	
+13	with open(&quot;/tmp/ca.cert&quot;, &quot;rb&quot;) as ca_cert_file:
+14	    ca_cert = x509.load_pem_x509_certificate(ca_cert_file.read(), default_backend())
+
+--------------------------------------------------
+<font color="#E9AD0C">&gt;&gt; Issue: [B108:hardcoded_tmp_directory] Probable insecure usage of temp file/directory.</font>
+<font color="#E9AD0C">   Severity: Medium   Confidence: Medium</font>
+<font color="#E9AD0C">   CWE: CWE-377 (https://cwe.mitre.org/data/definitions/377.html)</font>
+<font color="#E9AD0C">   More Info: https://bandit.readthedocs.io/en/1.8.3/plugins/b108_hardcoded_tmp_directory.html</font>
+<font color="#E9AD0C">   Location: ./utils/ca-csr-load.py:16:10</font>
+15	
+16	with open(&quot;/tmp/acme.csr&quot;, &quot;rb&quot;) as csr_file:
+17	    csr = x509.load_pem_x509_csr(csr_file.read(), default_backend())
+
+--------------------------------------------------
+<font color="#E9AD0C">&gt;&gt; Issue: [B108:hardcoded_tmp_directory] Probable insecure usage of temp file/directory.</font>
+<font color="#E9AD0C">   Severity: Medium   Confidence: Medium</font>
+<font color="#E9AD0C">   CWE: CWE-377 (https://cwe.mitre.org/data/definitions/377.html)</font>
+<font color="#E9AD0C">   More Info: https://bandit.readthedocs.io/en/1.8.3/plugins/b108_hardcoded_tmp_directory.html</font>
+<font color="#E9AD0C">   Location: ./utils/ca-csr-load.py:19:10</font>
+18	
+19	with open(&quot;/tmp/ca.key&quot;, &quot;rb&quot;) as key_file:
+20	    private_key = serialization.load_pem_private_key(
+
+--------------------------------------------------
+<font color="#E9AD0C">&gt;&gt; Issue: [B108:hardcoded_tmp_directory] Probable insecure usage of temp file/directory.</font>
+<font color="#E9AD0C">   Severity: Medium   Confidence: Medium</font>
+<font color="#E9AD0C">   CWE: CWE-377 (https://cwe.mitre.org/data/definitions/377.html)</font>
+<font color="#E9AD0C">   More Info: https://bandit.readthedocs.io/en/1.8.3/plugins/b108_hardcoded_tmp_directory.html</font>
+<font color="#E9AD0C">   Location: ./utils/ca-csr-load.py:35:10</font>
+34	# Write our certificate out to disk.
+35	with open(&apos;/tmp/acme.cert&apos;, &apos;wb&apos;) as out:
+36	    out.write(cert.public_bytes(serialization.Encoding.PEM))
+
+--------------------------------------------------
+<font color="#E9AD0C">&gt;&gt; Issue: [B113:request_without_timeout] Call to requests without timeout</font>
+<font color="#E9AD0C">   Severity: Medium   Confidence: Low</font>
+<font color="#E9AD0C">   CWE: CWE-400 (https://cwe.mitre.org/data/definitions/400.html)</font>
+<font color="#E9AD0C">   More Info: https://bandit.readthedocs.io/en/1.8.3/plugins/b113_request_without_timeout.html</font>
+<font color="#E9AD0C">   Location: ./utils/generate_bad_passwords.py:21:9</font>
+20	    click.echo(&apos;Downloading password file...&apos;, nl=False, err=True)
+21	    with requests.get(url, stream=True) as r:
+22	        r.raise_for_status()
+
+--------------------------------------------------
+<font color="#E9AD0C">&gt;&gt; Issue: [B113:request_without_timeout] Call to requests without timeout</font>
+<font color="#E9AD0C">   Severity: Medium   Confidence: Low</font>
+<font color="#E9AD0C">   CWE: CWE-400 (https://cwe.mitre.org/data/definitions/400.html)</font>
+<font color="#E9AD0C">   More Info: https://bandit.readthedocs.io/en/1.8.3/plugins/b113_request_without_timeout.html</font>
+<font color="#E9AD0C">   Location: ./utils/httpbrute.py:25:19</font>
+24	    for password in passwords:
+25	        response = requests.post(url, data = {&apos;username&apos;: username, &apos;password&apos;: password})
+26	        logging.info(&apos;{} {} {}&apos;.format(username, password, response.status_code))
+
+--------------------------------------------------
+<font color="#E9AD0C">&gt;&gt; Issue: [B108:hardcoded_tmp_directory] Probable insecure usage of temp file/directory.</font>
+<font color="#E9AD0C">   Severity: Medium   Confidence: Medium</font>
+<font color="#E9AD0C">   CWE: CWE-377 (https://cwe.mitre.org/data/definitions/377.html)</font>
+<font color="#E9AD0C">   More Info: https://bandit.readthedocs.io/en/1.8.3/plugins/b108_hardcoded_tmp_directory.html</font>
+<font color="#E9AD0C">   Location: ./utils/rsa-decrypt.py:14:10</font>
+13	
+14	with open(&quot;/tmp/acme.key&quot;, &quot;rb&quot;) as key_file:
+15	    private_key = serialization.load_pem_private_key(
+
+--------------------------------------------------
+<font color="#E9AD0C">&gt;&gt; Issue: [B108:hardcoded_tmp_directory] Probable insecure usage of temp file/directory.</font>
+<font color="#E9AD0C">   Severity: Medium   Confidence: Medium</font>
+<font color="#E9AD0C">   CWE: CWE-377 (https://cwe.mitre.org/data/definitions/377.html)</font>
+<font color="#E9AD0C">   More Info: https://bandit.readthedocs.io/en/1.8.3/plugins/b108_hardcoded_tmp_directory.html</font>
+<font color="#E9AD0C">   Location: ./utils/rsa-encrypt.py:14:10</font>
+13	
+14	with open(&quot;/tmp/acme.pub&quot;, &quot;rb&quot;) as key_file:
+15	    public_key = serialization.load_pem_public_key(
+
+--------------------------------------------------
+<font color="#E9AD0C">&gt;&gt; Issue: [B108:hardcoded_tmp_directory] Probable insecure usage of temp file/directory.</font>
+<font color="#E9AD0C">   Severity: Medium   Confidence: Medium</font>
+<font color="#E9AD0C">   CWE: CWE-377 (https://cwe.mitre.org/data/definitions/377.html)</font>
+<font color="#E9AD0C">   More Info: https://bandit.readthedocs.io/en/1.8.3/plugins/b108_hardcoded_tmp_directory.html</font>
+<font color="#E9AD0C">   Location: ./utils/rsa-keygen.py:26:10</font>
+25	
+26	with open(&apos;/tmp/acme.key&apos;, &apos;wb&apos;) as out:
+27	    out.write(pem_private)
+
+--------------------------------------------------
+<font color="#E9AD0C">&gt;&gt; Issue: [B108:hardcoded_tmp_directory] Probable insecure usage of temp file/directory.</font>
+<font color="#E9AD0C">   Severity: Medium   Confidence: Medium</font>
+<font color="#E9AD0C">   CWE: CWE-377 (https://cwe.mitre.org/data/definitions/377.html)</font>
+<font color="#E9AD0C">   More Info: https://bandit.readthedocs.io/en/1.8.3/plugins/b108_hardcoded_tmp_directory.html</font>
+<font color="#E9AD0C">   Location: ./utils/rsa-keygen.py:29:10</font>
+28	
+29	with open(&apos;/tmp/acme.pub&apos;, &apos;wb&apos;) as out:
+30	    out.write(pem_public)
+
+--------------------------------------------------
+<font color="#E9AD0C">&gt;&gt; Issue: [B108:hardcoded_tmp_directory] Probable insecure usage of temp file/directory.</font>
+<font color="#E9AD0C">   Severity: Medium   Confidence: Medium</font>
+<font color="#E9AD0C">   CWE: CWE-377 (https://cwe.mitre.org/data/definitions/377.html)</font>
+<font color="#E9AD0C">   More Info: https://bandit.readthedocs.io/en/1.8.3/plugins/b108_hardcoded_tmp_directory.html</font>
+<font color="#E9AD0C">   Location: ./utils/rsa-sign.py:15:10</font>
+14	
+15	with open(&quot;/tmp/acme.key&quot;, &quot;rb&quot;) as key_file:
+16	    private_key = serialization.load_pem_private_key(
+
+--------------------------------------------------
+<font color="#E9AD0C">&gt;&gt; Issue: [B108:hardcoded_tmp_directory] Probable insecure usage of temp file/directory.</font>
+<font color="#E9AD0C">   Severity: Medium   Confidence: Medium</font>
+<font color="#E9AD0C">   CWE: CWE-377 (https://cwe.mitre.org/data/definitions/377.html)</font>
+<font color="#E9AD0C">   More Info: https://bandit.readthedocs.io/en/1.8.3/plugins/b108_hardcoded_tmp_directory.html</font>
+<font color="#E9AD0C">   Location: ./utils/rsa-verify.py:16:10</font>
+15	
+16	with open(&quot;/tmp/acme.pub&quot;, &quot;rb&quot;) as key_file:
+17	    public_key = serialization.load_pem_public_key(
+
+--------------------------------------------------
+
+<font color="#C061CB">Code scanned:</font>
+	Total lines of code: 1556
+	Total lines skipped (#nosec): 0
+
+<font color="#C061CB">Run metrics:</font>
+	Total issues (by severity):
+		Undefined: 0
+		Low: 9
+		Medium: 36
+		High: 4
+	Total issues (by confidence):
+		Undefined: 0
+		Low: 6
+		Medium: 39
+		High: 4
+</pre>
