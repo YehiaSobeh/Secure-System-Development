@@ -1,0 +1,831 @@
+<pre><font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~</b></font>$ sudo apt-get update
+sudo apt-get install gcc valgrind
+[sudo] password for yehia: 
+Hit:1 http://security.ubuntu.com/ubuntu jammy-security InRelease
+Hit:2 http://ru.archive.ubuntu.com/ubuntu jammy InRelease                                                                                                                          
+Hit:3 https://download.docker.com/linux/ubuntu jammy InRelease                            
+Hit:4 https://apt.releases.hashicorp.com jammy InRelease                                             
+Hit:5 https://dl.google.com/linux/chrome/deb stable InRelease                                        
+Get:6 http://ru.archive.ubuntu.com/ubuntu jammy-updates InRelease [128 kB]     
+Get:7 http://ru.archive.ubuntu.com/ubuntu jammy-backports InRelease [127 kB]
+Get:8 http://ru.archive.ubuntu.com/ubuntu jammy-updates/main amd64 DEP-11 Metadata [103 kB]
+Get:9 http://ru.archive.ubuntu.com/ubuntu jammy-updates/restricted amd64 DEP-11 Metadata [212 B]
+Get:10 http://ru.archive.ubuntu.com/ubuntu jammy-updates/universe amd64 DEP-11 Metadata [359 kB]
+Get:11 http://ru.archive.ubuntu.com/ubuntu jammy-updates/multiverse amd64 DEP-11 Metadata [940 B]
+Get:12 http://ru.archive.ubuntu.com/ubuntu jammy-backports/main amd64 DEP-11 Metadata [7 028 B]
+Get:13 http://ru.archive.ubuntu.com/ubuntu jammy-backports/restricted amd64 DEP-11 Metadata [212 B]   
+Get:14 http://ru.archive.ubuntu.com/ubuntu jammy-backports/universe amd64 DEP-11 Metadata [17,7 kB]
+Get:15 http://ru.archive.ubuntu.com/ubuntu jammy-backports/multiverse amd64 DEP-11 Metadata [212 B]
+Hit:16 http://packages.ros.org/ros2/ubuntu jammy InRelease                                     
+Fetched 744 kB in 1s (579 kB/s)
+Reading package lists... Done
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+gcc is already the newest version (4:11.2.0-1ubuntu1).
+valgrind is already the newest version (1:3.18.1-1ubuntu2).
+The following packages were automatically installed and are no longer required:
+  libflashrom1 libftdi1-2 libllvm13 python3-docker python3-dockerpty python3-docopt python3-dotenv python3-jsonschema python3-pyrsistent python3-texttable python3-websocket
+Use &apos;sudo apt autoremove&apos; to remove them.
+0 upgraded, 0 newly installed, 0 to remove and 4 not upgraded.
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~</b></font>$ nano program1.c
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~</b></font>$ cat program1.c 
+#include&lt;stdio.h&gt;
+#include&lt;stdlib.h&gt;
+
+void program1(int N) {
+    int *arr = malloc(N);
+    for(int i = 0; i &lt; N; i++) {
+        arr[i] = i * i;
+        printf(&quot;arr[%d] = %d\n&quot;, i, arr[i]);
+    }
+}
+
+int main() {
+    program1(4); // Should print the array [0, 1, 4, 9]
+}
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~</b></font>$ gcc -Wall -Werror -g -std=c99 -o program1 -O0 program1.c
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~</b></font>$ ./program1 
+arr[0] = 0
+arr[1] = 1
+arr[2] = 4
+arr[3] = 9
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~</b></font>$ valgrind --leak-check=full ./program1
+==51351== Memcheck, a memory error detector
+==51351== Copyright (C) 2002-2017, and GNU GPL&apos;d, by Julian Seward et al.
+==51351== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==51351== Command: ./program1
+==51351== 
+arr[0] = 0
+==51351== Invalid write of size 4
+==51351==    at 0x1091AC: program1 (program1.c:7)
+==51351==    by 0x1091FE: main (program1.c:13)
+==51351==  Address 0x4aa8044 is 0 bytes after a block of size 4 alloc&apos;d
+==51351==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==51351==    by 0x109184: program1 (program1.c:5)
+==51351==    by 0x1091FE: main (program1.c:13)
+==51351== 
+==51351== Invalid read of size 4
+==51351==    at 0x1091C2: program1 (program1.c:8)
+==51351==    by 0x1091FE: main (program1.c:13)
+==51351==  Address 0x4aa8044 is 0 bytes after a block of size 4 alloc&apos;d
+==51351==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==51351==    by 0x109184: program1 (program1.c:5)
+==51351==    by 0x1091FE: main (program1.c:13)
+==51351== 
+arr[1] = 1
+arr[2] = 4
+arr[3] = 9
+==51351== 
+==51351== HEAP SUMMARY:
+==51351==     in use at exit: 4 bytes in 1 blocks
+==51351==   total heap usage: 2 allocs, 1 frees, 1,028 bytes allocated
+==51351== 
+==51351== 4 bytes in 1 blocks are definitely lost in loss record 1 of 1
+==51351==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==51351==    by 0x109184: program1 (program1.c:5)
+==51351==    by 0x1091FE: main (program1.c:13)
+==51351== 
+==51351== LEAK SUMMARY:
+==51351==    definitely lost: 4 bytes in 1 blocks
+==51351==    indirectly lost: 0 bytes in 0 blocks
+==51351==      possibly lost: 0 bytes in 0 blocks
+==51351==    still reachable: 0 bytes in 0 blocks
+==51351==         suppressed: 0 bytes in 0 blocks
+==51351== 
+==51351== For lists of detected and suppressed errors, rerun with: -s
+==51351== ERROR SUMMARY: 7 errors from 3 contexts (suppressed: 0 from 0)
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~</b></font>$ nano program1_fixed.c
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~</b></font>$ gcc -Wall -Werror -g -std=c99 -o program1_fixed program1_fixed.c
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~</b></font>$ valgrind --leak-check=full ./program1_fixed
+==53807== Memcheck, a memory error detector
+==53807== Copyright (C) 2002-2017, and GNU GPL&apos;d, by Julian Seward et al.
+==53807== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==53807== Command: ./program1_fixed
+==53807== 
+arr[0] = 0
+arr[1] = 1
+arr[2] = 4
+arr[3] = 9
+==53807== 
+==53807== HEAP SUMMARY:
+==53807==     in use at exit: 0 bytes in 0 blocks
+==53807==   total heap usage: 2 allocs, 2 frees, 1,040 bytes allocated
+==53807== 
+==53807== All heap blocks were freed -- no leaks are possible
+==53807== 
+==53807== For lists of detected and suppressed errors, rerun with: -s
+==53807== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~</b></font>$ cat  program1_fixed.c
+#include&lt;stdio.h&gt;
+#include&lt;stdlib.h&gt;
+
+void program1(int N) {
+    int *arr = malloc(N * sizeof(int)); // Correct allocation
+    if(arr == NULL) {
+        fprintf(stderr, &quot;Memory allocation failed\n&quot;);
+        return;
+    }
+    
+    for(int i = 0; i &lt; N; i++) {
+        arr[i] = i * i;
+        printf(&quot;arr[%d] = %d\n&quot;, i, arr[i]);
+    }
+    
+    free(arr); // Prevent memory leak
+}
+
+int main() {
+    program1(4);
+}
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~</b></font>$ 
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~</b></font>$ 
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~</b></font>$ 
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~</b></font>$ 
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~</b></font>$ 
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~</b></font>$ 
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~</b></font>$ 
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~</b></font>$ 
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~</b></font>$ 
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~</b></font>$ 
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~</b></font>$ 
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~</b></font>$ 
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~</b></font>$ 
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~</b></font>$ 
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~</b></font>$ echo &quot;task2 &quot;
+task2 
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~</b></font>$ nano program2.c
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~</b></font>$ nano program2.c
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~</b></font>$ cat program2.c
+#include&lt;stdio.h&gt;
+#include&lt;stdlib.h&gt;
+#include&lt;string.h&gt;
+
+void work(int* arr, unsigned N) {
+    for(int i=1; i&lt;N; i++) {
+        arr[i] = arr[i-1] * 2;
+    }
+    free(arr);
+}
+
+void program2(unsigned N) {
+    int* arr = (int*)malloc(N * sizeof(*arr));
+    memset(arr, 0, sizeof(*arr));
+    arr[0] = 1;
+    work(arr, N);
+    for(int i=0; i&lt;N; i++) {
+        printf(&quot;arr[%d] = %d\n&quot;, i, arr[i]);
+    }
+}
+
+int main() {
+    program2(4); // Should print the array [1, 2, 4, 8]
+}
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~</b></font>$ gcc -Wall -Werror -g -std=c99 -o program2 program2.c
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~</b></font>$ ./program2
+arr[0] = 1196867422
+arr[1] = 6
+arr[2] = -1661680662
+arr[3] = 114500276
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~</b></font>$ valgrind ./program2
+==64712== Memcheck, a memory error detector
+==64712== Copyright (C) 2002-2017, and GNU GPL&apos;d, by Julian Seward et al.
+==64712== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==64712== Command: ./program2
+==64712== 
+==64712== Invalid read of size 4
+==64712==    at 0x10927E: program2 (program2.c:18)
+==64712==    by 0x1092BA: main (program2.c:23)
+==64712==  Address 0x4aa8040 is 0 bytes inside a block of size 16 free&apos;d
+==64712==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==64712==    by 0x10920A: work (program2.c:9)
+==64712==    by 0x109260: program2 (program2.c:16)
+==64712==    by 0x1092BA: main (program2.c:23)
+==64712==  Block was alloc&apos;d at
+==64712==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==64712==    by 0x10922B: program2 (program2.c:13)
+==64712==    by 0x1092BA: main (program2.c:23)
+==64712== 
+arr[0] = 1
+arr[1] = 2
+arr[2] = 4
+arr[3] = 8
+==64712== 
+==64712== HEAP SUMMARY:
+==64712==     in use at exit: 0 bytes in 0 blocks
+==64712==   total heap usage: 2 allocs, 2 frees, 1,040 bytes allocated
+==64712== 
+==64712== All heap blocks were freed -- no leaks are possible
+==64712== 
+==64712== For lists of detected and suppressed errors, rerun with: -s
+==64712== ERROR SUMMARY: 4 errors from 1 contexts (suppressed: 0 from 0)
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~</b></font>$ nano program2_fixed.c
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~</b></font>$ gcc -Wall -Werror -g -std=c99 -o program2_fixed program2_fixed.c
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~</b></font>$ ./program2_fixed 
+arr[0] = 1
+arr[1] = 2
+arr[2] = 4
+arr[3] = 8
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~</b></font>$ valgrind ./program2_fixed
+==65952== Memcheck, a memory error detector
+==65952== Copyright (C) 2002-2017, and GNU GPL&apos;d, by Julian Seward et al.
+==65952== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==65952== Command: ./program2_fixed
+==65952== 
+arr[0] = 1
+arr[1] = 2
+arr[2] = 4
+arr[3] = 8
+==65952== 
+==65952== HEAP SUMMARY:
+==65952==     in use at exit: 0 bytes in 0 blocks
+==65952==   total heap usage: 2 allocs, 2 frees, 1,040 bytes allocated
+==65952== 
+==65952== All heap blocks were freed -- no leaks are possible
+==65952== 
+==65952== For lists of detected and suppressed errors, rerun with: -s
+==65952== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~</b></font>$ cat program2_fixed.c 
+#include&lt;stdio.h&gt;
+#include&lt;stdlib.h&gt;
+#include&lt;string.h&gt;
+
+void work(int* arr, unsigned N) {
+    for(int i=1; i&lt;N; i++) {
+        arr[i] = arr[i-1] * 2;
+    }
+    // Removed free(arr) from here
+}
+
+void program2(unsigned N) {
+    int* arr = (int*)malloc(N * sizeof(*arr));
+    memset(arr, 0, N * sizeof(*arr)); // Correct initialization
+    arr[0] = 1;
+    work(arr, N);
+    
+    for(int i=0; i&lt;N; i++) {
+        printf(&quot;arr[%d] = %d\n&quot;, i, arr[i]);
+    }
+    
+    free(arr); // Free after usage
+}
+
+int main() {
+    program2(4); // Now prints [1, 2, 4, 8]
+}
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~</b></font>$ 
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~</b></font>$ 
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~</b></font>$ 
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~</b></font>$ 
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~</b></font>$ 
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~</b></font>$ 
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~</b></font>$ nano program3.c
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~</b></font>$ nano program3.c
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~</b></font>$ cat program3.c
+#include&lt;stdio.h&gt;
+#include&lt;stdlib.h&gt;
+#include&lt;string.h&gt;
+
+void* program3(unsigned N) {
+    void *arr = malloc(N * sizeof(*arr));
+    if((N &lt; 1) || (arr = NULL)) {
+        printf(&quot;%s\n&quot;, &quot;Memory allocation falied!&quot;);
+        return NULL;
+    }
+    printf(&quot;%s\n&quot;, &quot;Memory allocation success!&quot;);
+    return arr;
+}
+
+int main() {
+    int* arr = (int*)program3(4); // Should typically succeed
+    free(arr);
+}
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~</b></font>$ gcc -Wall -Werror -g -std=c99 -o program3 -O0 program3.c
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~</b></font>$ ./program3
+Memory allocation success!
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~</b></font>$ valgrind ./program3
+==66963== Memcheck, a memory error detector
+==66963== Copyright (C) 2002-2017, and GNU GPL&apos;d, by Julian Seward et al.
+==66963== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==66963== Command: ./program3
+==66963== 
+Memory allocation success!
+==66963== 
+==66963== HEAP SUMMARY:
+==66963==     in use at exit: 4 bytes in 1 blocks
+==66963==   total heap usage: 2 allocs, 1 frees, 1,028 bytes allocated
+==66963== 
+==66963== LEAK SUMMARY:
+==66963==    definitely lost: 4 bytes in 1 blocks
+==66963==    indirectly lost: 0 bytes in 0 blocks
+==66963==      possibly lost: 0 bytes in 0 blocks
+==66963==    still reachable: 0 bytes in 0 blocks
+==66963==         suppressed: 0 bytes in 0 blocks
+==66963== Rerun with --leak-check=full to see details of leaked memory
+==66963== 
+==66963== For lists of detected and suppressed errors, rerun with: -s
+==66963== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~</b></font>$ nano program3_fixed.c
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~</b></font>$ cat program3_fixed.c
+#include&lt;stdio.h&gt;
+#include&lt;stdlib.h&gt;
+#include&lt;string.h&gt;
+
+void* program3(unsigned N) {
+    void *arr = malloc(N * sizeof(int)); // Correct allocation size
+    if((N &lt; 1) || (arr == NULL)) {       // Fixed comparison (==)
+        printf(&quot;%s\n&quot;, &quot;Memory allocation failed!&quot;);
+        return NULL;
+    }
+    printf(&quot;%s\n&quot;, &quot;Memory allocation success!&quot;);
+    return arr;
+}
+
+int main() {
+    int* arr = (int*)program3(4); 
+    free(arr); // Now actually frees the memory
+}
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~</b></font>$ gcc -Wall -Werror -g -std=c99 -o program3_fixed program3_fixed.c
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~</b></font>$ ./program3_fixed
+Memory allocation success!
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~</b></font>$ valgrind ./program3_fixed
+==70216== Memcheck, a memory error detector
+==70216== Copyright (C) 2002-2017, and GNU GPL&apos;d, by Julian Seward et al.
+==70216== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==70216== Command: ./program3_fixed
+==70216== 
+Memory allocation success!
+==70216== 
+==70216== HEAP SUMMARY:
+==70216==     in use at exit: 0 bytes in 0 blocks
+==70216==   total heap usage: 2 allocs, 2 frees, 1,040 bytes allocated
+==70216== 
+==70216== All heap blocks were freed -- no leaks are possible
+==70216== 
+==70216== For lists of detected and suppressed errors, rerun with: -s
+==70216== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~</b></font>$ 
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~</b></font>$ 
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~</b></font>$ 
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~</b></font>$ 
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~</b></font>$ 
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~</b></font>$ nano program4.c
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~</b></font>$ cat program4.c
+#include&lt;stdio.h&gt;
+#include&lt;stdlib.h&gt;
+#include&lt;string.h&gt;
+
+char* getString() {
+    char message[100] = &quot;Hello World!&quot;;
+    char* ret = message;
+    return ret;
+}
+
+void program4() {
+    printf(&quot;String: %s\n&quot;, getString());
+}
+
+int main() {
+    program4();
+}
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~</b></font>$ gcc -Wall -Werror -g -std=c99 -o program4 program4.c
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~</b></font>$ ./program4
+String: Hello World!
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~</b></font>$ val
+valgrind            valgrind.bin        valgrind-di-server  valgrind-listener   validlocale         
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~</b></font>$ valgrind ./program4
+==71645== Memcheck, a memory error detector
+==71645== Copyright (C) 2002-2017, and GNU GPL&apos;d, by Julian Seward et al.
+==71645== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==71645== Command: ./program4
+==71645== 
+==71645== Conditional jump or move depends on uninitialised value(s)
+==71645==    at 0x484ED19: strlen (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==71645==    by 0x48F2D30: __vfprintf_internal (vfprintf-internal.c:1517)
+==71645==    by 0x48DC79E: printf (printf.c:33)
+==71645==    by 0x10923C: program4 (program4.c:12)
+==71645==    by 0x109251: main (program4.c:16)
+==71645== 
+==71645== Conditional jump or move depends on uninitialised value(s)
+==71645==    at 0x484ED28: strlen (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==71645==    by 0x48F2D30: __vfprintf_internal (vfprintf-internal.c:1517)
+==71645==    by 0x48DC79E: printf (printf.c:33)
+==71645==    by 0x10923C: program4 (program4.c:12)
+==71645==    by 0x109251: main (program4.c:16)
+==71645== 
+==71645== Conditional jump or move depends on uninitialised value(s)
+==71645==    at 0x4907737: _IO_new_file_xsputn (fileops.c:1218)
+==71645==    by 0x4907737: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1196)
+==71645==    by 0x48F300B: outstring_func (vfprintf-internal.c:239)
+==71645==    by 0x48F300B: __vfprintf_internal (vfprintf-internal.c:1517)
+==71645==    by 0x48DC79E: printf (printf.c:33)
+==71645==    by 0x10923C: program4 (program4.c:12)
+==71645==    by 0x109251: main (program4.c:16)
+==71645== 
+==71645== Syscall param write(buf) points to uninitialised byte(s)
+==71645==    at 0x4990887: write (write.c:26)
+==71645==    by 0x4906EEC: _IO_file_write@@GLIBC_2.2.5 (fileops.c:1180)
+==71645==    by 0x49089E0: new_do_write (fileops.c:448)
+==71645==    by 0x49089E0: _IO_new_do_write (fileops.c:425)
+==71645==    by 0x49089E0: _IO_do_write@@GLIBC_2.2.5 (fileops.c:422)
+==71645==    by 0x49076D4: _IO_new_file_xsputn (fileops.c:1243)
+==71645==    by 0x49076D4: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1196)
+==71645==    by 0x48F1FC9: outstring_func (vfprintf-internal.c:239)
+==71645==    by 0x48F1FC9: __vfprintf_internal (vfprintf-internal.c:1593)
+==71645==    by 0x48DC79E: printf (printf.c:33)
+==71645==    by 0x10923C: program4 (program4.c:12)
+==71645==    by 0x109251: main (program4.c:16)
+==71645==  Address 0x4aa8048 is 8 bytes inside a block of size 1,024 alloc&apos;d
+==71645==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==71645==    by 0x48FABA3: _IO_file_doallocate (filedoalloc.c:101)
+==71645==    by 0x4909CDF: _IO_doallocbuf (genops.c:347)
+==71645==    by 0x4908F5F: _IO_file_overflow@@GLIBC_2.2.5 (fileops.c:744)
+==71645==    by 0x49076D4: _IO_new_file_xsputn (fileops.c:1243)
+==71645==    by 0x49076D4: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1196)
+==71645==    by 0x48F114C: outstring_func (vfprintf-internal.c:239)
+==71645==    by 0x48F114C: __vfprintf_internal (vfprintf-internal.c:1263)
+==71645==    by 0x48DC79E: printf (printf.c:33)
+==71645==    by 0x10923C: program4 (program4.c:12)
+==71645==    by 0x109251: main (program4.c:16)
+==71645== 
+String: Hello World!
+==71645== 
+==71645== HEAP SUMMARY:
+==71645==     in use at exit: 0 bytes in 0 blocks
+==71645==   total heap usage: 1 allocs, 1 frees, 1,024 bytes allocated
+==71645== 
+==71645== All heap blocks were freed -- no leaks are possible
+==71645== 
+==71645== Use --track-origins=yes to see where uninitialised values come from
+==71645== For lists of detected and suppressed errors, rerun with: -s
+==71645== ERROR SUMMARY: 26 errors from 4 contexts (suppressed: 0 from 0)
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~</b></font>$ nano program4_fixed.c
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~</b></font>$ gcc -Wall -Werror -g -std=c99 -o program4_fixed program4_fixed.c
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~</b></font>$ ./program4_fixed
+String: Hello World!
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~</b></font>$ valgrind ./program4_fixed
+==73932== Memcheck, a memory error detector
+==73932== Copyright (C) 2002-2017, and GNU GPL&apos;d, by Julian Seward et al.
+==73932== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==73932== Command: ./program4_fixed
+==73932== 
+String: Hello World!
+==73932== 
+==73932== HEAP SUMMARY:
+==73932==     in use at exit: 0 bytes in 0 blocks
+==73932==   total heap usage: 2 allocs, 2 frees, 1,124 bytes allocated
+==73932== 
+==73932== All heap blocks were freed -- no leaks are possible
+==73932== 
+==73932== For lists of detected and suppressed errors, rerun with: -s
+==73932== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~</b></font>$ cat program4_fixed.c 
+#include&lt;stdio.h&gt;
+#include&lt;stdlib.h&gt;
+#include&lt;string.h&gt;
+
+char* getString() {
+    char* ret = malloc(100 * sizeof(char)); // Heap allocation
+    strcpy(ret, &quot;Hello World!&quot;);
+    return ret;
+}
+
+void program4() {
+    char* str = getString();
+    printf(&quot;String: %s\n&quot;, str);
+    free(str); // Free allocated memory
+}
+
+int main() {
+    program4();
+}
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~</b></font>$ 
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~</b></font>$ 
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~</b></font>$ 
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~</b></font>$ 
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~</b></font>$ 
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~</b></font>$ echo &quot;task3&quot;
+task3
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~</b></font>$ gcc -Wall -Werror -g -std=c99 -o hash hash.c
+<b>cc1:</b> <font color="#C01C28"><b>fatal error: </b></font>hash.c: No such file or directory
+compilation terminated.
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~</b></font>$ ls
+ Assinnah-Client.AppImage   custom-abuseipdb.py   <font color="#26A269"><b>get_helm.sh</b></font>                   <font color="#12488B"><b>misp-docker</b></font>               <font color="#12488B"><b>Pictures</b></font>           program1_updated.c   program3.c         program4_fixed.c   <font color="#12488B"><b>Templates</b></font>
+ <font color="#12488B"><b>aws</b></font>                        custom-misp           <font color="#C01C28"><b>go1.21.3.linux-amd64.tar.gz</b></font>   <font color="#12488B"><b>Music</b></font><font color="#12488B"><b>                    </b></font> <font color="#26A269"><b>program1</b></font>           <font color="#26A269"><b>program2</b></font>             <font color="#26A269"><b>program3_fixed</b></font>     <font color="#12488B"><b>Public</b></font>             <font color="#12488B"><b>terraform</b></font>
+ <font color="#C01C28"><b>awscliv2.zip</b></font>               <font color="#12488B"><b>Desktop</b></font>               index.html                   <font color="#12488B"><b>&apos;My station&apos;</b></font>               program1.c         program2.c           program3_fixed.c   README.md          <font color="#12488B"><b>Videos</b></font>
+ <font color="#12488B"><b>BurpSuiteCommunity</b></font>         <font color="#12488B"><b>Documents</b></font>             kubectl                       <font color="#12488B"><b>ncs_project</b></font>               <font color="#26A269"><b>program1_fixed</b></font>     <font color="#26A269"><b>program2_fixed</b></font>       <font color="#26A269"><b>program4</b></font>           shahin
+ <font color="#A347BA"><b>corners.png</b></font>                <font color="#12488B"><b>Downloads</b></font>             kubectl.sha256                <font color="#12488B"><b>NCS_Project</b></font>               program1_fixed.c   program2_fixed.c     program4.c         <font color="#12488B"><b>snap</b></font>
+ custom-abuseipdb          <font color="#12488B"><b>&apos;from ali&apos;</b></font>             minikube-linux-amd64          <font color="#26A269"><b>Outline-Client.AppImage</b></font>   <font color="#26A269"><b>program1_updated</b></font>   <font color="#26A269"><b>program3</b></font>             <font color="#26A269"><b>program4_fixed</b></font>     STUDENT123.php
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~</b></font>$ 
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~</b></font>$ 
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~</b></font>$ 
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~</b></font>$ 
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~</b></font>$ echo &quot;task3&quot;
+task3
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~</b></font>$ cd My\ station/secure\ development/lab3
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~/My station/secure development/lab3</b></font>$ gcc -Wall -Werror -g -std=c99 -o hash hash.c
+<b>hash.c:</b> In function ‘<b>HashFind</b>’:
+<b>hash.c:32:30:</b> <font color="#C01C28"><b>error: </b></font>passing argument 1 of ‘<b>HashIndex</b>’ discards ‘<b>const</b>’ qualifier from pointer target type [<font color="#C01C28"><b>-Werror=discarded-qualifiers</b></font>]
+   32 |     unsigned idx = HashIndex(<font color="#C01C28"><b>key</b></font>);
+      |                              <font color="#C01C28"><b>^~~</b></font>
+<b>hash.c:8:21:</b> <font color="#2AA1B3"><b>note: </b></font>expected ‘<b>char *</b>’ but argument is of type ‘<b>const char *</b>’
+    8 | int HashIndex(<font color="#2AA1B3"><b>char* key</b></font>) {
+      |               <font color="#2AA1B3"><b>~~~~~~^~~</b></font>
+<b>hash.c:</b> In function ‘<b>HashDelete</b>’:
+<b>hash.c:44:30:</b> <font color="#C01C28"><b>error: </b></font>passing argument 1 of ‘<b>HashIndex</b>’ discards ‘<b>const</b>’ qualifier from pointer target type [<font color="#C01C28"><b>-Werror=discarded-qualifiers</b></font>]
+   44 |     unsigned idx = HashIndex(<font color="#C01C28"><b>key</b></font>);
+      |                              <font color="#C01C28"><b>^~~</b></font>
+<b>hash.c:8:21:</b> <font color="#2AA1B3"><b>note: </b></font>expected ‘<b>char *</b>’ but argument is of type ‘<b>const char *</b>’
+    8 | int HashIndex(<font color="#2AA1B3"><b>char* key</b></font>) {
+      |               <font color="#2AA1B3"><b>~~~~~~^~~</b></font>
+<b>hash.c:</b> In function ‘<b>HashDump</b>’:
+<b>hash.c:60:23:</b> <font color="#C01C28"><b>error: </b></font>format not a string literal and no format arguments [<font color="#C01C28"><b>-Werror=format-security</b></font>]
+   60 |             printf(<font color="#C01C28"><b>val-&gt;KeyName</b></font>);
+      |                    <font color="#C01C28"><b>~~~^~~~~~~~~</b></font>
+cc1: all warnings being treated as errors
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~/My station/secure development/lab3</b></font>$ gcc  hash hash.c
+<b>hash.c:</b> In function ‘<b>HashFind</b>’:
+<b>hash.c:32:30:</b> <font color="#A347BA"><b>warning: </b></font>passing argument 1 of ‘<b>HashIndex</b>’ discards ‘<b>const</b>’ qualifier from pointer target type [<font color="#A347BA"><b>-Wdiscarded-qualifiers</b></font>]
+   32 |     unsigned idx = HashIndex(<font color="#A347BA"><b>key</b></font>);
+      |                              <font color="#A347BA"><b>^~~</b></font>
+<b>hash.c:8:21:</b> <font color="#2AA1B3"><b>note: </b></font>expected ‘<b>char *</b>’ but argument is of type ‘<b>const char *</b>’
+    8 | int HashIndex(<font color="#2AA1B3"><b>char* key</b></font>) {
+      |               <font color="#2AA1B3"><b>~~~~~~^~~</b></font>
+<b>hash.c:</b> In function ‘<b>HashDelete</b>’:
+<b>hash.c:44:30:</b> <font color="#A347BA"><b>warning: </b></font>passing argument 1 of ‘<b>HashIndex</b>’ discards ‘<b>const</b>’ qualifier from pointer target type [<font color="#A347BA"><b>-Wdiscarded-qualifiers</b></font>]
+   44 |     unsigned idx = HashIndex(<font color="#A347BA"><b>key</b></font>);
+      |                              <font color="#A347BA"><b>^~~</b></font>
+<b>hash.c:8:21:</b> <font color="#2AA1B3"><b>note: </b></font>expected ‘<b>char *</b>’ but argument is of type ‘<b>const char *</b>’
+    8 | int HashIndex(<font color="#2AA1B3"><b>char* key</b></font>) {
+      |               <font color="#2AA1B3"><b>~~~~~~^~~</b></font>
+<b>hash.c:</b> In function ‘<b>HashDump</b>’:
+<b>hash.c:60:23:</b> <font color="#A347BA"><b>warning: </b></font>format not a string literal and no format arguments [<font color="#A347BA"><b>-Wformat-security</b></font>]
+   60 |             printf(<font color="#A347BA"><b>val-&gt;KeyName</b></font>);
+      |                    <font color="#A347BA"><b>~~~^~~~~~~~~</b></font>
+/usr/bin/ld: cannot find hash: No such file or directory
+collect2: error: ld returned 1 exit status
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~/My station/secure development/lab3</b></font>$ flawfinder 
+Flawfinder version 2.0.19, (C) 2001-2019 David A. Wheeler.
+Number of rules (primarily dangerous function names) in C/C++ ruleset: 222
+*** No input files
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~/My station/secure development/lab3</b></font>$ flawfinder hash.c
+Flawfinder version 2.0.19, (C) 2001-2019 David A. Wheeler.
+Number of rules (primarily dangerous function names) in C/C++ ruleset: 222
+Examining hash.c
+
+FINAL RESULTS:
+
+hash.c:60:  [4] (format) printf:
+  If format strings can be influenced by an attacker, they can be exploited
+  (CWE-134). Use a constant for the format specification.
+
+ANALYSIS SUMMARY:
+
+Hits = 1
+Lines analyzed = 110 in approximately 0.00 seconds (32398 lines/second)
+Physical Source Lines of Code (SLOC) = 82
+Hits@level = [0]  13 [1]   0 [2]   0 [3]   0 [4]   1 [5]   0
+Hits@level+ = [0+]  14 [1+]   1 [2+]   1 [3+]   1 [4+]   1 [5+]   0
+Hits/KSLOC@level+ = [0+] 170.732 [1+] 12.1951 [2+] 12.1951 [3+] 12.1951 [4+] 12.1951 [5+]   0
+Minimum risk level = 1
+
+Not every hit is necessarily a security vulnerability.
+You can inhibit a report by adding a comment in this form:
+// flawfinder: ignore
+Make *sure* it&apos;s a false positive!
+You can use the option --neverignore to show these.
+
+There may be other security vulnerabilities; review your code!
+See &apos;Secure Programming HOWTO&apos;
+(https://dwheeler.com/secure-programs) for more information.
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~/My station/secure development/lab3</b></font>$ gcc -Wall -Werror -g -std=c99 -o hash -O0 hash.c
+<b>hash.c:</b> In function ‘<b>HashFind</b>’:
+<b>hash.c:32:30:</b> <font color="#C01C28"><b>error: </b></font>passing argument 1 of ‘<b>HashIndex</b>’ discards ‘<b>const</b>’ qualifier from pointer target type [<font color="#C01C28"><b>-Werror=discarded-qualifiers</b></font>]
+   32 |     unsigned idx = HashIndex(<font color="#C01C28"><b>key</b></font>);
+      |                              <font color="#C01C28"><b>^~~</b></font>
+<b>hash.c:8:21:</b> <font color="#2AA1B3"><b>note: </b></font>expected ‘<b>char *</b>’ but argument is of type ‘<b>const char *</b>’
+    8 | int HashIndex(<font color="#2AA1B3"><b>char* key</b></font>) {
+      |               <font color="#2AA1B3"><b>~~~~~~^~~</b></font>
+<b>hash.c:</b> In function ‘<b>HashDelete</b>’:
+<b>hash.c:44:30:</b> <font color="#C01C28"><b>error: </b></font>passing argument 1 of ‘<b>HashIndex</b>’ discards ‘<b>const</b>’ qualifier from pointer target type [<font color="#C01C28"><b>-Werror=discarded-qualifiers</b></font>]
+   44 |     unsigned idx = HashIndex(<font color="#C01C28"><b>key</b></font>);
+      |                              <font color="#C01C28"><b>^~~</b></font>
+<b>hash.c:8:21:</b> <font color="#2AA1B3"><b>note: </b></font>expected ‘<b>char *</b>’ but argument is of type ‘<b>const char *</b>’
+    8 | int HashIndex(<font color="#2AA1B3"><b>char* key</b></font>) {
+      |               <font color="#2AA1B3"><b>~~~~~~^~~</b></font>
+<b>hash.c:</b> In function ‘<b>HashDump</b>’:
+<b>hash.c:60:23:</b> <font color="#C01C28"><b>error: </b></font>format not a string literal and no format arguments [<font color="#C01C28"><b>-Werror=format-security</b></font>]
+   60 |             printf(<font color="#C01C28"><b>val-&gt;KeyName</b></font>);
+      |                    <font color="#C01C28"><b>~~~^~~~~~~~~</b></font>
+cc1: all warnings being treated as errors
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~/My station/secure development/lab3</b></font>$ 
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~/My station/secure development/lab3</b></font>$ 
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~/My station/secure development/lab3</b></font>$ 
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~/My station/secure development/lab3</b></font>$ 
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~/My station/secure development/lab3</b></font>$ 
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~/My station/secure development/lab3</b></font>$ 
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~/My station/secure development/lab3</b></font>$ flawfinder hash.c
+Flawfinder version 2.0.19, (C) 2001-2019 David A. Wheeler.
+Number of rules (primarily dangerous function names) in C/C++ ruleset: 222
+Examining hash.c
+
+FINAL RESULTS:
+
+hash.c:60:  [4] (format) printf:
+  If format strings can be influenced by an attacker, they can be exploited
+  (CWE-134). Use a constant for the format specification.
+
+ANALYSIS SUMMARY:
+
+Hits = 1
+Lines analyzed = 110 in approximately 0.00 seconds (32004 lines/second)
+Physical Source Lines of Code (SLOC) = 82
+Hits@level = [0]  13 [1]   0 [2]   0 [3]   0 [4]   1 [5]   0
+Hits@level+ = [0+]  14 [1+]   1 [2+]   1 [3+]   1 [4+]   1 [5+]   0
+Hits/KSLOC@level+ = [0+] 170.732 [1+] 12.1951 [2+] 12.1951 [3+] 12.1951 [4+] 12.1951 [5+]   0
+Minimum risk level = 1
+
+Not every hit is necessarily a security vulnerability.
+You can inhibit a report by adding a comment in this form:
+// flawfinder: ignore
+Make *sure* it&apos;s a false positive!
+You can use the option --neverignore to show these.
+
+There may be other security vulnerabilities; review your code!
+See &apos;Secure Programming HOWTO&apos;
+(https://dwheeler.com/secure-programs) for more information.
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~/My station/secure development/lab3</b></font>$ gedit hash.c
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~/My station/secure development/lab3</b></font>$ gedit hash.h
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~/My station/secure development/lab3</b></font>$ gcc -Wall -Werror -g -std=c99 -o hash hash.c &amp;&amp; valgrind --leak-check=full ./hash
+==147461== Memcheck, a memory error detector
+==147461== Copyright (C) 2002-2017, and GNU GPL&apos;d, by Julian Seward et al.
+==147461== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==147461== Command: ./hash
+==147461== 
+HashInit() Successful
+HashAdd(map, &apos;test_key&apos;)
+HashAdd(map, &apos;test_key&apos;)
+HashAdd(map, &apos;other_key&apos;)
+HashFind(map, test_key) = {&apos;test_key&apos;: 2}
+HashDump(map) = other_key
+test_key
+HashDelete(map, &apos;test_key&apos;)
+HashFind(map, test_key) = Not found
+HashDump(map) = other_key
+==147461== 
+==147461== HEAP SUMMARY:
+==147461==     in use at exit: 0 bytes in 0 blocks
+==147461==   total heap usage: 2 allocs, 2 frees, 2,048 bytes allocated
+==147461== 
+==147461== All heap blocks were freed -- no leaks are possible
+==147461== 
+==147461== For lists of detected and suppressed errors, rerun with: -s
+==147461== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~/My station/secure development/lab3</b></font>$ cat hash.c
+#include &lt;stddef.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+#include &quot;hash.h&quot;
+
+// Returns the index within MAP_MAX bounds
+int HashIndex(const char* key) {
+    int sum = 0; // CWE-457: Initialize sum
+    for (const char* c = key; *c != &apos;\0&apos;; c++) { // Fix loop condition
+        sum += *c;
+    }
+    return sum % MAP_MAX; // CWE-125: Prevent OOB access
+}
+
+HashMap* HashInit() {
+    HashMap* map = malloc(sizeof(HashMap));
+    if (map == NULL) { // CWE-252: Check malloc return
+        fprintf(stderr, &quot;Memory allocation failed\n&quot;);
+        exit(EXIT_FAILURE);
+    }
+    memset(map-&gt;data, 0, sizeof(map-&gt;data)); // Initialize pointers
+    return map;
+}
+
+void HashAdd(HashMap *map, PairValue *value) {
+    int idx = HashIndex(value-&gt;KeyName);
+    PairValue* existing = HashFind(map, value-&gt;KeyName);
+    
+    if (existing) { // CWE-768: Handle duplicates
+        existing-&gt;ValueCount++;
+        return;
+    }
+    
+    // Prepend to the linked list
+    value-&gt;Next = map-&gt;data[idx];
+    map-&gt;data[idx] = value;
+}
+
+PairValue* HashFind(HashMap *map, const char* key) {
+    unsigned idx = HashIndex(key);
+    
+    for (PairValue* val = map-&gt;data[idx]; val != NULL; val = val-&gt;Next) {
+        if (strcmp(val-&gt;KeyName, key) == 0) { // CWE-480: Fix strcmp check
+            return val;
+        }
+    }
+    return NULL;
+}
+
+void HashDelete(HashMap *map, const char* key) {
+    unsigned idx = HashIndex(key);
+    PairValue *prev = NULL, *current = map-&gt;data[idx];
+
+    while (current != NULL) {
+        if (strcmp(current-&gt;KeyName, key) == 0) {
+            if (prev) {
+                prev-&gt;Next = current-&gt;Next;
+            } else {
+                map-&gt;data[idx] = current-&gt;Next;
+            }
+            return;
+        }
+        prev = current;
+        current = current-&gt;Next;
+    }
+}
+
+void HashDump(HashMap *map) {
+    for (unsigned i = 0; i &lt; MAP_MAX; i++) {
+        for (PairValue* val = map-&gt;data[i]; val != NULL; val = val-&gt;Next) {
+            printf(&quot;%s\n&quot;, val-&gt;KeyName); // CWE-134: Safe format string
+        }
+    }
+}
+
+int main() {
+    HashMap* map = HashInit();
+    printf(&quot;HashInit() Successful\n&quot;);
+    
+    PairValue pv1 = { .KeyName = &quot;test_key&quot;, .ValueCount = 1, .Next = NULL };
+    PairValue pv2 = { .KeyName = &quot;other_key&quot;, .ValueCount = 1, .Next = NULL };
+    
+    printf(&quot;HashAdd(map, &apos;%s&apos;)\n&quot;, pv1.KeyName);
+    HashAdd(map, &amp;pv1);
+
+    printf(&quot;HashAdd(map, &apos;%s&apos;)\n&quot;, pv1.KeyName);
+    HashAdd(map, &amp;pv1); // ValueCount becomes 2
+
+    printf(&quot;HashAdd(map, &apos;%s&apos;)\n&quot;, pv2.KeyName);
+    HashAdd(map, &amp;pv2);
+
+    printf(&quot;HashFind(map, %s) = &quot;, pv1.KeyName);
+    PairValue* result = HashFind(map, pv1.KeyName);
+    if (result) {
+        printf(&quot;{&apos;%s&apos;: %d}\n&quot;, result-&gt;KeyName, result-&gt;ValueCount);
+    } else {
+        printf(&quot;Not found\n&quot;);
+    }
+    
+    printf(&quot;HashDump(map) = &quot;);
+    HashDump(map);
+
+    printf(&quot;HashDelete(map, &apos;%s&apos;)\n&quot;, pv1.KeyName);
+    HashDelete(map, pv1.KeyName);
+
+    printf(&quot;HashFind(map, %s) = &quot;, pv1.KeyName);
+    result = HashFind(map, pv1.KeyName);
+    if (result) {
+        printf(&quot;{&apos;%s&apos;: %d}\n&quot;, result-&gt;KeyName, result-&gt;ValueCount);
+    } else {
+        printf(&quot;Not found\n&quot;);
+    }
+
+    printf(&quot;HashDump(map) = &quot;);
+    HashDump(map);
+
+    free(map);
+}
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~/My station/secure development/lab3</b></font>$ cat hash.h
+#ifndef __HASH__
+#define __HASH__
+
+    // Forward declaration
+    struct PairValue;
+
+    typedef struct PairValue {
+        #define KEY_STRING_MAX 255
+        char KeyName[KEY_STRING_MAX];
+        unsigned ValueCount;
+        struct PairValue* Next;
+    } PairValue;
+
+    typedef struct {
+        #define MAP_MAX 128
+        PairValue* data[MAP_MAX];
+    } HashMap;
+
+    HashMap* HashInit();
+    void HashAdd(HashMap *map, PairValue *value);
+    void HashDelete(HashMap *map, const char* key);
+    PairValue* HashFind(HashMap *map, const char* key);
+    void HashDump(HashMap *map);
+
+#endif
+<font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~/My station/secure development/lab3</b></font>$ 
+</pre>
