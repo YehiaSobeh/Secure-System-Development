@@ -73,9 +73,9 @@ System Specs:
 
 sizeof(int) = 4 bytes (typical 64-bit systems)
 ```
-Needed: 4 × 4 = 16 bytes
+        Needed: 4 × 4 = 16 bytes
 
-Allocated: 4 bytes
+        Allocated: 4 bytes
 
 Memory Layout Visualization:
 
@@ -85,13 +85,13 @@ Actual usage:     [0][1][4][9] (16 bytes)
                    ^ Buffer overflow!
 ```
 5. CWE Identification
-CWE-787: Out-of-bounds Write
+        CWE-787: Out-of-bounds Write
 
-Writing to memory locations outside the allocated buffer
+        Writing to memory locations outside the allocated buffer
 
-CWE-788: Access of Memory Location After End of Buffer
+        CWE-788: Access of Memory Location After End of Buffer
 
-Both read and write operations beyond buffer limits
+        Both read and write operations beyond buffer limits
 
 6. Fixed Code (program1_fixed.c)
 ```c
@@ -147,7 +147,7 @@ Memory Allocation:
 
     - Essential for detecting hidden memory errors
 
-    -Always run with --leak-check=full
+    - Always run with --leak-check=full
 
 - Memory Safety:
 
@@ -226,7 +226,7 @@ void program2(unsigned N) {
     }
 }
 ```
- The array arr is freed in work() but later accessed in program2().
+    The array arr is freed in work() but later accessed in program2().
 
 Secondary Issue (incorrect initialization):
 
@@ -271,13 +271,13 @@ int main() {
 ```
 Fixes:
 
-Use-After-Free:
+- Use-After-Free:
 
-Moved free(arr) to after the printing loop in program2().
+    - Moved free(arr) to after the printing loop in program2().
 
-Memory Initialization:
+- Memory Initialization:
 
-Fixed memset to initialize all elements: N * sizeof(*arr).
+    - Fixed memset to initialize all elements: N * sizeof(*arr).
 
 Step 6: Verify the Fix
 Recompile and Run:
@@ -302,19 +302,19 @@ Valgrind Report:
 ==64800== ERROR SUMMARY: 0 errors from 0 contexts
 ```
 Key Takeaways
-Memory Lifetime Management:
+- Memory Lifetime Management:
 
-Never access memory after freeing it.
+    - Never access memory after freeing it.
 
-Always free memory in the same scope where it was allocated (or ensure proper ownership transfer).
+    - Always free memory in the same scope where it was allocated (or ensure proper ownership transfer).
 
-Secure Initialization:
+- Secure Initialization:
 
-Use memset/calloc correctly to initialize all elements.
+    - Use memset/calloc correctly to initialize all elements.
 
-Valgrind Usage:
+- Valgrind Usage:
 
-Essential for detecting use-after-free and other memory errors.
+    - Essential for detecting use-after-free and other memory errors.
 
 
 ![](screenshots/2/2/1.png)
@@ -326,32 +326,37 @@ Essential for detecting use-after-free and other memory errors.
 
 ### Program 3 Analysis and Fix
 Step 1: Compilation
-bash
+```bash
 
  -Wall -Werror -g -std=c99 -o program3 program3.c
+ ```
 Step 2: Run the Program Normally
-bash
+```bash
 
 ./program3
+```
 Output:
 
-
+```
 Memory allocation success!
-Appears successful but hides critical issues.
+```
+> Appears successful but hides critical issues.
 
 Step 3: Run with Valgrind
-bash
+```bash
 
 valgrind ./program3
+```
 Key Valgrind Findings:
 
-
+```
 ==66963== LEAK SUMMARY:
 ==66963==    definitely lost: 4 bytes in 1 blocks
 
 HEAP SUMMARY:
    total heap usage: 2 allocs, 1 frees, 1,028 bytes allocated
-Problem: Memory leak due to unreleased allocation.
+```
+> Problem: Memory leak due to unreleased allocation.
 
 Step 4: Root Cause Analysis
 Memory Leak:
@@ -402,13 +407,13 @@ int main() {
 ```
 Fixes:
 
-Comparison Operator:
+- Comparison Operator:
 
-Changed arr = NULL to arr == NULL to check for allocation failure.
+    - Changed arr = NULL to arr == NULL to check for allocation failure.
 
-Allocation Size:
+- Allocation Size:
 
-Used N * sizeof(int) instead of N * sizeof(*arr) to allocate space for N integers.
+    - Used N * sizeof(int) instead of N * sizeof(*arr) to allocate space for N integers.
 
 Step 6: Verify the Fix
 Recompile and Run:
@@ -441,17 +446,17 @@ Compiler Warnings:
 
 The original code would trigger a warning for arr = NULL in a condition (caught by -Wall -Werror).
 
-Memory Safety:
+- Memory Safety:
 
-Always verify:
+    - Always verify:
 
-Allocation size matches intended usage.
+        - Allocation size matches intended usage.
 
-Pointers are not overwritten before freeing.
+        - Pointers are not overwritten before freeing.
 
-Valgrind Usage:
+    - Valgrind Usage:
 
-Detects leaks even when the program appears to work normally.
+        - Detects leaks even when the program appears to work normally.
 
 
 ![](screenshots/2/3/1.png)
@@ -470,25 +475,30 @@ gcc -Wall -Werror -g -std=c99 -o program4 program4.c
 Step 2: Run the Program Normally
 bash
 
+```
 ./program4
+```
 Output:
 
-
+```
 String: Hello World!
+```
 Appears successful but contains critical memory issues.
 
 Step 3: Run with Valgrind
-bash
+```bash
 
 valgrind ./program4
+```
 Key Valgrind Findings:
 
-
+```
 ==71645== Conditional jump or move depends on uninitialised value(s)
 ==71645==    at 0x484ED19: strlen (in Valgrind's internal code)
 ...
 ==71645== Syscall param write(buf) points to uninitialised byte(s)
 ==71645== ERROR SUMMARY: 26 errors from 4 contexts
+```
 Problem: Accessing a dangling pointer (stack memory that has gone out of scope).
 
 Step 4: Root Cause Analysis
@@ -505,11 +515,11 @@ message is allocated on the stack and becomes invalid when getString() returns.
 
 Accessing it in program4() is undefined behavior (CWE-457).
 
-Valgrind Errors:
+- Valgrind Errors:
 
-Even though the string appears intact, the memory is technically invalid after getString() returns.
+    - Even though the string appears intact, the memory is technically invalid after getString() returns.
 
-Valgrind detects access to uninitialized/unowned memory.
+    - Valgrind detects access to uninitialized/unowned memory.
 
 Step 5: Fix the Code
 Updated Code (program4_fixed.c):
@@ -536,15 +546,15 @@ int main() {
     program4();
 }
 ```
-Fixes:
+- Fixes:
 
-Heap Allocation:
+    - Heap Allocation:
 
-Use malloc to allocate persistent memory.
+        - Use malloc to allocate persistent memory.
 
-Memory Cleanup:
+    - Memory Cleanup:
 
-Add free(str) after printing.
+        - Add free(str) after printing.
 
 Step 6: Verify the Fix
 Recompile and Run:
@@ -556,8 +566,9 @@ valgrind ./program4_fixed
 ```
 Output:
 
-
+```
 String: Hello World!
+```
 Valgrind Report:
 
 ```
@@ -579,26 +590,26 @@ Stack memory for message was not immediately overwritten after getString() retur
 
 The string data remained intact by coincidence, but this is not guaranteed.
 
-Valgrind Errors:
+- Valgrind Errors:
 
-Valgrind tracks memory validity, not just data content. Even if the data appears correct, accessing freed/stack memory is invalid.
+    - Valgrind tracks memory validity, not just data content. Even if the data appears correct, accessing freed/stack memory is invalid.
 
-Final Observations
-Stack vs. Heap:
+- Final Observations
+    - Stack vs. Heap:
 
-Stack memory is only valid within its function scope.
+        - Stack memory is only valid within its function scope.
 
-Heap memory persists until explicitly freed.
+        - Heap memory persists until explicitly freed.
 
-Valgrind’s Role:
+- Valgrind’s Role:
 
-Detects invalid memory access even if the program appears to work.
+    - Detects invalid memory access even if the program appears to work.
 
-CWE References:
+- CWE References:
 
-CWE-457: Use of Uninitialized Variable (due to accessing invalid memory).
+    - CWE-457: Use of Uninitialized Variable (due to accessing invalid memory).
 
-CWE-825: Out-of-bounds Read (implied by accessing invalid memory).
+    - CWE-825: Out-of-bounds Read (implied by accessing invalid memory).
 
 
 ![](screenshots/2/4/1.png)

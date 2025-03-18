@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>lab3-solution.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="lab-3---memory-safety-report">Lab 3 - Memory Safety Report</h1>
+<h2 id="task-1---solution">Task 1 - Solution</h2>
+<ol>
+<li>Program Code (program1.c)</li>
+</ol>
+<pre class="hljs"><code><div><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;stdio.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;stdlib.h&gt;</span></span>
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">program1</span><span class="hljs-params">(<span class="hljs-keyword">int</span> N)</span> </span>{
+    <span class="hljs-keyword">int</span> *arr = <span class="hljs-built_in">malloc</span>(N); <span class="hljs-comment">// Problematic allocation</span>
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; N; i++) {
+        arr[i] = i * i;
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"arr[%d] = %d\n"</span>, i, arr[i]);
+    }
+}
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+    program1(<span class="hljs-number">4</span>);
+}
+</div></code></pre>
+<ol start="2">
+<li>Compilation &amp; Execution</li>
+</ol>
+<pre class="hljs"><code><div><span class="hljs-comment"># Compile with debugging symbols</span>
+gcc -Wall -Werror -g -std=c99 -o program1 -O0 program1.c
+
+<span class="hljs-comment"># Run normally</span>
+./program1
+</div></code></pre>
+<p><strong>Output:</strong></p>
+<pre class="hljs"><code><div>arr[0] = 0
+arr[1] = 1
+arr[2] = 4
+arr[3] = 9
+</div></code></pre>
+<blockquote>
+<p>Program appears to work normally but contains hidden bugs (we are booking N bytes we need N*(size of the var))</p>
+</blockquote>
+<ol start="3">
+<li>Valgrind Analysis</li>
+</ol>
+<pre class="hljs"><code><div>
+valgrind --leak-check=full ./program1
+</div></code></pre>
+<p><strong>Key Valgrind Findings:</strong></p>
+<pre class="hljs"><code><div>Invalid Write Errors (3 occurrences)
+
+
+==51351== Invalid write of size 4
+==51351==    at 0x1091AC: program1 (program1.c:7)
+Cause: Writing to arr[1], arr[2], and arr[3] in a 4-byte buffer (only space for 1 int)
+
+Invalid Read Errors (3 occurrences)
+
+
+==51351== Invalid read of size 4
+==51351==    at 0x1091C2: program1 (program1.c:8)
+Cause: Reading from beyond allocated memory
+
+Memory Leak
+
+
+==51351== 4 bytes in 1 blocks are definitely lost
+Cause: Missing free(arr)
+</div></code></pre>
+<ol start="4">
+<li>Problem Diagnosis
+Root Cause:</li>
+</ol>
+<pre class="hljs"><code><div>
+<span class="hljs-keyword">int</span> *arr = <span class="hljs-built_in">malloc</span>(N); <span class="hljs-comment">// Allocates N bytes instead of N integers</span>
+System Specs:
+
+<span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">int</span>) = <span class="hljs-number">4</span> bytes (typical <span class="hljs-number">64</span>-<span class="hljs-built_in">bit</span> systems)
+</div></code></pre>
+<pre><code>    Needed: 4 × 4 = 16 bytes
+
+    Allocated: 4 bytes
+</code></pre>
+<p>Memory Layout Visualization:</p>
+<pre class="hljs"><code><div>Allocated memory: [0][ ][ ][ ] (4 bytes)
+Actual usage:     [0][1][4][9] (16 bytes)
+                   ^ Buffer overflow!
+</div></code></pre>
+<ol start="5">
+<li>
+<p>CWE Identification
+CWE-787: Out-of-bounds Write</p>
+<pre><code> Writing to memory locations outside the allocated buffer
+
+ CWE-788: Access of Memory Location After End of Buffer
+
+ Both read and write operations beyond buffer limits
+</code></pre>
+</li>
+<li>
+<p>Fixed Code (program1_fixed.c)</p>
+</li>
+</ol>
+<pre class="hljs"><code><div>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;stdio.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;stdlib.h&gt;</span></span>
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">program1</span><span class="hljs-params">(<span class="hljs-keyword">int</span> N)</span> </span>{
+    <span class="hljs-keyword">int</span> *arr = <span class="hljs-built_in">malloc</span>(N * <span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">int</span>)); <span class="hljs-comment">// Correct allocation</span>
+    <span class="hljs-keyword">if</span>(arr == <span class="hljs-literal">NULL</span>) {
+        <span class="hljs-built_in">fprintf</span>(<span class="hljs-built_in">stderr</span>, <span class="hljs-string">"Memory allocation failed\n"</span>);
+        <span class="hljs-keyword">return</span>;
+    }
+    
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; N; i++) {
+        arr[i] = i * i;
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"arr[%d] = %d\n"</span>, i, arr[i]);
+    }
+    
+    <span class="hljs-built_in">free</span>(arr); <span class="hljs-comment">// Prevent memory leak</span>
+}
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+    program1(<span class="hljs-number">4</span>);
+}
+</div></code></pre>
+<ol start="7">
+<li>Verification
+Recompile and Test:</li>
+</ol>
+<pre class="hljs"><code><div>gcc -Wall -Werror -g -std=c99 -o program1_fixed program1_fixed.c
+valgrind --leak-check=full ./program1_fixed
+</div></code></pre>
+<p><strong>Clean Valgrind Output:</strong></p>
+<pre class="hljs"><code><div>==51521== HEAP SUMMARY:
+==51521==     in use at exit: 0 bytes in 0 blocks
+==51521==   total heap usage: 2 allocs, 2 frees, 1,044 bytes allocated
+==51521== 
+==51521== All heap blocks were freed -- no leaks are possible
+==51521== ERROR SUMMARY: 0 errors from 0 contexts
+</div></code></pre>
+<p>Key Lessons
+Memory Allocation:</p>
+<ul>
+<li>
+<p>Always use malloc(N * sizeof(datatype))</p>
+</li>
+<li>
+<p>Check return value for NULL</p>
+</li>
+<li>
+<p>Valgrind Usage:</p>
+<ul>
+<li>
+<p>Essential for detecting hidden memory errors</p>
+</li>
+<li>
+<p>Always run with --leak-check=full</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Memory Safety:</p>
+<ul>
+<li>
+<p>Buffer overflows can exist without immediate crashes</p>
+</li>
+<li>
+<p>Undefined behavior != Safe behavior</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Secure Coding:</p>
+<ul>
+<li>
+<p>Always pair malloc() with free()</p>
+</li>
+<li>
+<p>Use compiler flags (-Wall -Werror) for basic checks</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="screenshots/1/1.png" alt="">
+<img src="screenshots/1/2.png" alt="">
+<img src="screenshots/1/3.png" alt=""></p>
+<hr>
+<h2 id="task-2---more-programs">Task 2 - More Programs</h2>
+<h3 id="1-program-2-analysis-and-fix">1. Program 2 Analysis and Fix</h3>
+<p>Step 1: Compilation</p>
+<pre class="hljs"><code><div>gcc -Wall -Werror -g -std=c99 -o program2 program2.c
+</div></code></pre>
+<p>Step 2: Run the Program Normally</p>
+<pre class="hljs"><code><div>./program2
+</div></code></pre>
+<p><strong>Output (incorrect/garbage values):</strong></p>
+<pre class="hljs"><code><div>arr[0] = 1196867422
+arr[1] = 6
+arr[2] = -1661680662
+arr[3] = 114500276
+</div></code></pre>
+<blockquote>
+<p>Why?</p>
+</blockquote>
+<blockquote>
+<p>The program prints garbage values because it accesses memory after freeing it (use-after-free).</p>
+</blockquote>
+<p>Step 3: Run with Valgrind</p>
+<pre class="hljs"><code><div>valgrind ./program2
+</div></code></pre>
+<p><strong>Key Valgrind Findings:</strong></p>
+<pre class="hljs"><code><div>==64712== Invalid read of size 4
+==64712==    at 0x10927E: program2 (program2.c:18)
+==64712==  Address 0x4aa8040 is 0 bytes inside a block of size 16 free'd
+
+==64712== ERROR SUMMARY: 4 errors from 1 contexts
+</div></code></pre>
+<blockquote>
+<p>Problem: The program reads from memory that has already been freed (free(arr) is called in work(), but program2() tries to print arr afterward).</p>
+</blockquote>
+<blockquote>
+<p>CWE Reference: CWE-416: Use After Free.</p>
+</blockquote>
+<p>Step 4: Root Cause Analysis
+Memory Lifetime Issue:</p>
+<pre class="hljs"><code><div>
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">work</span><span class="hljs-params">(<span class="hljs-keyword">int</span>* arr, <span class="hljs-keyword">unsigned</span> N)</span> </span>{
+    <span class="hljs-built_in">free</span>(arr); <span class="hljs-comment">// Freed here</span>
+}
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">program2</span><span class="hljs-params">(<span class="hljs-keyword">unsigned</span> N)</span> </span>{
+    <span class="hljs-comment">// ...</span>
+    work(arr, N);
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>; i&lt;N; i++) {
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"arr[%d] = %d\n"</span>, i, arr[i]); <span class="hljs-comment">// Accessed after free</span>
+    }
+}
+</div></code></pre>
+<pre><code>The array arr is freed in work() but later accessed in program2().
+</code></pre>
+<p>Secondary Issue (incorrect initialization):</p>
+<pre class="hljs"><code><div>
+<span class="hljs-built_in">memset</span>(arr, <span class="hljs-number">0</span>, <span class="hljs-keyword">sizeof</span>(*arr)); <span class="hljs-comment">// Only initializes the first element</span>
+<span class="hljs-keyword">sizeof</span>(*arr) = <span class="hljs-number">4</span> bytes (<span class="hljs-built_in">size</span> of <span class="hljs-keyword">int</span>), so only arr[<span class="hljs-number">0</span>] is initialized to <span class="hljs-number">0.</span>
+</div></code></pre>
+<p>Step 5: Fix the Code
+Updated Code (program2_fixed.c):</p>
+<pre class="hljs"><code><div>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;stdio.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;stdlib.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;string.h&gt;</span></span>
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">work</span><span class="hljs-params">(<span class="hljs-keyword">int</span>* arr, <span class="hljs-keyword">unsigned</span> N)</span> </span>{
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>; i&lt;N; i++) {
+        arr[i] = arr[i<span class="hljs-number">-1</span>] * <span class="hljs-number">2</span>;
+    }
+    <span class="hljs-comment">// Removed free(arr) from here</span>
+}
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">program2</span><span class="hljs-params">(<span class="hljs-keyword">unsigned</span> N)</span> </span>{
+    <span class="hljs-keyword">int</span>* arr = (<span class="hljs-keyword">int</span>*)<span class="hljs-built_in">malloc</span>(N * <span class="hljs-keyword">sizeof</span>(*arr));
+    <span class="hljs-built_in">memset</span>(arr, <span class="hljs-number">0</span>, N * <span class="hljs-keyword">sizeof</span>(*arr)); <span class="hljs-comment">// Correct initialization</span>
+    arr[<span class="hljs-number">0</span>] = <span class="hljs-number">1</span>;
+    work(arr, N);
+    
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>; i&lt;N; i++) {
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"arr[%d] = %d\n"</span>, i, arr[i]);
+    }
+    
+    <span class="hljs-built_in">free</span>(arr); <span class="hljs-comment">// Free after usage</span>
+}
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+    program2(<span class="hljs-number">4</span>); <span class="hljs-comment">// Now prints [1, 2, 4, 8]</span>
+}
+</div></code></pre>
+<p>Fixes:</p>
+<ul>
+<li>
+<p>Use-After-Free:</p>
+<ul>
+<li>Moved free(arr) to after the printing loop in program2().</li>
+</ul>
+</li>
+<li>
+<p>Memory Initialization:</p>
+<ul>
+<li>Fixed memset to initialize all elements: N * sizeof(*arr).</li>
+</ul>
+</li>
+</ul>
+<p>Step 6: Verify the Fix
+Recompile and Run:</p>
+<pre class="hljs"><code><div>gcc -Wall -Werror -g -std=c99 -o program2_fixed program2_fixed.c
+valgrind ./program2_fixed
+</div></code></pre>
+<p>Output:</p>
+<pre class="hljs"><code><div>arr[0] = 1
+arr[1] = 2
+arr[2] = 4
+arr[3] = 8
+</div></code></pre>
+<p>Valgrind Report:</p>
+<pre class="hljs"><code><div>==64800== HEAP SUMMARY:
+==64800==     in use at exit: 0 bytes in 0 blocks
+==64800== All heap blocks were freed -- no leaks are possible
+==64800== ERROR SUMMARY: 0 errors from 0 contexts
+</div></code></pre>
+<p>Key Takeaways</p>
+<ul>
+<li>
+<p>Memory Lifetime Management:</p>
+<ul>
+<li>
+<p>Never access memory after freeing it.</p>
+</li>
+<li>
+<p>Always free memory in the same scope where it was allocated (or ensure proper ownership transfer).</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Secure Initialization:</p>
+<ul>
+<li>Use memset/calloc correctly to initialize all elements.</li>
+</ul>
+</li>
+<li>
+<p>Valgrind Usage:</p>
+<ul>
+<li>Essential for detecting use-after-free and other memory errors.</li>
+</ul>
+</li>
+</ul>
+<p><img src="screenshots/2/2/1.png" alt="">
+<img src="screenshots/2/2/2.png" alt="">
+<img src="screenshots/2/2/3.png" alt=""></p>
+<hr>
+<h3 id="program-3-analysis-and-fix">Program 3 Analysis and Fix</h3>
+<p>Step 1: Compilation</p>
+<pre class="hljs"><code><div>
+ -Wall -Werror -g -std=c99 -o program3 program3.c
+</div></code></pre>
+<p>Step 2: Run the Program Normally</p>
+<pre class="hljs"><code><div>
+./program3
+</div></code></pre>
+<p>Output:</p>
+<pre class="hljs"><code><div>Memory allocation success!
+</div></code></pre>
+<blockquote>
+<p>Appears successful but hides critical issues.</p>
+</blockquote>
+<p>Step 3: Run with Valgrind</p>
+<pre class="hljs"><code><div>
+valgrind ./program3
+</div></code></pre>
+<p>Key Valgrind Findings:</p>
+<pre class="hljs"><code><div>==66963== LEAK SUMMARY:
+==66963==    definitely lost: 4 bytes in 1 blocks
+
+HEAP SUMMARY:
+   total heap usage: 2 allocs, 1 frees, 1,028 bytes allocated
+</div></code></pre>
+<blockquote>
+<p>Problem: Memory leak due to unreleased allocation.</p>
+</blockquote>
+<p>Step 4: Root Cause Analysis
+Memory Leak:</p>
+<pre class="hljs"><code><div>
+<span class="hljs-keyword">if</span>((N &lt; <span class="hljs-number">1</span>) || (arr = <span class="hljs-literal">NULL</span>)) {  <span class="hljs-comment">// Typo: = instead of ==</span>
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%s\n"</span>, <span class="hljs-string">"Memory allocation falied!"</span>);
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">NULL</span>;
+}
+</div></code></pre>
+<p>arr = NULL (assignment) instead of arr == NULL (comparison).</p>
+<p>Overwrites the allocated pointer with NULL, making the original allocation unreachable.</p>
+<p>Incorrect Allocation Size:</p>
+<pre class="hljs"><code><div>
+<span class="hljs-keyword">void</span> *arr = <span class="hljs-built_in">malloc</span>(N * <span class="hljs-keyword">sizeof</span>(*arr));  <span class="hljs-comment">// sizeof(void) = 1 byte</span>
+</div></code></pre>
+<p>sizeof(<em>arr) = 1 (since arr is a void</em>), leading to N bytes allocated instead of N * sizeof(int).</p>
+<p>Step 5: Fix the Code
+Updated Code (program3_fixed.c):</p>
+<pre class="hljs"><code><div>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;stdio.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;stdlib.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;string.h&gt;</span></span>
+
+<span class="hljs-function"><span class="hljs-keyword">void</span>* <span class="hljs-title">program3</span><span class="hljs-params">(<span class="hljs-keyword">unsigned</span> N)</span> </span>{
+    <span class="hljs-keyword">void</span> *arr = <span class="hljs-built_in">malloc</span>(N * <span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">int</span>)); <span class="hljs-comment">// Correct allocation size</span>
+    <span class="hljs-keyword">if</span>((N &lt; <span class="hljs-number">1</span>) || (arr == <span class="hljs-literal">NULL</span>)) {       <span class="hljs-comment">// Fixed comparison (==)</span>
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%s\n"</span>, <span class="hljs-string">"Memory allocation failed!"</span>);
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">NULL</span>;
+    }
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%s\n"</span>, <span class="hljs-string">"Memory allocation success!"</span>);
+    <span class="hljs-keyword">return</span> arr;
+}
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">int</span>* arr = (<span class="hljs-keyword">int</span>*)program3(<span class="hljs-number">4</span>); 
+    <span class="hljs-built_in">free</span>(arr); <span class="hljs-comment">// Now actually frees the memory</span>
+}
+</div></code></pre>
+<p>Fixes:</p>
+<ul>
+<li>
+<p>Comparison Operator:</p>
+<ul>
+<li>Changed arr = NULL to arr == NULL to check for allocation failure.</li>
+</ul>
+</li>
+<li>
+<p>Allocation Size:</p>
+<ul>
+<li>Used N * sizeof(int) instead of N * sizeof(*arr) to allocate space for N integers.</li>
+</ul>
+</li>
+</ul>
+<p>Step 6: Verify the Fix
+Recompile and Run:</p>
+<pre class="hljs"><code><div>gcc -Wall -Werror -g -std=c99 -o program3_fixed program3_fixed.c
+valgrind ./program3_fixed
+</div></code></pre>
+<p>Output:</p>
+<p>Memory allocation success!
+Valgrind Report:</p>
+<pre class="hljs"><code><div>==67000== HEAP SUMMARY:
+==67000==     in use at exit: 0 bytes in 0 blocks
+==67000==   total heap usage: 2 allocs, 2 frees, 1,056 bytes allocated
+==67000== All heap blocks were freed -- no leaks are possible
+==67000== ERROR SUMMARY: 0 errors from 0 contexts
+</div></code></pre>
+<p>Key Issues and Fixes
+Issue	Cause	Fix
+Memory leak	arr = NULL overwrote the allocated pointer	Use arr == NULL to check for failure
+Incorrect allocation	sizeof(<em>arr) = 1 byte (for void</em>)	Allocate N * sizeof(int) (16 bytes for N=4)
+CWE Reference	CWE-401: Missing Release of Memory After Effective Lifetime	Added proper free(arr)
+Final Observations
+Compiler Warnings:</p>
+<p>The original code would trigger a warning for arr = NULL in a condition (caught by -Wall -Werror).</p>
+<ul>
+<li>
+<p>Memory Safety:</p>
+<ul>
+<li>
+<p>Always verify:</p>
+<ul>
+<li>
+<p>Allocation size matches intended usage.</p>
+</li>
+<li>
+<p>Pointers are not overwritten before freeing.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Valgrind Usage:</p>
+<ul>
+<li>Detects leaks even when the program appears to work normally.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="screenshots/2/3/1.png" alt="">
+<img src="screenshots/2/3/2.png" alt=""></p>
+<hr>
+<h3 id="program-4-analysis-and-fix">Program 4 Analysis and Fix</h3>
+<p>Step 1: Compilation</p>
+<pre class="hljs"><code><div>gcc -Wall -Werror -g -std=c99 -o program4 program4.c
+</div></code></pre>
+<p>Step 2: Run the Program Normally
+bash</p>
+<pre class="hljs"><code><div>./program4
+</div></code></pre>
+<p>Output:</p>
+<pre class="hljs"><code><div>String: Hello World!
+</div></code></pre>
+<p>Appears successful but contains critical memory issues.</p>
+<p>Step 3: Run with Valgrind</p>
+<pre class="hljs"><code><div>
+valgrind ./program4
+</div></code></pre>
+<p>Key Valgrind Findings:</p>
+<pre class="hljs"><code><div>==71645== Conditional jump or move depends on uninitialised value(s)
+==71645==    at 0x484ED19: strlen (in Valgrind's internal code)
+...
+==71645== Syscall param write(buf) points to uninitialised byte(s)
+==71645== ERROR SUMMARY: 26 errors from 4 contexts
+</div></code></pre>
+<p>Problem: Accessing a dangling pointer (stack memory that has gone out of scope).</p>
+<p>Step 4: Root Cause Analysis
+Dangling Pointer:</p>
+<pre class="hljs"><code><div>
+<span class="hljs-function"><span class="hljs-keyword">char</span>* <span class="hljs-title">getString</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">char</span> message[<span class="hljs-number">100</span>] = <span class="hljs-string">"Hello World!"</span>; <span class="hljs-comment">// Local stack array</span>
+    <span class="hljs-keyword">return</span> message; <span class="hljs-comment">// Returns address of stack memory</span>
+}
+</div></code></pre>
+<p>message is allocated on the stack and becomes invalid when getString() returns.</p>
+<p>Accessing it in program4() is undefined behavior (CWE-457).</p>
+<ul>
+<li>
+<p>Valgrind Errors:</p>
+<ul>
+<li>
+<p>Even though the string appears intact, the memory is technically invalid after getString() returns.</p>
+</li>
+<li>
+<p>Valgrind detects access to uninitialized/unowned memory.</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>Step 5: Fix the Code
+Updated Code (program4_fixed.c):</p>
+<pre class="hljs"><code><div>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;stdio.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;stdlib.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;string.h&gt;</span></span>
+
+<span class="hljs-function"><span class="hljs-keyword">char</span>* <span class="hljs-title">getString</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">char</span>* ret = <span class="hljs-built_in">malloc</span>(<span class="hljs-number">100</span> * <span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">char</span>)); <span class="hljs-comment">// Heap allocation</span>
+    <span class="hljs-built_in">strcpy</span>(ret, <span class="hljs-string">"Hello World!"</span>);
+    <span class="hljs-keyword">return</span> ret;
+}
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">program4</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">char</span>* str = getString();
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"String: %s\n"</span>, str);
+    <span class="hljs-built_in">free</span>(str); <span class="hljs-comment">// Free allocated memory</span>
+}
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+    program4();
+}
+</div></code></pre>
+<ul>
+<li>
+<p>Fixes:</p>
+<ul>
+<li>
+<p>Heap Allocation:</p>
+<ul>
+<li>Use malloc to allocate persistent memory.</li>
+</ul>
+</li>
+<li>
+<p>Memory Cleanup:</p>
+<ul>
+<li>Add free(str) after printing.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Step 6: Verify the Fix
+Recompile and Run:</p>
+<pre class="hljs"><code><div>
+gcc -Wall -Werror -g -std=c99 -o program4_fixed program4_fixed.c
+valgrind ./program4_fixed
+</div></code></pre>
+<p>Output:</p>
+<pre class="hljs"><code><div>String: Hello World!
+</div></code></pre>
+<p>Valgrind Report:</p>
+<pre class="hljs"><code><div>==71700== HEAP SUMMARY:
+==71700==     in use at exit: 0 bytes in 0 blocks
+==71700==   total heap usage: 2 allocs, 2 frees, 1,124 bytes allocated
+==71700== All heap blocks were freed -- no leaks are possible
+==71700== ERROR SUMMARY: 0 errors from 0 contexts
+</div></code></pre>
+<p>Key Issues and Fixes
+Issue	Cause	Fix
+Dangling pointer	Returned address of stack-allocated memory	Use heap allocation (malloc)
+CWE-457: Use of Uninitialized Variable	Accessing invalid memory	Ensure memory validity through proper allocation
+Memory leak	Missing free for heap allocation	Add free(str) after usage
+Explanation of Original Behavior
+Why the Original Code &quot;Worked&quot;:</p>
+<p>Stack memory for message was not immediately overwritten after getString() returned.</p>
+<p>The string data remained intact by coincidence, but this is not guaranteed.</p>
+<ul>
+<li>
+<p>Valgrind Errors:</p>
+<ul>
+<li>Valgrind tracks memory validity, not just data content. Even if the data appears correct, accessing freed/stack memory is invalid.</li>
+</ul>
+</li>
+<li>
+<p>Final Observations</p>
+<ul>
+<li>
+<p>Stack vs. Heap:</p>
+<ul>
+<li>
+<p>Stack memory is only valid within its function scope.</p>
+</li>
+<li>
+<p>Heap memory persists until explicitly freed.</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Valgrind’s Role:</p>
+<ul>
+<li>Detects invalid memory access even if the program appears to work.</li>
+</ul>
+</li>
+<li>
+<p>CWE References:</p>
+<ul>
+<li>
+<p>CWE-457: Use of Uninitialized Variable (due to accessing invalid memory).</p>
+</li>
+<li>
+<p>CWE-825: Out-of-bounds Read (implied by accessing invalid memory).</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="screenshots/2/4/1.png" alt="">
+<img src="screenshots/2/4/2.png" alt="">
+<img src="screenshots/2/4/3.png" alt="">
+<img src="screenshots/2/4/4.png" alt=""></p>
+<hr>
+<h2 id="task-3---vulnerable-hashmap-library-fixes-and-cwe-analysis">Task 3 - Vulnerable HashMap Library: Fixes and CWE Analysis</h2>
+<p>CWE-457: Use of Uninitialized Variable
+Code Snippet:</p>
+<pre class="hljs"><code><div>
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">HashIndex</span><span class="hljs-params">(<span class="hljs-keyword">char</span>* key)</span> </span>{
+    <span class="hljs-keyword">int</span> sum; <span class="hljs-comment">// Not initialized</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">char</span>* c = key; *c; c++) { <span class="hljs-comment">// Fixed loop condition</span>
+        sum += *c;
+    }
+    <span class="hljs-keyword">return</span> sum % MAP_MAX; <span class="hljs-comment">// Added modulo</span>
+}
+</div></code></pre>
+<p>Fix: Initialize sum to 0 to prevent undefined behavior.
+Improved Code:</p>
+<pre class="hljs"><code><div>
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">HashIndex</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* key)</span> </span>{
+    <span class="hljs-keyword">int</span> sum = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* c = key; *c != <span class="hljs-string">'\0'</span>; c++) {
+        sum += *c;
+    }
+    <span class="hljs-keyword">return</span> sum % MAP_MAX; <span class="hljs-comment">// Ensure index is within bounds</span>
+}
+</div></code></pre>
+<p>CWE-134: Use of Externally-Controlled Format String
+Code Snippet:</p>
+<pre class="hljs"><code><div>
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">HashDump</span><span class="hljs-params">(HashMap *<span class="hljs-built_in">map</span>)</span> </span>{
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">unsigned</span> i = <span class="hljs-number">0</span>; i &lt; MAP_MAX; i++) {
+        <span class="hljs-keyword">for</span>(PairValue* val = <span class="hljs-built_in">map</span>-&gt;data[i]; val != <span class="hljs-literal">NULL</span>; val = val-&gt;Next) {
+            <span class="hljs-built_in">printf</span>(val-&gt;KeyName); <span class="hljs-comment">// Unsafe format string</span>
+        }
+    }
+}
+</div></code></pre>
+<p>Fix: Use printf(&quot;%s&quot;, val-&gt;KeyName) to prevent format string attacks.
+Improved Code:</p>
+<pre class="hljs"><code><div>
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">HashDump</span><span class="hljs-params">(HashMap *<span class="hljs-built_in">map</span>)</span> </span>{
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">unsigned</span> i = <span class="hljs-number">0</span>; i &lt; MAP_MAX; i++) {
+        <span class="hljs-keyword">for</span>(PairValue* val = <span class="hljs-built_in">map</span>-&gt;data[i]; val != <span class="hljs-literal">NULL</span>; val = val-&gt;Next) {
+            <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%s\n"</span>, val-&gt;KeyName); <span class="hljs-comment">// Safe format</span>
+        }
+    }
+}
+</div></code></pre>
+<p>CWE-125/787: Out-of-Bounds Access
+Code Snippet:</p>
+<pre class="hljs"><code><div>
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">HashIndex</span><span class="hljs-params">(<span class="hljs-keyword">char</span>* key)</span> </span>{
+    <span class="hljs-comment">// Returns unmodded sum</span>
+}
+</div></code></pre>
+<p>Fix: Use modulo MAP_MAX to ensure the index is within array bounds.
+Improved Code:</p>
+<p>c</p>
+<p>return sum % MAP_MAX; // Added in HashIndex()
+CWE-480: Incorrect Operator (Misuse of strcmp)
+Code Snippet:</p>
+<pre class="hljs"><code><div>
+<span class="hljs-comment">// In HashFind/HashDelete:</span>
+<span class="hljs-keyword">if</span> (<span class="hljs-built_in">strcmp</span>(val-&gt;KeyName, key)) { <span class="hljs-comment">// Returns true on mismatch</span>
+    <span class="hljs-keyword">return</span> val; <span class="hljs-comment">// Wrong logic</span>
+}```
+Fix: <span class="hljs-function">Check <span class="hljs-keyword">for</span> <span class="hljs-title">strcmp</span><span class="hljs-params">(...)</span> </span>== <span class="hljs-number">0</span> to match keys.
+Improved Code:
+
+```c
+
+<span class="hljs-comment">// HashFind:</span>
+<span class="hljs-keyword">if</span> (<span class="hljs-built_in">strcmp</span>(val-&gt;KeyName, key) == <span class="hljs-number">0</span>) {
+    <span class="hljs-keyword">return</span> val;
+}
+
+<span class="hljs-comment">// HashDelete:</span>
+<span class="hljs-keyword">if</span> (<span class="hljs-built_in">strcmp</span>(val-&gt;KeyName, key) == <span class="hljs-number">0</span>) {
+    <span class="hljs-comment">// Delete logic</span>
+}
+</div></code></pre>
+<p>Additional Fixes
+HashAdd Logic Fix (CWE-768):</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">HashAdd</span><span class="hljs-params">(HashMap *<span class="hljs-built_in">map</span>, PairValue *value)</span> </span>{
+    <span class="hljs-keyword">int</span> idx = HashIndex(value-&gt;KeyName);
+    PairValue* existing = HashFind(<span class="hljs-built_in">map</span>, value-&gt;KeyName);
+    <span class="hljs-keyword">if</span> (existing) {
+        existing-&gt;ValueCount++; <span class="hljs-comment">// Increment count for existing key</span>
+        <span class="hljs-keyword">return</span>;
+    }
+    <span class="hljs-comment">// Prepend to the linked list</span>
+    value-&gt;Next = <span class="hljs-built_in">map</span>-&gt;data[idx];
+    <span class="hljs-built_in">map</span>-&gt;data[idx] = value;
+}
+</div></code></pre>
+<p>Check malloc Return (CWE-252):</p>
+<pre class="hljs"><code><div>
+<span class="hljs-function">HashMap* <span class="hljs-title">HashInit</span><span class="hljs-params">()</span> </span>{
+    HashMap* <span class="hljs-built_in">map</span> = <span class="hljs-built_in">malloc</span>(<span class="hljs-keyword">sizeof</span>(HashMap));
+    <span class="hljs-keyword">if</span> (<span class="hljs-built_in">map</span> == <span class="hljs-literal">NULL</span>) {
+        <span class="hljs-built_in">fprintf</span>(<span class="hljs-built_in">stderr</span>, <span class="hljs-string">"Memory allocation failed\n"</span>);
+        <span class="hljs-built_in">exit</span>(EXIT_FAILURE);
+    }
+    <span class="hljs-built_in">memset</span>(<span class="hljs-built_in">map</span>-&gt;data, <span class="hljs-number">0</span>, <span class="hljs-keyword">sizeof</span>(<span class="hljs-built_in">map</span>-&gt;data)); <span class="hljs-comment">// Initialize pointers</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">map</span>;
+}
+</div></code></pre>
+<p>Verification with Valgrind
+Terminal Output:
+Valgrind Output
+Valgrind reports no memory leaks or errors after fixes.</p>
+<p>Key Improvements</p>
+<ul>
+<li>
+<p>Memory Safety:</p>
+<ul>
+<li>Fixed dangling pointers, uninitialized variables, and out-of-bounds access.</li>
+</ul>
+</li>
+<li>
+<p>Functional Correctness:</p>
+<ul>
+<li>Proper collision handling and key matching.</li>
+</ul>
+</li>
+<li>
+<p>Secure Coding Practices:</p>
+<ul>
+<li>Added bounds checks, safe format strings, and error handling.</li>
+</ul>
+</li>
+<li>
+<p>Compilation and Valgrind Command:</p>
+</li>
+</ul>
+<pre class="hljs"><code><div>gcc -Wall -Werror -g -std=c99 -o <span class="hljs-built_in">hash</span> hash.c &amp;&amp; valgrind --leak-check=full ./<span class="hljs-built_in">hash</span>
+</div></code></pre>
+<p>Output:</p>
+<pre class="hljs"><code><div>HashAdd(map, 'test_key')
+HashAdd(map, 'test_key')
+HashAdd(map, 'other_key')
+HashFind(map, test_key) = {'test_key': 2}
+HashDump(map) = other_key
+test_key
+HashDelete(map, 'test_key')
+HashFind(map, test_key) = Not found
+HashDump(map) = other_key
+</div></code></pre>
+<p><img src="screenshots/3.png" alt=""></p>
+
+</body>
+</html>
