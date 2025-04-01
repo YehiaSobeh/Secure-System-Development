@@ -1,0 +1,422 @@
+<pre><font color="#26A269"><b>yehia@yehia-Aspire-A315-58</b></font>:<font color="#12488B"><b>~/My station/secure development/lab4/task2</b></font>$ docker run --name afl -ti -v .:/src/ aflplusplus/aflplusplus
+Unable to find image &apos;aflplusplus/aflplusplus:latest&apos; locally
+latest: Pulling from aflplusplus/aflplusplus
+9cb31e2e37ea: Pull complete 
+ed0c2f843eac: Pull complete 
+c953e3a86643: Pull complete 
+8b1d38c8064a: Pull complete 
+2ace3ff0b072: Pull complete 
+c65c88fa9805: Pull complete 
+c637baeec22e: Pull complete 
+7cab94279aff: Pull complete 
+918df1abcad6: Pull complete 
+8d3eff7b5d40: Pull complete 
+cad47d71df55: Pull complete 
+862039f7f99f: Pull complete 
+Digest: sha256:ccd7bffa87fd49ec3f4529003eaf8f75a28fb09e07fb13b14f696480c15196cb
+Status: Downloaded newer image for aflplusplus/aflplusplus:latest
+[AFL++ b6def6d55d05] /AFLplusplus # cd /src
+[AFL++ b6def6d55d05] /src # pip install python-afl
+Collecting python-afl
+  Downloading python-afl-0.7.3.tar.gz (16 kB)
+  Installing build dependencies ... done
+  Getting requirements to build wheel ... done
+  Preparing metadata (pyproject.toml) ... done
+Building wheels for collected packages: python-afl
+  Building wheel for python-afl (pyproject.toml) ... done
+  Created wheel for python-afl: filename=python_afl-0.7.3-cp310-cp310-linux_x86_64.whl size=164726 sha256=1a75ee45fd98edf7bb6f4322e45d601e20f43907dcf07bddb46fdb552f0197fc
+  Stored in directory: /root/.cache/pip/wheels/dc/83/a7/2f416e489900e243aa2f2e4515a9360394ea5c33394132569b
+Successfully built python-afl
+Installing collected packages: python-afl
+Successfully installed python-afl-0.7.3
+<font color="#A2734C">WARNING: Running pip as the &apos;root&apos; user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv</font>
+[AFL++ b6def6d55d05] /src # py-afl-fuzz -i input -o output -- /usr/bin/python3 /src/main.py
+<font color="#E9AD0C"><b>[!] </b></font><font color="#FFFFFF"><b>WARNING: </b></font>Mistyped AFL environment variable: AFL_SKIP_CHECKS=1
+Did you mean AFL_SKIP_BIN_CHECK?
+<font color="#33DA7A"><b>[+] </b></font>Enabled environment variable AFL_SKIP_CPUFREQ with value 1
+<font color="#33DA7A"><b>[+] </b></font>Enabled environment variable AFL_I_DONT_CARE_ABOUT_MISSING_CRASHES with value 1
+<font color="#33DA7A"><b>[+] </b></font>Enabled environment variable AFL_DUMB_FORKSRV with value 1
+<font color="#33DA7A"><b>[+] </b></font>Enabled environment variable AFL_SKIP_BIN_CHECK with value 1
+<font color="#33DA7A"><b>[+] </b></font>Enabled environment variable AFL_TRY_AFFINITY with value 1
+<font color="#2AA1B3">afl-fuzz++4.32a</font> based on afl by Michal Zalewski and a large online community
+<font color="#33DA7A"><b>[+] </b></font>AFL++ is maintained by Marc &quot;van Hauser&quot; Heuse, Dominik Maier, Andrea Fioraldi and Heiko &quot;hexcoder&quot; Eißfeldt
+<font color="#33DA7A"><b>[+] </b></font>AFL++ is open source, get it at https://github.com/AFLplusplus/AFLplusplus
+<font color="#33DA7A"><b>[+] </b></font>NOTE: AFL++ &gt;= v3 has changed defaults and behaviours - see README.md
+<font color="#33DA7A"><b>[+] </b></font>No -M/-S set, autoconfiguring for &quot;-S default&quot;
+<font color="#2A7BDE"><b>[*] </b></font>Getting to work...
+<font color="#33DA7A"><b>[+] </b></font>Using exploration-based constant power schedule (EXPLORE)
+<font color="#33DA7A"><b>[+] </b></font>Enabled testcache with 50 MB
+<font color="#33DA7A"><b>[+] </b></font>Generating fuzz data with a length of min=1 max=1048576
+<font color="#2A7BDE"><b>[*] </b></font>Checking core_pattern...
+
+<font color="#F66151"><b>[-] </b></font>Your system is configured to send core dump notifications to an
+    external utility. This will cause issues: there will be an extended delay
+    between stumbling upon a crash and having this information relayed to the
+    fuzzer via the standard waitpid() API.
+    If you&apos;re just experimenting, set &apos;AFL_I_DONT_CARE_ABOUT_MISSING_CRASHES=1&apos;.
+
+    To avoid having crashes misinterpreted as timeouts, please 
+    temporarily modify /proc/sys/kernel/core_pattern, like so:
+
+    echo core | sudo tee /proc/sys/kernel/core_pattern
+<font color="#33DA7A"><b>[+] </b></font>You have 8 CPU cores and 1 runnable tasks (utilization: 12%).
+<font color="#33DA7A"><b>[+] </b></font>Try parallel jobs - see /usr/local/share/doc/afl/fuzzing_in_depth.md#c-using-multiple-cores
+<font color="#2A7BDE"><b>[*] </b></font>Setting up output directories...
+<font color="#33DA7A"><b>[+] </b></font>Output directory exists but deemed OK to reuse.
+<font color="#2A7BDE"><b>[*] </b></font>Deleting old session data...
+<font color="#33DA7A"><b>[+] </b></font>Output dir cleanup successful.
+<font color="#2A7BDE"><b>[*] </b></font>Checking CPU core loadout...
+<font color="#33DA7A"><b>[+] </b></font>Found a free CPU core, try binding to #0.
+<font color="#2A7BDE"><b>[*] </b></font>Validating target binary...
+<font color="#2A7BDE"><b>[*] </b></font>Scanning &apos;input&apos;...
+<font color="#2A7BDE"><b>[*] </b></font>Creating hard links for all input files...
+<font color="#33DA7A"><b>[+] </b></font>Loaded a total of 1 seeds.
+<font color="#2A7BDE"><b>[*] </b></font>No auto-generated dictionary tokens to reuse.
+<font color="#2A7BDE"><b>[*] </b></font>Attempting dry run with &apos;id:000000,time:0,execs:0,orig:test.txt&apos;...
+<font color="#2A7BDE"><b>[*] </b></font>Spinning up the fork server...
+<font color="#E9AD0C"><b>[!] </b></font><font color="#FFFFFF"><b>WARNING: </b></font>Old fork server model is used by the target, this still works though.
+<font color="#33DA7A"><b>[+] </b></font>All right - old fork server is up.
+<font color="#5E5C64"><b>    len = 5, map size = 16, exec speed = 2816 us, hash = 6b7f9d20938693d2</b></font>
+<font color="#33DA7A"><b>[+] </b></font>All test cases processed.
+<font color="#33DA7A"><b>[+] </b></font>Here are some useful stats:
+
+<font color="#5E5C64"><b>    Test case count : </b></font>1 favored, 0 variable, 0 ignored, 1 total
+<font color="#5E5C64"><b>       Bitmap range : </b></font>16 to 16 bits (average: 16.00 bits)
+<font color="#5E5C64"><b>        Exec timing : </b></font>2816 to 2816 us (average: 2816 us)
+
+<font color="#2A7BDE"><b>[*] </b></font>No -t option specified, so I&apos;ll use an exec timeout of 20 ms.
+<font color="#33DA7A"><b>[+] </b></font>All set and ready to roll!
+
+
+       <font color="#E9AD0C"><b>Mozzarbella Pizzeria management system </b></font><font color="#33C7DE"><b>++4.32a</b></font><font color="#2A7BDE"><b> {default} </b></font><font color="#33DA7A"><b>(/usr/bin/python3) </b></font><font color="#C061CB"><b>[explore]</b></font>
+<font color="#5E5C64"><b>┌─</b></font><font color="#2AA1B3"> Mozzarbella has been proudly serving pizzas since </font><font color="#5E5C64"><b>───────────────────────┬─</b></font><font color="#2AA1B3"> In this time, we served </font><font color="#5E5C64"><b>──────────────────────────────┐</b></font>
+<font color="#5E5C64"><b>│                         open time : </b></font>0 days, 0 hrs, 0 min, 0 sec           <font color="#5E5C64"><b>│                     seasons done : </b></font><font color="#A347BA">0                   </font><font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>│                  last pizza baked : </b></font>none seen yet                         <font color="#5E5C64"><b>│               pizzas on the menu : </b></font>1                   <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>│                last ordered pizza : </b></font>none seen yet                         <font color="#5E5C64"><b>│                         at table : </b></font>0                   <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>│  last conversation with customers : </b></font>none seen yet                         <font color="#5E5C64"><b>│                 number of Peroni : </b></font>0                   <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>├─</b></font><font color="#2AA1B3"> Baking progress  </font><font color="#5E5C64"><b>────────────────────────────────────────────────────────┼─</b></font><font color="#2AA1B3"> Pizzeria busyness</font><font color="#5E5C64"><b>─────────────────────────────────────┤</b></font>
+<font color="#5E5C64"><b>│                        now baking : </b></font>0.0 (0.0%)                            <font color="#5E5C64"><b>│                       table full : </b></font><font color="#C061CB"><b>0.02% / 0.02%       </b></font><font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>│                     burned pizzas : </b></font>0 (0.00%)                             <font color="#5E5C64"><b>│                   count coverage : </b></font>1.00 bits/tuple     <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>├─</b></font><font color="#2AA1B3"> Pizzas almost ready </font><font color="#5E5C64"><b>─────────────────────────────────────────────────────┼─</b></font><font color="#2AA1B3"> Types of pizzas cooking </font><font color="#5E5C64"><b>──────────────────────────────┤</b></font>
+<font color="#5E5C64"><b>│                     now preparing : </b></font>trim 4/4                              <font color="#5E5C64"><b>│                favourite topping : </b></font>1 (100.00%)         <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>│                  number of pizzas : </b></font>0/1 (0.00%)                           <font color="#5E5C64"><b>│ new pizza type seen on Instagram : </b></font>1 (100.00%)         <font color="#5E5C64"><b>│</b></font>
+       <font color="#E9AD0C"><b>Mozzarbella Pizzeria management system </b></font><font color="#33C7DE"><b>++4.32a</b></font><font color="#2A7BDE"><b> {default} </b></font><font color="#33DA7A"><b>(/usr/bin/python3) </b></font><font color="#C061CB"><b>[explore]</b></font><font color="#5E5C64"><b>zas with pineapple : </b></font>0 (0 saved)         <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>┌─</b></font><font color="#2AA1B3"> Mozzarbella has been proudly serving pizzas since </font><font color="#5E5C64"><b>───────────────────────┬─</b></font><font color="#2AA1B3"> In this time, we served </font><font color="#5E5C64"><b>──────────────────────────────┐</b></font>
+<font color="#5E5C64"><b>│                         open time : </b></font>0 days, 0 hrs, 0 min, 0 sec           <font color="#5E5C64"><b>│                     seasons done : </b></font><font color="#A347BA">0                   </font><font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>│                  last pizza baked : </b></font>0 days, 0 hrs, 0 min, 0 sec           <font color="#5E5C64"><b>│               pizzas on the menu : </b></font>5                   <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>│                last ordered pizza : </b></font>none seen yet                         <font color="#5E5C64"><b>│                         at table : </b></font>0                   <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>│  last conversation with customers : </b></font>none seen yet                         <font color="#5E5C64"><b>│                 number of Peroni : </b></font>0                   <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>├─</b></font><font color="#2AA1B3"> Baking progress  </font><font color="#5E5C64"><b>────────────────────────────────────────────────────────┼─</b></font><font color="#2AA1B3"> Pizzeria busyness</font><font color="#5E5C64"><b>─────────────────────────────────────┤</b></font>
+<font color="#5E5C64"><b>│                        now baking : </b></font>0.0 (0.0%)                            <font color="#5E5C64"><b>│                       table full : </b></font><font color="#C061CB"><b>0.02% / 0.02%       </b></font><font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>│                     burned pizzas : </b></font>0 (0.00%)                             <font color="#5E5C64"><b>│                   count coverage : </b></font>1.94 bits/tuple     <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>├─</b></font><font color="#2AA1B3"> Pizzas almost ready </font><font color="#5E5C64"><b>─────────────────────────────────────────────────────┼─</b></font><font color="#2AA1B3"> Types of pizzas cooking </font><font color="#5E5C64"><b>──────────────────────────────┤</b></font>
+<font color="#5E5C64"><b>│                     now preparing : </b></font>havoc                                 <font color="#5E5C64"><b>│                favourite topping : </b></font>1 (20.00%)          <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>│                  number of pizzas : </b></font>53/1600 (3.31%)                       <font color="#5E5C64"><b>│ new pizza type seen on Instagram : </b></font>1 (20.00%)          <font color="#5E5C64"><b>│</b></font>
+       <font color="#E9AD0C"><b>Mozzarbella Pizzeria management system </b></font><font color="#33C7DE"><b>++4.32a</b></font><font color="#2A7BDE"><b> {default} </b></font><font color="#33DA7A"><b>(/usr/bin/python3) </b></font><font color="#C061CB"><b>[explore]</b></font><font color="#5E5C64"><b>zas with pineapple : </b></font>0 (0 saved)         <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>┌─</b></font><font color="#2AA1B3"> Mozzarbella has been proudly serving pizzas since </font><font color="#5E5C64"><b>───────────────────────┬─</b></font><font color="#2AA1B3"> In this time, we served </font><font color="#5E5C64"><b>──────────────────────────────┐</b></font>
+<font color="#5E5C64"><b>│                         open time : </b></font>0 days, 0 hrs, 0 min, 0 sec           <font color="#5E5C64"><b>│                     seasons done : </b></font><font color="#A347BA">0                   </font><font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>│                  last pizza baked : </b></font>0 days, 0 hrs, 0 min, 0 sec           <font color="#5E5C64"><b>│               pizzas on the menu : </b></font>7                   <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>│                last ordered pizza : </b></font>none seen yet                         <font color="#5E5C64"><b>│                         at table : </b></font>0                   <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>│  last conversation with customers : </b></font>none seen yet                         <font color="#5E5C64"><b>│                 number of Peroni : </b></font>0                   <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>├─</b></font><font color="#2AA1B3"> Baking progress  </font><font color="#5E5C64"><b>────────────────────────────────────────────────────────┼─</b></font><font color="#2AA1B3"> Pizzeria busyness</font><font color="#5E5C64"><b>─────────────────────────────────────┤</b></font>
+<font color="#5E5C64"><b>│                        now baking : </b></font>0.0 (0.0%)                            <font color="#5E5C64"><b>│                       table full : </b></font><font color="#C061CB"><b>0.02% / 0.02%       </b></font><font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>│                     burned pizzas : </b></font>0 (0.00%)                             <font color="#5E5C64"><b>│                   count coverage : </b></font>2.38 bits/tuple     <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>├─</b></font><font color="#2AA1B3"> Pizzas almost ready </font><font color="#5E5C64"><b>─────────────────────────────────────────────────────┼─</b></font><font color="#2AA1B3"> Types of pizzas cooking </font><font color="#5E5C64"><b>──────────────────────────────┤</b></font>
+<font color="#5E5C64"><b>│                     now preparing : </b></font>havoc                                 <font color="#5E5C64"><b>│                favourite topping : </b></font>1 (14.29%)          <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>│                  number of pizzas : </b></font>126/6400 (1.97%)                      <font color="#5E5C64"><b>│ new pizza type seen on Instagram : </b></font>1 (14.29%)          <font color="#5E5C64"><b>│</b></font>
+       <font color="#E9AD0C"><b>Mozzarbella Pizzeria management system </b></font><font color="#33C7DE"><b>++4.32a</b></font><font color="#2A7BDE"><b> {default} </b></font><font color="#33DA7A"><b>(/usr/bin/python3) </b></font><font color="#C061CB"><b>[explore]</b></font><font color="#5E5C64"><b>zas with pineapple : </b></font>0 (0 saved)         <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>┌─</b></font><font color="#2AA1B3"> Mozzarbella has been proudly serving pizzas since </font><font color="#5E5C64"><b>───────────────────────┬─</b></font><font color="#2AA1B3"> In this time, we served </font><font color="#5E5C64"><b>──────────────────────────────┐</b></font>
+<font color="#5E5C64"><b>│                         open time : </b></font>0 days, 0 hrs, 0 min, 0 sec           <font color="#5E5C64"><b>│                     seasons done : </b></font><font color="#A347BA">0                   </font><font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>│                  last pizza baked : </b></font>0 days, 0 hrs, 0 min, 0 sec           <font color="#5E5C64"><b>│               pizzas on the menu : </b></font>7                   <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>│                last ordered pizza : </b></font>none seen yet                         <font color="#5E5C64"><b>│                         at table : </b></font>0                   <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>│  last conversation with customers : </b></font>none seen yet                         <font color="#5E5C64"><b>│                 number of Peroni : </b></font>0                   <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>├─</b></font><font color="#2AA1B3"> Baking progress  </font><font color="#5E5C64"><b>────────────────────────────────────────────────────────┼─</b></font><font color="#2AA1B3"> Pizzeria busyness</font><font color="#5E5C64"><b>─────────────────────────────────────┤</b></font>
+<font color="#5E5C64"><b>│                        now baking : </b></font>0.0 (0.0%)                            <font color="#5E5C64"><b>│                       table full : </b></font><font color="#C061CB"><b>0.02% / 0.02%       </b></font><font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>│                     burned pizzas : </b></font>0 (0.00%)                             <font color="#5E5C64"><b>│                   count coverage : </b></font>2.38 bits/tuple     <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>├─</b></font><font color="#2AA1B3"> Pizzas almost ready </font><font color="#5E5C64"><b>─────────────────────────────────────────────────────┼─</b></font><font color="#2AA1B3"> Types of pizzas cooking </font><font color="#5E5C64"><b>──────────────────────────────┤</b></font>
+<font color="#5E5C64"><b>│                     now preparing : </b></font>havoc                                 <font color="#5E5C64"><b>│                favourite topping : </b></font>1 (14.29%)          <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>│                  number of pizzas : </b></font>210/6400 (3.28%)                      <font color="#5E5C64"><b>│ new pizza type seen on Instagram : </b></font>1 (14.29%)          <font color="#5E5C64"><b>│</b></font>
+       <font color="#E9AD0C"><b>Mozzarbella Pizzeria management system </b></font><font color="#33C7DE"><b>++4.32a</b></font><font color="#2A7BDE"><b> {default} </b></font><font color="#33DA7A"><b>(/usr/bin/python3) </b></font><font color="#C061CB"><b>[explore]</b></font><font color="#5E5C64"><b>zas with pineapple : </b></font>0 (0 saved)         <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>┌─</b></font><font color="#2AA1B3"> Mozzarbella has been proudly serving pizzas since </font><font color="#5E5C64"><b>───────────────────────┬─</b></font><font color="#2AA1B3"> In this time, we served </font><font color="#5E5C64"><b>──────────────────────────────┐</b></font>
+<font color="#5E5C64"><b>│                         open time : </b></font>0 days, 0 hrs, 0 min, 0 sec           <font color="#5E5C64"><b>│                     seasons done : </b></font><font color="#A347BA">0                   </font><font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>│                  last pizza baked : </b></font>0 days, 0 hrs, 0 min, 0 sec           <font color="#5E5C64"><b>│               pizzas on the menu : </b></font>7                   <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>│                last ordered pizza : </b></font>none seen yet                         <font color="#5E5C64"><b>│                         at table : </b></font>0                   <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>│  last conversation with customers : </b></font>none seen yet                         <font color="#5E5C64"><b>│                 number of Peroni : </b></font>0                   <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>├─</b></font><font color="#2AA1B3"> Baking progress  </font><font color="#5E5C64"><b>────────────────────────────────────────────────────────┼─</b></font><font color="#2AA1B3"> Pizzeria busyness</font><font color="#5E5C64"><b>─────────────────────────────────────┤</b></font>
+<font color="#5E5C64"><b>│                        now baking : </b></font>0.0 (0.0%)                            <font color="#5E5C64"><b>│                       table full : </b></font><font color="#C061CB"><b>0.02% / 0.02%       </b></font><font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>│                     burned pizzas : </b></font>0 (0.00%)                             <font color="#5E5C64"><b>│                   count coverage : </b></font>2.38 bits/tuple     <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>├─</b></font><font color="#2AA1B3"> Pizzas almost ready </font><font color="#5E5C64"><b>─────────────────────────────────────────────────────┼─</b></font><font color="#2AA1B3"> Types of pizzas cooking </font><font color="#5E5C64"><b>──────────────────────────────┤</b></font>
+<font color="#5E5C64"><b>│                     now preparing : </b></font>havoc                                 <font color="#5E5C64"><b>│                favourite topping : </b></font>1 (14.29%)          <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>│                  number of pizzas : </b></font>294/6400 (4.59%)                      <font color="#5E5C64"><b>│ new pizza type seen on Instagram : </b></font>1 (14.29%)          <font color="#5E5C64"><b>│</b></font>
+       <font color="#E9AD0C"><b>Mozzarbella Pizzeria management system </b></font><font color="#33C7DE"><b>++4.32a</b></font><font color="#2A7BDE"><b> {default} </b></font><font color="#33DA7A"><b>(/usr/bin/python3) </b></font><font color="#C061CB"><b>[explore]</b></font><font color="#5E5C64"><b>zas with pineapple : </b></font>0 (0 saved)         <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>┌─</b></font><font color="#2AA1B3"> Mozzarbella has been proudly serving pizzas since </font><font color="#5E5C64"><b>───────────────────────┬─</b></font><font color="#2AA1B3"> In this time, we served </font><font color="#5E5C64"><b>──────────────────────────────┐</b></font>
+<font color="#5E5C64"><b>│                         open time : </b></font>0 days, 0 hrs, 0 min, 1 sec           <font color="#5E5C64"><b>│                     seasons done : </b></font><font color="#A347BA">0                   </font><font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>│                  last pizza baked : </b></font>0 days, 0 hrs, 0 min, 0 sec           <font color="#5E5C64"><b>│               pizzas on the menu : </b></font>7                   <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>│                last ordered pizza : </b></font>none seen yet                         <font color="#5E5C64"><b>│                         at table : </b></font>0                   <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>│  last conversation with customers : </b></font>none seen yet                         <font color="#5E5C64"><b>│                 number of Peroni : </b></font>0                   <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>├─</b></font><font color="#2AA1B3"> Baking progress  </font><font color="#5E5C64"><b>────────────────────────────────────────────────────────┼─</b></font><font color="#2AA1B3"> Pizzeria busyness</font><font color="#5E5C64"><b>─────────────────────────────────────┤</b></font>
+<font color="#5E5C64"><b>│                        now baking : </b></font>0.0 (0.0%)                            <font color="#5E5C64"><b>│                       table full : </b></font><font color="#C061CB"><b>0.02% / 0.02%       </b></font><font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>│                     burned pizzas : </b></font>0 (0.00%)                             <font color="#5E5C64"><b>│                   count coverage : </b></font>2.38 bits/tuple     <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>├─</b></font><font color="#2AA1B3"> Pizzas almost ready </font><font color="#5E5C64"><b>─────────────────────────────────────────────────────┼─</b></font><font color="#2AA1B3"> Types of pizzas cooking </font><font color="#5E5C64"><b>──────────────────────────────┤</b></font>
+<font color="#5E5C64"><b>│                     now preparing : </b></font>havoc                                 <font color="#5E5C64"><b>│                favourite topping : </b></font>1 (14.29%)          <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>│                  number of pizzas : </b></font>378/6400 (5.91%)                      <font color="#5E5C64"><b>│ new pizza type seen on Instagram : </b></font>1 (14.29%)          <font color="#5E5C64"><b>│</b></font>
+       <font color="#E9AD0C"><b>Mozzarbella Pizzeria management system </b></font><font color="#33C7DE"><b>++4.32a</b></font><font color="#2A7BDE"><b> {default} </b></font><font color="#33DA7A"><b>(/usr/bin/python3) </b></font><font color="#C061CB"><b>[explore]</b></font><font color="#5E5C64"><b>zas with pineapple : </b></font>0 (0 saved)         <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>┌─</b></font><font color="#2AA1B3"> Mozzarbella has been proudly serving pizzas since </font><font color="#5E5C64"><b>───────────────────────┬─</b></font><font color="#2AA1B3"> In this time, we served </font><font color="#5E5C64"><b>──────────────────────────────┐</b></font>
+<font color="#5E5C64"><b>│                         open time : </b></font>0 days, 0 hrs, 0 min, 1 sec           <font color="#5E5C64"><b>│                     seasons done : </b></font><font color="#A347BA">0                   </font><font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>│                  last pizza baked : </b></font>0 days, 0 hrs, 0 min, 0 sec           <font color="#5E5C64"><b>│               pizzas on the menu : </b></font>7                   <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>│                last ordered pizza : </b></font>none seen yet                         <font color="#5E5C64"><b>│                         at table : </b></font>0                   <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>│  last conversation with customers : </b></font>none seen yet                         <font color="#5E5C64"><b>│                 number of Peroni : </b></font>0                   <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>├─</b></font><font color="#2AA1B3"> Baking progress  </font><font color="#5E5C64"><b>────────────────────────────────────────────────────────┼─</b></font><font color="#2AA1B3"> Pizzeria busyness</font><font color="#5E5C64"><b>─────────────────────────────────────┤</b></font>
+<font color="#5E5C64"><b>│                        now baking : </b></font>0.0 (0.0%)                            <font color="#5E5C64"><b>│                       table full : </b></font><font color="#C061CB"><b>0.02% / 0.02%       </b></font><font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>│                     burned pizzas : </b></font>0 (0.00%)                             <font color="#5E5C64"><b>│                   count coverage : </b></font>2.38 bits/tuple     <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>├─</b></font><font color="#2AA1B3"> Pizzas almost ready </font><font color="#5E5C64"><b>─────────────────────────────────────────────────────┼─</b></font><font color="#2AA1B3"> Types of pizzas cooking </font><font color="#5E5C64"><b>──────────────────────────────┤</b></font>
+<font color="#5E5C64"><b>│                     now preparing : </b></font>havoc                                 <font color="#5E5C64"><b>│                favourite topping : </b></font>1 (14.29%)          <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>│                  number of pizzas : </b></font>462/6400 (7.22%)                      <font color="#5E5C64"><b>│ new pizza type seen on Instagram : </b></font>1 (14.29%)          <font color="#5E5C64"><b>│</b></font>
+       <font color="#E9AD0C"><b>Mozzarbella Pizzeria management system </b></font><font color="#33C7DE"><b>++4.32a</b></font><font color="#2A7BDE"><b> {default} </b></font><font color="#33DA7A"><b>(/usr/bin/python3) </b></font><font color="#C061CB"><b>[explore]</b></font><font color="#5E5C64"><b>zas with pineapple : </b></font>0 (0 saved)         <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>┌─</b></font><font color="#2AA1B3"> Mozzarbella has been proudly serving pizzas since </font><font color="#5E5C64"><b>───────────────────────┬─</b></font><font color="#2AA1B3"> In this time, we served </font><font color="#5E5C64"><b>──────────────────────────────┐</b></font>
+<font color="#5E5C64"><b>│                         open time : </b></font>0 days, 0 hrs, 0 min, 1 sec           <font color="#5E5C64"><b>│                     seasons done : </b></font><font color="#A347BA">0                   </font><font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>│                  last pizza baked : </b></font>0 days, 0 hrs, 0 min, 1 sec           <font color="#5E5C64"><b>│               pizzas on the menu : </b></font>7                   <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>│                last ordered pizza : </b></font>none seen yet                         <font color="#5E5C64"><b>│                         at table : </b></font>0                   <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>│  last conversation with customers : </b></font>none seen yet                         <font color="#5E5C64"><b>│                 number of Peroni : </b></font>0                   <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>├─</b></font><font color="#2AA1B3"> Baking progress  </font><font color="#5E5C64"><b>────────────────────────────────────────────────────────┼─</b></font><font color="#2AA1B3"> Pizzeria busyness</font><font color="#5E5C64"><b>─────────────────────────────────────┤</b></font>
+<font color="#5E5C64"><b>│                        now baking : </b></font>0.0 (0.0%)                            <font color="#5E5C64"><b>│                       table full : </b></font><font color="#C061CB"><b>0.02% / 0.02%       </b></font><font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>│                     burned pizzas : </b></font>0 (0.00%)                             <font color="#5E5C64"><b>│                   count coverage : </b></font>2.38 bits/tuple     <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>├─</b></font><font color="#2AA1B3"> Pizzas almost ready </font><font color="#5E5C64"><b>─────────────────────────────────────────────────────┼─</b></font><font color="#2AA1B3"> Types of pizzas cooking </font><font color="#5E5C64"><b>──────────────────────────────┤</b></font>
+<font color="#5E5C64"><b>│                     now preparing : </b></font>havoc                                 <font color="#5E5C64"><b>│                favourite topping : </b></font>1 (14.29%)          <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>│                  number of pizzas : </b></font>546/6400 (8.53%)                      <font color="#5E5C64"><b>│ new pizza type seen on Instagram : </b></font>1 (14.29%)          <font color="#5E5C64"><b>│</b></font>
+       <font color="#E9AD0C"><b>Mozzarbella Pizzeria management system </b></font><font color="#33C7DE"><b>++4.32a</b></font><font color="#2A7BDE"><b> {default} </b></font><font color="#33DA7A"><b>(/usr/bin/python3) </b></font><font color="#C061CB"><b>[explore]</b></font><font color="#5E5C64"><b>zas with pineapple : </b></font>0 (0 saved)         <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>┌─</b></font><font color="#2AA1B3"> Mozzarbella has been proudly serving pizzas since </font><font color="#5E5C64"><b>───────────────────────┬─</b></font><font color="#2AA1B3"> In this time, we served </font><font color="#5E5C64"><b>──────────────────────────────┐</b></font>
+<font color="#5E5C64"><b>│                         open time : </b></font>0 days, 0 hrs, 0 min, 1 sec           <font color="#5E5C64"><b>│                     seasons done : </b></font><font color="#A347BA">0                   </font><font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>│                  last pizza baked : </b></font>0 days, 0 hrs, 0 min, 1 sec           <font color="#5E5C64"><b>│               pizzas on the menu : </b></font>7                   <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>│                last ordered pizza : </b></font>none seen yet                         <font color="#5E5C64"><b>│                         at table : </b></font>0                   <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>│  last conversation with customers : </b></font>none seen yet                         <font color="#5E5C64"><b>│                 number of Peroni : </b></font>0                   <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>├─</b></font><font color="#2AA1B3"> Baking progress  </font><font color="#5E5C64"><b>────────────────────────────────────────────────────────┼─</b></font><font color="#2AA1B3"> Pizzeria busyness</font><font color="#5E5C64"><b>─────────────────────────────────────┤</b></font>
+<font color="#5E5C64"><b>│                        now baking : </b></font>0.0 (0.0%)                            <font color="#5E5C64"><b>│                       table full : </b></font><font color="#C061CB"><b>0.02% / 0.02%       </b></font><font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>│                     burned pizzas : </b></font>0 (0.00%)                             <font color="#5E5C64"><b>│                   count coverage : </b></font>2.38 bits/tuple     <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>├─</b></font><font color="#2AA1B3"> Pizzas almost ready </font><font color="#5E5C64"><b>─────────────────────────────────────────────────────┼─</b></font><font color="#2AA1B3"> Types of pizzas cooking </font><font color="#5E5C64"><b>──────────────────────────────┤</b></font>
+<font color="#5E5C64"><b>│                     now preparing : </b></font>havoc                                 <font color="#5E5C64"><b>│                favourite topping : </b></font>1 (14.29%)          <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>│                  number of pizzas : </b></font>630/6400 (9.84%)                      <font color="#5E5C64"><b>│ new pizza type seen on Instagram : </b></font>1 (14.29%)          <font color="#5E5C64"><b>│</b></font>
+       <font color="#E9AD0C"><b>Mozzarbella Pizzeria management system </b></font><font color="#33C7DE"><b>++4.32a</b></font><font color="#2A7BDE"><b> {default} </b></font><font color="#33DA7A"><b>(/usr/bin/python3) </b></font><font color="#C061CB"><b>[explore]</b></font><font color="#5E5C64"><b>zas with pineapple : </b></font>0 (0 saved)         <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>┌─</b></font><font color="#2AA1B3"> Mozzarbella has been proudly serving pizzas since </font><font color="#5E5C64"><b>───────────────────────┬─</b></font><font color="#2AA1B3"> In this time, we served </font><font color="#5E5C64"><b>──────────────────────────────┐</b></font>
+<font color="#5E5C64"><b>│                         open time : </b></font>0 days, 0 hrs, 0 min, 1 sec           <font color="#5E5C64"><b>│                     seasons done : </b></font><font color="#A347BA">0                   </font><font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>│                  last pizza baked : </b></font>0 days, 0 hrs, 0 min, 1 sec           <font color="#5E5C64"><b>│               pizzas on the menu : </b></font>7                   <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>│                last ordered pizza : </b></font>0 days, 0 hrs, 0 min, 0 sec           <font color="#5E5C64"><b>│                         at table : </b></font><font color="#F66151"><b>1                   </b></font><font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>│  last conversation with customers : </b></font>none seen yet                         <font color="#5E5C64"><b>│                 number of Peroni : </b></font>0                   <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>├─</b></font><font color="#2AA1B3"> Baking progress  </font><font color="#5E5C64"><b>────────────────────────────────────────────────────────┼─</b></font><font color="#2AA1B3"> Pizzeria busyness</font><font color="#5E5C64"><b>─────────────────────────────────────┤</b></font>
+<font color="#5E5C64"><b>│                        now baking : </b></font>0.0 (0.0%)                            <font color="#5E5C64"><b>│                       table full : </b></font><font color="#C061CB"><b>0.02% / 0.02%       </b></font><font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>│                     burned pizzas : </b></font>0 (0.00%)                             <font color="#5E5C64"><b>│                   count coverage : </b></font>2.38 bits/tuple     <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>├─</b></font><font color="#2AA1B3"> Pizzas almost ready </font><font color="#5E5C64"><b>─────────────────────────────────────────────────────┼─</b></font><font color="#2AA1B3"> Types of pizzas cooking </font><font color="#5E5C64"><b>──────────────────────────────┤</b></font>
+<font color="#5E5C64"><b>│                     now preparing : </b></font>havoc                                 <font color="#5E5C64"><b>│                favourite topping : </b></font>1 (14.29%)          <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>│                  number of pizzas : </b></font>712/6400 (11.12%)                     <font color="#5E5C64"><b>│ new pizza type seen on Instagram : </b></font>1 (14.29%)          <font color="#5E5C64"><b>│</b></font>
+       <font color="#E9AD0C"><b>Mozzarbella Pizzeria management system </b></font><font color="#33C7DE"><b>++4.32a</b></font><font color="#2A7BDE"><b> {default} </b></font><font color="#33DA7A"><b>(/usr/bin/python3) </b></font><font color="#C061CB"><b>[explore]</b></font><font color="#5E5C64"><b>zas with pineapple : </b></font><font color="#F66151"><b>1 (1 saved)         </b></font><font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>┌─</b></font><font color="#2AA1B3"> Mozzarbella has been proudly serving pizzas since </font><font color="#5E5C64"><b>───────────────────────┬─</b></font><font color="#2AA1B3"> In this time, we served </font><font color="#5E5C64"><b>──────────────────────────────┐</b></font>
+<font color="#5E5C64"><b>│                         open time : </b></font>0 days, 0 hrs, 0 min, 2 sec           <font color="#5E5C64"><b>│                     seasons done : </b></font><font color="#A347BA">0                   </font><font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>│                  last pizza baked : </b></font>0 days, 0 hrs, 0 min, 1 sec           <font color="#5E5C64"><b>│               pizzas on the menu : </b></font>7                   <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>│                last ordered pizza : </b></font>0 days, 0 hrs, 0 min, 0 sec           <font color="#5E5C64"><b>│                         at table : </b></font><font color="#F66151"><b>2                   </b></font><font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>│  last conversation with customers : </b></font>none seen yet                         <font color="#5E5C64"><b>│                 number of Peroni : </b></font>0                   <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>├─</b></font><font color="#2AA1B3"> Baking progress  </font><font color="#5E5C64"><b>────────────────────────────────────────────────────────┼─</b></font><font color="#2AA1B3"> Pizzeria busyness</font><font color="#5E5C64"><b>─────────────────────────────────────┤</b></font>
+<font color="#5E5C64"><b>│                        now baking : </b></font>0.0 (0.0%)                            <font color="#5E5C64"><b>│                       table full : </b></font><font color="#C061CB"><b>0.02% / 0.02%       </b></font><font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>│                     burned pizzas : </b></font>0 (0.00%)                             <font color="#5E5C64"><b>│                   count coverage : </b></font>2.38 bits/tuple     <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>├─</b></font><font color="#2AA1B3"> Pizzas almost ready </font><font color="#5E5C64"><b>─────────────────────────────────────────────────────┼─</b></font><font color="#2AA1B3"> Types of pizzas cooking </font><font color="#5E5C64"><b>──────────────────────────────┤</b></font>
+<font color="#5E5C64"><b>│                     now preparing : </b></font>havoc                                 <font color="#5E5C64"><b>│                favourite topping : </b></font>1 (14.29%)          <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>│                  number of pizzas : </b></font>792/6400 (12.38%)                     <font color="#5E5C64"><b>│ new pizza type seen on Instagram : </b></font>1 (14.29%)          <font color="#5E5C64"><b>│</b></font>
+       <font color="#E9AD0C"><b>Mozzarbella Pizzeria management system </b></font><font color="#33C7DE"><b>++4.32a</b></font><font color="#2A7BDE"><b> {default} </b></font><font color="#33DA7A"><b>(/usr/bin/python3) </b></font><font color="#C061CB"><b>[explore]</b></font><font color="#5E5C64"><b>zas with pineapple : </b></font><font color="#F66151"><b>2 (2 saved)         </b></font><font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>┌─</b></font><font color="#2AA1B3"> Mozzarbella has been proudly serving pizzas since </font><font color="#5E5C64"><b>───────────────────────┬─</b></font><font color="#2AA1B3"> In this time, we served </font><font color="#5E5C64"><b>──────────────────────────────┐</b></font>
+<font color="#5E5C64"><b>│                         open time : </b></font>0 days, 0 hrs, 0 min, 2 sec           <font color="#5E5C64"><b>│                     seasons done : </b></font><font color="#A347BA">0                   </font><font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>│                  last pizza baked : </b></font>0 days, 0 hrs, 0 min, 0 sec           <font color="#5E5C64"><b>│               pizzas on the menu : </b></font>8                   <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>│                last ordered pizza : </b></font>0 days, 0 hrs, 0 min, 0 sec           <font color="#5E5C64"><b>│                         at table : </b></font><font color="#F66151"><b>2                   </b></font><font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>│  last conversation with customers : </b></font>none seen yet                         <font color="#5E5C64"><b>│                 number of Peroni : </b></font>0                   <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>├─</b></font><font color="#2AA1B3"> Baking progress  </font><font color="#5E5C64"><b>────────────────────────────────────────────────────────┼─</b></font><font color="#2AA1B3"> Pizzeria busyness</font><font color="#5E5C64"><b>─────────────────────────────────────┤</b></font>
+<font color="#5E5C64"><b>│                        now baking : </b></font>0.0 (0.0%)                            <font color="#5E5C64"><b>│                       table full : </b></font><font color="#C061CB"><b>0.02% / 0.02%       </b></font><font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>│                     burned pizzas : </b></font>0 (0.00%)                             <font color="#5E5C64"><b>│                   count coverage : </b></font>2.44 bits/tuple     <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>├─</b></font><font color="#2AA1B3"> Pizzas almost ready </font><font color="#5E5C64"><b>─────────────────────────────────────────────────────┼─</b></font><font color="#2AA1B3"> Types of pizzas cooking </font><font color="#5E5C64"><b>──────────────────────────────┤</b></font>
+<font color="#5E5C64"><b>│                     now preparing : </b></font>havoc                                 <font color="#5E5C64"><b>│                favourite topping : </b></font>1 (12.50%)          <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>│                  number of pizzas : </b></font>864/12.8k (6.75%)                     <font color="#5E5C64"><b>│ new pizza type seen on Instagram : </b></font>1 (12.50%)          <font color="#5E5C64"><b>│</b></font>
+       <font color="#E9AD0C"><b>Mozzarbella Pizzeria management system </b></font><font color="#33C7DE"><b>++4.32a</b></font><font color="#2A7BDE"><b> {default} </b></font><font color="#33DA7A"><b>(/usr/bin/python3) </b></font><font color="#C061CB"><b>[explore]</b></font><font color="#5E5C64"><b>zas with pineapple : </b></font><font color="#F66151"><b>2 (2 saved)         </b></font><font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>┌─</b></font><font color="#2AA1B3"> Mozzarbella has been proudly serving pizzas since </font><font color="#5E5C64"><b>───────────────────────┬─</b></font><font color="#2AA1B3"> In this time, we served </font><font color="#5E5C64"><b>──────────────────────────────┐</b></font>
+<font color="#5E5C64"><b>│                         open time : </b></font>0 days, 0 hrs, 0 min, 2 sec           <font color="#5E5C64"><b>│                     seasons done : </b></font><font color="#A347BA">0                   </font><font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>│                  last pizza baked : </b></font>0 days, 0 hrs, 0 min, 0 sec           <font color="#5E5C64"><b>│               pizzas on the menu : </b></font>8                   <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>│                last ordered pizza : </b></font>0 days, 0 hrs, 0 min, 0 sec           <font color="#5E5C64"><b>│                         at table : </b></font><font color="#F66151"><b>2                   </b></font><font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>│  last conversation with customers : </b></font>none seen yet                         <font color="#5E5C64"><b>│                 number of Peroni : </b></font>0                   <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>├─</b></font><font color="#2AA1B3"> Baking progress  </font><font color="#5E5C64"><b>────────────────────────────────────────────────────────┼─</b></font><font color="#2AA1B3"> Pizzeria busyness</font><font color="#5E5C64"><b>─────────────────────────────────────┤</b></font>
+<font color="#5E5C64"><b>│                        now baking : </b></font>0.0 (0.0%)                            <font color="#5E5C64"><b>│                       table full : </b></font><font color="#C061CB"><b>0.02% / 0.02%       </b></font><font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>│                     burned pizzas : </b></font>0 (0.00%)                             <font color="#5E5C64"><b>│                   count coverage : </b></font>2.44 bits/tuple     <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>├─</b></font><font color="#2AA1B3"> Pizzas almost ready </font><font color="#5E5C64"><b>─────────────────────────────────────────────────────┼─</b></font><font color="#2AA1B3"> Types of pizzas cooking </font><font color="#5E5C64"><b>──────────────────────────────┤</b></font>
+<font color="#5E5C64"><b>│                     now preparing : </b></font>havoc                                 <font color="#5E5C64"><b>│                favourite topping : </b></font>1 (12.50%)          <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>│                  number of pizzas : </b></font>938/12.8k (7.33%)                     <font color="#5E5C64"><b>│ new pizza type seen on Instagram : </b></font>1 (12.50%)          <font color="#5E5C64"><b>│</b></font>
+       <font color="#E9AD0C"><b>Mozzarbella Pizzeria management system </b></font><font color="#33C7DE"><b>++4.32a</b></font><font color="#2A7BDE"><b> {default} </b></font><font color="#33DA7A"><b>(/usr/bin/python3) </b></font><font color="#C061CB"><b>[explore]</b></font><font color="#5E5C64"><b>zas with pineapple : </b></font><font color="#F66151"><b>2 (2 saved)         </b></font><font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>┌─</b></font><font color="#2AA1B3"> Mozzarbella has been proudly serving pizzas since </font><font color="#5E5C64"><b>───────────────────────┬─</b></font><font color="#2AA1B3"> In this time, we served </font><font color="#5E5C64"><b>──────────────────────────────┐</b></font>
+<font color="#5E5C64"><b>│                         open time : </b></font>0 days, 0 hrs, 0 min, 2 sec           <font color="#5E5C64"><b>│                     seasons done : </b></font><font color="#A347BA">0                   </font><font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>│                  last pizza baked : </b></font>0 days, 0 hrs, 0 min, 0 sec           <font color="#5E5C64"><b>│               pizzas on the menu : </b></font>8                   <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>│                last ordered pizza : </b></font>0 days, 0 hrs, 0 min, 0 sec           <font color="#5E5C64"><b>│                         at table : </b></font><font color="#F66151"><b>2                   </b></font><font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>│  last conversation with customers : </b></font>none seen yet                         <font color="#5E5C64"><b>│                 number of Peroni : </b></font>0                   <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>├─</b></font><font color="#2AA1B3"> Baking progress  </font><font color="#5E5C64"><b>────────────────────────────────────────────────────────┼─</b></font><font color="#2AA1B3"> Pizzeria busyness</font><font color="#5E5C64"><b>─────────────────────────────────────┤</b></font>
+<font color="#5E5C64"><b>│                        now baking : </b></font>0.0 (0.0%)                            <font color="#5E5C64"><b>│                       table full : </b></font><font color="#C061CB"><b>0.02% / 0.02%       </b></font><font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>│                     burned pizzas : </b></font>0 (0.00%)                             <font color="#5E5C64"><b>│                   count coverage : </b></font>2.44 bits/tuple     <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>├─</b></font><font color="#2AA1B3"> Pizzas almost ready </font><font color="#5E5C64"><b>─────────────────────────────────────────────────────┼─</b></font><font color="#2AA1B3"> Types of pizzas cooking </font><font color="#5E5C64"><b>──────────────────────────────┤</b></font>
+<font color="#5E5C64"><b>│                     now preparing : </b></font>havoc                                 <font color="#5E5C64"><b>│                favourite topping : </b></font>1 (12.50%)          <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>│                  number of pizzas : </b></font>1015/12.8k (7.93%)                    <font color="#5E5C64"><b>│ new pizza type seen on Instagram : </b></font>1 (12.50%)          <font color="#5E5C64"><b>│</b></font>
+       <font color="#E9AD0C"><b>Mozzarbella Pizzeria management system </b></font><font color="#33C7DE"><b>++4.32a</b></font><font color="#2A7BDE"><b> {default} </b></font><font color="#33DA7A"><b>(/usr/bin/python3) </b></font><font color="#C061CB"><b>[explore]</b></font><font color="#5E5C64"><b>zas with pineapple : </b></font><font color="#F66151"><b>2 (2 saved)         </b></font><font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>┌─</b></font><font color="#2AA1B3"> Mozzarbella has been proudly serving pizzas since </font><font color="#5E5C64"><b>───────────────────────┬─</b></font><font color="#2AA1B3"> In this time, we served </font><font color="#5E5C64"><b>──────────────────────────────┐</b></font>
+<font color="#5E5C64"><b>│                         open time : </b></font>0 days, 0 hrs, 0 min, 2 sec           <font color="#5E5C64"><b>│                     seasons done : </b></font><font color="#A347BA">0                   </font><font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>│                  last pizza baked : </b></font>0 days, 0 hrs, 0 min, 0 sec           <font color="#5E5C64"><b>│               pizzas on the menu : </b></font>8                   <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>│                last ordered pizza : </b></font>0 days, 0 hrs, 0 min, 0 sec           <font color="#5E5C64"><b>│                         at table : </b></font><font color="#F66151"><b>2                   </b></font><font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>│  last conversation with customers : </b></font>none seen yet                         <font color="#5E5C64"><b>│                 number of Peroni : </b></font>0                   <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>├─</b></font><font color="#2AA1B3"> Baking progress  </font><font color="#5E5C64"><b>────────────────────────────────────────────────────────┼─</b></font><font color="#2AA1B3"> Pizzeria busyness</font><font color="#5E5C64"><b>─────────────────────────────────────┤</b></font>
+<font color="#5E5C64"><b>│                        now baking : </b></font>0.0 (0.0%)                            <font color="#5E5C64"><b>│                       table full : </b></font><font color="#C061CB"><b>0.02% / 0.02%       </b></font><font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>│                     burned pizzas : </b></font>0 (0.00%)                             <font color="#5E5C64"><b>│                   count coverage : </b></font>2.44 bits/tuple     <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>├─</b></font><font color="#2AA1B3"> Pizzas almost ready </font><font color="#5E5C64"><b>─────────────────────────────────────────────────────┼─</b></font><font color="#2AA1B3"> Types of pizzas cooking </font><font color="#5E5C64"><b>──────────────────────────────┤</b></font>
+<font color="#5E5C64"><b>│                     now preparing : </b></font>havoc                                 <font color="#5E5C64"><b>│                favourite topping : </b></font>1 (12.50%)          <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>│                  number of pizzas : </b></font>1092/12.8k (8.53%)                    <font color="#5E5C64"><b>│ new pizza type seen on Instagram : </b></font>1 (12.50%)          <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>│                      total pizzas : </b></font>1155                                  <font color="#5E5C64"><b>│      total pizzas with pineapple : </b></font><font color="#F66151"><b>2 (2 saved)         </b></font><font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>│                pizza making speed : </b></font>393.9/sec                             <font color="#5E5C64"><b>│                    burned pizzas : </b></font>0 (0 saved)         <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>├─</b></font><font color="#2AA1B3"> Promotional campaign on TikTok yields </font><font color="#5E5C64"><b>───────────────────────────────────┼─</b></font><font color="#2AA1B3"> Customer type </font><font color="#5E5C64"><b>────────────────────────────────────────┤</b></font>
+<font color="#5E5C64"><b>│                pizzas for celiac  : </b></font>0/0, 0/0, 0/0                         <font color="#5E5C64"><b>│                           levels : </b></font>2                   <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>│                   pizzas for kids : </b></font>0/0, 0/0, 0/0                         <font color="#5E5C64"><b>│                   pizzas to make : </b></font>8                   <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>│                      pizza bianca : </b></font>0/0, 0/0, 0/0                         <font color="#5E5C64"><b>│                       nice table : </b></font>1                   <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>│               recurring customers : </b></font>0/0, 0/0, 0/0                         <font color="#5E5C64"><b>│                    new customers : </b></font>7                   <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>│                        dictionary : </b></font>0/0, 0/0, 0/0, 0/0                    <font color="#5E5C64"><b>│      patrons from old restaurant : </b></font>0                   <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>│ 18 year anniversary mode/cleaning : </b></font>0/0, 0/0                              <font color="#5E5C64"><b>│                    oven flameout : </b></font>100.00%             <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>│                      py/custom/rq : </b></font>unused, unused, unused, unused        <font color="#5E5C64"><b>├────────────────────────────────────────────────────────┘</b></font>
+<font color="#5E5C64"><b>│                   toilets clogged : </b></font>20.00%/1, n/a                         <font color="#5E5C64"><b>│          [cpu000:</b></font><font color="#33DA7A"><b> 37%</b></font><font color="#5E5C64"><b>]</b></font>
+<font color="#5E5C64"><b>└───────────────────────────────────────────────────────────────────────────┘</b></font>
+
+       <font color="#E9AD0C"><b>Mozzarbella Pizzeria management system </b></font><font color="#33C7DE"><b>++4.32a</b></font><font color="#2A7BDE"><b> {default} </b></font><font color="#33DA7A"><b>(/usr/bin/python3) </b></font><font color="#C061CB"><b>[explore]</b></font>
+<font color="#5E5C64"><b>┌─</b></font><font color="#2AA1B3"> Mozzarbella has been proudly serving pizzas since </font><font color="#5E5C64"><b>───────────────────────┬─</b></font><font color="#2AA1B3"> In this time, we served </font><font color="#5E5C64"><b>──────────────────────────────┐</b></font>
+<font color="#5E5C64"><b>│                         open time : </b></font>0 days, 0 hrs, 2 min, 40 sec          <font color="#5E5C64"><b>│                     seasons done : </b></font><font color="#A347BA">34                  </font><font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>│                  last pizza baked : </b></font>0 days, 0 hrs, 2 min, 0 sec           <font color="#5E5C64"><b>│               pizzas on the menu : </b></font>14                  <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>│                last ordered pizza : </b></font>0 days, 0 hrs, 2 min, 1 sec           <font color="#5E5C64"><b>│                         at table : </b></font><font color="#F66151"><b>5                   </b></font><font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>│  last conversation with customers : </b></font>0 days, 0 hrs, 1 min, 59 sec          <font color="#5E5C64"><b>│                 number of Peroni : </b></font>2                   <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>├─</b></font><font color="#2AA1B3"> Baking progress  </font><font color="#5E5C64"><b>────────────────────────────────────────────────────────┼─</b></font><font color="#2AA1B3"> Pizzeria busyness</font><font color="#5E5C64"><b>─────────────────────────────────────┤</b></font>
+<font color="#5E5C64"><b>│                        now baking : </b></font>10.297 (71.4%)                        <font color="#5E5C64"><b>│                       table full : </b></font><font color="#C061CB"><b>0.03% / 0.03%       </b></font><font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>│                     burned pizzas : </b></font>0 (0.00%)                             <font color="#5E5C64"><b>│                   count coverage : </b></font>3.27 bits/tuple     <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>├─</b></font><font color="#2AA1B3"> Pizzas almost ready </font><font color="#5E5C64"><b>─────────────────────────────────────────────────────┼─</b></font><font color="#2AA1B3"> Types of pizzas cooking </font><font color="#5E5C64"><b>──────────────────────────────┤</b></font>
+<font color="#5E5C64"><b>│                     now preparing : </b></font>havoc                                 <font color="#5E5C64"><b>│                favourite topping : </b></font>2 (14.29%)          <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>│                  number of pizzas : </b></font>11/100 (11.00%)                       <font color="#5E5C64"><b>│ new pizza type seen on Instagram : </b></font>2 (14.29%)          <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>│                      total pizzas : </b></font>73.6k                                 <font color="#5E5C64"><b>│      total pizzas with pineapple : </b></font><font color="#F66151"><b>17.5k (5 saved)     </b></font><font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>│                pizza making speed : </b></font>496.9/sec                             <font color="#5E5C64"><b>│                    burned pizzas : </b></font>381 (0 saved)       <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>├─</b></font><font color="#2AA1B3"> Promotional campaign on TikTok yields </font><font color="#5E5C64"><b>───────────────────────────────────┼─</b></font><font color="#2AA1B3"> Customer type </font><font color="#5E5C64"><b>────────────────────────────────────────┤</b></font>
+<font color="#5E5C64"><b>│                pizzas for celiac  : </b></font>0/0, 0/0, 0/0                         <font color="#5E5C64"><b>│                           levels : </b></font>5                   <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>│                   pizzas for kids : </b></font>0/0, 0/0, 0/0                         <font color="#5E5C64"><b>│                   pizzas to make : </b></font>0                   <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>│                      pizza bianca : </b></font>0/0, 0/0, 0/0                         <font color="#5E5C64"><b>│                       nice table : </b></font>0                   <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>│               recurring customers : </b></font>0/0, 0/0, 0/0                         <font color="#5E5C64"><b>│                    new customers : </b></font>13                  <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>│                        dictionary : </b></font>0/0, 0/0, 0/0, 0/0                    <font color="#5E5C64"><b>│      patrons from old restaurant : </b></font>0                   <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>│ 18 year anniversary mode/cleaning : </b></font>17/73.3k, 0/0                         <font color="#5E5C64"><b>│                    oven flameout : </b></font>100.00%             <font color="#5E5C64"><b>│</b></font>
+<font color="#5E5C64"><b>│                      py/custom/rq : </b></font>unused, unused, unused, unused        <font color="#5E5C64"><b>├────────────────────────────────────────────────────────┘</b></font>
+<font color="#5E5C64"><b>│                   toilets clogged : </b></font>7.25%/145, n/a                        <font color="#5E5C64"><b>│          [cpu000:</b></font><font color="#33DA7A"><b> 12%</b></font><font color="#5E5C64"><b>]</b></font>
+<font color="#5E5C64"><b>└───────────────────────────────────────────────────────────────────────────┘</b></font>^C
+
+<font color="#F66151"><b>+++ Baking aborted by the chef +++</b></font>
+<font color="#2A7BDE"><b>[*] </b></font>Writing output/default/fastresume.bin ...
+<font color="#33DA7A"><b>[+] </b></font>fastresume.bin successfully written with 279894 bytes.
+<font color="#33DA7A"><b>[+] </b></font>We&apos;re done here. Have a nice day!
+
+[AFL++ b6def6d55d05] /src # ls
+<font color="#12488B"><b>input</b></font>  main.py  <font color="#12488B"><b>output</b></font>
+[AFL++ b6def6d55d05] /src # cd output/ 
+[AFL++ b6def6d55d05] /src/output # ls
+<font color="#12488B"><b>default</b></font>
+[AFL++ b6def6d55d05] /src/output # cd default/
+[AFL++ b6def6d55d05] /src/output/default # ls 
+cmdline  <font color="#12488B"><b>crashes</b></font>  fastresume.bin  fuzz_bitmap  fuzzer_setup  fuzzer_stats  <font color="#12488B"><b>hangs</b></font>  plot_data  <font color="#12488B"><b>queue</b></font>  target_hash
+[AFL++ b6def6d55d05] /src/output/default # cd crashes 
+[AFL++ b6def6d55d05] /src/output/default/crashes # ls
+README.txt                                                      id:000001,sig:10,src:000000,time:1926,execs:786,op:havoc,rep:3    id:000003,sig:10,src:000000,time:19902,execs:7445,op:havoc,rep:3
+id:000000,sig:10,src:000000,time:1837,execs:750,op:havoc,rep:4  id:000002,sig:10,src:000000,time:11557,execs:4114,op:havoc,rep:4  id:000004,sig:10,src:000010,time:39711,execs:15301,op:quick,pos:16
+[AFL++ b6def6d55d05] /src/output/default/crashes # ls -l
+total 24
+-rw------- 1 root root 553 Apr  1 13:43 README.txt
+-rw------- 1 root root   4 Apr  1 13:43 id:000000,sig:10,src:000000,time:1837,execs:750,op:havoc,rep:4
+-rw------- 1 root root   4 Apr  1 13:43 id:000001,sig:10,src:000000,time:1926,execs:786,op:havoc,rep:3
+-rw------- 1 root root   4 Apr  1 13:43 id:000002,sig:10,src:000000,time:11557,execs:4114,op:havoc,rep:4
+-rw------- 1 root root  33 Apr  1 13:44 id:000003,sig:10,src:000000,time:19902,execs:7445,op:havoc,rep:3
+-rw------- 1 root root  22 Apr  1 13:44 id:000004,sig:10,src:000010,time:39711,execs:15301,op:quick,pos:16
+[AFL++ b6def6d55d05] /src/output/default/crashes # cat id:000000,sig:10,src:000000,time:1837,execs:750,op:havoc,rep:4
+%stt[AFL++ b6def6d55d05] /src/output/default/crashes # 
+[AFL++ b6def6d55d05] /src/output/default/crashes # 
+[AFL++ b6def6d55d05] /src/output/default/crashes # 
+[AFL++ b6def6d55d05] /src/output/default/crashes # cd ../hangs/
+[AFL++ b6def6d55d05] /src/output/default/hangs # ls -l
+total 8
+-rw------- 1 root root 22 Apr  1 13:43 id:000000,src:000000,time:4061,execs:1208,op:havoc,rep:3
+-rw------- 1 root root 47 Apr  1 13:44 id:000001,src:000011,time:41933,execs:15880,op:havoc,rep:6
+[AFL++ b6def6d55d05] /src/output/default/hangs # ca 
+bash: ca: command not found
+[AFL++ b6def6d55d05] /src/output/default/hangs # cat id:000000,src:000000,time:4061,execs:1208,op:havoc,rep:3
+testt���������ٻ���e+t[AFL++ b6def6d55d05] /src/output/default/hangs # cat id:000000,src:000000,time:4061,execs:1208,op:havoc,rep:3
+[AFL++ b6def6d55d05] /src/output/default/hangs # cat id:000001,src:000011,time:41933,execs:15880,op:havoc,rep:6<span style="background-color:#FFFFFF"><font color="#300A24">:15880,op:havoc,rep:6</font></span>
+55�����5555%555%5555�d�d+15:�����5%555%5��5��[AFL++ b6def6d55d05] /src/output/default/hangs # 
+[AFL++ b6def6d55d05] /src/output/default/hangs # 
+[AFL++ b6def6d55d05] /src/output/default/hangs # cd ..
+[AFL++ b6def6d55d05] /src/output/default # 
+[AFL++ b6def6d55d05] /src/output/default # 
+[AFL++ b6def6d55d05] /src/output/default # 
+[AFL++ b6def6d55d05] /src/output/default # cat fuzzer_stats
+start_time        : 1743515020
+last_update       : 1743515181
+run_time          : 160
+fuzzer_pid        : 36
+cycles_done       : 34
+cycles_wo_finds   : 32
+time_wo_finds     : 120
+fuzz_time         : 160
+calibration_time  : 0
+cmplog_time       : 0
+sync_time         : 0
+trim_time         : 0
+execs_done        : 73587
+execs_per_sec     : 457.10
+execs_ps_last_min : 485.16
+corpus_count      : 14
+corpus_favored    : 2
+corpus_found      : 13
+corpus_imported   : 0
+corpus_variable   : 0
+max_depth         : 5
+cur_item          : 10
+pending_favs      : 0
+pending_total     : 0
+stability         : 100.00%
+bitmap_cvg        : 0.03%
+saved_crashes     : 5
+saved_hangs       : 2
+total_tmout       : 381
+last_find         : 1743515061
+last_crash        : 1743515060
+last_hang         : 1743515062
+execs_since_crash : 58286
+exec_timeout      : 20
+slowest_exec_ms   : 0
+peak_rss_mb       : 14
+cpu_affinity      : 0
+edges_found       : 22
+total_edges       : 65536
+var_byte_count    : 0
+havoc_expansion   : 5
+auto_dict_entries : 0
+testcache_size    : 489
+testcache_count   : 14
+testcache_evict   : 0
+afl_banner        : /usr/bin/python3
+afl_version       : ++4.32a
+target_mode       : shmem_testcase default
+command_line      : afl-fuzz -i input -o output -- /usr/bin/python3 /src/main.py
+[AFL++ b6def6d55d05] /src/output/default # 
+[AFL++ b6def6d55d05] /src/output/default # 
+[AFL++ b6def6d55d05] /src/output/default # 
+[AFL++ b6def6d55d05] /src/output/default # cd ../..
+[AFL++ b6def6d55d05] /src # ls
+<font color="#12488B"><b>input</b></font>  main.py  <font color="#12488B"><b>output</b></font>
+[AFL++ b6def6d55d05] /src # python3 main.py &lt; output/default/crashes/id:000000,sig:10,src:000000,time:1837,execs:750,op:havoc,rep:4
+Traceback (most recent call last):
+  File &quot;/src/main.py&quot;, line 23, in &lt;module&gt;
+    print(uridecode(sys.stdin.read()))
+  File &quot;/src/main.py&quot;, line 11, in uridecode
+    char_code = (int(a, 16) * 16) + int(b, 16)
+ValueError: invalid literal for int() with base 16: &apos;s&apos;
+[AFL++ b6def6d55d05] /src # timeout 5s python3 main.py &lt; output/default/hangs/id:000001,src:000011,time:41933,execs:15880,op:havoc,rep:6
+[AFL++ b6def6d55d05] /src # cd output/default/hangs/
+[AFL++ b6def6d55d05] /src/output/default/hangs # ls
+id:000000,src:000000,time:4061,execs:1208,op:havoc,rep:3  id:000001,src:000011,time:41933,execs:15880,op:havoc,rep:6
+[AFL++ b6def6d55d05] /src/output/default/hangs # 
+</pre>

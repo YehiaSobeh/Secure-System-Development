@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>lab4-solution.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<!-- Lab 4 - Fuzzing Report
+Name: Your Name
+Date: [Insert Date]
+
+Task 1: WebApp Fuzzing
+Step 1: Setup Environment
+1. Install Tools
+Commands:
+
+bash
+Copy
+# Install ffuf
+```bash
+sudo apt-get install ffuf
+```
+# Download and extract SecLists
+```bash 
+wget -c https://github.com/danielmiessler/SecLists/archive/master.zip -O SecList.zip && unzip SecList.zip && rm -f SecList.zip
+```
+Explanation:
+
+Installs ffuf, the fuzzing tool.
+
+Downloads the SecLists wordlist repository and extracts it.
+
+2. Start DVWA with Docker
+Command:
+
+```bash
+docker run -d -p 127.0.0.1:80:80 vulnerables/web-dvwa
+```
+Explanation:
+
+Runs DVWA (Damn Vulnerable Web App) on http://localhost:80.
+
+Step 2: Fuzz Endpoints with big.txt
+Question: Which endpoints/files from big.txt were accessible? Which ones gave interesting error codes (not 404)?
+
+Command:
+
+```bash
+ffuf -r -u http://localhost:80/FUZZ -w ./SecLists-master/Discovery/Web-Content/big.txt
+```
+Explanation:
+
+Fuzzes the DVWA server for files/endpoints listed in big.txt.
+
+-r enables following redirects.
+
+FUZZ is replaced with entries from the wordlist.
+
+Results:
+
+Endpoint/File	Status Code	Description
+.htpasswd	403	Forbidden access
+.htaccess	403	Forbidden access
+config	200	Accessible endpoint
+docs	200	Accessible endpoint
+external	200	Accessible endpoint
+favicon.ico	200	Accessible favicon file
+robots.txt	200	Accessible robots.txt file
+server-status	403	Forbidden access
+Interesting Error Codes:
+
+403 Forbidden: .htpasswd, .htaccess, server-status.
+
+200 OK: config, docs, external, favicon.ico, robots.txt.
+
+Screenshot:
+![](screenshots/4.png)
+
+Step 3: Fuzz File Extensions for index Page
+Question: What file extensions from web-extensions.txt are available for the index page?
+
+Command:
+
+```bash
+ffuf -r -u http://localhost:80/indexFUZZ -w ./SecLists-master/Discovery/Web-Content/web-extensions.txt
+```
+Explanation:
+
+Tests file extensions (e.g., .php, .html) appended to index.
+
+Results:
+
+Extension	Status Code	Description
+.php	200	Valid PHP file
+.phps	403	Forbidden access
+Answer:
+
+Valid Extension: .php (returns 200 OK).
+
+Interesting Error: .phps (403 Forbidden).
+
+Screenshot:
+![](screenshots/5.png)
+
+Step 4: Fuzz Directories with raft-medium-directories.txt
+Question: Which directories from raft-medium-directories.txt are accessible? Which ones gave interesting error codes?
+
+Command:
+
+```bash
+ffuf -r -u http://localhost:80/FUZZ -w ./SecLists-master/Discovery/Web-Content/raft-medium-directories.txt
+```
+Explanation:
+
+Fuzzes directories listed in raft-medium-directories.txt.
+
+Results:
+
+Directory	Status Code	Description
+config	200	Accessible directory
+docs	200	Accessible directory
+external	200	Accessible directory
+server-status	403	Forbidden access
+Answer:
+
+Accessible Directories: config, docs, external (200 OK).
+
+Interesting Error: server-status (403 Forbidden).
+
+Screenshot:
+![](screenshots/6.png)
+
+Final Summary
+Accessible endpoints from big.txt:
+
+config, docs, external, favicon.ico, robots.txt (200 OK).
+
+.htpasswd, .htaccess, server-status (403 Forbidden).
+
+Valid extensions for index:
+
+.php (200 OK).
+
+Accessible directories from raft-medium-directories.txt:
+
+config, docs, external (200 OK).
+
+server-status (403 Forbidden).
+
+
+
+---
+
+
+Task 2 - Python Fuzzing: Full Solution
+Step 1: Setup & Fuzzing Execution
+1.1 Run AFL++ in Docker:
+
+bash
+Copy
+docker run --name afl -ti -v .:/src/ aflplusplus/aflplusplus
+1.2 Install Dependencies:
+
+bash
+Copy
+pip install python-afl
+1.3 Start Fuzzing:
+
+bash
+Copy
+py-afl-fuzz -i input -o output -- /usr/bin/python3 /src/main.py
+Note: AFL++ ran for ~2 minutes before being stopped manually (Ctrl+C).
+
+Step 2: Analyze Results
+2.1 Crashes Found:
+
+bash
+Copy
+ls output/default/crashes/
+# 5 crash files detected (id:000000 to id:000004)
+2.2 Hangs Found:
+
+bash
+Copy
+ls output/default/hangs/
+# 2 hang files detected (id:000000 and id:000001)
+2.3 Key Stats (fuzzer_stats):
+
+bash
+Copy
+cat output/default/fuzzer_stats
+Total Executions: 73,587
+
+Crashes Saved: 5
+
+Hangs Saved: 2
+
+Execution Speed: ~457 execs/sec
+
+Step 3: Reproduce Crashes
+3.1 Crash Case 1 (IndexError):
+
+bash
+Copy
+cat output/default/crashes/id:000000,sig:10,src:000000,time:1837,execs:750,op:havoc,rep:4
+# Input: "%stt"
+Reproduce:
+
+bash
+Copy
+python3 main.py < output/default/crashes/id:000000...
+Error:
+
+python
+Copy
+IndexError: string index out of range
+Cause:
+
+Input %stt has % at position 0 but lacks valid hex characters (s is not hex).
+
+Code assumes % is always followed by two valid hex digits.
+
+3.2 Crash Case 2 (ValueError):
+
+bash
+Copy
+cat output/default/crashes/id:000004,sig:10,src:000010,time:39711,execs:15301,op:quick,pos:16
+# Input contains invalid hex (e.g., Unicode characters)
+Reproduce:
+
+bash
+Copy
+python3 main.py < output/default/crashes/id:000004...
+Error:
+
+python
+Copy
+ValueError: invalid literal for int() with base 16: '\udc9a'
+Cause:
+
+Non-hex characters (e.g., Unicode) after % trigger int() conversion errors.
+
+Step 4: Reproduce Hangs
+4.1 Hang Case:
+
+```bash
+
+cat output/default/hangs/id:000001,src:000011,time:41933,execs:15880,op:havoc,rep:6
+```
+
+```# Input: "55�����5555%555%5555�d�d+15:�����5%555%5��5��"```
+Reproduce with Timeout:
+
+```bash
+timeout 5s python3 main.py < output/default/hangs/id:000001...
+```
+Result: Program exceeds timeout (5s), confirming hang.
+Cause:
+
+Long/malformed inputs with repeated % sequences cause excessive processing.
+
+Step 5: Fix the Code
+Original Code Issue:
+
+No bounds checking for % sequences.
+
+No validation of hex characters.
+
+Fixed Code:
+
+```python
+def uridecode(s):
+    ret = []
+    i = 0
+    while i < len(s):
+        if s[i] == '%':
+            # Check for valid length and hex chars
+            if i + 2 >= len(s):
+                ret.append(s[i])
+                i += 1
+                continue
+            try:
+                a, b = s[i+1], s[i+2]
+                if not (a in '0123456789abcdefABCDEF' and b in '0123456789abcdefABCDEF'):
+                    raise ValueError
+                char_code = (int(a, 16) * 16) + int(b, 16)
+                ret.append(chr(char_code))
+                i += 3
+            except ValueError:
+                # Preserve invalid % sequences
+                ret.append(s[i])
+                i += 1
+        elif s[i] == '+':
+            ret.append(' ')
+            i += 1
+        else:
+            ret.append(s[i])
+            i += 1
+    return ''.join(ret)
+```
+Key Fixes:
+
+Bounds Check: Ensures i+2 does not exceed string length.
+
+Hex Validation: Checks if characters after % are valid hex digits.
+
+Graceful Error Handling: Skips invalid % sequences instead of crashing.
+
+Step 6: Answer Questions
+1. Will the fuzzer terminate?
+No - AFL++ runs indefinitely unless manually stopped or configured with a timeout.
+
+2. How do coverage-guided fuzzers work? Is AFL coverage-guided?
+
+Coverage-guided fuzzers track code paths executed by inputs and prioritize mutations that explore new paths.
+
+AFL++ is coverage-guided - It uses instrumentation to detect code coverage and optimize input generation.
+
+3. How to optimize a fuzzing campaign?
+
+Use persistent mode (afl.loop() in Python) to reuse process state.
+
+Provide diverse seed inputs (e.g., %41, %, %GG).
+
+Use a dictionary of tokens (%, +, hex chars).
+
+Trim redundant test cases to reduce execution time.
+
+Step 7: Final Report
+Include in your .md report:
+
+Commands Used:
+
+bash
+Copy
+py-afl-fuzz -i input -o output -- /usr/bin/python3 /src/main.py
+Screenshots:
+
+AFL++ interface showing crashes/hangs.
+
+Crash reproduction (e.g., IndexError/ValueError).
+
+Code Fix: Highlight bounds checks and hex validation.
+
+Answers to Questions: Concise explanations based on your findings.
+
+Example Screenshot:
+AFL++ Results
+(Replace with your actual terminal output)
+
+Summary
+Crashes: Caused by invalid hex characters and incomplete % sequences.
+
+Hangs: Triggered by long/malformed inputs.
+
+Fix: Added bounds checks, hex validation, and error handling.
+
+AFL++ Behavior: Runs indefinitely, coverage-guided, optimized via dictionaries/persistent mode. -->
+<h1 id="lab-4---fuzzing-report">Lab 4 - Fuzzing Report</h1>
+<h2 id="name-yehia-sobeh">Name: Yehia Sobeh</h2>
+<h2 id="task-1-webapp-fuzzing">Task 1: WebApp Fuzzing</h2>
+<h3 id="step-1-setup-environment">Step 1: Setup Environment</h3>
+<h4 id="1-install-tools">1. Install Tools</h4>
+<h5 id="commands">Commands:</h5>
+<pre class="hljs"><code><div><span class="hljs-comment"># Install ffuf</span>
+sudo apt-get install ffuf
+
+<span class="hljs-comment"># Download and extract SecLists</span>
+wget -c https://github.com/danielmiessler/SecLists/archive/master.zip -O SecList.zip &amp;&amp; unzip SecList.zip &amp;&amp; rm -f SecList.zip
+</div></code></pre>
+<h5 id="explanation">Explanation:</h5>
+<ul>
+<li>Installs <code>ffuf</code>, the fuzzing tool.</li>
+<li>Downloads the <code>SecLists</code> wordlist repository and extracts it.
+<img src="screenshots/1.png" alt="">
+<img src="screenshots/2.png" alt=""></li>
+</ul>
+<h4 id="2-start-dvwa-with-docker">2. Start DVWA with Docker</h4>
+<h5 id="command">Command:</h5>
+<pre class="hljs"><code><div>docker run -d -p 127.0.0.1:80:80 vulnerables/web-dvwa
+</div></code></pre>
+<h5 id="explanation">Explanation:</h5>
+<ul>
+<li>Runs DVWA (Damn Vulnerable Web App) on <code>http://localhost:80</code>.</li>
+</ul>
+<hr>
+<p><img src="screenshots/3.png" alt=""></p>
+<h3 id="step-2-fuzz-endpoints-with-bigtxt">Step 2: Fuzz Endpoints with big.txt</h3>
+<h5 id="question-which-endpointsfiles-from-bigtxt-were-accessible-which-ones-gave-interesting-error-codes-not-404">Question: Which endpoints/files from <code>big.txt</code> were accessible? Which ones gave interesting error codes (not 404)?</h5>
+<h5 id="command">Command:</h5>
+<pre class="hljs"><code><div>ffuf -r -u http://localhost:80/FUZZ -w ./SecLists-master/Discovery/Web-Content/big.txt
+</div></code></pre>
+<h5 id="explanation">Explanation:</h5>
+<ul>
+<li>Fuzzes the DVWA server for files/endpoints listed in <code>big.txt</code>.</li>
+<li><code>-r</code> enables following redirects.</li>
+<li><code>FUZZ</code> is replaced with entries from the wordlist.</li>
+</ul>
+<h5 id="results">Results:</h5>
+<table>
+<thead>
+<tr>
+<th>Endpoint/File</th>
+<th>Status Code</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>.htpasswd</td>
+<td>403</td>
+<td>Forbidden access</td>
+</tr>
+<tr>
+<td>.htaccess</td>
+<td>403</td>
+<td>Forbidden access</td>
+</tr>
+<tr>
+<td>config</td>
+<td>200</td>
+<td>Accessible</td>
+</tr>
+<tr>
+<td>docs</td>
+<td>200</td>
+<td>Accessible</td>
+</tr>
+<tr>
+<td>external</td>
+<td>200</td>
+<td>Accessible</td>
+</tr>
+<tr>
+<td>favicon.ico</td>
+<td>200</td>
+<td>Accessible</td>
+</tr>
+<tr>
+<td>robots.txt</td>
+<td>200</td>
+<td>Accessible</td>
+</tr>
+<tr>
+<td>server-status</td>
+<td>403</td>
+<td>Forbidden access</td>
+</tr>
+</tbody>
+</table>
+<h5 id="interesting-error-codes">Interesting Error Codes:</h5>
+<ul>
+<li><code>403 Forbidden</code>: <code>.htpasswd</code>, <code>.htaccess</code>, <code>server-status</code></li>
+<li><code>200 OK</code>: <code>config</code>, <code>docs</code>, <code>external</code>, <code>favicon.ico</code>, <code>robots.txt</code></li>
+</ul>
+<p><strong>Screenshot:</strong><br>
+<img src="screenshots/4.png" alt=""></p>
+<hr>
+<h3 id="step-3-fuzz-file-extensions-for-index-page">Step 3: Fuzz File Extensions for index Page</h3>
+<h5 id="question-what-file-extensions-from-web-extensionstxt-are-available-for-the-index-page">Question: What file extensions from <code>web-extensions.txt</code> are available for the index page?</h5>
+<h5 id="command">Command:</h5>
+<pre class="hljs"><code><div>ffuf -r -u http://localhost:80/indexFUZZ -w ./SecLists-master/Discovery/Web-Content/web-extensions.txt
+</div></code></pre>
+<h5 id="results">Results:</h5>
+<table>
+<thead>
+<tr>
+<th>Extension</th>
+<th>Status Code</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>.php</td>
+<td>200</td>
+<td>Valid PHP file</td>
+</tr>
+<tr>
+<td>.phps</td>
+<td>403</td>
+<td>Forbidden access</td>
+</tr>
+</tbody>
+</table>
+<h5 id="answer">Answer:</h5>
+<ul>
+<li><strong>Valid Extension:</strong> <code>.php</code> (returns <code>200 OK</code>).</li>
+<li><strong>Interesting Error:</strong> <code>.phps</code> (<code>403 Forbidden</code>).</li>
+</ul>
+<p><strong>Screenshot:</strong><br>
+<img src="screenshots/5.png" alt=""></p>
+<hr>
+<h3 id="step-4-fuzz-directories-with-raft-medium-directoriestxt">Step 4: Fuzz Directories with <code>raft-medium-directories.txt</code></h3>
+<h5 id="question-which-directories-from-raft-medium-directoriestxt-are-accessible-which-ones-gave-interesting-error-codes">Question: Which directories from <code>raft-medium-directories.txt</code> are accessible? Which ones gave interesting error codes?</h5>
+<h5 id="command">Command:</h5>
+<pre class="hljs"><code><div>ffuf -r -u http://localhost:80/FUZZ -w ./SecLists-master/Discovery/Web-Content/raft-medium-directories.txt
+</div></code></pre>
+<h5 id="results">Results:</h5>
+<table>
+<thead>
+<tr>
+<th>Directory</th>
+<th>Status Code</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>config</td>
+<td>200</td>
+<td>Accessible</td>
+</tr>
+<tr>
+<td>docs</td>
+<td>200</td>
+<td>Accessible</td>
+</tr>
+<tr>
+<td>external</td>
+<td>200</td>
+<td>Accessible</td>
+</tr>
+<tr>
+<td>server-status</td>
+<td>403</td>
+<td>Forbidden access</td>
+</tr>
+</tbody>
+</table>
+<h5 id="answer">Answer:</h5>
+<ul>
+<li><strong>Accessible Directories:</strong> <code>config</code>, <code>docs</code>, <code>external</code> (<code>200 OK</code>).</li>
+<li><strong>Interesting Error:</strong> <code>server-status</code> (<code>403 Forbidden</code>).</li>
+</ul>
+<p><strong>Screenshot:</strong><br>
+<img src="screenshots/6.png" alt=""></p>
+<hr>
+<h2 id="task-2---python-fuzzing">Task 2 - Python Fuzzing</h2>
+<h3 id="step-1-setup--fuzzing-execution">Step 1: Setup &amp; Fuzzing Execution</h3>
+<h4 id="11-run-afl-in-docker">1.1 Run AFL++ in Docker:</h4>
+<pre class="hljs"><code><div>docker run --name afl -ti -v .:/src/ aflplusplus/aflplusplus
+</div></code></pre>
+<h4 id="12-install-dependencies">1.2 Install Dependencies:</h4>
+<pre class="hljs"><code><div>pip install python-afl
+</div></code></pre>
+<h4 id="13-start-fuzzing">1.3 Start Fuzzing:</h4>
+<pre class="hljs"><code><div>py-afl-fuzz -i input -o output -- /usr/bin/python3 /src/main.py
+</div></code></pre>
+<h5 id="note">Note:</h5>
+<ul>
+<li>AFL++ ran for ~2 minutes before being stopped manually (<code>Ctrl+C</code>).</li>
+</ul>
+<hr>
+<h3 id="step-2-analyze-results">Step 2: Analyze Results</h3>
+<h4 id="21-crashes-found">2.1 Crashes Found:</h4>
+<pre class="hljs"><code><div>ls output/default/crashes/
+<span class="hljs-comment"># 5 crash files detected (id:000000 to id:000004)</span>
+
+README.txt                                                      id:000001,sig:10,src:000000,time:1926,execs:786,op:havoc,rep:3    id:000003,sig:10,src:000000,time:19902,execs:7445,op:havoc,rep:3
+id:000000,sig:10,src:000000,time:1837,execs:750,op:havoc,rep:4  id:000002,sig:10,src:000000,time:11557,execs:4114,op:havoc,rep:4  id:000004,sig:10,src:000010,time:39711,execs:15301,op:quick,pos:16
+
+</div></code></pre>
+<h4 id="22-hangs-found">2.2 Hangs Found:</h4>
+<pre class="hljs"><code><div>ls output/default/hangs/
+<span class="hljs-comment"># 2 hang files detected (id:000000 and id:000001)</span>
+id:000000,src:000000,time:4061,execs:1208,op:havoc,rep:3  id:000001,src:000011,time:41933,execs:15880,op:havoc,rep:6
+</div></code></pre>
+<h4 id="23-key-stats">2.3 Key Stats:</h4>
+<pre class="hljs"><code><div>cat output/default/fuzzer_stats
+</div></code></pre>
+<ul>
+<li><strong>Total Executions:</strong> 73,587</li>
+<li><strong>Crashes Saved:</strong> 5</li>
+<li><strong>Hangs Saved:</strong> 2</li>
+<li><strong>Execution Speed:</strong> ~457 execs/sec</li>
+</ul>
+<hr>
+<h3 id="step-3-reproduce-crashes">Step 3: Reproduce Crashes</h3>
+<h4 id="31-crash-case-1-indexerror">3.1 Crash Case 1 (IndexError):</h4>
+<pre class="hljs"><code><div>python3 main.py &lt; output/default/crashes/id:000000...
+</div></code></pre>
+<p>Error:</p>
+<pre class="hljs"><code><div>Traceback (most recent call last):
+  File <span class="hljs-string">"/src/main.py"</span>, line <span class="hljs-number">23</span>, <span class="hljs-keyword">in</span> &lt;module&gt;
+    print(uridecode(sys.stdin.read()))
+  File <span class="hljs-string">"/src/main.py"</span>, line <span class="hljs-number">11</span>, <span class="hljs-keyword">in</span> uridecode
+    char_code = (int(a, <span class="hljs-number">16</span>) * <span class="hljs-number">16</span>) + int(b, <span class="hljs-number">16</span>)
+ValueError: invalid literal <span class="hljs-keyword">for</span> int() <span class="hljs-keyword">with</span> base <span class="hljs-number">16</span>: <span class="hljs-string">'s'</span>
+
+</div></code></pre>
+<h5 id="cause">Cause:</h5>
+<ul>
+<li>Input <code>%stt</code> has <code>%</code> at position <code>0</code> but lacks valid hex characters.</li>
+</ul>
+<h4 id="32-crash-case-2-valueerror">3.2 Crash Case 2 (ValueError):</h4>
+<pre class="hljs"><code><div>python3 main.py &lt; output/default/crashes/id:000004...
+</div></code></pre>
+<p>Error:</p>
+<pre class="hljs"><code><div>ValueError: invalid literal <span class="hljs-keyword">for</span> int() <span class="hljs-keyword">with</span> base <span class="hljs-number">16</span>: <span class="hljs-string">'\udc9a'</span>
+</div></code></pre>
+<h5 id="cause">Cause:</h5>
+<p>The error occurs when:</p>
+<ul>
+<li>
+<p>Input contains %stt (as seen in crash file id:000000)</p>
+</li>
+<li>
+<p>Code tries to convert 's' to hexadecimal with int(a, 16)</p>
+</li>
+<li>
+<p>Fails because 's' is not a valid hexadecimal digit (only 0-9, a-f, A-F are valid)</p>
+</li>
+</ul>
+<hr>
+<h3 id="step-4-fix-the-code">Step 4: Fix the Code</h3>
+<h5 id="fixed-code">Fixed Code:</h5>
+<pre class="hljs"><code><div><span class="hljs-keyword">import</span> afl
+<span class="hljs-keyword">import</span> sys
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">uridecode</span><span class="hljs-params">(s)</span>:</span>
+    ret = []
+    i = <span class="hljs-number">0</span>
+    <span class="hljs-keyword">while</span> i &lt; len(s):
+        <span class="hljs-keyword">if</span> s[i] == <span class="hljs-string">'%'</span>:
+            <span class="hljs-comment"># Case 1: Not enough characters after %</span>
+            <span class="hljs-keyword">if</span> i + <span class="hljs-number">2</span> &gt;= len(s):
+                ret.append(s[i])
+                i += <span class="hljs-number">1</span>
+                <span class="hljs-keyword">continue</span>
+                
+            a, b = s[i+<span class="hljs-number">1</span>], s[i+<span class="hljs-number">2</span>]
+            
+            <span class="hljs-comment"># Case 2: Validate hex characters</span>
+            hex_chars = set(<span class="hljs-string">'0123456789abcdefABCDEF'</span>)
+            <span class="hljs-keyword">if</span> a <span class="hljs-keyword">in</span> hex_chars <span class="hljs-keyword">and</span> b <span class="hljs-keyword">in</span> hex_chars:
+                <span class="hljs-keyword">try</span>:
+                    char_code = (int(a, <span class="hljs-number">16</span>) * <span class="hljs-number">16</span>) + int(b, <span class="hljs-number">16</span>)
+                    ret.append(chr(char_code))
+                    i += <span class="hljs-number">3</span>
+                <span class="hljs-keyword">except</span> ValueError:
+                    <span class="hljs-comment"># Fallback for unexpected hex conversion errors</span>
+                    ret.append(s[i])
+                    i += <span class="hljs-number">1</span>
+            <span class="hljs-keyword">else</span>:
+                <span class="hljs-comment"># Preserve invalid % sequences</span>
+                ret.append(s[i])
+                i += <span class="hljs-number">1</span>
+                
+        <span class="hljs-keyword">elif</span> s[i] == <span class="hljs-string">'+'</span>:
+            ret.append(<span class="hljs-string">' '</span>)
+            i += <span class="hljs-number">1</span>
+        <span class="hljs-keyword">else</span>:
+            ret.append(s[i])
+            i += <span class="hljs-number">1</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-string">''</span>.join(ret)
+
+<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">'__main__'</span>:
+    afl.init()
+    print(uridecode(sys.stdin.read()))
+</div></code></pre>
+<hr>
+<h3 id="step-5-final-summary">Step 5: Final Summary</h3>
+<ul>
+<li><strong>Crashes:</strong> Invalid hex characters and incomplete <code>%</code> sequences.</li>
+<li><strong>Hangs:</strong> Long/malformed inputs.</li>
+<li><strong>Fix:</strong> Bounds checks, hex validation, error handling.</li>
+<li><strong>AFL++ Behavior:</strong> Runs indefinitely, coverage-guided, optimized via dictionaries/persistent mode.</li>
+</ul>
+<p><strong>Screenshot:</strong><br>
+<img src="screenshots/7.png" alt="">
+<img src="screenshots/8.png" alt="">
+<img src="screenshots/9.png" alt="">
+<img src="screenshots/10.png" alt="">
+<img src="screenshots/11.png" alt="">
+<img src="screenshots/12.png" alt=""></p>
+
+</body>
+</html>
