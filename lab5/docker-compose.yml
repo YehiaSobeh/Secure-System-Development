@@ -1,0 +1,24 @@
+services:
+  juice-shop:
+    image: bkimminich/juice-shop
+    networks:
+      - app-network
+    ports:
+      - "3000:3000"
+
+  modsecurity:
+    image: owasp/modsecurity-crs:nginx
+    volumes:
+      - ./custom-rules.conf:/etc/modsecurity.d/owasp-crs/rules/custom-rules.conf:ro
+    environment:
+      - BACKEND=http://juice-shop:3000
+    ports:
+      - "8080:8080"
+
+    networks:
+      - app-network
+
+
+networks:
+  app-network:
+    driver: bridge
